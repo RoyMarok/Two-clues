@@ -1,0 +1,175 @@
+{
+    "characters": {
+        "base": {
+            "characteristics": {
+                "move": 4,
+                "agility": -2,
+                "will": -1,
+                "ballistic": -2,
+                "weapon": -3,
+                "closeCombatActions": 1,
+                "defence": 9,
+                "health": 10
+            },
+            "armoury": 0,
+            "insanity": 0,
+            "corruption": 0,
+            "baseActions": 2,
+            "price": 15
+        },
+        "leader": {
+            "count": {
+                "min": 1,
+                "max": 1
+            },
+            "characteristics": {
+                "move": 5,
+                "agility": 4,
+                "will": 3,
+                "ballistic": 4,
+                "weapon": 3,
+                "closeCombatActions": 3,
+                "defence": 14,
+                "health": 14
+            }
+        },
+        "champion": {
+            "count": {
+                "min": 0,
+                "max": 10
+            },
+            "characteristics": {
+                "move": 6,
+                "agility": 4,
+                "will": 2,
+                "ballistic": 4,
+                "weapon": 5,
+                "closeCombatActions": 3,
+                "defence": 14,
+                "health": 14
+            }
+        },
+        "ganger": {
+            "count": {
+                "min": 1,
+                "max": 14
+            },
+            "characteristics": {
+                "move": 5,
+                "agility": 0,
+                "will": 1,
+                "ballistic": 2,
+                "weapon": 1,
+                "closeCombatActions": 1,
+                "defence": 12,
+                "health": 13
+            }
+        }
+    },
+    "races": {
+        "human": {
+            "characteristics": {
+                "base": {
+                    "move": 4,
+                    "agility": 0,
+                    "will": -1,
+                    "ballistic": -2,
+                    "weapon": -3,
+                    "closeCombatActions": 1,
+                    "defence": 10,
+                    "health": 11
+                },
+                "max": {
+                    "move": 6,
+                    "agility": 4,
+                    "will": 7,
+                    "ballistic": 4,
+                    "weapon": 5,
+                    "closeCombatActions": 3,
+                    "defence": 14,
+                    "health": 15
+                }
+            },
+            "baseActions": 2,
+            "price": 35
+        },
+        "ogryn": {
+            "characteristics": {
+                "base": {
+                    "move": 5,
+                    "agility": -4,
+                    "will": -1,
+                    "ballistic": -2,
+                    "weapon": 3,
+                    "closeCombatActions": 2,
+                    "defence": 12,
+                    "health": 16
+                },
+                "max": {
+                    "move": 6,
+                    "agility": 0,
+                    "will": 5,
+                    "ballistic": 2,
+                    "weapon": 9,
+                    "closeCombatActions": 4,
+                    "defence": 16,
+                    "health": 21
+                }
+            },
+            "baseActions": 2,
+            "price": 160
+        },
+        "squat": {
+            "characteristics": {
+                "base": {
+                    "move": 3,
+                    "agility": -2,
+                    "will": 0,
+                    "ballistic": -2,
+                    "weapon": -3,
+                    "closeCombatActions": 1,
+                    "defence": 11,
+                    "health": 13
+                },
+                "max": {
+                    "move": 4,
+                    "agility": 2,
+                    "will": 7,
+                    "ballistic": 4,
+                    "weapon": 5,
+                    "closeCombatActions": 4,
+                    "defence": 15,
+                    "health": 19
+                }
+            },
+            "baseActions": 2,
+            "price": 55
+        },
+        "ratling": {
+            "characteristics": {
+                "base": {
+                    "move": 4,
+                    "agility": 2,
+                    "will": -2,
+                    "ballistic": -2,
+                    "weapon": -5,
+                    "closeCombatActions": 1,
+                    "defence": 9,
+                    "health": 9
+                },
+                "max": {
+                    "move": 5,
+                    "agility": 4,
+                    "will": 6,
+                    "ballistic": 4,
+                    "weapon": 1,
+                    "closeCombatActions": 2,
+                    "defence": 12,
+                    "health": 12
+                }
+            },
+            "baseActions": 2,
+            "price": 15
+        }
+    }
+}

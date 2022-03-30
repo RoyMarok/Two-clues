@@ -1,0 +1,68 @@
+[
+    {
+        "id": "undersuit",
+        "title": "Undersuit",
+        "dmgMod": "1",
+        "restriction": {
+            "price": 25,
+            "illegal": false,
+            "rare": false,
+            "rating": 0
+        }
+    },
+    {
+        "id": "flak",
+        "title": "Flak",
+        "dmgMod": "1",
+        "restriction": {
+            "price": 10,
+            "illegal": false,
+            "rare": false,
+            "rating": 0
+        }
+    },
+    {
+        "id": "furnace",
+        "title": "Furnace Plates",
+        "dmgMod": "2/1",
+        "restriction": {
+            "price": 10,
+            "illegal": false,
+            "rare": false,
+            "rating": 0
+        }
+    },
+    {
+        "id": "mesh",
+        "title": "Mesh",
+        "dmgMod": "2",
+        "restriction": {
+            "price": 15,
+            "illegal": false,
+            "rare": false,
+            "rating": 0
+        }
+    },
+    {
+        "id": "lcarapace",
+        "title": "Light Carapace",
+        "dmgMod": "3",
+        "restriction": {
+            "price": 80,
+            "illegal": false,
+            "rare": true,
+            "rating": 10
+        }
+    },
+    {
+        "id": "hcarapace",
+        "title": "Heavy Carapace",
+        "dmgMod": "4/3",
+        "restriction": {
+            "price": 100,
+            "illegal": false,
+            "rare": true,
+            "rating": 11
+        }
+    }
+]

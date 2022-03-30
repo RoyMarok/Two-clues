@@ -1,0 +1,318 @@
+{
+    "pistol": [
+        {
+            "id": "autopistol",
+            "title": "Autopistol",
+            "restriction": {
+                "price": 10,
+                "illegal": false,
+                "rare": false,
+                "rating": 0
+            },
+            "stats": [
+                {
+                    "traits": [
+                        "Rapid Fire(1)",
+                        "Sidearm"
+                    ],
+                    "range": {
+                        "min": 4,
+                        "max": 12
+                    },
+                    "accuracy": {
+                        "min": 0,
+                        "max": -1
+                    },
+                    "damage": 5,
+                    "reload": 12
+                }
+            ]
+        },
+        {
+            "id": "boltPistol",
+            "title": "Bolt Pistol",
+            "restriction": {
+                "price": 45,
+                "illegal": false,
+                "rare": true,
+                "rating": 8
+            },
+            "stats": [
+                {
+                    "traits": [
+                        "Sidearm"
+                    ],
+                    "range": {
+                        "min": 6,
+                        "max": 12
+                    },
+                    "accuracy": {
+                        "min": 2,
+                        "max": 1
+                    },
+                    "damage": 10,
+                    "reload": 16
+                }
+            ]
+        },
+        {
+            "id": "handFlamer",
+            "title": "Hand Flamer",
+            "restriction": {
+                "price": 75,
+                "illegal": false,
+                "rare": true,
+                "rating": 8
+            },
+            "stats": [
+                {
+                    "traits": [
+                        "Blaze",
+                        "Template"
+                    ],
+                    "range": {
+                        "min": "T",
+                        "max": "T"
+                    },
+                    "accuracy": {
+                        "min": -1,
+                        "max": -1
+                    },
+                    "damage": 5,
+                    "reload": 14
+                }
+            ]
+        },
+        {
+            "id": "infernoPistol",
+            "title": "Inferno Pistol",
+            "restriction": {
+                "price": 145,
+                "illegal": false,
+                "rare": true,
+                "rating": 12
+            },
+            "stats": [
+                {
+                    "traits": [
+                        "Melta",
+                        "Scarce",
+                        "Sidearm"
+                    ],
+                    "range": {
+                        "min": 6,
+                        "max": 9
+                    },
+                    "accuracy": {
+                        "min": 7,
+                        "max": 7
+                    },
+                    "damage": 10,
+                    "reload": 16
+                }
+            ]
+        },
+        {
+            "id": "laspistol",
+            "title": "Laspistol",
+            "restriction": {
+                "price": 10,
+                "illegal": false,
+                "rare": false,
+                "rating": 0
+            },
+            "stats": [
+                {
+                    "traits": [
+                        "Plentiful",
+                        "Sidearm"
+                    ],
+                    "range": {
+                        "min": 8,
+                        "max": 12
+                    },
+                    "accuracy": {
+                        "min": 0,
+                        "max": -1
+                    },
+                    "damage": 5,
+                    "reload": 8
+                },
+                {
+                    "title": "Hotshot Pack",
+                    "traits": [
+                        "Sidearm"
+                    ],
+                    "range": {
+                        "min": 8,
+                        "max": 12
+                    },
+                    "accuracy": {
+                        "min": 2,
+                        "max": 1
+                    },
+                    "damage": 5,
+                    "reload": 12,
+                    "restriction": {
+                        "price": 20,
+                        "illegal": false,
+                        "rare": false,
+                        "rating": 0
+                    }
+                }
+            ]
+        },
+        {
+            "id": "needlePistol",
+            "title": "Needle Pistol",
+            "restriction": {
+                "price": 30,
+                "illegal": false,
+                "rare": true,
+                "rating": 9
+            },
+            "stats": [{
+                "traits": [
+                    "Scarce",
+                    "Sidearm",
+                    "Silent",
+                    "Toxin"
+                ],
+                "range": {
+                    "min": 4,
+                    "max": 9
+                },
+                "accuracy": {
+                    "min": 2,
+                    "max": 0
+                },
+                "damage": 0,
+                "reload": 16
+            }]
+        },
+        {
+            "id": "plasmaPistol",
+            "title": "Plasma Pistol",
+            "restriction": {
+                "price": 50,
+                "illegal": false,
+                "rare": true,
+                "rating": 9
+            },
+            "stats": [
+                {
+                    "title": "Low",
+                    "traits": [
+                        "Scarce",
+                        "Sidearm"
+                    ],
+                    "range": {
+                        "min": 6,
+                        "max": 12
+                    },
+                    "accuracy": {
+                        "min": 4,
+                        "max": 2
+                    },
+                    "damage": 10,
+                    "reload": 14
+                },
+                {
+                    "title": "High",
+                    "traits": [
+                        "Scarce",
+                        "Sidearm",
+                        "Unstable"
+                    ],
+                    "range": {
+                        "min": 6,
+                        "max": 12
+                    },
+                    "accuracy": {
+                        "min": 6,
+                        "max": 5
+                    },
+                    "damage": 15,
+                    "reload": 14
+                }
+            ]
+        },
+        {
+            "id": "shurikenPistol",
+            "title": "Shuriken Pistol",
+            "restriction": {
+                "price": 70,
+                "illegal": true,
+                "rare": false,
+                "rating": 14
+            },
+            "stats": [{
+                "traits": [
+                    "Rapid Fire(2)",
+                    "Scarce",
+                    "Sidearm"
+                ],
+                "range": {
+                    "min": 6,
+                    "max": 12
+                },
+                "accuracy": {
+                    "min": 2,
+                    "max": 1
+                },
+                "damage": 10,
+                "reload": 14
+            }]
+        },
+        {
+            "id": "stubgun",
+            "title": "Stub Gun",
+            "restriction": {
+                "price": 5,
+                "illegal": false,
+                "rare": false,
+                "rating": 0
+            },
+            "stats": [{
+                    "traits": [
+                        "Plentiful",
+                        "Sidearm"
+                    ],
+                    "range": {
+                        "min": 6,
+                        "max": 12
+                    },
+                    "accuracy": {
+                        "min": 1,
+                        "max": -1
+                    },
+                    "damage": 5,
+                    "reload": 12
+                },
+                {
+                    "title": "Dumdum Rounds",
+                    "traits": [
+                        "Limited",
+                        "Sidearm"
+                    ],
+                    "range": {
+                        "min": 5,
+                        "max": 10
+                    },
+                    "accuracy": {
+                        "min": 1,
+                        "max": 0
+                    },
+                    "damage": 5,
+                    "reload": 12,
+                    "restriction": {
+                        "price": 5,
+                        "illegal": false,
+                        "rare": true,
+                        "rating": 7
+                    }
+                }
+            ]
+        }]
+    
+}

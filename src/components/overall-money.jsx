@@ -1,0 +1,1 @@
+export const OverallMoney = () => 'OverallMoney'
