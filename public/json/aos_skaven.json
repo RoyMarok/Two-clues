@@ -1,0 +1,17 @@
+{
+    "male": [
+        [
+            ["Fesk", "Stab", "Ik", "Hak", "Kr", "Blistr", "Gr", "Sn", "Morsk", "Nel", "Paskr", "Qu", "Ratch", "Rik", "Rotr", "Sk", "Skr", "Skw", "Th", "Thr", "Tr", "Vesk", "Mur", "Spl", "Tw", "Rikt", "Vr", "Snikr", "Snif", "Skit", "Mik", "Fest", "Chit", "Thrik", "Quot", "R", "Khorg", "Vend", "Ghan", "Jokh", "Qad", "Sarn", "Xand", "Ign", "Kh", "Gholg", "Pyr", "Yig", "Agh", "Infern", "Khrond", "Vekh", "Xabekh", "Qarag", "Mord", "Laksh", "Agt", "Valk", "Vorgh", "Kargh", "Aliz", "Ahass", "Ahat", "Bel", "Gash", "Iltan", "Isht", "Mun", "Ubal", "Balash", "Iaaz", "Kad", "Drak", "Krak", "Theddr", "Rapt", "Bel", "Gorg", "Thul", "Arg", "Cthon", "Bront", "Sk", "Bor", "Myrn", "Taig", "Shaak", "Buul", "Garg", "Pyg", "Aeg", "Karn", "Baer", "Jak", "Jag", "Kod", "Gront", "Kob", "Kuug", "Gaur", "Hauk", "Ghryf", "Vulp", "Djur", "Kre", "Varg", "Tjur", "Falk"],
+            ["itt", "itch", "atch", "ittar", "eet", "etch", "olk", "eek", "ikch", "ot", "eep", "isk", "ikt", "akt", "anquisk", "itr", "ictus", "rit", "att", "ittak", "atchitt", "aknaw", "ilik", "eesik", "ektrik", "eepus", "ek", "ordkin", "yre", "eshin", "iskit", "erkit", "aratt", "eekit", "olkn", "ol"]
+        ]
+    ],
+    "female": [
+        [""]
+    ],
+    "familyName": [
+        [
+            ["Craven", "Gnaw", "Doom", "Slice", "Maul", "Blood", "Vermin", "Sharp", "Blight", "Worm", "Sly", "Black", "Brown", "Grey", "Buck", "Death", "Rot", "Plague", "Warp", "Poison", "Canker", "Dung", "Bone", "Storm", "Swarm", "Gutter", "Spite", "Foul", "Flesh", "Slink", "Pox", "Kill", "Vile", "Mould", "Fell", "Scab", "Ash", "Fyre", "Lava", "Ember", "Pyre", "Kindle", "Char", "Brim", "Cinder", "Magma", "Tinder", "Drought", "Dire", "Ebon", "Steam", "Umber", "Red", "Crimson", "Choler", "Dry", "Brazen", "Ochre", "Smoulder", "Scalder", "Stoker", "Blister", "Smelter", "Fickle", "Sulphur", "Barren", "Sizzle", "Raw", "Swelter", "Arid", "Flicker", "Wolf", "Bear", "Beast", "Titan", "Blood", "Ghur", "Boar", "Brown", "Amber", "Bone", "Flesh", "Dark", "Skull", "Prey", "Raw", "Bull", "Oath", "Snarl", "Howl", "Growl", "Maul", "Brawn", "Bristle", "Leather", "Wyld", "Grizzle", "Arrow", "Razor", "Bristle", "Gnarl", "Black", "Gouge", "Hawk", "Red", "Faun", "Gnaw", "Trample"],
+            ["tail", "nose", "snout", "whisker", "fur", "tooth", "claw", "blade", "scratch", "scourge", "bane", "thief", "ripper", "shredder", "splinter", "jaw", "flayer", "fire", "grinder", "fiend", "master", "runner", "rain", "filth", "mange", "gash", "slash", "fang", "kill", "bones", "slit", "shard", "bite", "nip", "pest", "finger"]
+        ]
+    ]
+}

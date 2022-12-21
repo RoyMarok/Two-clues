@@ -1,0 +1,56 @@
+{
+    "male": [
+        [
+            ["Atal", "Am", "Cyth", "Daron", "Dyrn", "Lassar", "Mabon", "Mal", "Mathon", "Myrn", "Nyan", "Noy", "Talis", "Cerid", "Mab", "Volt", "Aem", "Banr", "Glor", "Lot", "Rad", "Aler", "Anem", "Dyon", "Maryn", "Keras", "Iphem", "Prot", "Ish", "Acion", "Pal", "Scyl", "Teth", "Kanal", "Namak", "Kost"],
+            ["amm", "anc", "ach", "aethon", "emetos", "estron", "aethwy", "annon", "etyr", "unar", "ydion", "anhir", "yr", "oloch", "aedan", "isien", "udon", "uan", "rhod", "dron", "ammyr", "onach", "urnos", "orthis", "icthys", "ian", "emnon", "tryon", "atlor", "idaon", "eidon", "eros", "lann", "emasu", "aemon", "aquaeus"]
+        ],
+        [
+            ["Atal", "Am", "Cyth", "Daron", "Dyrn", "Lassar", "Mabon", "Mal", "Mathon", "Myrn", "Nyan", "Noy", "Talis", "Cerid", "Mab", "Volt", "Aem", "Banr", "Glor", "Lot", "Rad", "Aler", "Anem", "Dyon", "Maryn", "Keras", "Iphem", "Prot", "Ish", "Acion", "Pal", "Scyl", "Teth", "Kanal", "Namak", "Kost", "Khorg", "Vend", "Ghan", "Jokh", "Qad", "Sarn", "Xand", "Ign", "Kh", "Gholg", "Pyr", "Yig", "Agh", "Infern", "Khrond", "Vekh", "Xabekh", "Qarag", "Mord", "Laksh", "Agt", "Valk", "Vorgh", "Kargh", "Aliz", "Ahass", "Ahat", "Bel", "Gash", "Iltan", "Isht", "Mun", "Ubal", "Balash", "Iaaz", "Kad"],
+            ["amm", "anc", "ach", "aethon", "emetos", "estron", "aethwy", "annon", "etyr", "unar", "ydion", "anhir", "yr", "oloch", "aedan", "isien", "udon", "uan", "rhod", "dron", "ammyr", "onach", "urnos", "orthis", "icthys", "ian", "emnon", "tryon", "atlor", "idaon", "eidon", "eros", "lann", "emasu", "aemon", "aquaeus", "os", "el", "ataar", "ax", "ulan", "ai", "amat", "aal", "ak", "uzgar", "alaar", "ol", "urat", "ul", "ar", "or", "uul", "en", "on", "ut", "othmat", "olrath", "arat", "orash", "aqrat", "apla", "athu", "uriash", "ir", "akir", "ath", "ugal", "argon", "ush", "aznir", "amluk"]
+        ],
+        [
+            ["Atal", "Am", "Cyth", "Daron", "Dyrn", "Lassar", "Mabon", "Mal", "Mathon", "Myrn", "Nyan", "Noy", "Talis", "Cerid", "Mab", "Volt", "Aem", "Banr", "Glor", "Lot", "Rad", "Aler", "Anem", "Dyon", "Maryn", "Keras", "Iphem", "Prot", "Ish", "Acion", "Pal", "Scyl", "Teth", "Kanal", "Namak", "Kost", "Sith", "Gan", "Gash", "Lash", "Ulg", "Shyr", "Ulug", "Vaksh", "Umbr", "Tenebr", "Obscur", "Cal", "Nox", "Nubil", "Nebul", "Caes", "Noct", "Somn", "Nacht", "Elus", "Susp", "Lurqu", "Skulqu", "Slith", "Shad", "Mal", "Obfusc", "Carc", "Onyx", "Hast", "Nyarl", "Shiv", "Corv", "Serp", "Null", "Aesh", "Silh", "Dism", "Despond", "Vex", "Anon"],
+            ["amm", "anc", "ach", "aethon", "emetos", "estron", "aethwy", "annon", "etyr", "unar", "ydion", "anhir", "yr", "oloch", "aedan", "isien", "udon", "uan", "rhod", "dron", "ammyr", "onach", "urnos", "orthis", "icthys", "ian", "emnon", "tryon", "atlor", "idaon", "eidon", "eros", "lann", "emasu", "aemon", "aquaeus", "is", "asyl", "igo", "ago", "ugo", "astur", "astor", "al", "ansi", "ech", "ept", "usias", "aphar", "idian", "ath", "aksh", "ak", "esh", "eos", "aecus", "ondam", "ondak", "ar", "ious", "olai", "agan", "agath", "arek", "ir", "iral", "il", "ior", "ith", "oth", "hilus", "ule"]
+        ],
+        [
+            ["Atal", "Am", "Cyth", "Daron", "Dyrn", "Lassar", "Mabon", "Mal", "Mathon", "Myrn", "Nyan", "Noy", "Talis", "Cerid", "Mab", "Volt", "Aem", "Banr", "Glor", "Lot", "Rad", "Aler", "Anem", "Dyon", "Maryn", "Keras", "Iphem", "Prot", "Ish", "Acion", "Pal", "Scyl", "Teth", "Kanal", "Namak", "Kost", "Drak", "Krak", "Theddr", "Rapt", "Bel", "Gorg", "Thul", "Arg", "Cthon", "Bront", "Sk", "Bor", "Myrn", "Taig", "Shaak", "Buul", "Garg", "Pyg", "Aeg", "Karn", "Baer", "Jak", "Jag", "Kod", "Gront", "Kob", "Kuug", "Gaur", "Hauk", "Ghryf", "Vulp", "Djur", "Kre", "Varg", "Tjur", "Falk"],
+            ["amm", "anc", "ach", "aethon", "emetos", "estron", "aethwy", "annon", "etyr", "unar", "ydion", "anhir", "yr", "oloch", "aedan", "isien", "udon", "uan", "rhod", "dron", "ammyr", "onach", "urnos", "orthis", "icthys", "ian", "emnon", "tryon", "atlor", "idaon", "eidon", "eros", "lann", "emasu", "aemon", "aquaeus"]
+        ]
+    ],
+    "female": [
+        [
+            ["Atal", "Am", "Cyth", "Daron", "Dyrn", "Lassar", "Mabon", "Mal", "Mathon", "Myrn", "Nyan", "Noy", "Talis", "Cerid", "Mab", "Volt", "Aem", "Banr", "Glor", "Lot", "Rad", "Aler", "Anem", "Dyon", "Maryn", "Keras", "Iphem", "Prot", "Ish", "Acion", "Pal", "Scyl", "Teth", "Kanal", "Namak", "Kost"],
+            ["ren", "anwen", "raeth", "rach", "anwy", "emis", "eithya", "inya", "edeia", "assa", "ia", "asse", "amui", "eptys", "othea", "ys", "asvati", "artis", "aati", "athua", "aquis", "rine", "ais", "acha", "aeve", "iris", "anai", "ilinn", "amna", "aste", "esmerta", "aniae", "aeserta", "rianan", "estres", "ona"]
+        ],
+        [
+            ["Atal", "Am", "Cyth", "Daron", "Dyrn", "Lassar", "Mabon", "Mal", "Mathon", "Myrn", "Nyan", "Noy", "Talis", "Cerid", "Mab", "Volt", "Aem", "Banr", "Glor", "Lot", "Rad", "Aler", "Anem", "Dyon", "Maryn", "Keras", "Iphem", "Prot", "Ish", "Acion", "Pal", "Scyl", "Teth", "Kanal", "Namak", "Kost", "Khorg", "Vend", "Ghan", "Jokh", "Qad", "Sarn", "Xand", "Ign", "Kh", "Gholg", "Pyr", "Yig", "Agh", "Infern", "Khrond", "Vekh", "Xabekh", "Qarag", "Mord", "Laksh", "Agt", "Valk", "Vorgh", "Kargh", "Aliz", "Ahass", "Ahat", "Bel", "Gash", "Iltan", "Isht", "Mun", "Ubal", "Balash", "Iaaz", "Kad"],
+            ["ren", "anwen", "raeth", "rach", "anwy", "emis", "eithya", "inya", "edeia", "assa", "ia", "asse", "amui", "eptys", "othea", "ys", "asvati", "artis", "aati", "athua", "aquis", "rine", "ais", "acha", "aeve", "iris", "anai", "ilinn", "amna", "aste", "esmerta", "aniae", "aeserta", "rianan", "estres", "ona", "azina", "ika", "ira", "is", "isa", "azra", "eryem", "atma", "arys", "uula", "ulga", "aara", "osi", "ati", "ulana", "aala", "uzgara", "alaara", "ola", "urati", "ora", "aska", "et", "il", "unu", "uana", "ekaa", "eti", "usi", "intu", "iti", "ashi", "ipaa", "aya", "onia", "irati"]
+        ],
+        [
+            ["Atal", "Am", "Cyth", "Daron", "Dyrn", "Lassar", "Mabon", "Mal", "Mathon", "Myrn", "Nyan", "Noy", "Talis", "Cerid", "Mab", "Volt", "Aem", "Banr", "Glor", "Lot", "Rad", "Aler", "Anem", "Dyon", "Maryn", "Keras", "Iphem", "Prot", "Ish", "Acion", "Pal", "Scyl", "Teth", "Kanal", "Namak", "Kost", "Sith", "Gan", "Gash", "Lash", "Ulg", "Shyr", "Ulug", "Vaksh", "Umbr", "Tenebr", "Obscur", "Cal", "Nox", "Nubil", "Nebul", "Caes", "Noct", "Somn", "Nacht", "Elus", "Susp", "Lurqu", "Skulqu", "Slith", "Shad", "Mal", "Obfusc", "Carc", "Onyx", "Hast", "Nyarl", "Shiv", "Corv", "Serp", "Null", "Aesh", "Silh", "Dism", "Despond", "Vex", "Anon"],
+            ["ren", "anwen", "raeth", "rach", "anwy", "emis", "eithya", "inya", "edeia", "assa", "ia", "asse", "amui", "eptys", "othea", "ys", "asvati", "artis", "aati", "athua", "aquis", "rine", "ais", "acha", "aeve", "iris", "anai", "ilinn", "amna", "aste", "esmerta", "aniae", "aeserta", "rianan", "estres", "ona", "is", "assu", "ishta", "ashta", "a", "osa", "asti", "ala", "ada", "ouette", "athi", "anya", "aki", "akshi", "esha", "idhi", "enti", "ona", "ari", "uis", "alya", "yrna", "ica", "iceth", "ura", "iska", "yna", "ilda", "esna", "ath", "eth", "ith", "atha", "yss", "isketh", "atha"]
+        ],
+        [
+            ["Atal", "Am", "Cyth", "Daron", "Dyrn", "Lassar", "Mabon", "Mal", "Mathon", "Myrn", "Nyan", "Noy", "Talis", "Cerid", "Mab", "Volt", "Aem", "Banr", "Glor", "Lot", "Rad", "Aler", "Anem", "Dyon", "Maryn", "Keras", "Iphem", "Prot", "Ish", "Acion", "Pal", "Scyl", "Teth", "Kanal", "Namak", "Kost", "Drak", "Krak", "Theddr", "Rapt", "Bel", "Gorg", "Thul", "Arg", "Cthon", "Bront", "Sk", "Bor", "Myrn", "Taig", "Shaak", "Buul", "Garg", "Pyg", "Aeg", "Karn", "Baer", "Jak", "Jag", "Kod", "Gront", "Kob", "Kuug", "Gaur", "Hauk", "Ghryf", "Vulp", "Djur", "Kre", "Varg", "Tjur", "Falk"],
+            ["ren", "anwen", "raeth", "rach", "anwy", "emis", "eithya", "inya", "edeia", "assa", "ia", "asse", "amui", "eptys", "othea", "ys", "asvati", "artis", "aati", "athua", "aquis", "rine", "ais", "acha", "aeve", "iris", "anai", "ilinn", "amna", "aste", "esmerta", "aniae", "aeserta", "rianan", "estres", "ona"]
+        ]
+    ],
+    "familyName": [
+        [
+            ["Spite", "Dour", "Bleak", "Dark", "Gloom", "Swift", "Tide", "Doom", "Cold", "Grim", "Gaunt", "Fell", "Wild", "Black", "Shadow", "Ebon", "Deep", "Spirit", "Fleet", "Stern", "Cruel", "Bold", "Azure", "Beast", "Sunken", "Keen", "Veil", "Still", "Storm", "Whirl", "Murk", "Brine", "Pale", "Fair", "Proud", "Dread"],
+            ["wave", "shore", "soul", "scale", "surge", "water", "caller", "weaver", "walker", "diver", "wader", "salt", "mist", "heart", "hand", "sight", "flood", "blade", "squall", "stalker", "haze", "shoal", "crest", "swell", "breaker", "soak", "farer", "shell", "brow", "strike", "shard", "born", "sworn", "bane", "spear", "lash"]
+        ],
+        [
+            ["Ash", "Fyre", "Lava", "Ember", "Pyre", "Kindle", "Char", "Brim", "Cinder", "Magma", "Tinder", "Drought", "Dire", "Black", "Ebon", "Steam", "Umber", "Red", "Crimson", "Choler", "Dry", "Brazen", "Ochre", "Smoulder", "Scalder", "Stoker", "Blister", "Smelter", "Fickle", "Sulphur", "Barren", "Sizzle", "Raw", "Swelter", "Arid", "Flicker"],
+            ["wave", "shore", "soul", "scale", "surge", "water", "caller", "weaver", "walker", "diver", "wader", "salt", "mist", "heart", "hand", "sight", "flood", "blade", "squall", "stalker", "haze", "shoal", "crest", "swell", "breaker", "soak", "farer", "shell", "brow", "strike", "shard", "born", "sworn", "bane", "spear", "lash"]
+        ],
+        [
+            ["Shadow", "Whisper", "Silver", "Mizzle", "Black", "Grey", "Ebon", "Raven", "Night", "Hidden", "Creep", "Blind", "False", "Feign", "Drab", "Pitch", "Mire", "Mirror", "Dim", "Bleak", "Drear", "Dagger", "Jet", "Slither", "Sidle", "Sable", "Somber", "Sour", "Crook", "Gloom", "Gloam", "Void", "Hollow", "Crawl", "Dark", "Splinter", "Cold", "Bitter", "Chill"],
+            ["wave", "shore", "soul", "scale", "surge", "water", "caller", "weaver", "walker", "diver", "wader", "salt", "mist", "heart", "hand", "sight", "flood", "blade", "squall", "stalker", "haze", "shoal", "crest", "swell", "breaker", "soak", "farer", "shell", "brow", "strike", "shard", "born", "sworn", "bane", "spear", "lash"]
+        ],
+        [
+            ["Wolf", "Bear", "Beast", "Titan", "Blood", "Ghur", "Boar", "Brown", "Amber", "Bone", "Flesh", "Dark", "Skull", "Prey", "Raw", "Bull", "Oath", "Snarl", "Howl", "Growl", "Maul", "Brawn", "Bristle", "Leather", "Wyld", "Grizzle", "Arrow", "Razor", "Bristle", "Gnarl", "Black", "Gouge", "Hawk", "Red", "Faun", "Gnaw", "Trample", "Shark", "Manta", "Whale", "Croc", "Serpent", "Hulk", "Squid", "Crab"],
+            ["wave", "shore", "soul", "scale", "surge", "water", "caller", "weaver", "walker", "diver", "wader", "salt", "mist", "heart", "hand", "sight", "flood", "blade", "squall", "stalker", "haze", "shoal", "crest", "swell", "breaker", "soak", "farer", "shell", "brow", "strike", "shard", "born", "sworn", "bane", "spear", "lash"]
+        ]
+    ]
+}

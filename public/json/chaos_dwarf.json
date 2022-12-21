@@ -1,0 +1,34 @@
+{
+    "male": [
+        [
+            ["Astra", "Bazha", "Hashu", "Hru", "K'Daai", "Kada", "Khara", "Lamma", "Magma", "Mordi", "Taura", "Uz", "Uzku", "Zharri", "Zhor"],
+            ["g", "d", "b"],
+            ["", "r"],
+            ["oth", "ath", "ak"]
+        ],
+        [
+            ["B", "D", "G"],
+            ["azh", "razh"],
+            ["er", "o"],
+            ["ak", "ath", "an"]
+        ],
+        [
+            ["G", "B", "D", "Z"],
+            ["", "h"],
+            ["o", "a", "u"],
+            ["", "r"],
+            ["th", "kh", "k", "duz", "goth", "ak", "grath"]
+        ],
+        [
+            ["Zh", "Sh", "Mh", "Gh", "Rh"],
+            ["a", "u", "o", "y"],
+            ["t", "k", "kr", "zk", "z", "rdi"],
+            ["a", "u", "o"],
+            ["n", "th", "kh", "rr", "l", "rth"]
+        ]
+    ],
+
+    "female": {
+        "suffix": ["i", "a", "eth", "et"]
+    }
+}

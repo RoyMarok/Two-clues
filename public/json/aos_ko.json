@@ -1,0 +1,56 @@
+{
+    "male": [
+        [
+            ["Nj", "Bengt", "Br", "Dur", "Durb", "Olgr", "Hengt", "Khr", "Nelr", "Norgr", "Gr", "Engilbj", "Berglj", "Bjark", "Borgh", "Gundbr", "Gunv", "Halv", "Jar", "Olbr", "Malk", "Gylm", "Yng", "Aer", "Dav", "Eorl", "Ensk", "Eddr", "Ang", "Vengr", "Bryndal", "Galdh", "Bor", "Belegr", "Halgr", "Kazr"],
+            ["ord", "ondt", "agga", "ek", "arak", "imm", "okk", "ag", "ik", "und", "ak", "orn", "and", "or", "aldr", "unn", "eld", "en", "uff", "olm", "od", "asst", "in", "yn", "an", "ark", "arn", "andt", "ynjar", "agfinn", "undr", "arr", "ingr", "aldr", "arkaz", "ulf"]
+        ],
+        [
+            ["Khorg", "Vend", "Ghan", "Jokh", "Qad", "Sarn", "Xand", "Ign", "Kh", "Gholg", "Pyr", "Yig", "Agh", "Infern", "Khrond", "Vekh", "Xabekh", "Qarag", "Mord", "Laksh", "Agt", "Valk", "Vorgh", "Kargh", "Aliz", "Ahass", "Ahat", "Bel", "Gash", "Iltan", "Isht", "Mun", "Ubal", "Balash", "Iaaz", "Kad", "Nj", "Bengt", "Br", "Dur", "Durb", "Olgr", "Hengt", "Khr", "Nelr", "Norgr", "Gr", "Engilbj", "Berglj", "Bjark", "Borgh", "Gundbr", "Gunv", "Halv", "Jar", "Olbr", "Malk", "Gylm", "Yng", "Aer", "Dav", "Eorl", "Ensk", "Eddr", "Ang", "Vengr", "Bryndal", "Galdh", "Bor", "Belegr", "Halgr", "Kazr"],
+            ["ord", "ondt", "agga", "ek", "arak", "imm", "okk", "ag", "ik", "und", "ak", "orn", "and", "or", "aldr", "unn", "eld", "en", "uff", "olm", "od", "asst", "in", "yn", "an", "ark", "arn", "andt", "ynjar", "agfinn", "undr", "arr", "ingr", "aldr", "arkaz", "ulf"]
+        ],
+        [
+            ["Nj", "Bengt", "Br", "Dur", "Durb", "Olgr", "Hengt", "Khr", "Nelr", "Norgr", "Gr", "Engilbj", "Berglj", "Bjark", "Borgh", "Gundbr", "Gunv", "Halv", "Jar", "Olbr", "Malk", "Gylm", "Yng", "Aer", "Dav", "Eorl", "Ensk", "Eddr", "Ang", "Vengr", "Bryndal", "Galdh", "Bor", "Belegr", "Halgr", "Kazr", "Sith", "Gan", "Gash", "Lash", "Ulg", "Shyr", "Ulug", "Vaksh", "Umbr", "Tenebr", "Obscur", "Cal", "Nox", "Nubil", "Nebul", "Caes", "Noct", "Somn", "Nacht", "Elus", "Susp", "Lurqu", "Skulqu", "Slith", "Shad", "Mal", "Obfusc", "Carc", "Onyx", "Hast", "Nyarl", "Shiv", "Corv", "Serp", "Null", "Aesh", "Silh", "Dism", "Despond", "Vex", "Anon"],
+            ["ord", "ondt", "agga", "ek", "arak", "imm", "okk", "ag", "ik", "und", "ak", "orn", "and", "or", "aldr", "unn", "eld", "en", "uff", "olm", "od", "asst", "in", "yn", "an", "ark", "arn", "andt", "ynjar", "agfinn", "undr", "arr", "ingr", "aldr", "arkaz", "ulf"]
+        ],
+        [
+            ["Nj", "Bengt", "Br", "Dur", "Durb", "Olgr", "Hengt", "Khr", "Nelr", "Norgr", "Gr", "Engilbj", "Berglj", "Bjark", "Borgh", "Gundbr", "Gunv", "Halv", "Jar", "Olbr", "Malk", "Gylm", "Yng", "Aer", "Dav", "Eorl", "Ensk", "Eddr", "Ang", "Vengr", "Bryndal", "Galdh", "Bor", "Belegr", "Halgr", "Kazr", "Drak", "Krak", "Theddr", "Rapt", "Bel", "Gorg", "Thul", "Arg", "Cthon", "Bront", "Sk", "Bor", "Myrn", "Taig", "Shaak", "Buul", "Garg", "Pyg", "Aeg", "Karn", "Baer", "Jak", "Jag", "Kod", "Gront", "Kob", "Kuug", "Gaur", "Hauk", "Ghryf", "Vulp", "Djur", "Kre", "Varg", "Tjur", "Falk"],
+            ["ord", "ondt", "agga", "ek", "arak", "imm", "okk", "ag", "ik", "und", "ak", "orn", "and", "or", "aldr", "unn", "eld", "en", "uff", "olm", "od", "asst", "in", "yn", "an", "ark", "arn", "andt", "ynjar", "agfinn", "undr", "arr", "ingr", "aldr", "arkaz", "ulf"]
+        ]
+    ],
+    "female": [
+        [
+            ["Nj", "Bengt", "Br", "Dur", "Durb", "Olgr", "Hengt", "Khr", "Nelr", "Norgr", "Gr", "Engilbj", "Berglj", "Bjark", "Borgh", "Gundbr", "Gunv", "Halv", "Jar", "Olbr", "Malk", "Gylm", "Yng", "Aer", "Dav", "Eorl", "Ensk", "Eddr", "Ang", "Vengr", "Bryndal", "Galdh", "Bor", "Belegr", "Halgr", "Kazr"],
+            ["ild", "i", "ika", "ikki", "eja", "evi", "yda", "id", "eri", "ari", "a", "iv", "alka", "argi", "arni", "aggi", "ildr", "azdis", "asta", "ynja", "ekki", "edda", "elga", "atla", "aliiz", "amma", "estla", "eyla", "itra", "unna", "igda", "astny", "ejya", "ulla", "adda", "alldis"]
+        ],
+        [
+            ["Khorg", "Vend", "Ghan", "Jokh", "Qad", "Sarn", "Xand", "Ign", "Kh", "Gholg", "Pyr", "Yig", "Agh", "Infern", "Khrond", "Vekh", "Xabekh", "Qarag", "Mord", "Laksh", "Agt", "Valk", "Vorgh", "Kargh", "Aliz", "Ahass", "Ahat", "Bel", "Gash", "Iltan", "Isht", "Mun", "Ubal", "Balash", "Iaaz", "Kad", "Nj", "Bengt", "Br", "Dur", "Durb", "Olgr", "Hengt", "Khr", "Nelr", "Norgr", "Gr", "Engilbj", "Berglj", "Bjark", "Borgh", "Gundbr", "Gunv", "Halv", "Jar", "Olbr", "Malk", "Gylm", "Yng", "Aer", "Dav", "Eorl", "Ensk", "Eddr", "Ang", "Vengr", "Bryndal", "Galdh", "Bor", "Belegr", "Halgr", "Kazr"],
+            ["ild", "i", "ika", "ikki", "eja", "evi", "yda", "id", "eri", "ari", "a", "iv", "alka", "argi", "arni", "aggi", "ildr", "azdis", "asta", "ynja", "ekki", "edda", "elga", "atla", "aliiz", "amma", "estla", "eyla", "itra", "unna", "igda", "astny", "ejya", "ulla", "adda", "alldis"]
+        ],
+        [
+            ["Nj", "Bengt", "Br", "Dur", "Durb", "Olgr", "Hengt", "Khr", "Nelr", "Norgr", "Gr", "Engilbj", "Berglj", "Bjark", "Borgh", "Gundbr", "Gunv", "Halv", "Jar", "Olbr", "Malk", "Gylm", "Yng", "Aer", "Dav", "Eorl", "Ensk", "Eddr", "Ang", "Vengr", "Bryndal", "Galdh", "Bor", "Belegr", "Halgr", "Kazr", "Sith", "Gan", "Gash", "Lash", "Ulg", "Shyr", "Ulug", "Vaksh", "Umbr", "Tenebr", "Obscur", "Cal", "Nox", "Nubil", "Nebul", "Caes", "Noct", "Somn", "Nacht", "Elus", "Susp", "Lurqu", "Skulqu", "Slith", "Shad", "Mal", "Obfusc", "Carc", "Onyx", "Hast", "Nyarl", "Shiv", "Corv", "Serp", "Null", "Aesh", "Silh", "Dism", "Despond", "Vex", "Anon"],
+            ["ild", "i", "ika", "ikki", "eja", "evi", "yda", "id", "eri", "ari", "a", "iv", "alka", "argi", "arni", "aggi", "ildr", "azdis", "asta", "ynja", "ekki", "edda", "elga", "atla", "aliiz", "amma", "estla", "eyla", "itra", "unna", "igda", "astny", "ejya", "ulla", "adda", "alldis"]
+        ],
+        [
+            ["Nj", "Bengt", "Br", "Dur", "Durb", "Olgr", "Hengt", "Khr", "Nelr", "Norgr", "Gr", "Engilbj", "Berglj", "Bjark", "Borgh", "Gundbr", "Gunv", "Halv", "Jar", "Olbr", "Malk", "Gylm", "Yng", "Aer", "Dav", "Eorl", "Ensk", "Eddr", "Ang", "Vengr", "Bryndal", "Galdh", "Bor", "Belegr", "Halgr", "Kazr", "Drak", "Krak", "Theddr", "Rapt", "Bel", "Gorg", "Thul", "Arg", "Cthon", "Bront", "Sk", "Bor", "Myrn", "Taig", "Shaak", "Buul", "Garg", "Pyg", "Aeg", "Karn", "Baer", "Jak", "Jag", "Kod", "Gront", "Kob", "Kuug", "Gaur", "Hauk", "Ghryf", "Vulp", "Djur", "Kre", "Varg", "Tjur", "Falk"],
+            ["ild", "i", "ika", "ikki", "eja", "evi", "yda", "id", "eri", "ari", "a", "iv", "alka", "argi", "arni", "aggi", "ildr", "azdis", "asta", "ynja", "ekki", "edda", "elga", "atla", "aliiz", "amma", "estla", "eyla", "itra", "unna", "igda", "astny", "ejya", "ulla", "adda", "alldis"]
+        ]
+    ],
+    "familyName": [
+        [
+            ["Aether", "Grund", "Stern", "Mizzen", "Rudder", "Gun", "Keel", "Sky", "Endrin", "Cannon", "Grudge", "Iron", "Bold", "Volley", "Thunder", "Gold", "Plunder", "Silver", "Billow", "Anchor", "Grim", "Gleam", "Grumble", "Steam", "Rivet", "Elder", "Dour", "Hammer", "Brass", "Steel", "Blunder", "Bluster", "Rune", "Cloud", "Cog", "Stout"],
+            ["sson", "stock", "hook", "fray", "hold", "star", "beard", "storm", "shot", "blast", "wind", "gruff", "fist", "gild", "heart", "guard", "smith", "wright", "helm", "gout", "clad", "bolt", "hull", "breaker", "smoke", "port", "deck", "bomb", "sworn", "brow", "haul", "gust", "lode", "fleet", "strike", "borne"]
+        ],
+        [
+            ["Ash", "Fyre", "Lava", "Ember", "Pyre", "Kindle", "Char", "Brim", "Cinder", "Magma", "Tinder", "Drought", "Dire", "Black", "Ebon", "Steam", "Umber", "Red", "Crimson", "Choler", "Dry", "Brazen", "Ochre", "Smoulder", "Scalder", "Stoker", "Blister", "Smelter", "Fickle", "Sulphur", "Barren", "Sizzle", "Raw", "Swelter", "Arid", "Flicker"],
+            ["sson", "stock", "hook", "fray", "hold", "star", "beard", "storm", "shot", "blast", "wind", "gruff", "fist", "gild", "heart", "guard", "smith", "wright", "helm", "gout", "clad", "bolt", "hull", "breaker", "smoke", "port", "deck", "bomb", "sworn", "brow", "haul", "gust", "lode", "fleet", "strike", "borne"]
+        ],
+        [
+            ["Shadow", "Whisper", "Silver", "Mizzle", "Black", "Grey", "Ebon", "Raven", "Night", "Hidden", "Creep", "Blind", "False", "Feign", "Drab", "Pitch", "Mire", "Mirror", "Dim", "Bleak", "Drear", "Dagger", "Jet", "Slither", "Sidle", "Sable", "Somber", "Sour", "Crook", "Gloom", "Gloam", "Void", "Hollow", "Crawl", "Dark", "Splinter", "Cold", "Bitter", "Chill"],
+            ["sson", "stock", "hook", "fray", "hold", "star", "beard", "storm", "shot", "blast", "wind", "gruff", "fist", "gild", "heart", "guard", "smith", "wright", "helm", "gout", "clad", "bolt", "hull", "breaker", "smoke", "port", "deck", "bomb", "sworn", "brow", "haul", "gust", "lode", "fleet", "strike", "borne"]
+        ],
+        [
+            ["Wolf", "Bear", "Beast", "Titan", "Blood", "Ghur", "Boar", "Brown", "Amber", "Bone", "Flesh", "Dark", "Skull", "Prey", "Raw", "Bull", "Oath", "Snarl", "Howl", "Growl", "Maul", "Brawn", "Bristle", "Leather", "Wyld", "Grizzle", "Arrow", "Razor", "Bristle", "Gnarl", "Black", "Gouge", "Hawk", "Red", "Faun", "Gnaw", "Trample"],
+            ["sson", "stock", "hook", "fray", "hold", "star", "beard", "storm", "shot", "blast", "wind", "gruff", "fist", "gild", "heart", "guard", "smith", "wright", "helm", "gout", "clad", "bolt", "hull", "breaker", "smoke", "port", "deck", "bomb", "sworn", "brow", "haul", "gust", "lode", "fleet", "strike", "borne"]
+        ]
+    ]
+}

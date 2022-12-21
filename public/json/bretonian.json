@@ -1,0 +1,47 @@
+{
+    "male": [
+        [
+            ["Agravain", "Aloys", "Amalric", "Andred", "Armand", "Bedivaude", "Bohemond", "Bors", "Breunor", "Cador", "Calard", "Claude", "Claudin", "Constans", "Dagonet", "Durnure", "Enguerrand", "Erec", "Estienne", "Estienot", "Fastric", "Galahain", "Gaston", "Geffray", "Geoffroi", "Gerardin", "Germain", "Gilles", "Gillet", "Girflet", "Gornemant", "Guarin", "Guillot", "Guiot", "Guiron", "Guiscard", "Jaques", "Jasperre", "Jaufre", "Jerrod", "Jules", "Lancelaut", "Landevale", "Landuin", "Lanval", "Lohengrain", "Lorens", "Louen", "Lucus", "Maldred", "Mallobaude", "Marin", "Merovech", "Morien", "Nouel", "Odo", "Onfroi", "Percevale", "Perrenet", "Perrotard", "Reolus", "Reynard", "Rience", "Robinet", "Roland", "Tancred", "Theodoric", "Thibault", "Thierulf", "Tristan", "Vauquelin"]
+        ],
+        [
+            ["Al", "Andr", "Arm", "Breun", "Cad", "Cal", "Claud", "Const", "Durn", "Er", "Est", "Fastr", "Gast", "Geffr", "Geoffr", "Germ", "Gill", "Girfl", "Guar", "Guill", "Guir", "Guisc", "Jasp", "Jaufr", "Jerr", "Land", "Lanv", "Lor", "Lou", "Luc", "Maldr", "Mar", "Mor", "Od", "Onfr", "Reol", "Rep", "Reyn", "Rol", "Tancr", "Theod", "Thib", "Thier", "Trist"],
+            ["ain", "al", "an", "and", "ans", "anse", "ard", "ault", "ay", "ec", "ed", "el", "en", "ens", "erre", "et", "ic", "ien", "ienne", "in", "od", "oi", "on", "or", "ot", "oys", "uin", "ulf", "ure", "us"]
+        ],
+        [
+            ["Agr", "Am", "Bed", "Boh", "Dag", "Eng", "Est", "Gal", "Ger", "Gorn", "Lanc", "Land", "Loh", "Mall", "Mer", "Perc", "Perr", "Rob", "Theod", "Vauqu"],
+            ["ah", "alr", "ard", "av", "el", "em", "en", "engr", "ev", "ien", "in", "iv", "ob", "on", "or", "ot", "ov", "uerr"],
+            ["ain", "ale", "and", "ant", "ard", "aude", "aut", "ech", "et", "ic", "in", "ond", "ot"]
+        ]
+    ],
+    "female": [
+        [
+            ["Ambroise", "Antoinette", "Berraude", "Blanchefleur", "Brangaine", "Caelia", "Cateline", "Claudette", "Colette", "Dauphine", "Elaine", "Enide", "Estiennette", "Evaine", "Fleur", "Fleurance", "Genevieve", "Guillemette", "Guinevere", "Helene", "Hermine", "Igraine", "Isabeau", "Isolde", "Jacquette", "Jeanne", "Jehanne", "Julite", "Katherine", "Laudine", "Lorette", "Lunete", "Lynette", "Madeleine", "Margot", "Marguerite", "Marion", "Melisende", "Morgiana", "Nyneve", "Orgeluse", "Pernelle", "Peronelle", "Perrine", "Repanse", "Sidonie", "Sylvia", "Sylvine", "Viviane", "Yonne"]
+        ],
+        [
+            ["Ambr", "Berr", "Brang", "Cael", "Claud", "Col", "Dauph", "El", "En", "Ev", "Fleur", "Hel", "Herm", "Igr", "Is", "Jacqu", "Jeh", "Jul", "Laud", "Lor", "Lun", "Lyn", "Mar", "Marg", "Morg", "Nyn", "Pern", "Perr", "Sylv", "Viv"],
+            ["aine", "ance", "anne", "aude", "elle", "ene", "ete", "ette", "eve", "ia", "iana", "iane", "ide", "ine", "ion", "ite", "oise", "olde", "ot"]
+        ],
+        [
+            ["Ant", "Cat", "Est", "Gen", "Guill", "Guin", "Is", "Kath", "Mad", "Marg", "Mel", "Org", "Per", "Sid"],
+            ["ab", "el", "em", "er", "ev", "ienn", "is", "oin", "on", "uer"],
+            ["eau", "eine", "elle", "ende", "ere", "ette", "ie", "ieve", "ine", "ite", "use"]
+        ]
+    ],
+    "familyName": [
+        [
+            ["Acier", "Aigle", "Argent", "Belette", "Blaireau", "Pierre", "Canard", "Cerf", "Chaton", "Cheval", "Chien", "Cochon", "Dragon", "Faucon", "Fer", "Furet", "Gloire", "Lapin", "Leon", "Loup", "Mouton", "Ours", "Poisson", "Poulet", "Renard", "Rubis", "Saphir", "Souris", "Vache"],
+            ["barbe", "bouche", "coeur", "dent", "lame", "née", "tueur", "visage"]
+        ],
+        [
+            ["l'Astucieux", "l'Orateur", "le Beau", "le Blanc", "le Bouffon", "le Breton", "le Bruyant", "le Cavalier", "le Chanceux", "le Chasseur", "le Chaste", "le Courageux", "le Courtois", "le Désiruex", "le Dévot", "le Fort", "le Furieux", "le Gallant", "le Glouton", "le Graisse", "le Grand", "le Jongleur", "le Juste", "le Malheureux", "le Marechal", "le Naïf", "le Noir", "le Petit", "le Puissant", "le Pénitent", "le Rouge", "le Stupide", "le Troubadour", "le Vaillant", "le Vaine", "le Valeureux", "le Vantard", "le Vertueux"]
+        ],
+        [
+            ["d'Anguille", "d'Aquitaine", "d'Arden", "d'Artois", "d'Outremer", "de Bastonne", "de Bergbres", "de Bordeleaux", "de Brilloinne", "de Brionne", "de Carcassone", "de Chalon", "de Chambonnay", "de Chinon", "de Couronne", "de Garamont", "de Gaudaron", "de Gisoreux", "de Gransette", "de Grescar", "de Larret", "de Lyonesse", "de Maisontaal", "de Montfort", "de Montjoie", "de Mousillon", "de Parravon", "de Quenelles", "de Tharravil"]
+        ],
+        [
+            ["d'Ang", "d'Aqu", "d'Ard", "d'Art", "d'Outr", "de Bast", "de Berg", "de Bord", "de Br", "de Brill", "de Carc", "de Chal", "de Chamb", "de Chin", "de Cour", "de Gar", "de Gaud", "de Gis", "de Grans", "de Gresc", "de Larr", "de Lyon", "de Mais", "de Mont", "de Mous", "de Parr", "de Quen", "de Tharr", "l'Ast", "l'Or", "le B", "le Blan", "le Bouf", "le Br", "le Br", "le Cav", "le Chan", "le Chas", "le Chas", "le Cour", "le Cour", "le Dés", "le Dév", "le For", "le Fur", "le Gal", "le Gl", "le Gr", "le Jon", "le Ju", "le Mal", "le Mar", "le N", "le Pet", "le P", "le Pén", "le R", "le St", "le Tr", "le Vail", "le Vain", "le Val", "le Van", "le Ver"],
+            ["am", "ar", "ass", "av", "el", "em", "ill", "it", "onn", "ont", "or"],
+            ["aal", "aine", "ar", "ay", "eaux", "elles", "en", "er", "es", "esse", "et", "ette", "eux", "fort", "il", "ionne", "oinne", "ois", "on", "one", "onne", "ont", "uille"]
+        ]
+    ]
+}

@@ -1,0 +1,122 @@
+[
+    {
+        "id": "silent",
+        "title": "Тихое",
+        "description": "",
+        "price": 10
+    },
+    {
+        "id": "laser",
+        "title": "Лазерное",
+        "description": "",
+        "price": 10
+    },
+    {
+        "id": "twohanded",
+        "title": "Двуручное",
+        "description": "",
+        "price": 0
+    },
+    {
+        "id": "sidearm",
+        "title": "Пистолет",
+        "description": "",
+        "price": 0
+    },
+    {
+        "id": "backstab",
+        "title": "Удар в спину",
+        "description": "",
+        "price": 0
+    },
+    {
+        "id": "blast",
+        "title": "Взрыв",
+        "description": "",
+        "price": 0
+    },
+    {
+        "id": "concussion",
+        "title": "Контузия",
+        "description": "",
+        "price": 10
+    },
+    {
+        "id": "knockback",
+        "title": "Отбрасывает",
+        "description": "",
+        "price": 10
+    },
+    {
+        "id": "limited",
+        "title": "Ограничено",
+        "description": "",
+        "price": 0
+    },
+    {
+        "id": "mastercrafted",
+        "title": "Мастеровое",
+        "description": "1 Рерол за игру",
+        "price": 20
+    },
+    {
+        "id": "critical17",
+        "title": "Критично 17",
+        "description": "",
+        "price": 10
+    },
+    {
+        "id": "critical13",
+        "title": "Критично 13",
+        "description": "",
+        "price": 20
+    },
+    {
+        "id": "critical10",
+        "title": "Критично 10",
+        "description": "",
+        "price": 30
+    },
+    {
+        "id": "criticallethal",
+        "title": "Крит-Смерть",
+        "description": "",
+        "price": 20
+    },
+    {
+        "id": "parry",
+        "title": "Парирует",
+        "description": "",
+        "price": 5
+    },
+    {
+        "id": "suicide",
+        "title": "Самоубийственное",
+        "description": "",
+        "price": -20
+    },
+    {
+        "id": "shield",
+        "title": "Щит",
+        "description": "",
+        "price": 10
+    },
+    {
+        "id": "optics",
+        "title": "Опт. прицел",
+        "description": "",
+        "price": 20
+    },
+    {
+        "id": "collimator",
+        "title": "Коллиматор",
+        "description": "",
+        "price": 15
+    },
+    {
+        "id": "laserpointer",
+        "title": "Лаз. прицел",
+        "description": "",
+        "price": 15
+    }
+]

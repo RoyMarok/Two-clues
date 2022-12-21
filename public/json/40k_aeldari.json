@@ -1,0 +1,46 @@
+{
+    "male": [
+        [
+            ["Br", "C", "D", "F", "Hr", "K", "Kr", "L", "M", "N", "P", "Pr", "Rh", "S", "T", "V", "Yh", "Yr", "Z"],
+            ["ach", "ae", "aec", "ael", "aer", "ain", "ann", "ath", "ean", "eer", "esh", "iac", "ial", "iel", "ien", "ios", "irr", "iuc", "oor", "yoc", "yon", "yr", "yre", "áire", "ían"]
+        ],
+        [
+            ["Aeth", "All", "Alm", "Anv", "Arh", "Aur", "Bah", "Cynb", "El", "Eld", "Eldr", "Eoch", "Er", "Fueg", "Hryth", "Ial", "Il", "Ill", "Inv", "Ir", "Iuch", "Kar", "Kelm", "Laar", "Maug", "Maur", "Nuad", "Nuadh", "Or", "Petr", "Pryd", "Rhyl", "Saim", "Tald", "Tarv", "Tuir", "Tur", "Tyl", "Ur", "Vath", "Yhun", "Yl", "Zon"],
+            ["adr", "adrh", "aes", "aeth", "an", "andr", "ar", "arr", "as", "ath", "ay", "istr", "oc", "or"],
+            ["ach", "ad", "ai", "ain", "an", "ann", "anth", "ar", "as", "ash", "ath", "ean", "eer", "el", "en", "esh", "iac", "ial", "ian", "ic", "ien", "il", "in", "ios", "irr", "iuc", "on", "or", "oth", "u", "un", "wal", "yoc", "yon"]
+        ],
+        [
+            ["Aeth", "All", "Alm", "Anv", "Arh", "Aur", "Bah", "Cynb", "El", "Eld", "Eldr", "Eoch", "Er", "Fueg", "Hryth", "Ial", "Il", "Ill", "Inv", "Ir", "Iuch", "Kar", "Kelm", "Laar", "Maug", "Maur", "Nuad", "Nuadh", "Or", "Petr", "Pryd", "Rhyl", "Saim", "Tald", "Tarv", "Tuir", "Tur", "Tyl", "Ur", "Vath", "Yhun", "Yl", "Zon"],
+            ["ach", "ad", "ai", "ain", "an", "ann", "anth", "ar", "as", "ash", "ath", "ean", "eer", "el", "en", "esh", "iac", "ial", "ian", "ic", "ien", "il", "in", "ios", "irr", "iuc", "on", "or", "oth", "u", "un", "wal", "yoc", "yon"]
+        ]
+    ],
+    "female": [
+        [
+            ["Br", "C", "D", "F", "Hr", "J", "K", "Kr", "L", "M", "N", "P", "Pr", "Rh", "S", "T", "V", "Yh", "Yr", "Z"],
+            ["aer", "aine", "air", "anne", "ath", "ea", "ele", "enn", "eth", "eyn", "iae", "iamh", "iath", "iel", "ieth", "imh", "inth", "ith", "ued", "yth", "áeth", "óem"]
+        ],
+        [
+            ["Aer", "Am", "An", "Ant", "Ar", "Av", "Caer", "Cail", "Catr", "Cethl", "Cionn", "Drast", "Ell", "Er", "Fiach", "Gal", "Idr", "Ill", "Ir", "Iy", "Kauer", "Lah", "Lathr", "Lor", "Mach", "Mehl", "Mel", "Neh", "Nuel", "Nym", "Qel", "Seq", "Syl", "Tailt", "Tal", "Tath", "Ull", "Yr", "Yvr"],
+            ["all", "an", "andr", "ann", "athr", "eidhn", "el", "endr", "er", "ess", "ey", "ill", "in", "ith", "iy", "odhn", "ual", "uan", "yes", "ánt"],
+            ["a", "ae", "aine", "air", "anne", "ath", "el", "ele", "enn", "eth", "eyn", "i", "ia", "iae", "iath", "iel", "ieth", "imh", "in", "inth", "ith", "iu", "oelle", "ued", "uë", "wen", "yn", "ys", "yth", "áeth", "óem"]
+        ],
+        [
+            ["Aer", "Am", "An", "Ant", "Ar", "Av", "Caer", "Cail", "Catr", "Cethl", "Cionn", "Drast", "Ell", "Er", "Fiach", "Gal", "Idr", "Ill", "Ir", "Iy", "Kauer", "Lah", "Lathr", "Lor", "Mach", "Mehl", "Mel", "Neh", "Nuel", "Nym", "Qel", "Seq", "Syl", "Tailt", "Tal", "Tath", "Ull", "Yr", "Yvr"],
+            ["a", "ae", "aine", "air", "anne", "ath", "el", "ele", "enn", "eth", "eyn", "i", "ia", "iae", "iath", "iel", "ieth", "imh", "in", "inth", "ith", "iu", "oelle", "ued", "uë", "wen", "yn", "ys", "yth", "áeth", "óem"]
+        ]
+    ],
+    "familyName": [
+        [
+            ["Br", "C", "D", "Dr", "F", "Hr", "K", "Kr", "L", "M", "N", "P", "Pr", "R", "Rh", "S", "Sh", "T", "V", "Yh", "Yr", "Z"],
+            ["ach", "ae", "aec", "aech", "ael", "aer", "aie", "ain", "ann", "ath", "ean", "esh", "iac", "ial", "iel", "ien", "ios", "irr", "iuc", "oh", "yoc", "yon", "yr", "yre", "ían"]
+        ],
+        [
+            ["Aeth", "All", "Alm", "Anv", "Arh", "Aur", "Bah", "Ciar", "Cynb", "El", "Eld", "Eldr", "Eoch", "Er", "Fueg", "Glùin", "Hryth", "Ial", "Il", "Ill", "Inv", "Ir", "Iuch", "Kar", "Kelm", "Kelt", "Maug", "Maur", "Nat", "Nuad", "Nuadh", "Or", "Petr", "Pryd", "Rhyl", "Saim", "Tald", "Tarv", "Thyll", "Tuir", "Tur", "Tyl", "Ulthr", "Ur", "Vath", "Yhun", "Yl", "Zon"],
+            ["ach", "ad", "adh", "ai", "ain", "an", "ann", "anth", "ar", "as", "ase", "ash", "ath", "ean", "el", "en", "esh", "iac", "ial", "ian", "ic", "ien", "il", "in", "ios", "irr", "iuc", "oc", "on", "or", "oth", "u", "un", "wal", "yoc", "yon"]
+        ],
+        [
+            ["Bright", "Dawn", "Dream", "Dusk", "Ebon", "Fair", "Fell", "Fire", "Gloam", "Gold", "Heaven", "High", "Moon", "Night", "Noble", "Shade", "Shadow", "Silver", "Spirit", "Star", "Storm", "Sun", "Swift", "Veil", "Void", "Wraith", "Zephyr"],
+            ["bane", "blade", "born", "child", "cloud", "crest", "eye", "guide", "hand", "heart", "helm", "lance", "rider", "seeker", "shard", "sight", "song", "soul", "spear", "strider", "strike", "walker", "weave", "winter"]
+        ]
+    ]
+}

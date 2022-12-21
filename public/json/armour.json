@@ -1,0 +1,63 @@
+[{
+    "front": "1",
+    "rear": "0",
+    "title": "Нагрудник",
+    "price": "20",
+    "mass": "1",
+    "id": "armour_0"
+}, {
+    "front": "1",
+    "rear": 1,
+    "title": "Легкий доспех",
+    "price": 40,
+    "mass": 2,
+    "index": 1,
+    "id": "armour_1"
+}, {
+    "front": 2,
+    "rear": 1,
+    "title": "Полутяжелый доспех",
+    "price": 60,
+    "mass": 3,
+    "index": 2,
+    "id": "armour_2"
+}, {
+    "front": 2,
+    "rear": 2,
+    "title": "Тяжелый доспех",
+    "price": 80,
+    "mass": 4,
+    "index": 3,
+    "id": "armour_3"
+}, {
+    "front": 2,
+    "rear": 1,
+    "title": "Бронежилет",
+    "price": 100,
+    "mass": 1,
+    "index": 4,
+    "id": "armour_4"
+}, {
+    "front": 2,
+    "rear": 2,
+    "title": "Карапас",
+    "price": 140,
+    "mass": 1,
+    "index": 5,
+    "id": "armour_5"
+}, {
+    "front": 2,
+    "rear": 2,
+    "title": "Силовое поле",
+    "price": 160,
+    "mass": 0,
+    "index": 6,
+    "id": "armour_6"
+}, {
+    "front": "1",
+    "rear": 1,
+    "title": "Призрачный доспех",
+    "price": 80,
+    "mass": 0,
+    "index": 7
+}]

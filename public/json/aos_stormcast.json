@@ -1,0 +1,39 @@
+{
+    "male": [
+        [
+            ["Adelh", "Ald", "Anact", "Andr", "Angel", "Ar", "Aurel", "Avan", "Balth", "Bord", "Cal", "Cel", "Celest", "Dath", "Dav", "Dhar", "Eld", "Elt", "Galer", "Gard", "Gav", "Ger", "Gord", "Held", "Helden", "Hen", "Ion", "Jac", "Justic", "Jut", "Krug", "Laud", "Lor", "Mar", "Marell", "Merc", "Merog", "Mor", "Ner", "Or", "Ordin", "Palad", "Perg", "Phar", "Rael", "Sarg", "Sath", "Sigg", "Talt", "Tar", "Tark", "Taur", "Thost", "Torn", "Trinov", "Unber", "Val", "Valer", "Vand", "Vor", "Zeraph", "Khorg", "Vend", "Ghan", "Jokh", "Qad", "Sarn", "Xand", "Ign", "Kh", "Gholg", "Pyr", "Yig", "Agh", "Infern", "Khrond", "Vekh", "Xabekh", "Qarag", "Mord", "Laksh", "Agt", "Valk", "Vorgh", "Kargh", "Aliz", "Ahass", "Ahat", "Bel", "Gash", "Iltan", "Isht", "Mun", "Ubal", "Balash", "Iaaz", "Kad", "Sith", "Gan", "Gash", "Lash", "Ulg", "Shyr", "Ulug", "Vaksh", "Umbr", "Tenebr", "Obscur", "Cal", "Nox", "Nubil", "Nebul", "Caes", "Noct", "Somn", "Nacht", "Elus", "Susp", "Lurqu", "Skulqu", "Slith", "Shad", "Mal", "Obfusc", "Carc", "Onyx", "Hast", "Nyarl", "Shiv", "Corv", "Serp", "Null", "Aesh", "Silh", "Dism", "Despond", "Vex", "Anon", "Drak", "Krak", "Theddr", "Rapt", "Bel", "Gorg", "Thul", "Arg", "Cthon", "Bront", "Sk", "Bor", "Myrn", "Taig", "Shaak", "Buul", "Garg", "Pyg", "Aeg", "Karn", "Baer", "Jak", "Jag", "Kod", "Gront", "Kob", "Kuug", "Gaur", "Hauk", "Ghryf", "Vulp", "Djur", "Kre", "Varg", "Tjur", "Falk"],
+            ["acleas", "aemon", "aeus", "ain", "alus", "anus", "arius", "as", "asian", "assus", "ax", "edos", "emnon", "en", "eon", "estor", "icus", "in", "inos", "inus", "is", "itryon", "ium", "ius", "nor", "nos", "or", "orian", "os", "ren", "riel", "roc", "ros", "rus", "um", "us", "ustrian", "ymion"]
+        ],
+        [
+            ["Ald", "Ar", "Arl", "B", "C", "D", "Dh", "Eld", "Elt", "G", "H", "J", "M", "N", "Ph", "R", "S", "T", "Th", "V"],
+            ["ac", "ael", "al", "and", "ar", "ard", "ass", "ath", "av", "el", "en", "er", "erg", "or", "ord", "orn", "ut"],
+            ["a", "ai", "au", "o", "u"],
+            ["hn", "m", "n", "r", "s"]
+        ]
+    ],
+    "female": [
+        [
+            ["Adelh", "Ald", "Anact", "Andr", "Angel", "Ar", "Aurel", "Avan", "Balth", "Bord", "Cal", "Cel", "Celest", "Dath", "Dav", "Dhar", "Eld", "Elt", "Galer", "Gard", "Gav", "Ger", "Gord", "Held", "Helden", "Hen", "Ion", "Jac", "Justic", "Jut", "Krug", "Laud", "Lor", "Mar", "Marell", "Merc", "Merog", "Mor", "Ner", "Or", "Ordin", "Palad", "Perg", "Phar", "Rael", "Sarg", "Sath", "Sigg", "Talt", "Tar", "Tark", "Taur", "Thost", "Torn", "Trinov", "Unber", "Val", "Valer", "Vand", "Vor", "Zeraph", "Khorg", "Vend", "Ghan", "Jokh", "Qad", "Sarn", "Xand", "Ign", "Kh", "Gholg", "Pyr", "Yig", "Agh", "Infern", "Khrond", "Vekh", "Xabekh", "Qarag", "Mord", "Laksh", "Agt", "Valk", "Vorgh", "Kargh", "Aliz", "Ahass", "Ahat", "Bel", "Gash", "Iltan", "Isht", "Mun", "Ubal", "Balash", "Iaaz", "Kad", "Sith", "Gan", "Gash", "Lash", "Ulg", "Shyr", "Ulug", "Vaksh", "Umbr", "Tenebr", "Obscur", "Cal", "Nox", "Nubil", "Nebul", "Caes", "Noct", "Somn", "Nacht", "Elus", "Susp", "Lurqu", "Skulqu", "Slith", "Shad", "Mal", "Obfusc", "Carc", "Onyx", "Hast", "Nyarl", "Shiv", "Corv", "Serp", "Null", "Aesh", "Silh", "Dism", "Despond", "Vex", "Anon", "Drak", "Krak", "Theddr", "Rapt", "Bel", "Gorg", "Thul", "Arg", "Cthon", "Bront", "Sk", "Bor", "Myrn", "Taig", "Shaak", "Buul", "Garg", "Pyg", "Aeg", "Karn", "Baer", "Jak", "Jag", "Kod", "Gront", "Kob", "Kuug", "Gaur", "Hauk", "Ghryf", "Vulp", "Djur", "Kre", "Varg", "Tjur", "Falk"],
+            ["a", "acia", "aia", "andra", "anta", "ea", "ectra", "eis", "ela", "ele", "enia", "enna", "entas", "era", "esta", "estis", "etia", "ia", "iana", "ida", "ilia", "ina", "ine", "inia", "ione", "ithea", "ithya", "ona", "ora", "ordia", "oria", "reia", "riel", "unda", "uri", "wen", "ys"]
+        ],
+
+        [
+            ["Ald", "Ar", "Arl", "B", "C", "D", "Dh", "Eld", "Elt", "G", "H", "J", "M", "N", "Ph", "R", "S", "T", "Th", "V"],
+            ["ac", "ael", "al", "and", "ar", "ard", "ass", "ath", "av", "el", "en", "er", "erg", "or", "ord", "orn", "ut"],
+            ["a", "ia", "aia", "ra", "ea", "tra", "ya", "eis", "ela", "ele", "enia", "enna", "entas", "era", "esta", "estis", "etia", "ia", "iana", "ida", "ilia", "ina", "ine", "inia", "ione", "ithea", "ithya", "ona", "ora", "ordia", "oria", "reia", "riel", "unda", "uri", "wen", "ys"]
+        ]
+    ],
+    "familyName": [
+        [
+            ["Aether", "Anvil", "Azyr", "Battle", "Bear", "Blade", "Brazen", "Bright", "Bull", "Comet", "Dawn", "Dracoth", "Drake", "Fyre", "Gale", "Glory", "Golden", "Grey", "Gryph", "Hammer", "Hawk", "Heaven", "Helden", "Lightning", "Lion", "Raven", "Shatter", "Silver", "Sky", "Sorrow", "Steel", "Stern", "Stone", "Stout", "Sunder", "Sure", "Swift", "Thunder", "Valour", "Wolf", "Ash", "Fyre", "Lava", "Ember", "Pyre", "Kindle", "Char", "Brim", "Cinder", "Magma", "Tinder", "Drought", "Dire", "Black", "Ebon", "Steam", "Umber", "Red", "Crimson", "Choler", "Dry", "Brazen", "Ochre", "Smoulder", "Scalder", "Stoker", "Blister", "Smelter", "Fickle", "Sulphur", "Barren", "Sizzle", "Raw", "Swelter", "Arid", "Flicker", "Shadow", "Whisper", "Silver", "Mizzle", "Black", "Grey", "Ebon", "Raven", "Night", "Hidden", "Creep", "Blind", "False", "Feign", "Drab", "Pitch", "Mire", "Mirror", "Dim", "Bleak", "Drear", "Dagger", "Jet", "Slither", "Sidle", "Sable", "Somber", "Sour", "Crook", "Gloom", "Gloam", "Void", "Hollow", "Crawl", "Dark", "Splinter", "Cold", "Bitter", "Chill", "Wolf", "Bear", "Beast", "Titan", "Blood", "Ghur", "Boar", "Brown", "Amber", "Bone", "Flesh", "Dark", "Skull", "Prey", "Raw", "Bull", "Oath", "Snarl", "Howl", "Growl", "Maul", "Brawn", "Bristle", "Leather", "Wyld", "Grizzle", "Arrow", "Razor", "Bristle", "Gnarl", "Black", "Gouge", "Hawk", "Red", "Faun", "Gnaw", "Trample"],
+            ["blaze", "bolt", "born", "borne", "bound", "brand", "brow", "caller", "cast", "claw", "fast", "fist", "flame", "flare", "forged", "greave", "guard", "hand", "heart", "helm", "hold", "light", "mane", "shard", "shield", "sight", "sire", "soul", "spear", "star", "storm", "strider", "strike", "sun", "surge", "sworn", "talon", "wing", "hearth", "bright", "sear", "blaze", "smoke", "scorch", "brand", "scar", "forge", "scoria", "flame", "torch", "parch", "gaze", "scorn", "volc", "burn", "fume", "seethe", "scald", "blaze", "bolt", "born", "borne", "bound", "brand", "brow", "caller", "cast", "claw", "fast", "fist", "flame", "flare", "forged", "greave", "guard", "hand", "heart", "helm", "hold", "light", "mane", "shard", "shield", "sight", "sire", "soul", "spear", "star", "storm", "strider", "strike", "sun", "surge", "sworn", "talon", "wing"]
+        ],
+        
+        [
+            ["Ald", "Ar", "Arl", "B", "C", "D", "Dh", "Eld", "Elt", "G", "H", "J", "M", "N", "Ph", "R", "S", "T", "Th", "V"],
+            ["ac", "ael", "al", "and", "ar", "ard", "ass", "ath", "av", "el", "en", "er", "erg", "or", "ord", "orn", "ut"],
+            ["a", "ai", "au", "o", "u"],
+            ["hn", "m", "n", "r", "s"]
+        ]
+    ]
+}

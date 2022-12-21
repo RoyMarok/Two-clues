@@ -12,14 +12,14 @@ const statNames = [
 export const makeMinCharacterStats = (comparables = []) => {
     const output = {}
     comparables.map(item => statNames.map(
-        stat => output[stat] = !output[stat] || parseInt(output[stat]) > parseInt(item[stat]) ? item[stat] : output[stat]
+        stat => output[stat] = (!output[stat] && output[stat] !== 0) || parseInt(output[stat]) > parseInt(item[stat]) ? item[stat] : output[stat]
         ))
     return output
 }
 export const makeMaxCharacterStats = (comparables = []) => {
     const output = {}
     comparables.map(item => statNames.map(
-        stat => output[stat] = !output[stat] || parseInt(output[stat]) < parseInt(item[stat]) ? item[stat] : output[stat]
+        stat => output[stat] = (!output[stat] && output[stat] !== 0) || parseInt(output[stat]) < parseInt(item[stat]) ? item[stat] : output[stat]
         ))
     return output
 }

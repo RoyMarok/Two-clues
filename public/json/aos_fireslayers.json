@@ -1,0 +1,36 @@
+{
+    "male": [
+        [
+            ["Vulk", "Grimn", "Vost", "Maegr", "Angf", "Baeldr", "Caeng", "Drunbh", "Gelv", "Grumn", "Hermd", "Kerlstr", "Lofn", "Obsgr", "Tangr", "Thung", "Ulg", "Ulr", "Voltur", "Amsar", "Bael", "Dhurg", "Durn", "Forg", "Fyrgr", "Lug", "Mar", "Rumn", "Ryg", "Ulgath", "Varg", "Belgr", "Smurg", "Umg", "Argl", "Bed", "Beg", "Blod", "Bron", "Bryn", "Kadf", "Kair", "Karad", "Kerid", "Ebr", "Hafg"],
+            ["ir", "ul", "arg", "efch", "im", "ol", "ird", "ag", "aeyrd", "an", "or", "agd", "ar", "um", "orn", "aen", "ung", "ash", "ern", "i", "idri", "awr", "aer", "inach", "einon", "in", "awn", "oc", "ugan", "rich", "aidreg", "alchmai", "orri", "ifor", "ech", "wyr"]
+        ]
+    ],
+    "female": [
+        [
+            ["Vulk", "Grimn", "Vost", "Maegr", "Angf", "Baeldr", "Caeng", "Drunbh", "Gelv", "Grumn", "Hermd", "Kerlstr", "Lofn", "Obsgr", "Tangr", "Thung", "Ulg", "Ulr", "Voltur", "Amsar", "Bael", "Dhurg", "Durn", "Forg", "Fyrgr", "Lug", "Mar", "Rumn", "Ryg", "Ulgath", "Varg", "Belgr", "Smurg", "Umg", "Argl", "Bed", "Beg", "Blod", "Bron", "Bryn", "Kadf", "Kair", "Karad", "Kerid", "Ebr", "Hafg"],
+            ["alka", "inlais", "ebwy", "imni", "enni", "inwi", "eina", "erfa", "id", "arad", "anrhod", "ais", "il", "in", "ogwen", "ystin", "ina", "ith", "uned", "eth", "ewi", "olyn", "eira", "arri", "anna", "ithni", "erna", "enna", "ind", "ild", "eda", "anba", "ithna", "erni", "arra", "eini"]
+        ],
+        [
+            ["Vulk", "Grimn", "Vost", "Maegr", "Angf", "Baeldr", "Caeng", "Drunbh", "Gelv", "Grumn", "Hermd", "Kerlstr", "Lofn", "Obsgr", "Tangr", "Thung", "Ulg", "Ulr", "Voltur", "Amsar", "Bael", "Dhurg", "Durn", "Forg", "Fyrgr", "Lug", "Mar", "Rumn", "Ryg", "Ulgath", "Varg", "Belgr", "Smurg", "Umg", "Argl", "Bed", "Beg", "Blod", "Bron", "Bryn", "Kadf", "Kair", "Karad", "Kerid", "Ebr", "Hafg", "Drak", "Krak", "Theddr", "Rapt", "Bel", "Gorg", "Thul", "Arg", "Cthon", "Bront", "Sk", "Bor", "Myrn", "Taig", "Shaak", "Buul", "Garg", "Pyg", "Aeg", "Karn", "Baer", "Jak", "Jag", "Kod", "Gront", "Kob", "Kuug", "Gaur", "Hauk", "Ghryf", "Vulp", "Djur", "Kre", "Varg", "Tjur", "Falk"],
+            ["ir", "ul", "arg", "efch", "im", "ol", "ird", "ag", "aeyrd", "an", "or", "agd", "ar", "um", "orn", "aen", "ung", "ash", "ern", "i", "idri", "awr", "aer", "inach", "einon", "in", "awn", "oc", "ugan", "rich", "aidreg", "alchmai", "orri", "ifor", "ech", "wyr", "atoa", "igon", "uvik", "or", "an", "olus", "aktes", "olon", "oros", "aphon", "yon", "on", "adon", "om", "ar", "ror", "amoth", "rak", "akt", "jörn", "ök", "run", "runt", "rig", "arr", "orn", "ov", "mund", "var", "aqtu", "ur", "harad", "harok"]
+        ],
+        [
+            ["Vulk", "Grimn", "Vost", "Maegr", "Angf", "Baeldr", "Caeng", "Drunbh", "Gelv", "Grumn", "Hermd", "Kerlstr", "Lofn", "Obsgr", "Tangr", "Thung", "Ulg", "Ulr", "Voltur", "Amsar", "Bael", "Dhurg", "Durn", "Forg", "Fyrgr", "Lug", "Mar", "Rumn", "Ryg", "Ulgath", "Varg", "Belgr", "Smurg", "Umg", "Argl", "Bed", "Beg", "Blod", "Bron", "Bryn", "Kadf", "Kair", "Karad", "Kerid", "Ebr", "Hafg", "Drak", "Krak", "Theddr", "Rapt", "Bel", "Gorg", "Thul", "Arg", "Cthon", "Bront", "Sk", "Bor", "Myrn", "Taig", "Shaak", "Buul", "Garg", "Pyg", "Aeg", "Karn", "Baer", "Jak", "Jag", "Kod", "Gront", "Kob", "Kuug", "Gaur", "Hauk", "Ghryf", "Vulp", "Djur", "Kre", "Varg", "Tjur", "Falk"],
+            ["alka", "inlais", "ebwy", "imni", "enni", "inwi", "eina", "erfa", "id", "arad", "anrhod", "ais", "il", "in", "ogwen", "ystin", "ina", "ith", "uned", "eth", "ewi", "olyn", "eira", "arri", "anna", "ithni", "erna", "enna", "ind", "ild", "eda", "anba", "ithna", "erni", "arra", "eini", "ua", "a", "ja", "ula", "endra", "antua", "ress", "ra", "raka", "raki", "va", "ura", "anda", "andra", "osa", "iva", "akra", "rigga", "na", "rid", "ora", "elga", "ild", "mar", "akna", "ahna", "aqti", "uri", "uga", "hara", "hari"]
+        ]
+    ],
+    "familyName": [
+        [
+            ["Rune", "Battle", "Mantle", "Steel", "Gold", "Latch", "Bold", "Grim", "Stout", "Broad", "Chosen", "Storm", "Doom", "War", "Oath", "Scowl", "Stern", "Drake", "Gilt", "Slate", "Iron", "Glimmer", "Gleam", "Stone", "Horn", "Coin", "Ingle", "Grudge", "Pike", "Bare", "Rump", "Brash", "Dour", "Grumble", "Anvil", "Proud"],
+            ["beard", "mane", "crest", "axe", "father", "son", "smith", "forge", "guard", "vault", "fist", "hand", "helm", "slayer", "heart", "gaze", "hewer", "caller", "karl", "kin", "bolt", "lock", "strike", "breaker", "bearer", "bane", "brow", "born", "sworn", "bound", "sunder", "hold", "hoard", "cleaver", "rift", "droth"]
+        ],
+        [
+            ["Rune", "Battle", "Mantle", "Steel", "Gold", "Latch", "Bold", "Grim", "Stout", "Broad", "Chosen", "Storm", "Doom", "War", "Oath", "Scowl", "Stern", "Drake", "Gilt", "Slate", "Iron", "Glimmer", "Gleam", "Stone", "Horn", "Coin", "Ingle", "Grudge", "Pike", "Bare", "Rump", "Brash", "Dour", "Grumble", "Anvil", "Proud", "Ash", "Fyre", "Lava", "Ember", "Pyre", "Kindle", "Char", "Brim", "Cinder", "Magma", "Tinder", "Drought", "Dire", "Black", "Ebon", "Steam", "Umber", "Red", "Crimson", "Choler", "Dry", "Brazen", "Ochre", "Smoulder", "Scalder", "Stoker", "Blister", "Smelter", "Fickle", "Sulphur", "Barren", "Sizzle", "Raw", "Swelter", "Arid", "Flicker"],
+            ["beard", "mane", "crest", "axe", "father", "son", "smith", "forge", "guard", "vault", "fist", "hand", "helm", "slayer", "heart", "gaze", "hewer", "caller", "karl", "kin", "bolt", "lock", "strike", "breaker", "bearer", "bane", "brow", "born", "sworn", "bound", "sunder", "hold", "hoard", "cleaver", "rift", "droth", "hearth", "coal", "bright", "singe", "bellows", "sear", "blaze", "smoke", "scorch", "wrath", "brand", "scar", "gout", "forge", "scoria", "flame", "crag", "throat", "bull", "torch", "parch", "flare", "gaze", "scorn", "volc", "sun", "burn", "roast", "thirst", "kiln", "fume", "seethe", "scald", "lust", "sweat", "heat"]
+        ],
+        [
+            ["Rune", "Battle", "Mantle", "Steel", "Gold", "Latch", "Bold", "Grim", "Stout", "Broad", "Chosen", "Storm", "Doom", "War", "Oath", "Scowl", "Stern", "Drake", "Gilt", "Slate", "Iron", "Glimmer", "Gleam", "Stone", "Horn", "Coin", "Ingle", "Grudge", "Pike", "Bare", "Rump", "Brash", "Dour", "Grumble", "Anvil", "Proud", "Wolf", "Bear", "Beast", "Titan", "Blood", "Ghur", "Boar", "Brown", "Amber", "Bone", "Flesh", "Dark", "Skull", "Prey", "Raw", "Bull", "Oath", "Snarl", "Howl", "Growl", "Maul", "Brawn", "Bristle", "Leather", "Wyld", "Grizzle", "Arrow", "Razor", "Bristle", "Gnarl", "Black", "Gouge", "Hawk", "Red", "Faun", "Gnaw", "Trample"],
+            ["beard", "mane", "crest", "axe", "father", "son", "smith", "forge", "guard", "vault", "fist", "hand", "helm", "slayer", "heart", "gaze", "hewer", "caller", "karl", "kin", "bolt", "lock", "strike", "breaker", "bearer", "bane", "brow", "born", "sworn", "bound", "sunder", "hold", "hoard", "cleaver", "rift", "droth", "holt", "mane", "snare", "pelt", "claw", "talon", "paw", "maw", "tusk", "fang", "tooth", "horn", "scryer", "caller", "sworn", "hide", "scale", "back", "shanks", "brow", "buck", "fray", "brute", "grip", "brand", "born", "fist", "husk", "hunter", "skin", "spear", "flint", "breaker", "crag", "flank", "ripper", "fur", "tongue", "haunch", "heart"]
+        ]
+    ]
+}

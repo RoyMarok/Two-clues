@@ -8,7 +8,10 @@ export const FieldWrapper = styled(FieldStyled)`
 `
 
 export const FieldTitle = styled(FieldStyled)`
-    font-weight: 600;
+    /* font-weight: 600; */
     text-align: center;
     padding: 4px 0;
+`
+export const SkillTitle = styled(FieldStyled)`
+    width: 124px;
 `

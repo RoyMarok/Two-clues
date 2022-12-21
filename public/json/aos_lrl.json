@@ -1,0 +1,38 @@
+{
+    "male": [
+        [
+            ["Aelth", "Aen", "Aer", "Al", "Alum", "Am", "Ar", "As", "Aur", "Aval", "Cal", "Car", "Cel", "Dor", "Ecth", "Eld", "Elth", "Fin", "Gal", "Haix", "Hel", "Idr", "Lum", "Maed", "Oult", "Tecl", "Tel", "Telth", "Tir", "Tyr", "Ur", "Van", "Xint", "Zaitr", "Sith", "Gan", "Gash", "Lash", "Ulg", "Shyr", "Ulug", "Vaksh", "Umbr", "Tenebr", "Obscur", "Cal", "Nox", "Nubil", "Nebul", "Caes", "Noct", "Somn", "Nacht", "Elus", "Susp", "Lurqu", "Skulqu", "Slith", "Shad", "Mal", "Obfusc", "Carc", "Onyx", "Hast", "Nyarl", "Shiv", "Corv", "Serp", "Null", "Aesh", "Silh", "Dism", "Despond", "Vex", "Anon"],
+            ["ad", "an", "and", "ar", "ed", "el", "en", "end", "id", "il", "in", "ol"],
+            ["an", "ar", "as", "ec", "en", "iel", "il", "ion", "ior", "ir", "is", "nar", "nil", "nion", "nir", "nor", "nur", "or", "os", "rai", "rec", "rik", "rod", "ur", "yar", "os", "el", "ataar", "ax", "ulan", "ai", "amat", "aal", "ak", "uzgar", "alaar", "ol", "urat", "ul", "ar", "or", "uul", "en", "on", "ut", "othmat", "olrath", "arat", "orash", "aqrat", "apla", "athu", "uriash", "ir", "akir", "ath", "ugal", "argon", "ush", "aznir", "amluk", "igon", "uvik", "or", "an", "olus", "aktes", "olon", "oros", "aphon", "yon", "on", "adon", "om", "ar", "ror", "amoth", "rak", "akt", "jörn", "ök", "run", "runt", "rig", "arr", "orn", "ov", "mund", "var", "aqtu", "ur", "harad", "harok"]
+        ]
+    ],
+    "female": [
+        [
+            ["Aelth", "Aen", "Aer", "Al", "Alum", "Am", "Ar", "As", "Aur", "Aval", "Cal", "Car", "Cel", "Dor", "Ecth", "Eld", "Elth", "Fin", "Gal", "Haix", "Hel", "Idr", "Lum", "Maed", "Oult", "Tecl", "Tel", "Telth", "Tir", "Tyr", "Ur", "Van", "Xint", "Zaitr", "Sith", "Gan", "Gash", "Lash", "Ulg", "Shyr", "Ulug", "Vaksh", "Umbr", "Tenebr", "Obscur", "Cal", "Nox", "Nubil", "Nebul", "Caes", "Noct", "Somn", "Nacht", "Elus", "Susp", "Lurqu", "Skulqu", "Slith", "Shad", "Mal", "Obfusc", "Carc", "Onyx", "Hast", "Nyarl", "Shiv", "Corv", "Serp", "Null", "Aesh", "Silh", "Dism", "Despond", "Vex", "Anon"],
+            ["ad", "an", "and", "ar", "ed", "el", "en", "end", "id", "il", "in", "ol"],
+            ["a", "alis", "anis", "ara", "ari", "arys", "asha", "assa", "aya", "eia", "eri", "estri", "i", "ia", "iah", "ielle", "ien", "ora", "ra", "riel", "ris", "rya", "wen", "ika", "ira", "is", "isa", "azra", "eryem", "atma", "arys", "uula", "ulga", "aara", "osi", "ati", "aala", "ola", "ora", "aska", "et", "il", "unu", "uana", "ekaa", "eti", "usi", "intu", "iti", "ashi", "ipaa", "aya", "onia", "irati", "ua", "a", "ja", "ula", "endra", "antua", "ress", "ra", "raka", "raki", "va", "ura", "anda", "andra", "osa", "iva", "akra", "rigga", "na", "rid", "ora", "elga", "ild", "mar", "akna", "ahna", "aqti", "uri", "uga", "hara", "hari"]
+        ]
+    ],
+    "familyName": [
+        [
+            ["Aelven", "Aether", "Bright", "Bull", "Dawn", "Fair", "Gale", "Gem", "Glimmer", "Glister", "Golden", "High", "Light", "Lustre", "Mind", "Moon", "Mountain", "Noble", "Opal", "Prism", "Pure", "Rainbow", "River", "Scry", "Shatter", "Shimmer", "Silver", "Snow", "Spirit", "Sun", "Swift", "Vale", "White", "Wind", "Zenith"],
+            ["beam", "blade", "born", "breeze", "brook", "caller", "cast", "crest", "dancer", "fall", "fire", "gale", "gaze", "glare", "glow", "hammer", "hand", "heart", "helm", "horn", "lance", "peak", "rider", "seer", "shard", "shield", "shine", "sight", "song", "soul", "spear", "star", "steed", "stone", "strider", "weaver"]
+        ],
+        [
+            ["the "],
+            ["All-Knowing", "Anguished", "Anointed", "Ascendant", "Diminished", "Effulgent", "Enduring", "Enlightened", "Favoured", "Flawless", "Gardener", "Illuminated", "Illustrious", "Impassive", "Implacable", "Intransigent", "Knowing", "Lamented", "Majestic", "Merciful", "Numinous", "Radiant", "Redeemed", "Resplendent", "Revered", "Righteous", "Serene", "Swift", "Transcendent", "Unbowed", "Undiminished", "Unyielding", "Vigilant", "Vindicated", "Wise", "Worthy", "Incinerant", "Pyrogonist", "Forge-Warden", "Hearth-Keeper", "Arch-Volcanist", "Inferniarch", "Conflagricant", "Ashling", "High Cinderach", "Excoriarch", "Magmierophant", "Parchlord", "Tinderite", "Droughtlaw", "Incensor", "Inflamer", "Pyraestor", "Infernor", "Blistrator", "Flamefarer", "Fyremaster", "Smoke-Seer", "Charred One", "Coal-Walker", "Pyre-Dancer", "Ashwright", "Lava Shaper", "Salamanderite", "Immolatriarch", "Sulphur Runner", "Bombasticant", "Aridiarch", "Water Hoarder", "Burned Champion", "Steamweaver", "Keymaster", "All-Knowing", "Anguished", "Anointed", "Ascendant", "Diminished", "Effulgent", "Enduring", "Enlightened", "Favoured", "Flawless", "Gardener", "Illuminated", "Illustrious", "Impassive", "Implacable", "Intransigent", "Knowing", "Lamented", "Majestic", "Merciful", "Numinous", "Radiant", "Redeemed", "Resplendent", "Revered", "Righteous", "Serene", "Swift", "Transcendent", "Unbowed", "Undiminished", "Unyielding", "Vigilant", "Vindicated", "Wise", "Worthy", "Doppelganger", "Deceiver", "Shroudling", "Imposter", "Stalker", "Umbroriarch", "Riddler", "Ebonseer", "Phantasmagoriarch", "Trickster", "Pretender", "Mimic", "Mistwalker", "Dreamwalker", "Penumbricant", "Tenebrophant", "Hoaxographer", "Enigma", "Duplicitant", "Clandestor", "Arch-Obscurate", "Survivor", "Predator", "Conqueror", "Hunter", "Warrior", "Tracker", "Trapper", "Stalker", "Trophy Hunter", "Game Hunter", "Beast Tamer", "Nomad", "Native", "Courser", "Beast-Talker", "Beast-Friend", "Predatrionite", "Raptoriarch", "Huntsmaster", "Tamer", "Slayer", "Ambermancer"]
+        ],
+        [
+            ["Ash", "Fyre", "Lava", "Ember", "Pyre", "Kindle", "Char", "Brim", "Cinder", "Magma", "Tinder", "Drought", "Dire", "Black", "Ebon", "Steam", "Umber", "Red", "Crimson", "Choler", "Dry", "Brazen", "Ochre", "Smoulder", "Scalder", "Stoker", "Blister", "Smelter", "Fickle", "Sulphur", "Barren", "Sizzle", "Raw", "Swelter", "Arid", "Flicker"],
+            ["beam", "blade", "born", "breeze", "brook", "caller", "cast", "crest", "dancer", "fall", "fire", "gale", "gaze", "glare", "glow", "hammer", "hand", "heart", "helm", "horn", "lance", "peak", "rider", "seer", "shard", "shield", "shine", "sight", "song", "soul", "spear", "star", "steed", "stone", "strider", "weaver"]
+        ],
+        [
+            ["Shadow", "Whisper", "Silver", "Mizzle", "Black", "Grey", "Ebon", "Raven", "Night", "Hidden", "Creep", "Blind", "False", "Feign", "Drab", "Pitch", "Mire", "Mirror", "Dim", "Bleak", "Drear", "Dagger", "Jet", "Slither", "Sidle", "Sable", "Somber", "Sour", "Crook", "Gloom", "Gloam", "Void", "Hollow", "Crawl", "Dark", "Splinter", "Cold", "Bitter", "Chill"],
+            ["beam", "blade", "born", "breeze", "brook", "caller", "cast", "crest", "dancer", "fall", "fire", "gale", "gaze", "glare", "glow", "hammer", "hand", "heart", "helm", "horn", "lance", "peak", "rider", "seer", "shard", "shield", "shine", "sight", "song", "soul", "spear", "star", "steed", "stone", "strider", "weaver"]
+        ],
+        [
+            ["Aelven", "Aether", "Bright", "Bull", "Dawn", "Fair", "Gale", "Gem", "Glimmer", "Glister", "Golden", "High", "Light", "Lustre", "Mind", "Moon", "Mountain", "Noble", "Opal", "Prism", "Pure", "Rainbow", "River", "Scry", "Shatter", "Shimmer", "Silver", "Snow", "Spirit", "Sun", "Swift", "Vale", "White", "Wind", "Zenith"],
+            ["beam", "blade", "born", "breeze", "brook", "caller", "cast", "crest", "dancer", "fall", "fire", "gale", "gaze", "glare", "glow", "hammer", "hand", "heart", "helm", "horn", "lance", "peak", "rider", "seer", "shard", "shield", "shine", "sight", "song", "soul", "spear", "star", "steed", "stone", "strider", "weaver"]
+        ]
+    ]
+}

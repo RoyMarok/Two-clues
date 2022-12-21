@@ -1,0 +1,17 @@
+{
+    "male": [
+        [
+            ["Ar", "Giga", "Bogga", "Bol", "Bor", "Bar", "Brag", "Brak", "Brug", "Bull", "Buz", "Dakka", "Drag", "Garag", "Gar", "Kor", "Gaz", "Ghar", "Ghaz", "Mag", "Ur", "Thrak", "Gheng", "Ghur", "Gitz", "Glut", "Gog", "Gor", "Gork", "Mork", "Grag", "Gratz", "Wur", "Mek", "Grax", "Griz", "Grob", "Grok", "Groz", "Grug", "Gruk", "Grut", "Gulg", "Hag", "Hruk", "Jud", "Khorg", "Skroll", "Koz", "Krug", "Mar", "Mog", "Mur", "Naz", "Urd", "Noz", "Nuz", "Ork", "Oz", "Rar", "Rot", "Ruk", "Shag", "Skag", "Skar", "Ruk", "Skog", "Snagga", "Snag", "Thog", "Ug", "Ugul", "Ung", "Ur", "Var", "Vorg", "Wug", "Zag", "Zan", "Zhad", "Zog"],
+            ["buttz", "gard", "gob", "bogga", "grog", "grob", "krull", "rok", "rag", "zog", "rak", "ka", "garg", "tak", "bad", "natz", "hak", "gash", "bul", "mek", "krak", "zulk", "bag", "grim", "kul", "mott", "tok", "gard", "baz", "fang", "grok", "gutz", "shag", "snik", "wazza", "zod", "bakh", "dakka", "nak", "lonik", "smak", "pit", "bok", "hakh", "brog", "bog", "rob", "grudd", "gol", "rog", "a", "kar", "brakka", "drug", "rull", "gor", "dreg", "grub", "grot", "grond", "kamungus", "grub", "gob", "gro", "rog", "nar", "rin", "snagga", "ratoof", "lurk", "skraga", "gak", "gok", "lakk", "gall", "not", "zag", "zark", "snark", "gax", "git"]
+        ]
+    ],
+    "female": [
+        [""]
+    ],
+    "familyName": [
+        [
+            ["'Ead", "Bad", "Big", "Blak", "Blitz", "Blud", "Bone", "Skull", "Grim", "God", "Grot", "Kill", "Deff", "Iron", "Face", "Gut", "Hed", "Teef", "Humie", "Steel", "Warp", "Jaw", "Kog", "Krool", "Nek", "Nuddy", "Nose", "Ruk", "World", "Spleen", "Star", "Sun", "Daemon", "Git"],
+            ["krumpa", "fang", "fragg", "skorcha", "lug", "rippa", "stompa", "hamma", "krakka", "smasha", "guzzla", "cleava", "fist", "gutz", "snag", "tusk", "boila", "bagz", "shredda", "choppa", "splinta", "hacka", "blasta", "dagga", "klaw", "dakka", "krusha", "chewa", "skar", "biter", "rekka", "shokk", "rukk", "spitta", "blitza"]
+        ]
+    ]
+}
