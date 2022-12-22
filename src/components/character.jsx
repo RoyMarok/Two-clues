@@ -19,7 +19,6 @@ import { GetIcon } from './get-icon'
 import { WeaponsSelection, SelectWithOptions } from './weapons-selection'
 import { Mass } from './mass'
 import { InsertedNames } from './names-generator'
-import { Mordheim } from './mordheim'
 
 const actionsOptions = [
     {
@@ -439,7 +438,7 @@ export const Character = (props) => {
                                     <GridCell width={1} filled center>{allWeaponsPrice}</GridCell>
                                 </FlexWrapper>
                                 
-                                <Mass value={overallMass} max={health} black={armourMass} />
+                                <Mass value={overallMass} max={health+3} black={armourMass} />
                                 <GridCell width="6" center>
                                     <SelectWithOptions onChange={selectArmour} elements={armours} selected={armour} index={index} passedName="armourSelect" placeholder="Броня"/>
                                 </GridCell>

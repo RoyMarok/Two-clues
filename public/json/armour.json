@@ -22,21 +22,29 @@
     "index": 2,
     "id": "armour_2"
 }, {
+    "front": "1",
+    "rear": 1,
+    "title": "Призрачный доспех",
+    "price": 80,
+    "mass": 0,
+    "index": 7,
+    "id": "armour_3"
+}, {
     "front": 2,
     "rear": 2,
     "title": "Тяжелый доспех",
     "price": 80,
     "mass": 4,
     "index": 3,
-    "id": "armour_3"
+    "id": "armour_4"
 }, {
     "front": 2,
     "rear": 1,
-    "title": "Бронежилет",
+    "title": "Тяжелый Бронежилет",
     "price": 100,
     "mass": 1,
-    "index": 4,
-    "id": "armour_4"
+    "index": 5,
+    "id": "armour_5"
 }, {
     "front": 2,
     "rear": 2,
@@ -44,7 +52,7 @@
     "price": 140,
     "mass": 1,
     "index": 5,
-    "id": "armour_5"
+    "id": "armour_6"
 }, {
     "front": 2,
     "rear": 2,
@@ -52,12 +60,12 @@
     "price": 160,
     "mass": 0,
     "index": 6,
-    "id": "armour_6"
+    "id": "armour_7"
 }, {
     "front": "1",
     "rear": 1,
-    "title": "Призрачный доспех",
-    "price": 80,
-    "mass": 0,
-    "index": 7
+    "title": "Бронежилет",
+    "price": 60,
+    "mass": 1,
+    "index": 8
 }]

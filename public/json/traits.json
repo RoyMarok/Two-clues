@@ -118,5 +118,35 @@
         "title": "Лаз. прицел",
         "description": "",
         "price": 15
+    },
+    {
+        "id": "blast3",
+        "title": "Накрывает д3\"",
+        "description": "",
+        "price": 10
+    },
+    {
+        "id": "blast4",
+        "title": "Накрывает д4\"",
+        "description": "",
+        "price": 20
+    },
+    {
+        "id": "blast5",
+        "title": "Накрывает д5\"",
+        "description": "",
+        "price": 30
+    },
+    {
+        "id": "smoke",
+        "title": "Дым",
+        "description": "",
+        "price": 10
+    },
+    {
+        "id": "poison",
+        "title": "Яд",
+        "description": "",
+        "price": 15
     }
 ]

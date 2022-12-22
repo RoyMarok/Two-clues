@@ -45,10 +45,12 @@ export const Weapon = (props) => {
         e.preventDefault()
         const { value } = e.target
         let passedValue = value
-        if (value === '7') {
+        if (value === '5') {
             passedValue = 1
         }
-        else if (value === '2' || value === '11') {
+        else if (value === '2' || (value === '7' && range === 8)) {
+            passedValue = 6
+        } else if (value === '7' || value === '11') {
             passedValue = 8
         } else if (value === '9' || value === '29') {
             passedValue = 12
@@ -97,7 +99,7 @@ export const Weapon = (props) => {
         const { value } = e.target
         onChange({
             ...commonProps,
-            dmg: clamp(value, 1, 4)
+            dmg: clamp(value, 0, 4)
         })
     }
     const changeTitle = (e) => {
@@ -113,7 +115,7 @@ export const Weapon = (props) => {
         const { value } = e.target
         onChange({
             ...commonProps,
-            mass: clamp(value, 1, 4)
+            mass: clamp(value, 0, 4)
         })
     }
     const changeTraits = (newTraits) => {

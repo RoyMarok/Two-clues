@@ -40,6 +40,7 @@ export const GridCell = styled.div(({
     ${muted && 'opacity: 0.5;'}
     ${big && 'font-size: '+(baseFontSize * 2)+'px;'}
     ${serif && 'font-family: sans-serif; font-weight: 700;'}
+    ${height === 0.5 && '&>button { top: -'+gridBase/6+'px; }'}
 `)
 
 export const BorderWrapper = styled.div`

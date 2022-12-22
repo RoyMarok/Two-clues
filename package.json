@@ -1,5 +1,5 @@
 {
-  "name": "two-clues",
+  "name": "ezd20",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,6 +17,10 @@
     "react-scripts": "5.0.1",
     "recoil": "0.7.5",
     "web-vitals": "3.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RoyMarok/EZD20.git"
   },
   "scripts": {
     "start": "react-scripts start",
