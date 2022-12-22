@@ -4,26 +4,13 @@
     "drum": "0",
     "reload": "0",
     "ap": "0",
-    "dmg": "1",
-    "title": "Нож",
-    "traits": ["backstab"],
-    "price": 10,
-    "mass": 0,
-    "index": 0,
-    "id": "weapon_0"
-}, {
-    "range": "1",
-    "shots": 1,
-    "drum": "0",
-    "reload": "0",
-    "ap": 1,
-    "dmg": "1",
-    "title": "Топор",
-    "traits": ["backstab"],
+    "dmg": 2,
+    "title": "Меч",
     "price": 10,
     "mass": "1",
-    "index": 4,
-    "id": "weapon_1"
+    "index": 1,
+    "traits": [],
+    "id": "weapon_0"
 }, {
     "range": "1",
     "shots": 1,
@@ -36,6 +23,19 @@
     "mass": 1,
     "index": 2,
     "traits": ["shield"],
+    "id": "weapon_1"
+}, {
+    "range": "1",
+    "shots": 1,
+    "drum": "0",
+    "reload": "0",
+    "ap": 1,
+    "dmg": "1",
+    "title": "Топор",
+    "traits": ["backstab"],
+    "price": 10,
+    "mass": "1",
+    "index": 4,
     "id": "weapon_2"
 }, {
     "range": "1",
@@ -43,13 +43,25 @@
     "drum": "0",
     "reload": "0",
     "ap": "0",
-    "dmg": 2,
-    "title": "Меч",
+    "dmg": "1",
+    "title": "Нож",
+    "traits": ["backstab"],
     "price": 10,
-    "mass": "1",
-    "index": 1,
-    "traits": [],
+    "mass": 0,
+    "index": 0,
     "id": "weapon_3"
+}, {
+    "range": "1",
+    "shots": 1,
+    "drum": "0",
+    "reload": "0",
+    "ap": "1",
+    "dmg": 2,
+    "title": "Цепной меч",
+    "price": 20,
+    "mass": "1",
+    "id": "weapon_4",
+    "index": 3
 }, {
     "range": "1",
     "shots": 2,
@@ -62,19 +74,7 @@
     "price": 20,
     "mass": "1",
     "index": 8,
-    "id": "weapon_4"
-}, {
-    "range": "1",
-    "shots": 1,
-    "drum": "0",
-    "reload": "0",
-    "ap": "1",
-    "dmg": 2,
-    "title": "Цепной меч",
-    "price": 20,
-    "mass": "1",
-    "id": "weapon_5",
-    "index": 3
+    "id": "weapon_5"
 }, {
     "range": "1",
     "shots": 1,
@@ -95,12 +95,24 @@
     "reload": "0",
     "ap": 2,
     "dmg": 3,
-    "title": "Алебарда",
+    "title": "Двуручный меч",
     "traits": ["twohanded"],
     "price": 30,
     "mass": 2,
-    "index": 12,
+    "index": 6,
     "id": "weapon_7"
+}, {
+    "range": "1",
+    "shots": 1,
+    "drum": "0",
+    "reload": "0",
+    "ap": 2,
+    "dmg": "2",
+    "title": "Цепной топор",
+    "price": 30,
+    "mass": "1",
+    "id": "weapon_8",
+    "index": 7
 }, {
     "range": "1",
     "shots": 1,
@@ -113,19 +125,7 @@
     "price": 30,
     "mass": "1",
     "index": 10,
-    "id": "weapon_8"
-}, {
-    "range": "1",
-    "shots": 1,
-    "drum": "0",
-    "reload": "0",
-    "ap": 2,
-    "dmg": "2",
-    "title": "Цепной топор",
-    "price": 30,
-    "mass": "1",
-    "id": "weapon_9",
-    "index": 7
+    "id": "weapon_9"
 }, {
     "range": "1",
     "shots": 1,
@@ -133,24 +133,24 @@
     "reload": "0",
     "ap": 2,
     "dmg": 3,
-    "title": "Двуручный меч",
+    "title": "Алебарда",
     "traits": ["twohanded"],
     "price": 30,
     "mass": 2,
-    "index": 6,
+    "index": 12,
     "id": "weapon_10"
 }, {
     "range": "1",
     "shots": 1,
     "drum": "0",
     "reload": "0",
-    "ap": 3,
+    "ap": 1,
     "dmg": 3,
-    "title": "Двуручный топор",
-    "traits": ["twohanded"],
+    "title": "Большой меч",
+    "traits": ["criticallethal"],
     "price": 40,
     "mass": 2,
-    "index": 4,
+    "index": 9,
     "id": "weapon_11"
 }, {
     "range": "1",
@@ -170,13 +170,13 @@
     "shots": 1,
     "drum": "0",
     "reload": "0",
-    "ap": 1,
+    "ap": 3,
     "dmg": 3,
-    "title": "Большой меч",
-    "traits": ["criticallethal"],
+    "title": "Двуручный топор",
+    "traits": ["twohanded"],
     "price": 40,
     "mass": 2,
-    "index": 9,
+    "index": 4,
     "id": "weapon_13"
 }, {
     "range": "1",
@@ -207,20 +207,20 @@
 }, {
     "range": 6,
     "shots": "1",
-    "drum": "10",
+    "drum": "6",
     "reload": "0",
     "ap": "0",
     "dmg": "1",
     "title": "Фраг граната",
     "price": 15,
     "mass": "1",
-    "index": 53,
+    "index": 16,
     "traits": ["limited", "blast3"],
     "id": "weapon_16"
 }, {
     "range": 6,
     "shots": "1",
-    "drum": "10",
+    "drum": "6",
     "reload": "0",
     "ap": 0,
     "dmg": 2,
@@ -233,27 +233,27 @@
 }, {
     "range": 6,
     "shots": "1",
-    "drum": "10",
+    "drum": "6",
     "reload": "0",
     "ap": "0",
     "dmg": 0,
     "title": "Дымовая граната",
-    "price": 35,
+    "price": 30,
     "mass": "1",
-    "index": 54,
+    "index": 18,
     "traits": ["smoke", "limited", "blast4"],
     "id": "weapon_18"
 }, {
     "range": 6,
     "shots": "1",
-    "drum": "10",
+    "drum": "6",
     "reload": "0",
     "ap": "0",
     "dmg": 0,
     "title": "Химдым граната",
-    "price": 50,
+    "price": 45,
     "mass": "1",
-    "index": 56,
+    "index": 19,
     "traits": ["smoke", "poison", "blast4"],
     "id": "weapon_19"
 }, {
@@ -271,19 +271,6 @@
     "id": "weapon_20"
 }, {
     "range": 8,
-    "shots": "1",
-    "drum": "2",
-    "reload": "0",
-    "ap": 0,
-    "dmg": 2,
-    "title": "Двухствольный обрез",
-    "price": 20,
-    "mass": "1",
-    "index": 12,
-    "traits": ["sidearm", "knockback"],
-    "id": "weapon_21"
-}, {
-    "range": 8,
     "shots": 1,
     "drum": "8",
     "reload": "0",
@@ -294,6 +281,19 @@
     "mass": "1",
     "index": 17,
     "traits": ["silent", "limited"],
+    "id": "weapon_21"
+}, {
+    "range": 8,
+    "shots": "1",
+    "drum": "2",
+    "reload": "0",
+    "ap": 0,
+    "dmg": 2,
+    "title": "Двухствольный обрез",
+    "price": 20,
+    "mass": "1",
+    "index": 12,
+    "traits": ["sidearm", "knockback"],
     "id": "weapon_22"
 }, {
     "range": 8,
@@ -350,19 +350,6 @@
 }, {
     "range": 12,
     "shots": "1",
-    "drum": "10",
-    "reload": "0",
-    "ap": "0",
-    "dmg": "1",
-    "title": "Маузер",
-    "price": 15,
-    "mass": "1",
-    "index": 8,
-    "traits": ["sidearm"],
-    "id": "weapon_27"
-}, {
-    "range": 12,
-    "shots": "1",
     "drum": "8",
     "reload": 1,
     "ap": "0",
@@ -371,6 +358,19 @@
     "price": 15,
     "mass": "1",
     "index": 9,
+    "traits": ["sidearm"],
+    "id": "weapon_27"
+}, {
+    "range": 12,
+    "shots": "1",
+    "drum": "10",
+    "reload": "0",
+    "ap": "0",
+    "dmg": "1",
+    "title": "Маузер",
+    "price": 15,
+    "mass": "1",
+    "index": 8,
     "traits": ["sidearm"],
     "id": "weapon_28"
 }, {
@@ -389,6 +389,19 @@
 }, {
     "range": 12,
     "shots": "1",
+    "drum": "10",
+    "reload": "0",
+    "ap": "0",
+    "dmg": "1",
+    "title": "Лук",
+    "price": 25,
+    "mass": "1",
+    "index": 57,
+    "traits": ["silent"],
+    "id": "weapon_30"
+}, {
+    "range": 12,
+    "shots": "1",
     "drum": "6",
     "reload": "0",
     "ap": "0",
@@ -398,7 +411,7 @@
     "mass": "1",
     "index": 44,
     "traits": ["knockback"],
-    "id": "weapon_30"
+    "id": "weapon_31"
 }, {
     "range": 12,
     "shots": "1",
@@ -411,7 +424,7 @@
     "price": 40,
     "mass": "1",
     "index": 11,
-    "id": "weapon_31"
+    "id": "weapon_32"
 }, {
     "range": 12,
     "shots": 3,
@@ -424,7 +437,7 @@
     "mass": "1",
     "index": 15,
     "traits": ["sidearm"],
-    "id": "weapon_32"
+    "id": "weapon_33"
 }, {
     "range": 12,
     "shots": 3,
@@ -437,19 +450,6 @@
     "mass": "1",
     "index": 48,
     "traits": ["silent"],
-    "id": "weapon_33"
-}, {
-    "range": 12,
-    "shots": 3,
-    "drum": "10",
-    "reload": 1,
-    "ap": "0",
-    "dmg": "1",
-    "title": "ПП лазерный прицел",
-    "price": 60,
-    "mass": "1",
-    "index": 47,
-    "traits": ["laserpointer"],
     "id": "weapon_34"
 }, {
     "range": 12,
@@ -471,11 +471,11 @@
     "reload": 1,
     "ap": "0",
     "dmg": "1",
-    "title": "ПП на максималках",
-    "price": 85,
+    "title": "ПП лазерный прицел",
+    "price": 60,
     "mass": "1",
-    "index": 43,
-    "traits": ["collimator", "laserpointer", "silent"],
+    "index": 47,
+    "traits": ["laserpointer"],
     "id": "weapon_36"
 }, {
     "range": 12,
@@ -492,6 +492,19 @@
     "id": "weapon_37"
 }, {
     "range": 12,
+    "shots": 3,
+    "drum": "10",
+    "reload": 1,
+    "ap": "0",
+    "dmg": "1",
+    "title": "ПП на максималках",
+    "price": 85,
+    "mass": "1",
+    "index": 43,
+    "traits": ["collimator", "laserpointer", "silent"],
+    "id": "weapon_38"
+}, {
+    "range": 12,
     "shots": 5,
     "drum": "10",
     "reload": 1,
@@ -501,7 +514,7 @@
     "price": 90,
     "mass": "1",
     "index": 39,
-    "id": "weapon_38"
+    "id": "weapon_39"
 }, {
     "range": 12,
     "shots": 3,
@@ -514,18 +527,6 @@
     "price": 115,
     "mass": "1",
     "index": 29,
-    "id": "weapon_39"
-}, {
-    "range": 30,
-    "shots": "1",
-    "drum": "6",
-    "reload": "0",
-    "ap": "0",
-    "dmg": 0,
-    "title": "Гранатомет",
-    "price": 15,
-    "mass": "1",
-    "index": 55,
     "id": "weapon_40"
 }, {
     "range": 30,
@@ -539,7 +540,7 @@
     "mass": 2,
     "index": 13,
     "traits": ["twohanded"],
-    "id": "weapon_41"
+    "id": "weapon_42"
 }, {
     "range": 30,
     "shots": 1,
@@ -552,7 +553,7 @@
     "mass": 2,
     "index": 14,
     "traits": ["twohanded"],
-    "id": "weapon_42"
+    "id": "weapon_43"
 }, {
     "range": 30,
     "shots": "1",
@@ -565,7 +566,7 @@
     "price": 60,
     "mass": "1",
     "index": 26,
-    "id": "weapon_43"
+    "id": "weapon_44"
 }, {
     "range": 30,
     "shots": "1",
@@ -578,7 +579,7 @@
     "price": 75,
     "mass": "1",
     "index": 27,
-    "id": "weapon_44"
+    "id": "weapon_45"
 }, {
     "range": 30,
     "shots": 3,
@@ -591,7 +592,7 @@
     "mass": 2,
     "index": 32,
     "traits": ["twohanded"],
-    "id": "weapon_45"
+    "id": "weapon_46"
 }, {
     "range": 30,
     "shots": 1,
@@ -604,7 +605,7 @@
     "price": 100,
     "mass": 2,
     "index": 35,
-    "id": "weapon_46"
+    "id": "weapon_47"
 }, {
     "range": 30,
     "shots": "1",
@@ -617,7 +618,7 @@
     "mass": 2,
     "index": 36,
     "traits": ["silent", "critical17", "knockback", "optics"],
-    "id": "weapon_47"
+    "id": "weapon_48"
 }, {
     "range": 30,
     "shots": 3,
@@ -630,7 +631,7 @@
     "price": 115,
     "mass": "1",
     "index": 31,
-    "id": "weapon_48"
+    "id": "weapon_49"
 }, {
     "range": 30,
     "shots": 3,
@@ -643,7 +644,7 @@
     "mass": "1",
     "index": 49,
     "traits": ["collimator"],
-    "id": "weapon_49"
+    "id": "weapon_50"
 }, {
     "range": 30,
     "shots": 3,
@@ -656,7 +657,7 @@
     "mass": "1",
     "index": 50,
     "traits": ["optics"],
-    "id": "weapon_50"
+    "id": "weapon_51"
 }, {
     "range": 30,
     "shots": "1",
@@ -669,19 +670,6 @@
     "price": 130,
     "mass": 2,
     "index": 38,
-    "id": "weapon_51"
-}, {
-    "range": 30,
-    "shots": 3,
-    "drum": "10",
-    "reload": 1,
-    "ap": "0",
-    "dmg": "1",
-    "title": "Автомат с коллиматором и лазприцелом",
-    "price": 135,
-    "mass": "1",
-    "index": 51,
-    "traits": ["collimator", "laserpointer"],
     "id": "weapon_52"
 }, {
     "range": 30,
@@ -699,6 +687,19 @@
 }, {
     "range": 30,
     "shots": 3,
+    "drum": "10",
+    "reload": 1,
+    "ap": "0",
+    "dmg": "1",
+    "title": "Автомат с коллиматором и лазприцелом",
+    "price": 135,
+    "mass": "1",
+    "index": 51,
+    "traits": ["collimator", "laserpointer"],
+    "id": "weapon_54"
+}, {
+    "range": 30,
+    "shots": 3,
     "drum": "6",
     "reload": "0",
     "ap": 2,
@@ -707,7 +708,7 @@
     "price": 145,
     "mass": 3,
     "index": 15,
-    "id": "weapon_54"
+    "id": "weapon_55"
 }, {
     "range": 30,
     "shots": 3,
@@ -720,7 +721,7 @@
     "mass": 3,
     "index": 33,
     "traits": ["knockback"],
-    "id": "weapon_55"
+    "id": "weapon_56"
 }, {
     "range": 30,
     "shots": 6,
@@ -733,17 +734,29 @@
     "mass": 3,
     "index": 42,
     "traits": ["twohanded", "knockback", "limited"],
-    "id": "weapon_56"
+    "id": "weapon_57"
 }, {
-    "range": 12,
+    "range": 6,
     "shots": "1",
-    "drum": "10",
+    "drum": "5",
     "reload": "0",
+    "ap": 1,
+    "dmg": 3,
+    "title": "Святая граната",
+    "price": 70,
+    "mass": 0,
+    "index": 58,
+    "traits": ["blast5", "knockback"]
+}, {
+    "range": 30,
+    "shots": "1",
+    "drum": "6",
+    "reload": 0,
     "ap": "0",
     "dmg": "1",
-    "title": "Лук",
-    "price": 25,
+    "title": "Фраг гранатомет",
+    "price": 40,
     "mass": "1",
-    "index": 57,
-    "traits": ["silent"]
+    "index": 59,
+    "traits": ["blast3"]
 }]
