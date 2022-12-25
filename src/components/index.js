@@ -7,6 +7,8 @@ export { Band } from './band'
 export { Weapons } from './weapons'
 export { Armours } from './armours'
 export { Loader } from './loader'
+export { Rules } from './rules'
+
 export {
     GridCell,
     BorderWrapper,

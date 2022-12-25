@@ -4,6 +4,7 @@ import { RecoilRoot } from 'recoil'
 import { BrowserRouter } from "react-router-dom"
 import './index.css'
 import App from './App'
+import './i18init'
 
 const container = document.getElementById('root')
 const root = createRoot(container)

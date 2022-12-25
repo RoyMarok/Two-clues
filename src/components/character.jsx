@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { withTranslation } from 'react-i18next'
 
 import { ArmourState } from '../atoms'
 import { clamp, CalculateHealth, CalculateMove, getElementByProp } from '../utils'
@@ -39,9 +40,9 @@ const actionsOptions = [
     },
 ]
 
-export const Character = (props) => {
+export const CharacterComponent = (props) => {
     const armours = useRecoilValue(ArmourState.setState)
-    const { index, currentStats, onChange, weapons, allTraits } = props
+    const { index, currentStats, onChange, weapons, allTraits, t } = props
 
     const [titleValue, setTitleValue] = useState(currentStats?.title  || '')
 
@@ -395,7 +396,7 @@ export const Character = (props) => {
                                 </FlexWrapper>
                             </OnlyPrintableBlock>
                             
-                            <GridCell width={5} >Характеристики</GridCell>
+                            <GridCell width={5} >{t('band.character.characteristics')}</GridCell>
                             <GridCell width={1} filled center>{price}</GridCell>
                             
                         </FlexWrapper>
@@ -434,7 +435,7 @@ export const Character = (props) => {
                                 </FlexWrapper> */}
                                 
                                 <FlexWrapper>
-                                    <GridCell width={5} >Оружие и броня</GridCell>
+                                    <GridCell width={5} >{t('band.character.weapons')}</GridCell>
                                     <GridCell width={1} filled center>{allWeaponsPrice}</GridCell>
                                 </FlexWrapper>
                                 
@@ -469,15 +470,15 @@ export const Character = (props) => {
                             <GridCell width="1" center >%</GridCell>
                         </FlexWrapper>
 
-                        <Skill title="Рукопашная" value={melee} onChange={changeMelee} dice1={strength} dice2={agility} strength agility />
+                        <Skill title={t('band.character.skill.melee')} value={melee} onChange={changeMelee} dice1={strength} dice2={agility} strength agility />
                         {/* <Skill title="Метательное"  value={throwing} onChange={changeThrowing} dice1={strength} dice2={perception} strength perception /> */}
-                        <Skill title="Стрелковое" value={guns} onChange={changeGuns} dice1={perception} dice2={intelligence} perception intelligence even />
-                        <Skill title="Колдовство" value={magic} onChange={changeMagic} dice1={perception} dice2={intelligence} perception intelligence />
-                        <Skill title="Акробатика" value={acrobathics} onChange={changeAcrobathics} dice1={agility} acrobathics agility even />
-                        <Skill title="Скрытность"  value={stealth} onChange={changeStealth} dice1={agility} agility />
+                        <Skill title={t('band.character.skill.guns')} value={guns} onChange={changeGuns} dice1={perception} dice2={intelligence} perception intelligence even />
+                        <Skill title={t('band.character.skill.magic')} value={magic} onChange={changeMagic} dice1={perception} dice2={intelligence} perception intelligence />
+                        <Skill title={t('band.character.skill.acrobathics')} value={acrobathics} onChange={changeAcrobathics} dice1={agility} acrobathics agility even />
+                        <Skill title={t('band.character.skill.stealth')}  value={stealth} onChange={changeStealth} dice1={agility} agility />
                         {/* <Skill title="Взлом" value={lockpick} onChange={changeLockpick} dice1={perception} perception /> */}
-                        <Skill title="Медицина" even value={medicine} onChange={changeMedicine} dice1={intelligence} intelligence />
-                        <Skill title="Защита" value={String(armourParams?.front || defence)} dice1={agility} dice2={perception} agility perception />
+                        <Skill title={t('band.character.skill.medicine')} even value={medicine} onChange={changeMedicine} dice1={intelligence} intelligence />
+                        <Skill title={t('band.character.skill.defence')} value={String(armourParams?.front || defence)} dice1={agility} dice2={perception} agility perception />
                     </BorderWrapper>
                     <NonPrintableBlock>
                         <GridCell center />
@@ -501,3 +502,5 @@ export const Character = (props) => {
         </>
     )
 }
+
+export const Character = withTranslation()(CharacterComponent)

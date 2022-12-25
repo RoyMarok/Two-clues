@@ -23,8 +23,9 @@ export const GridCell = styled.div(({
             center = false,
             muted = false,
             big = false,
-            serif = false
-        }) => css `
+            serif = false,
+            open = false
+        }) => css`
     display: block;
     height: ${height * gridBase}px;
     width: ${width * gridBase}px;
@@ -41,6 +42,31 @@ export const GridCell = styled.div(({
     ${big && 'font-size: '+(baseFontSize * 2)+'px;'}
     ${serif && 'font-family: sans-serif; font-weight: 700;'}
     ${height === 0.5 && '&>button { top: -'+gridBase/6+'px; }'}
+    ${open && 'height: auto; line-height: 1em;'}
+    h2 {
+        font-size: ${baseFontSize * 2}px;
+        line-height: ${baseFontSize * 2}px;
+        color: ${theme.primary};
+        margin: 0;
+        margin-top: ${baseFontSize}px;
+    }
+    h3 {
+        color: ${theme.primary};
+         margin: 0;
+        margin-top: ${baseFontSize/2}px;
+    }
+    ul {
+        margin: 0;
+        margin-top: ${baseFontSize/2}px;
+    }
+    p {
+        margin: 0;
+        margin-top: ${baseFontSize/2}px;
+    }
+    em {
+        font-style: normal;
+        color: ${theme.primary};
+    }
 `)
 
 export const BorderWrapper = styled.div`
@@ -68,9 +94,10 @@ export const AppWrapper = styled.div`
         }
     }
 `
-export const FlexWrapper = styled.div(({ nowrap = false }) => css`
+export const FlexWrapper = styled.div(({ nowrap = false, columns = false }) => css`
     display: flex;
     flex-wrap: ${nowrap ? 'nowrap' : 'wrap'};
+    ${ columns && 'grid-column-gap:'+gridBase+'px;'}
 `)
 
 export const NonPrintableBlock = styled.div`

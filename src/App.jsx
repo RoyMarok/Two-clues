@@ -1,5 +1,6 @@
 import React from 'react'
 import { Routes, Route, Link } from "react-router-dom"
+import { withTranslation } from 'react-i18next'
 
 import {
     Armours,
@@ -16,30 +17,31 @@ import {
     Weapon,
     Weapons,
     White,
-    NamesGenerator
+    NamesGenerator,
+    Rules
 } from './components'
 
 const Home = () => null
 
-export const App = (props) => (
+export const App = ({ t }) => (
     <AppWrapper>
         <NonPrintableBlock>
             <Loader />
             <FlexWrapper>
                 <GridCell width={3} inverse center>
-                    <Link to="/">Имена</Link>
+                    <Link to="/">{t('names.title')}</Link>
                 </GridCell>
                 <GridCell width={3} inverse center>
-                    <Link to="/band">Банда</Link>
+                    <Link to="/band">{t('band.title')}</Link>
                 </GridCell>
                 <GridCell width={3} inverse center>
-                    <Link to="/weapons">Оружие</Link>
+                    <Link to="/weapons">{t('weapons.title')}</Link>
                 </GridCell>
                 <GridCell width={3} inverse center>
-                    <Link to="/armours">Броня</Link>
+                    <Link to="/armours">{t('armours.title')}</Link>
                 </GridCell>
                 <GridCell width={3} inverse center>
-                    <Link to="/rules">Правила</Link>
+                    <Link to="/rules">{t('rules.title')}</Link>
                 </GridCell>
             </FlexWrapper>
         </NonPrintableBlock>
@@ -48,9 +50,9 @@ export const App = (props) => (
             <Route path="/band" element={<Band />} />
             <Route path="/weapons" element={<Weapons />} />
             <Route path="/armours" element={<Armours />} />
-            <Route path="/rules" element={<Home />} />
+            <Route path="/rules" element={<Rules />} />
         </Routes>
     </AppWrapper>
 )
 
-export default App
+export default withTranslation()(App)
