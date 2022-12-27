@@ -43,6 +43,11 @@ export const App = ({ t }) => (
                 <GridCell width={3} inverse center>
                     <Link to="/rules">{t('rules.title')}</Link>
                 </GridCell>
+                <GridCell width={1} center>
+                    <Button onClick={window.print}>
+                        <GetIcon icon="print" color="secondary" />
+                    </Button>
+                </GridCell>
             </FlexWrapper>
         </NonPrintableBlock>
         <Routes>

@@ -26,6 +26,7 @@ export const Weapons = () => {
                         index={index}
                         key={weaponItem.title}
                         allTraits={traits}
+                        weapons={weapons}
                     />
                 )
                 }

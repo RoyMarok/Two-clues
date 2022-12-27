@@ -20,7 +20,7 @@ import { ReactComponent as CoinIcon } from '../icons/coin.svg'
 import { ReactComponent as MassIcon } from '../icons/mass.svg'
 import { ReactComponent as FaceIcon } from '../icons/face.svg'
 import { ReactComponent as CrossIcon } from '../icons/cross.svg'
-import { ReactComponent as BatIcon } from '../icons/bat.svg'
+import { ReactComponent as PrintIcon } from '../icons/printer.svg'
 import { ReactComponent as FlyIcon } from '../icons/fly.svg'
 
 export const GetIcon = ({ icon, ...props }) => {
@@ -67,6 +67,8 @@ export const GetIcon = ({ icon, ...props }) => {
             return <Icon {...props}><CrossIcon /></Icon>
         case 'fly':
             return <Icon {...props}><FlyIcon /></Icon>
+        case 'print':
+            return <Icon {...props}><PrintIcon /></Icon>
         default:
             return null
     }

@@ -14,7 +14,7 @@ export const Weapon = (props) => {
         onChange = noop,
         index = 0,
         controlled = true,
-        weapons,
+        weapons = [],
         selected,
         passedName,
         allTraits
@@ -30,7 +30,8 @@ export const Weapon = (props) => {
         title,
         price,
         mass,
-        traits = []
+        traits = [],
+        masterIndex
     } = currentStats
 
     const [titleValue, setTitleValue] = useState(currentStats?.title || '')
@@ -124,6 +125,16 @@ export const Weapon = (props) => {
             traits: newTraits
         })
     }
+    const changeMaster = (e) => {
+        console.log('changeMaster', e.target.value)
+        onChange({
+            ...commonProps,
+            masterIndex: e.target.value
+        })
+    }
+
+    const restWeapons = weapons.filter(weapon => weapon.index !== index)
+    const slaveWeapons = weapons.filter(weapon => weapon.masterIndex === index)
     
     return (
         <div>
@@ -151,7 +162,7 @@ export const Weapon = (props) => {
                 <FieldNumber title="Урон" value={dmg} onChange={changeDmg} icon="dmg" controlled={controlled} />
                 <FieldNumber title="Вес" value={mass} onChange={changeMass} icon="mass" filled controlled={controlled} />
             </FlexWrapper>
-            <FlexWrapper>
+                {(controlled || Boolean(traits.length)) && <FlexWrapper>
                 <GridCell width={14} height={controlled ? 2 : 1} center>
                     <Traits
                         traits={allTraits}
@@ -160,7 +171,16 @@ export const Weapon = (props) => {
                         onChange={changeTraits}
                     />
                 </GridCell>
-            </FlexWrapper>
+            </FlexWrapper>}
+            {controlled && <GridCell width={14} center>
+                <SelectWithOptions
+                    onChange={changeMaster}
+                    elements={restWeapons}
+                    selected={masterIndex}
+                    index={`${index}_masterIndex`}
+                    passedName={`${passedName}_masterIndex`}
+                />
+            </GridCell>}
         </BorderWrapper>
         <GridCell />
         </FlexWrapper>

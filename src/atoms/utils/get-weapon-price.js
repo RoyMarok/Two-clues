@@ -8,7 +8,9 @@ export const getWeaponPrice = (props) => {
         dmg,
         mass,
         traits = [],
-        allTraits = []
+        allTraits = [],
+        weapons,
+        masterIndex
     } = props
     const calcDmg = (parseInt(dmg) + 1) * shots * 2
     const calcRange = range * 0.275
@@ -36,5 +38,8 @@ export const getWeaponPrice = (props) => {
             ) / 5
         ) * 5
 
-   return parseInt(range) > 1 ? priceRanged : priceCC
+    const calculatedPrice = parseInt(range) > 1 ? priceRanged : priceCC
+    const masterWeaponPrice = weapons.filter(weapon => weapon.id === masterIndex)?.[0]?.price
+
+   return masterIndex ? Math.max(calculatedPrice - masterWeaponPrice, 0) : calculatedPrice
 }

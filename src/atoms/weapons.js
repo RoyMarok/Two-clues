@@ -61,7 +61,8 @@ export const changeWeaponsInState = selector({
             ...props,
             price: getWeaponPrice({
                 ...props,
-                allTraits: get(weaponTraitsState)
+                allTraits: get(weaponTraitsState),
+                weapons
             })
         }
         set(weaponState, [

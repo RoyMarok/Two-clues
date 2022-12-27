@@ -26,7 +26,7 @@ export const ButtonCoreStyled = styled.button(({wide = true, print = false}) => 
     ${!print && '@media print { color: transparent; }'}
 `)
 
-export const Button = ({ title, ...prop}) => <ButtonCoreStyled {...prop} >{title}</ButtonCoreStyled>
+export const Button = ({ title, children, ...prop}) => <ButtonCoreStyled {...prop} >{title || children}</ButtonCoreStyled>
 
 export const ButtonBottomStyled = styled(Button)`
     border-top-left-radius: 0;
