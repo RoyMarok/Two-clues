@@ -1,6 +1,15 @@
 export const CalculateHealth = (strength) => Math.max(Math.ceil((16 - parseInt(strength)) / 2), 1)
 export const CalculateMove = (agility) => Math.max(Math.ceil((20 - parseInt(agility)) / 2) - 1, 3)
 
+export const SKILL = [
+    'melee',
+    'guns',
+    'magic',
+    'acrobathics',
+    'stealth',
+    'medicine'
+]
+
 const statPrice = {
     6: 65,
     7: 50,
@@ -17,6 +26,7 @@ export const getCharacterPrice = (props) => {
     const {
         characteristics,
         skills,
+        skillList,
         actions
     } = props
     const {
@@ -31,27 +41,8 @@ export const getCharacterPrice = (props) => {
         fly
     } = characteristics
 
-    const {
-        melee,
-        // throwing,
-        guns,
-        magic,
-        acrobathics,
-        stealth,
-        // lockpick,
-        medicine
-    } = skills
-
-    const skillsSum =
-        parseInt(melee) +
-        // parseInt(throwing) +
-        parseInt(guns) +
-        parseInt(magic) +
-        parseInt(acrobathics) +
-        parseInt(stealth) +
-        // parseInt(lockpick) +
-        parseInt(medicine) +
-        6
+    let skillsSum = 0
+    skillList.map(skill => skillsSum += skills[skill?.id] ? parseInt(skills[skill?.id]) + 2 : 0)
 
     const calculatedHealth = CalculateHealth(strength)
     const calculatedMove = CalculateMove(agility)
@@ -69,6 +60,6 @@ export const getCharacterPrice = (props) => {
             20 * Math.max(skillsSum, -6) +
             20 * defence) * (actions / 2) / 5) * 5,
 
-        35
+        5
     )
 }

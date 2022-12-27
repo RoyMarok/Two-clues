@@ -1,32 +1,24 @@
 import { atom, selector } from 'recoil'
 
 import { getCharacterPrice } from './utils'
+import { skillsState } from './skills'
 
 export const defaultHuman = {
     characteristics: {
-        strength: 11,
-        agility: 11,
-        perception: 12,
-        intelligence: 13,
-        health: 3,
-        move: 4,
+        strength: 14,
+        agility: 14,
+        perception: 14,
+        intelligence: 14,
+        health: 1,
+        move: 3,
         panic: 0,
         defence: 0,
         fly: false
     },
-    skills: {
-        melee: '0',
-        // throwing: '-2',
-        guns: '0',
-        magic: '-2',
-        acrobathics: '-1',
-        stealth: '-2',
-        // lockpick: '-2',
-        medicine: '-2'
-    },
+    skills: {},
     actions: 2,
     title: '',
-    price: '45',
+    price: '20',
     weapons: [],
     faction: 'Common_0',
     armour: ''
@@ -42,9 +34,13 @@ export const changeCharacterInState = selector({
     get: ({get}) => get(characterState),
     set: ({get, set}, props) => {
         const characters = get(characterState)
+        const skillList = get(skillsState)
         const passedProps = {
             ...props,
-            price: getCharacterPrice(props)
+            price: getCharacterPrice({
+                ...props,
+                skillList
+            })
         }
         set(characterState, [
             ...characters.slice(0, passedProps?.index),

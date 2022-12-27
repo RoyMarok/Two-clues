@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { withTranslation } from 'react-i18next'
 
-import { ArmourState } from '../atoms'
+import { ArmourState, SkillsList } from '../atoms'
 import { clamp, CalculateHealth, CalculateMove, getElementByProp } from '../utils'
 import {
     BorderWrapper,
@@ -42,6 +42,7 @@ const actionsOptions = [
 
 export const CharacterComponent = (props) => {
     const armours = useRecoilValue(ArmourState.setState)
+    const skillsList = useRecoilValue(SkillsList.setState)
     const { index, currentStats, onChange, weapons, allTraits, t } = props
 
     const [titleValue, setTitleValue] = useState(currentStats?.title  || '')
@@ -60,7 +61,6 @@ export const CharacterComponent = (props) => {
     } = currentStats
     const {
         agility,
-        defence,
         health,
         intelligence,
         move,
@@ -70,17 +70,7 @@ export const CharacterComponent = (props) => {
         fly
     } = characteristics
 
-    const {
-        melee,
-        guns,
-        magic,
-        acrobathics,
-        stealth,
-        lockpick,
-        medicine
-    } = skills
-
-    
+  
 
     const changeStrength = (e) => {
         e.preventDefault()
@@ -175,119 +165,22 @@ export const CharacterComponent = (props) => {
             }
         })
     }
-    const changeDefence = (e) => {
+
+    const changeSkill = (skillName) => (e) => {
         e.preventDefault()
         const { value } = e.target
         onChange({
             ...currentStats,
             index,
-            characteristics: {
-                ...currentStats?.characteristics,
-                defence: clamp(value, 0, 2)
+            skills: {
+                ...currentStats?.skills,
+                [skillName]: value
             }
-           
         })
     }
 
-    const changeMelee = (e) => {
-        e.preventDefault()
-        const { value } = e.target
-        onChange({
-            ...currentStats,
-            index,
-            skills: {
-                ...currentStats?.skills,
-                melee: value
-            }
-        })
-    }
-    const changeThrowing = (e) => {
-        e.preventDefault()
-        const { value } = e.target
-        onChange({
-            ...currentStats,
-            index,
-            skills: {
-                ...currentStats?.skills,
-                throwing: value
-            }
-        })
-    }
-    const changeGuns = (e) => {
-        e.preventDefault()
-        const { value } = e.target
-        onChange({
-            ...currentStats,
-            index,
-            skills: {
-                ...currentStats?.skills,
-                guns: value
-            }
-        })
-    }
-    const changeMagic = (e) => {
-        e.preventDefault()
-        const { value } = e.target
-        onChange({
-            ...currentStats,
-            index,
-            skills: {
-                ...currentStats?.skills,
-                magic: value
-            }
-        })
-    }
-    const changeAcrobathics = (e) => {
-        e.preventDefault()
-        const { value } = e.target
-        onChange({
-            ...currentStats,
-            index,
-            skills: {
-                ...currentStats?.skills,
-                acrobathics: value
-            }
-        })
-    }
-    const changeStealth = (e) => {
-        e.preventDefault()
-        const { value } = e.target
-        onChange({
-            ...currentStats,
-            index,
-            skills: {
-                ...currentStats?.skills,
-                stealth: value
-            }
-        })
-    }
-    const changeLockpick = (e) => {
-        e.preventDefault()
-        const { value } = e.target
-        onChange({
-            ...currentStats,
-            index,
-            skills: {
-                ...currentStats?.skills,
-                lockpick: value
-            }
-        })
-    }
-    const changeMedicine = (e) => {
-        e.preventDefault()
-        const { value } = e.target
-        onChange({
-            ...currentStats,
-            index,
-            skills: {
-                ...currentStats?.skills,
-                medicine: value
-            }
-        })
-    }
     const changeTitle = (e) => {
-        // e.preventDefault()
-        // const { value } = e.target
+
         onChange({
             ...currentStats,
             index,
@@ -376,115 +269,118 @@ export const CharacterComponent = (props) => {
         <>  
             <FlexWrapper>
                 <div>
-                    <BorderWrapper>
-                        <FlexWrapper>
-                            <GridCell width={12} filled serif><Value value={titleValue} onChange={handleSetTitleValue} onBlur={changeTitle} /></GridCell>
-                            <GridCell width={1} center filled><GetIcon color="primary" icon="coin" /></GridCell>
-                            <GridCell width={1} inverse center>{overallPrice}</GridCell>
-                        </FlexWrapper>
-                        <FlexWrapper>
-                            <NonPrintableBlock>
-                                <GridCell width={8} center>
-                                    <InsertedNames onChange={generateTitle} index={index} selectedFaction={faction} setSelectedFaction={setSelectedFaction} />
-                                </GridCell>
-                                
-                            </NonPrintableBlock>
-                            <OnlyPrintableBlock>
-                                <FlexWrapper>
-                                    <GridCell filled width={2}>Опыт</GridCell>
-                                    <GridCell width={6} ></GridCell>
-                                </FlexWrapper>
-                            </OnlyPrintableBlock>
-                            
-                            <GridCell width={5} >{t('band.character.characteristics')}</GridCell>
-                            <GridCell width={1} filled center>{price}</GridCell>
-                            
-                        </FlexWrapper>
-
-                        <FlexWrapper>
-                            <GridCell width="8" height="6" center>
-                                <FlexWrapper>
-                                    <FieldNumber title="Сила" value={strength} onChange={changeStrength} filled icon="strength" />
-                                    <FieldNumber title="Лов" value={agility} onChange={changeAgility} icon="agility" />
-                                    <FieldNumber title="Вос" value={perception} onChange={changePerception} filled icon="perception" />
-                                    <FieldNumber title="Инт" value={intelligence} onChange={changeIntelligence} icon="intelligence" />
-                                </FlexWrapper>
-                                <FlexWrapper>
-                                    <FieldNumber title="Зд" value={health} onChange={changeHealth} icon="health" filled />
-                                    <FieldNumber title="Движ" value={move} onChange={changeMove} icon={fly ? 'fly' : 'move'} iconButton iconButtonClick={changeFly}/>
-                                    <FieldNumber title="Ужас" value={panic} onChange={changePanic} icon="panic" filled />
-                                    <GridCell width="2" height="3" center>
-                                        <GridCell width="2" height="1" center black>
-                                            <GetIcon icon="defence" />
-                                        </GridCell>
-                                        <FlexWrapper>
-                                            <GridCell center><GetIcon icon="up" color="secondary" /></GridCell>
-                                            <GridCell center big black>{armourParams?.front}</GridCell>
-                                        </FlexWrapper>
-                                        <FlexWrapper>
-                                            <GridCell center><GetIcon icon="down" color="secondary" /></GridCell>
-                                            <GridCell center big black>{armourParams?.rear}</GridCell>
-                                        </FlexWrapper>
+                    <div>
+                        <BorderWrapper>
+                            <FlexWrapper>
+                                <GridCell width={12} filled serif><Value value={titleValue} onChange={handleSetTitleValue} onBlur={changeTitle} /></GridCell>
+                                <GridCell width={1} center filled><GetIcon color="primary" icon="coin" /></GridCell>
+                                <GridCell width={1} inverse center>{overallPrice}</GridCell>
+                            </FlexWrapper>
+                            <FlexWrapper>
+                                <NonPrintableBlock>
+                                    <GridCell width={8} center>
+                                        <InsertedNames onChange={generateTitle} index={index} selectedFaction={faction} setSelectedFaction={setSelectedFaction} />
                                     </GridCell>
-                                    {/* <FieldNumber title="Броня" value={defence} onChange={changeDefence}  icon="defence" /> */}
-                                </FlexWrapper>
-                            </GridCell>
-                            <GridCell width="6" height="6" center>
-                                {/* <FlexWrapper>
+
+                                </NonPrintableBlock>
+                                <OnlyPrintableBlock>
+                                    <FlexWrapper>
+                                        <GridCell filled width={2}>Опыт</GridCell>
+                                        <GridCell width={6} ></GridCell>
+                                    </FlexWrapper>
+                                </OnlyPrintableBlock>
+
+                                <GridCell width={5} >{t('band.character.characteristics')}</GridCell>
+                                <GridCell width={1} filled center>{price}</GridCell>
+
+                            </FlexWrapper>
+
+                            <FlexWrapper>
+                                <GridCell width="8" height="6" center>
+                                    <FlexWrapper>
+                                        <FieldNumber title="Сила" value={strength} onChange={changeStrength} filled icon="strength" />
+                                        <FieldNumber title="Лов" value={agility} onChange={changeAgility} icon="agility" />
+                                        <FieldNumber title="Вос" value={perception} onChange={changePerception} filled icon="perception" />
+                                        <FieldNumber title="Инт" value={intelligence} onChange={changeIntelligence} icon="intelligence" />
+                                    </FlexWrapper>
+                                    <FlexWrapper>
+                                        <FieldNumber title="Зд" value={health} onChange={changeHealth} icon="health" filled />
+                                        <FieldNumber title="Движ" value={move} onChange={changeMove} icon={fly ? 'fly' : 'move'} iconButton iconButtonClick={changeFly} />
+                                        <FieldNumber title="Ужас" value={panic} onChange={changePanic} icon="panic" filled />
+                                        <GridCell width="2" height="3" center>
+                                            <GridCell width="2" height="1" center black>
+                                                <GetIcon icon="defence" />
+                                            </GridCell>
+                                            <FlexWrapper>
+                                                <GridCell center><GetIcon icon="up" color="secondary" /></GridCell>
+                                                <GridCell center big black>{armourParams?.front}</GridCell>
+                                            </FlexWrapper>
+                                            <FlexWrapper>
+                                                <GridCell center><GetIcon icon="down" color="secondary" /></GridCell>
+                                                <GridCell center big black>{armourParams?.rear}</GridCell>
+                                            </FlexWrapper>
+                                        </GridCell>
+                                        {/* <FieldNumber title="Броня" value={defence} onChange={changeDefence}  icon="defence" /> */}
+                                    </FlexWrapper>
+                                </GridCell>
+                                <GridCell width="6" height="6" center>
+                                    {/* <FlexWrapper>
                                     
                                 </FlexWrapper> */}
-                                
-                                <FlexWrapper>
-                                    <GridCell width={5} >{t('band.character.weapons')}</GridCell>
-                                    <GridCell width={1} filled center>{allWeaponsPrice}</GridCell>
-                                </FlexWrapper>
-                                
-                                <Mass value={overallMass} max={health+3} black={armourMass} />
-                                <GridCell width="6" center>
-                                    <SelectWithOptions onChange={selectArmour} elements={armours} selected={armour} index={index} passedName="armourSelect" placeholder="Броня"/>
-                                </GridCell>
-                                <GridCell width="6" center>
-                                    <SelectWithOptions onChange={selectActions} elements={actionsOptions} selected={actions} index={index} passedName="actionSelect" />
-                                </GridCell>
-                                
-                            </GridCell>
-                        </FlexWrapper>
 
-                    </BorderWrapper>
-                    <NonPrintableBlock>
+                                    <FlexWrapper>
+                                        <GridCell width={5} >{t('band.character.weapons')}</GridCell>
+                                        <GridCell width={1} filled center>{allWeaponsPrice}</GridCell>
+                                    </FlexWrapper>
+
+                                    <Mass value={overallMass} max={health + 3} black={armourMass} />
+                                    <GridCell width="6" center>
+                                        <SelectWithOptions onChange={selectArmour} elements={armours} selected={armour} index={index} passedName="armourSelect" placeholder="Броня" />
+                                    </GridCell>
+                                    <GridCell width="6" center>
+                                        <SelectWithOptions onChange={selectActions} elements={actionsOptions} selected={actions} index={index} passedName="actionSelect" />
+                                    </GridCell>
+
+                                </GridCell>
+                            </FlexWrapper>
+
+                        {/* </BorderWrapper>
+                    </div>
+                    <div>
+                        <BorderWrapper> */}
+                            <FlexWrapper>
+                                <GridCell width="8" ></GridCell>
+                                <GridCell width="1" center >-2</GridCell>
+                                <GridCell width="1" center >-1</GridCell>
+                                <GridCell width="1" center ></GridCell>
+                                <GridCell width="1" center >+1</GridCell>
+                                <GridCell width="1" center >+2</GridCell>
+                                <GridCell width="1" center >%</GridCell>
+                            </FlexWrapper>
+                            {
+                                skillsList.map((item, index) => (
+                                    <Skill
+                                        {...(item?.attributes || {})}
+                                        title={t(`band.character.skill.${item?.id}`)}
+                                        value={skills[item?.id]}
+                                        key={item?.id}
+                                        even={!(index % 2)}
+                                        onChange={changeSkill(item?.id)}
+                                        character={characteristics}
+                                    />))
+                            }
+
+                        </BorderWrapper>
+                    </div>
+                    
+                    <OnlyPrintableBlock>
                         <GridCell center />
-                    </NonPrintableBlock>
+                    </OnlyPrintableBlock>
                     
                 </div>
         
                 <GridCell center />
                 <div>
-                    <BorderWrapper>
-                        <FlexWrapper>
-                            <GridCell width="8" ></GridCell>
-                            <GridCell width="1" center >-2</GridCell>
-                            <GridCell width="1" center >-1</GridCell>
-                            <GridCell width="1" center ></GridCell>
-                            <GridCell width="1" center >+1</GridCell>
-                            <GridCell width="1" center >+2</GridCell>
-                            <GridCell width="1" center >%</GridCell>
-                        </FlexWrapper>
-
-                        <Skill title={t('band.character.skill.melee')} value={melee} onChange={changeMelee} dice1={strength} dice2={agility} strength agility />
-                        {/* <Skill title="Метательное"  value={throwing} onChange={changeThrowing} dice1={strength} dice2={perception} strength perception /> */}
-                        <Skill title={t('band.character.skill.guns')} value={guns} onChange={changeGuns} dice1={perception} dice2={intelligence} perception intelligence even />
-                        <Skill title={t('band.character.skill.magic')} value={magic} onChange={changeMagic} dice1={perception} dice2={intelligence} perception intelligence />
-                        <Skill title={t('band.character.skill.acrobathics')} value={acrobathics} onChange={changeAcrobathics} dice1={agility} acrobathics agility even />
-                        <Skill title={t('band.character.skill.stealth')}  value={stealth} onChange={changeStealth} dice1={agility} agility />
-                        {/* <Skill title="Взлом" value={lockpick} onChange={changeLockpick} dice1={perception} perception /> */}
-                        <Skill title={t('band.character.skill.medicine')} even value={medicine} onChange={changeMedicine} dice1={intelligence} intelligence />
-                        <Skill title={t('band.character.skill.defence')} value={String(armourParams?.front || defence)} dice1={agility} dice2={perception} agility perception />
-                    </BorderWrapper>
-                    <NonPrintableBlock>
-                        <GridCell center />
-                    </NonPrintableBlock>
-                    
-                </div>
                     {[...currentStats.weapons, ''].map((item, index2) =>
                         <WeaponsSelection
                             passedName={`${index}_${index2}`}
@@ -495,6 +391,9 @@ export const CharacterComponent = (props) => {
                             index={index2}
                             onChange={changeWeapon(index2)}
                         />)}
+                    
+                </div>
+                    
             </FlexWrapper>
             <OnlyPrintableBlock>
                 <GridCell center />

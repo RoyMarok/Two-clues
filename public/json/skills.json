@@ -1,0 +1,38 @@
+[
+    {
+        "id": "melee",
+        "attributes": {
+            "strength": true,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
+        }
+    },
+    {
+        "id": "guns",
+        "attributes": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": true
+        }
+    },
+    {
+        "id": "acrobathics",
+        "attributes": {
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
+        }
+    },
+    {
+        "id": "stealth",
+        "attributes": {
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
+        }
+    }
+]

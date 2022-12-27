@@ -132,5 +132,9 @@ export {
 } from './armour'
 
 export {
+    SkillsList
+} from './skills'
+
+export {
     generateRandomNames
 } from './utils'

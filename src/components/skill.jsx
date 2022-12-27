@@ -89,20 +89,24 @@ const diceChanceMinus2d20 = (dice1, dice2 = 0, N = 20) => Math.round(
     ) * (N + 1 - dice2) * 100 / Math.pow(N, 4)
 )
 
+const attrList = ['strength', 'agility', 'perception', 'intelligence']
 
-export const Skill = ({ title, value, onChange, dice1, dice2, even = false, strength = false, agility = false, perception = false, intelligence = false }) => (
+export const Skill = ({ title, value = '-2', onChange, dice1, dice2, even = false, character = {}, ...props }) => {
+    const passedValues = attrList.map(item => props[item] && character[item]).filter(item => Boolean(item))
+    const chance = dicechanceChoose(passedValues[0], passedValues.length > 1 && passedValues[1], value)
+    return (
     <FlexWrapper>
         <GridCell width="4">{title}</GridCell>
-        <GridCell width="1" center><GetIcon color="secondary" icon={strength && 'strength'} /></GridCell>
-        <GridCell width="1" center><GetIcon color="secondary" icon={agility && 'agility'} /></GridCell>
-        <GridCell width="1" center><GetIcon color="secondary" icon={perception && 'perception'} /></GridCell>
-        <GridCell width="1" center><GetIcon color="secondary" icon={intelligence && 'intelligence'} /></GridCell>
+        <GridCell width="1" center><GetIcon color="secondary" icon={props?.strength && 'strength'} /></GridCell>
+        <GridCell width="1" center><GetIcon color="secondary" icon={props?.agility && 'agility'} /></GridCell>
+        <GridCell width="1" center><GetIcon color="secondary" icon={props?.perception && 'perception'} /></GridCell>
+        <GridCell width="1" center><GetIcon color="secondary" icon={props?.intelligence && 'intelligence'} /></GridCell>
 
         <GridCell width="1" center filled={even}><Button print value={-2} title={value === '-2' ? '-2' : ''} onClick={onChange} /></GridCell>
         <GridCell width="1" center filled={!even}><Button print value={-1} title={value === '-1' ? '-1' : ''} onClick={onChange} /></GridCell>
         <GridCell width="1" center filled={even}><Button print value={0} title={value === '0' ? '•' : ''} onClick={onChange} /></GridCell>
         <GridCell width="1" center filled={!even}><Button print value={1} title={value === '1' ? '+1' : ''} onClick={onChange} /></GridCell>
         <GridCell width="1" center filled={even}><Button print value={2} title={value === '2' ? '+2' : ''} onClick={onChange} /></GridCell>
-        <GridCell width="1" center black={dicechanceChoose(dice1, dice2, value) >= 50} >{dicechanceChoose(dice1, dice2, value)}</GridCell>
+        <GridCell width="1" center black={chance >= 50} >{chance}</GridCell>
     </FlexWrapper>
-)
+)}
