@@ -1,38 +1,135 @@
 [
     {
+        "id": "move",
+        "skill": false,
+        "attributes": {
+            "strength": false,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "action": {
+            "duration": {
+                "stand": 1,
+                "hidden": 2,
+                "panic": 0
+            },
+            "first": true,
+            "remain": true
+        }
+    },
+    {
+        "id": "moveRandom",
+        "skill": false,
+        "attributes": {
+            "strength": false,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "action": {
+            "duration": {
+                "stand": 0,
+                "hidden": 0,
+                "panic": 1
+            },
+            "first": true,
+            "remain": true
+        }
+    },
+    {
         "id": "melee",
+        "skill": true,
         "attributes": {
             "strength": true,
             "agility": true,
             "perception": false,
             "intelligence": false
+        },
+        "action": {
+            "duration": {
+                "stand": 1,
+                "hidden": 0,
+                "panic": 0
+            },
+            "first": false,
+            "remain": true
         }
     },
     {
         "id": "guns",
+        "skill": true,
         "attributes": {
             "strength": false,
             "agility": false,
             "perception": true,
             "intelligence": true
+        },
+        "action": {
+            "duration": {
+                "stand": 1,
+                "hidden": 1,
+                "panic": 0
+            },
+            "first": false,
+            "remain": true
+        }
+    },
+    {
+        "id": "aim",
+        "skill": false,
+        "attributes": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "action": {
+            "duration": {
+                "stand": 1,
+                "hidden": 1,
+                "panic": 0
+            },
+            "first": true,
+            "remain": true
         }
     },
     {
         "id": "acrobathics",
+        "skill": true,
         "attributes": {
             "strength": false,
             "agility": true,
             "perception": false,
             "intelligence": false
+        },
+        "action": {
+            "duration": {
+                "stand": 1,
+                "hidden": 0,
+                "panic": 0
+            },
+            "first": true,
+            "remain": true
         }
     },
     {
         "id": "stealth",
+        "skill": true,
         "attributes": {
             "strength": false,
             "agility": true,
             "perception": false,
             "intelligence": false
+        },
+        "action": {
+            "duration": {
+                "stand": 1,
+                "hidden": 1,
+                "panic": 0
+            },
+            "first": true,
+            "remain": true
         }
     }
 ]

@@ -1,18 +1,22 @@
 import React from 'react'
 import { withTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
 
 import { BorderWrapper, GridCell, FlexWrapper } from './styled'
 import { FieldNumber } from './field-number'
 import { Mass } from './mass'
 import { GetIcon } from './get-icon'
 import { Skill } from './skill'
-import { defaultHuman } from '../atoms'
+import { Actions } from './actions'
+import { defaultHuman, SkillsList  } from '../atoms'
 
-export const CharacterDisplayComponent = ({ t }) => (
+export const CharacterDisplayComponent = ({ t }) => {
+    const skillsList = useRecoilValue(SkillsList.setState)
+    return (
     <FlexWrapper>
         <BorderWrapper>
             <FlexWrapper>
-                <GridCell width={12} filled >{t('band.character.title')}</GridCell>
+                <GridCell width={12} filled black>{t('band.character.title')}</GridCell>
                 <GridCell width={1} center filled><GetIcon color="primary" icon="coin" /></GridCell>
                 <GridCell width={1} inverse center>{defaultHuman.price}</GridCell>
             </FlexWrapper>
@@ -63,10 +67,10 @@ export const CharacterDisplayComponent = ({ t }) => (
                     </GridCell>
                 </GridCell>
             </FlexWrapper>
-        </BorderWrapper>
+        {/* </BorderWrapper>
         <GridCell center />
-        <BorderWrapper>
-            <FlexWrapper>
+        <BorderWrapper> */}
+            {/* <FlexWrapper>
                 <GridCell width="8" ></GridCell>
                 <GridCell width="1" center >-2</GridCell>
                 <GridCell width="1" center >-1</GridCell>
@@ -75,15 +79,20 @@ export const CharacterDisplayComponent = ({ t }) => (
                 <GridCell width="1" center >+2</GridCell>
                 <GridCell width="1" center >%</GridCell>
             </FlexWrapper>
-            <Skill title={t('band.character.skill.melee')} value={defaultHuman.skills.melee} dice1={defaultHuman.characteristics.strength} dice2={defaultHuman.characteristics.agility} strength agility />
-            <Skill title={t('band.character.skill.guns')} value={defaultHuman.skills.guns} dice1={defaultHuman.characteristics.perception} dice2={defaultHuman.characteristics.intelligence} perception intelligence even />
-            <Skill title={t('band.character.skill.magic')} value={defaultHuman.skills.magic} dice1={defaultHuman.characteristics.perception} dice2={defaultHuman.characteristics.intelligence} perception intelligence />
-            <Skill title={t('band.character.skill.acrobathics')} value={defaultHuman.skills.acrobathics} dice1={defaultHuman.characteristics.agility} acrobathics agility even />
-            <Skill title={t('band.character.skill.stealth')} value={defaultHuman.skills.stealth} dice1={defaultHuman.characteristics.agility} agility />
-            <Skill title={t('band.character.skill.medicine')} even value={defaultHuman.skills.medicine} dice1={defaultHuman.characteristics.intelligence} intelligence />
-            <Skill title={t('band.character.skill.defence')} value={defaultHuman.skills.defence} dice1={defaultHuman.characteristics.agility} dice2={defaultHuman.characteristics.perception} agility perception />
+            {
+                skillsList.filter(item => item?.skill).map((item, index) => (
+                    <Skill
+                        {...(item?.attributes || {})}
+                        title={t(`band.character.skill.${item?.id}`)}
+                        value={defaultHuman?.skills[item?.id]}
+                        key={item?.id}
+                        even={!(index % 2)}
+                        character={defaultHuman.characteristics}
+                    />))
+            } */}
+            <Actions />
         </BorderWrapper>
     </FlexWrapper>
-)
+)}
 
 export const CharacterDisplay = withTranslation()(CharacterDisplayComponent)

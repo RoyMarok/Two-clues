@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { withTranslation } from 'react-i18next'
 
 import { ArmourState, SkillsList } from '../atoms'
@@ -20,6 +20,7 @@ import { GetIcon } from './get-icon'
 import { WeaponsSelection, SelectWithOptions } from './weapons-selection'
 import { Mass } from './mass'
 import { InsertedNames } from './names-generator'
+import { Actions } from './actions'
 
 const actionsOptions = [
     {
@@ -348,30 +349,34 @@ export const CharacterComponent = (props) => {
                     </div>
                     <div>
                         <BorderWrapper> */}
-                            <FlexWrapper>
-                                <GridCell width="8" ></GridCell>
-                                <GridCell width="1" center >-2</GridCell>
-                                <GridCell width="1" center >-1</GridCell>
-                                <GridCell width="1" center ></GridCell>
-                                <GridCell width="1" center >+1</GridCell>
-                                <GridCell width="1" center >+2</GridCell>
-                                <GridCell width="1" center >%</GridCell>
-                            </FlexWrapper>
-                            {
-                                skillsList.map((item, index) => (
-                                    <Skill
-                                        {...(item?.attributes || {})}
-                                        title={t(`band.character.skill.${item?.id}`)}
-                                        value={skills[item?.id]}
-                                        key={item?.id}
-                                        even={!(index % 2)}
-                                        onChange={changeSkill(item?.id)}
-                                        character={characteristics}
-                                    />))
-                            }
-
+                            <NonPrintableBlock>
+                                <FlexWrapper>
+                                    <GridCell width="8" ></GridCell>
+                                    <GridCell width="1" center >-2</GridCell>
+                                    <GridCell width="1" center >-1</GridCell>
+                                    <GridCell width="1" center ></GridCell>
+                                    <GridCell width="1" center >+1</GridCell>
+                                    <GridCell width="1" center >+2</GridCell>
+                                    <GridCell width="1" center >%</GridCell>
+                                </FlexWrapper>
+                                {
+                                    skillsList.filter(item => item?.skill).map((item, index) => (
+                                        <Skill
+                                            {...(item?.attributes || {})}
+                                            title={t(`band.character.skill.${item?.id}`)}
+                                            value={skills[item?.id]}
+                                            key={item?.id}
+                                            even={!(index % 2)}
+                                            onChange={changeSkill(item?.id)}
+                                            character={characteristics}
+                                        />))
+                                }
+                            </NonPrintableBlock>
+                            
+                            <Actions character={currentStats} />
                         </BorderWrapper>
                     </div>
+                    
                     
                     <OnlyPrintableBlock>
                         <GridCell center />

@@ -22,6 +22,9 @@ import { ReactComponent as FaceIcon } from '../icons/face.svg'
 import { ReactComponent as CrossIcon } from '../icons/cross.svg'
 import { ReactComponent as PrintIcon } from '../icons/printer.svg'
 import { ReactComponent as FlyIcon } from '../icons/fly.svg'
+import { ReactComponent as HiddenIcon } from '../icons/invisible.svg'
+import { ReactComponent as LikeIcon } from '../icons/like.svg'
+import { ReactComponent as ConfusedIcon } from '../icons/confused.svg'
 
 export const GetIcon = ({ icon, ...props }) => {
     switch (icon) {
@@ -69,6 +72,12 @@ export const GetIcon = ({ icon, ...props }) => {
             return <Icon {...props}><FlyIcon /></Icon>
         case 'print':
             return <Icon {...props}><PrintIcon /></Icon>
+        case 'hidden':
+            return <Icon {...props}><HiddenIcon /></Icon>
+        case 'like':
+            return <Icon {...props}><LikeIcon /></Icon>
+        case 'confused':
+            return <Icon {...props}><ConfusedIcon /></Icon>
         default:
             return null
     }
