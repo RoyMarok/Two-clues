@@ -61,5 +61,5 @@ export const getCharacterPrice = (props) => {
             20 * defence) * (actions / 2) / 5) * 5,
 
         5
-    )
+    )/5
 }

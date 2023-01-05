@@ -41,5 +41,5 @@ export const getWeaponPrice = (props) => {
     const calculatedPrice = parseInt(range) > 1 ? priceRanged : priceCC
     const masterWeaponPrice = weapons.filter(weapon => weapon.id === masterIndex)?.[0]?.price
 
-   return masterIndex ? Math.max(calculatedPrice - masterWeaponPrice, 0) : calculatedPrice
+   return (masterIndex ? Math.max(calculatedPrice - masterWeaponPrice, 0) : calculatedPrice)/5
 }

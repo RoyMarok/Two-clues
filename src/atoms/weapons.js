@@ -27,7 +27,8 @@ export const weaponStateLoaded = selector({
 export const weaponStateSetFiltered = selector({
     key: 'weaponStateSetFiltered',
     get: ({get}) => get(weaponState),
-    set: ({set}, data) => {
+    set: ({get, set}, data) => {
+        const weapons = get(weaponState)
         set(weaponState, data.sort((a, b) => {
             if (a.range > b.range) {
                 return 1
@@ -38,7 +39,15 @@ export const weaponStateSetFiltered = selector({
                     return -1
                 }
             }
-        }).map((weapon, index) => ({...weapon, id: `weapon_${index}`})))
+        }).map((weapon, index) => ({
+            ...weapon,
+            
+            price: getWeaponPrice({
+                ...weapon,
+                allTraits: get(weaponTraitsState),
+                weapons
+            })
+        })))
     }
 })
 
@@ -78,7 +87,15 @@ export const addWeaponsInState = selector({
     get: ({get}) => get(weaponState),
     set: ({get, set}) => {
         const weapons = get(weaponState)
-        set(weaponState, [...weapons, defaultWeapon])
+        set(weaponState, [...weapons, {
+            ...defaultWeapon,
+            id: `weapon_${weapons.length}`,
+            price: getWeaponPrice({
+                ...defaultWeapon,
+                allTraits: get(weaponTraitsState),
+                weapons
+            })
+        }])
     }
 })
 

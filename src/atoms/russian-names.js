@@ -20,8 +20,9 @@ export const russianNameLoaded = selector({
 
 export const russianRandomName = (names) => {
     const femaleName = getRandomName(names?.female?.firstName)
+    const randomFamilyName = getRandomName([getRandomName(names?.familyName), [getRandomName(names?.familyName), '-', getRandomName(names?.familyName)].join('')])
     return ({
-    male: [getRandomName(names?.male?.firstName), [getRandomName(names?.male?.firstName), getRandomName(names?.male?.middleName)].join('').replace(/(йо)|(ьо)/, 'е').replace('аович', 'вич'), getRandomName(names?.familyName)].filter(item => Boolean(item)).join(' '),
+    male: [getRandomName(names?.male?.firstName), [getRandomName(names?.male?.firstName), getRandomName(names?.male?.middleName)].join('').replace(/(йо)|(ьо)/, 'е').replace('аович', 'вич'), randomFamilyName].filter(item => Boolean(item)).join(' '),
     female: femaleName? [femaleName, [getRandomName(names?.male?.firstName), getRandomName(names?.female?.middleName)].join('').replace(/(йо)|(ьо)/, 'е'), [getRandomName(names?.familyName), 'а'].join('').replace('ыйа', 'ия').replace('аа', 'а').replace('ойа', 'ая').replace('ьа', 'ь')].filter(item => Boolean(item)).join(' ') : ''
 })}
 

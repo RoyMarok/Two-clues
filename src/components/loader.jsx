@@ -24,7 +24,8 @@ import {
     ChaosDwarfNames,
     NighthauntNames,
     BretonianNames,
-    SkillsList
+    SkillsList,
+    FractionsList
 } from '../atoms'
 
 const LoadFile = ({ axios, src, stateLoaded, setState }) => {
@@ -62,7 +63,8 @@ const loadingFiles = [
     { ...ChaosDwarfNames },
     { ...NighthauntNames },
     { ...BretonianNames },
-    { ...SkillsList }
+    { ...SkillsList },
+    { ...FractionsList }
 ]
 
 export const LoaderComponent = ({ axios }) => (

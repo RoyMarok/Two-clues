@@ -38,6 +38,43 @@
         }
     },
     {
+        "id": "acrobathics",
+        "skill": true,
+        "attributes": {
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
+        },
+        "action": {
+            "duration": {
+                "stand": 1,
+                "hidden": 0,
+                "panic": 0
+            },
+            "first": true,
+            "remain": true
+        }
+    }, {
+        "id": "stealth",
+        "skill": true,
+        "attributes": {
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
+        },
+        "action": {
+            "duration": {
+                "stand": 1,
+                "hidden": 0,
+                "panic": 0
+            },
+            "first": true,
+            "remain": true
+        }
+    },
+    {
         "id": "melee",
         "skill": true,
         "attributes": {
@@ -52,8 +89,8 @@
                 "hidden": 0,
                 "panic": 0
             },
-            "first": false,
-            "remain": true
+            "first": true,
+            "remain": false
         }
     },
     {
@@ -95,41 +132,23 @@
         }
     },
     {
-        "id": "acrobathics",
-        "skill": true,
+        "id": "reload",
+        "skill": false,
         "attributes": {
             "strength": false,
-            "agility": true,
+            "agility": false,
             "perception": false,
             "intelligence": false
         },
         "action": {
             "duration": {
-                "stand": 1,
-                "hidden": 0,
-                "panic": 0
-            },
-            "first": true,
-            "remain": true
-        }
-    },
-    {
-        "id": "stealth",
-        "skill": true,
-        "attributes": {
-            "strength": false,
-            "agility": true,
-            "perception": false,
-            "intelligence": false
-        },
-        "action": {
-            "duration": {
-                "stand": 1,
-                "hidden": 1,
+                "stand": "~",
+                "hidden": "~",
                 "panic": 0
             },
             "first": true,
             "remain": true
         }
     }
+    
 ]

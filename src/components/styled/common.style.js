@@ -24,13 +24,16 @@ export const GridCell = styled.div(({
             muted = false,
             big = false,
             serif = false,
-            open = false
+            open = false,
+            wrapper = false,
+            pageBreak = false
+
         }) => css`
     display: block;
     height: ${height * gridBase}px;
     width: ${width * gridBase}px;
     text-align: left;
-    padding-left: ${parseInt(gridBase/2)}px;
+    padding-left: ${wrapper ? 0 : parseInt(gridBase/2)}px;
     line-height: ${height * gridBase}px;
     overflow: hidden;
     box-sizing: border-box;
@@ -43,12 +46,12 @@ export const GridCell = styled.div(({
     ${serif && 'font-family: sans-serif; font-weight: 700;'}
     ${height === 0.5 && '&>button { top: -'+gridBase/6+'px; }'}
     ${open && 'height: auto; line-height: 1em;'}
+    ${pageBreak && 'break-before: page;'}
     h2 {
         font-size: ${baseFontSize * 2}px;
         line-height: ${baseFontSize * 2}px;
         color: ${theme.primary};
-        margin: 0;
-        margin-top: ${baseFontSize}px;
+        margin: ${baseFontSize}px 0;
     }
     h3 {
         color: ${theme.primary};
@@ -58,10 +61,15 @@ export const GridCell = styled.div(({
     ul {
         margin: 0;
         margin-top: ${baseFontSize/2}px;
+        padding-left: ${parseInt(gridBase)}px;
+        li {
+            padding-left: ${parseInt(gridBase/2)}px;
+        }
     }
     p {
         margin: 0;
         margin-top: ${baseFontSize/2}px;
+        
     }
     em {
         font-style: normal;

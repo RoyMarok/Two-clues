@@ -29,13 +29,13 @@ export const ActionsComponent = ({ t, character }) => {
                 <GridCell width={1} filled center height={HEIGHT}>
                     {/* <GetIcon icon="intelligence" /> */}
                 </GridCell>
-                <GridCell width={1} filled center height={HEIGHT} big>±</GridCell>
+                <GridCell width={1} filled black center height={HEIGHT} big>±</GridCell>
                 
                 <GridCell width={1} filled black center height={HEIGHT}><GetIcon icon="like" /></GridCell>
                 <GridCell width={1} filled black center height={HEIGHT}><GetIcon icon="hidden" /></GridCell>
                 <GridCell width={1} filled black center height={HEIGHT}><GetIcon icon="panic" /></GridCell>
-                <GridCell width={1} filled center height={HEIGHT}>1</GridCell>
-                <GridCell width={1} filled center height={HEIGHT}>2+</GridCell>
+                <GridCell width={1} filled black center big height={HEIGHT}>1</GridCell>
+                <GridCell width={1} filled black center big height={HEIGHT}>2+</GridCell>
             </FlexWrapper>
             {actions.map((item, key) => {
                 const even = (key % 2)

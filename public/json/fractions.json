@@ -1,0 +1,53 @@
+[{
+        "title": "Dwarf",
+        "id": "original_dwarf",
+        "limits": {
+            "strength": {
+                "min": 6,
+                "max": 11
+            },
+            "agility": {
+                "min": 10,
+                "max": 14
+            },
+            "perception": {
+                "min": 10,
+                "max": 14
+            },
+            "health": {
+                "min": 2,
+                "max": 10
+            },
+            "move": {
+                "min": 3,
+                "max": 3
+            }
+        },
+        "values": [
+            {
+                "id": "leader",
+                "title": "Предводитель",
+                "values": [8, 10, 11, 12]
+            },
+            {
+                "id": "hero",
+                "title": "Герой",
+                "values": [8, 10, 11, 14]
+            },
+            {
+                "id": "master",
+                "title": "Мастер",
+                "values": [9, 9, 12, 13]
+            },
+            {
+                "id": "henchman",
+                "title": "Боец",
+                "values": [10, 12, 13, 14]
+            }
+
+        ],
+        "weapons": [
+            "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_9", "weapon_12", "weapon_17", "weapon_24", "weapon_25", "weapon_39", "weapon_56", "weapon_59"
+        ]
+    }
+]

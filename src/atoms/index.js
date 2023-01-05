@@ -136,5 +136,9 @@ export {
 } from './skills'
 
 export {
+    FractionsList
+} from './fractions'
+
+export {
     generateRandomNames
 } from './utils'

@@ -27,29 +27,32 @@ export const App = ({ t }) => (
     <AppWrapper>
         <NonPrintableBlock>
             <Loader />
-            <FlexWrapper>
-                <GridCell width={3} inverse center>
-                    <Link to="/">{t('names.title')}</Link>
-                </GridCell>
-                <GridCell width={3} inverse center>
-                    <Link to="/band">{t('band.title')}</Link>
-                </GridCell>
-                <GridCell width={3} inverse center>
-                    <Link to="/weapons">{t('weapons.title')}</Link>
-                </GridCell>
-                <GridCell width={3} inverse center>
-                    <Link to="/armours">{t('armours.title')}</Link>
-                </GridCell>
-                <GridCell width={3} inverse center>
-                    <Link to="/rules">{t('rules.title')}</Link>
-                </GridCell>
-                <GridCell width={1} center>
-                    <Button onClick={window.print}>
-                        <GetIcon icon="print" color="secondary" />
-                    </Button>
-                </GridCell>
-            </FlexWrapper>
+           
+                <FlexWrapper>
+                    <GridCell width={3} inverse center>
+                        <Link to="/">{t('names.title')}</Link>
+                    </GridCell>
+                    <GridCell width={3} inverse center>
+                        <Link to="/band">{t('band.title')}</Link>
+                    </GridCell>
+                    <GridCell width={3} inverse center>
+                        <Link to="/weapons">{t('weapons.title')}</Link>
+                    </GridCell>
+                    <GridCell width={3} inverse center>
+                        <Link to="/armours">{t('armours.title')}</Link>
+                    </GridCell>
+                    <GridCell width={3} inverse center>
+                        <Link to="/rules">{t('rules.title')}</Link>
+                    </GridCell>
+                    <GridCell width={1} center>
+                        <Button onClick={window.print}>
+                            <GetIcon icon="print" color="secondary" />
+                        </Button>
+                    </GridCell>
+                </FlexWrapper>
+            
         </NonPrintableBlock>
+
         <Routes>
             <Route path="/" element={<NamesGenerator />} />
             <Route path="/band" element={<Band />} />

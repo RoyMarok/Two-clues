@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { withTranslation } from 'react-i18next'
 
-import { ArmourState, SkillsList } from '../atoms'
 import { clamp, CalculateHealth, CalculateMove, getElementByProp } from '../utils'
 import {
     BorderWrapper,
@@ -41,10 +40,10 @@ const actionsOptions = [
     },
 ]
 
+
+
 export const CharacterComponent = (props) => {
-    const armours = useRecoilValue(ArmourState.setState)
-    const skillsList = useRecoilValue(SkillsList.setState)
-    const { index, currentStats, onChange, weapons, allTraits, t } = props
+    const { index, currentStats, onChange, weapons, allTraits, t, skillsList, limits, armours, values } = props
 
     const [titleValue, setTitleValue] = useState(currentStats?.title  || '')
 
@@ -76,7 +75,7 @@ export const CharacterComponent = (props) => {
     const changeStrength = (e) => {
         e.preventDefault()
         const { value } = e.target
-        const passedValue = clamp(value, 6, 14)
+        const passedValue = clamp(value, limits?.strength?.min, limits?.strength?.max)
         onChange({
             ...currentStats,
             index,
@@ -90,7 +89,7 @@ export const CharacterComponent = (props) => {
     const changeAgility = (e) => {
         e.preventDefault()
         const { value } = e.target
-        const passedValue = clamp(value, 6, 14)
+        const passedValue = clamp(value, limits?.agility?.min, limits?.agility?.max)
         onChange({
             ...currentStats,
             index,
@@ -104,7 +103,7 @@ export const CharacterComponent = (props) => {
     const changePerception = (e) => {
         e.preventDefault()
         const { value } = e.target
-        const passedValue = clamp(value, 6, 14)
+        const passedValue = clamp(value, limits?.perception?.min, limits?.perception?.max)
         onChange({
             ...currentStats,
             index,
@@ -117,7 +116,7 @@ export const CharacterComponent = (props) => {
     const changeIntelligence = (e) => {
         e.preventDefault()
         const { value } = e.target
-        const passedValue = clamp(value, 6, 14)
+        const passedValue = clamp(value, limits?.intelligence?.min, limits?.intelligence?.max)
         onChange({
             ...currentStats,
             index,
@@ -131,7 +130,7 @@ export const CharacterComponent = (props) => {
     const changeMove = (e) => {
         e.preventDefault()
         const { value } = e.target
-        const passedValue = clamp(value, 3, 8)
+        const passedValue = clamp(value, limits?.move?.min, limits?.move?.max)
         onChange({
             ...currentStats,
             index,
@@ -144,7 +143,7 @@ export const CharacterComponent = (props) => {
     const changeHealth = (e) => {
         e.preventDefault()
         const { value } = e.target
-        const passedValue = clamp(value, 1, 10)
+        const passedValue = clamp(value, limits?.health?.min, limits?.health?.max)
         onChange({
             ...currentStats,
             index,
@@ -299,15 +298,65 @@ export const CharacterComponent = (props) => {
                             <FlexWrapper>
                                 <GridCell width="8" height="6" center>
                                     <FlexWrapper>
-                                        <FieldNumber title="Сила" value={strength} onChange={changeStrength} filled icon="strength" />
-                                        <FieldNumber title="Лов" value={agility} onChange={changeAgility} icon="agility" />
-                                        <FieldNumber title="Вос" value={perception} onChange={changePerception} filled icon="perception" />
-                                        <FieldNumber title="Инт" value={intelligence} onChange={changeIntelligence} icon="intelligence" />
+                                        <FieldNumber
+                                            title="Сила"
+                                            value={strength}
+                                            onChange={changeStrength} filled
+                                            icon="strength"
+                                            values={values}
+                                            limits={limits?.strength}
+                                        />
+                                        <FieldNumber
+                                            title="Лов"
+                                            value={agility}
+                                            onChange={changeAgility}
+                                            icon="agility"
+                                            values={values}
+                                            limits={limits?.agility}
+                                        />
+                                        <FieldNumber
+                                            title="Вос"
+                                            value={perception}
+                                            onChange={changePerception}
+                                            filled
+                                            icon="perception"
+                                            values={values}
+                                            limits={limits?.perception}
+                                        />
+                                        <FieldNumber
+                                            title="Инт"
+                                            value={intelligence}
+                                            onChange={changeIntelligence}
+                                            icon="intelligence"
+                                            values={values}
+                                            limits={limits?.intelligence}
+                                            />
                                     </FlexWrapper>
                                     <FlexWrapper>
-                                        <FieldNumber title="Зд" value={health} onChange={changeHealth} icon="health" filled />
-                                        <FieldNumber title="Движ" value={move} onChange={changeMove} icon={fly ? 'fly' : 'move'} iconButton iconButtonClick={changeFly} />
-                                        <FieldNumber title="Ужас" value={panic} onChange={changePanic} icon="panic" filled />
+                                        <FieldNumber
+                                            title="Зд"
+                                            value={health}
+                                            onChange={changeHealth}
+                                            icon="health"
+                                            filled
+                                          
+                                        />
+                                        <FieldNumber
+                                            title="Движ"
+                                            value={move}
+                                            onChange={changeMove}
+                                            icon={fly ? 'fly' : 'move'}
+                                            iconButton
+                                            iconButtonClick={changeFly}
+                                           
+                                        />
+                                        <FieldNumber
+                                            title="Ужас"
+                                            value={panic}
+                                            onChange={changePanic}
+                                            icon="panic"
+                                            filled
+                                        />
                                         <GridCell width="2" height="3" center>
                                             <GridCell width="2" height="1" center black>
                                                 <GetIcon icon="defence" />
