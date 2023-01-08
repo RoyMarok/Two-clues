@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
-import { getElementByProp } from '../utils'
+import { clamp, getElementByProp } from '../utils'
 
 import {
     ArmourState,
@@ -15,42 +15,37 @@ import {
     FractionsList
 } from '../atoms'
 
-import { BorderWrapper, Button, GridCell, FlexWrapper, NonPrintableBlock, OnlyPrintableBlock, Sticky, White, MoveUp } from './styled'
-import { Character } from './character'
+import { BorderWrapper, Button, GridCell, FlexWrapper, NonPrintableBlock, OnlyPrintableBlock, Sticky, White, MoveUp, PrintOrDisplayBlock } from './styled'
+import { ShortCharacter } from './short-character'
 import { GetIcon } from './get-icon'
-import { Mordheim } from './mordheim'
 import { SelectWithOptions } from './weapons-selection'
 
-const limits = {
-    strength: {
-        min: 6,
-        max: 14
-    },
-    agility: {
-        min: 6,
-        max: 14
-    },
-    perception: {
-        min: 6,
-        max: 14
-    },
-    intelligence: {
-        min: 6,
-        max: 14
-    },
-    health: {
-        min: 1,
-        max: 10
-    },
-    move: {
-        min: 3,
-        max: 8
-    }
+const defaultFractionCount = {
+    min: 0,
+    max: 10
+}
+const makeLimitsString = (limits = defaultFractionCount) => `${limits?.min}-${limits?.max}`
+const getLimits = ({ characterItem, fractions }) => fractions.filter(
+    (fraction) =>
+        fraction?.id === characterItem?.fraction
+    )?.[0]?.values
+    .filter(
+        fractionWarriorType => fractionWarriorType?.id === characterItem?.warriorType
+    )[0]?.limits || defaultFractionCount
+
+const gerFranctionAndType = ({ characterItem, fractions }) => {
+    const fraction = fractions.filter(
+        (fraction) =>
+            fraction?.id === characterItem?.fraction
+    )?.[0]
+    const fractionName = fraction?.title || ''
+    const warriorType = fraction?.values.filter(
+        fractionWarriorType => fractionWarriorType?.id === characterItem?.warriorType
+    )[0]?.title || ''
+    return `${fractionName} ${warriorType}`
 }
 
 export const Band = () => {
-    const [fractionsSelected, setFraction] = useState('')
-    const [warriorTypeSelected, setWarriorType] = useState('')
     const skillsList = useRecoilValue(SkillsList.setState)
     const fractions = useRecoilValue(FractionsList.setState)
     const armours = useRecoilValue(ArmourState.setState)
@@ -58,63 +53,58 @@ export const Band = () => {
     const weapons = useRecoilValue(weaponState)
     const traits = useRecoilValue(weaponTraitsState)
     const changeCharacter = useSetRecoilState(changeCharacterInState)
-    const cloneCharacter = useSetRecoilState(cloneCharacterInState)
-    const removeCharacter = useSetRecoilState(removeCharacterFromState)
 
-    const selectFraction = (e) => {
-        setFraction(e.target.value)
-    }
-    const selectWarriorType = (e) => {
-        setWarriorType(e.target.value)
-    }
     const handleRemoveCharacter = (e) => {
-        removeCharacter(e.target.value)
+        const index = e.target.value
+        const fractionLimits = getLimits({ characterItem: characters[index], fractions })
+        const passedCharacter = {
+            ...characters[index],
+            count: clamp((characters[index]?.count || 0) - 1, fractionLimits?.min, fractionLimits?.max)
+        }
+        changeCharacter(passedCharacter)
     }
 
     const handleAddCharacter = (e) => {
-        cloneCharacter()
-    }
-
-    const handleCloneCharacter = (e) => {
-        cloneCharacter(e.target.value)
+        const index = e.target.value
+        const fractionLimits = getLimits({ characterItem: characters[index], fractions })
+        const passedCharacter = {
+            ...characters[index],
+            count: clamp((characters[index]?.count || 0) + 1, fractionLimits?.min, fractionLimits?.max)
+        }
+        changeCharacter(passedCharacter)
     }
 
     let allCharactersPrice = 0
+    let charactersCount = 0
+    const passedCharacters = characters.filter(characterItem => characterItem?.count)
     if (characters) {
-        characters.map(character => {
+        passedCharacters.map(character => {
             const armourParams = armours.filter(armouritem => armouritem?.id === character?.armour)?.[0]
             let allWeaponsPrice = parseInt(armourParams?.price) || 0
+            charactersCount += character?.count
             if (character.weapons) {
                 character.weapons.map(weapon => {
                     allWeaponsPrice += parseInt(getElementByProp({ elements: weapons, prop: 'id', value: weapon })?.price || 0)
                     return null
                 })
-                allCharactersPrice += parseInt(character.price) + parseInt(allWeaponsPrice)
+                allCharactersPrice += (character?.count)*(parseInt(character.price) + parseInt(allWeaponsPrice))
             }
             return null
         })
     }
-    const passedSelectedFraction = fractions.filter(fraction => fraction?.id === fractionsSelected)?.[0]
-    const passedLimits = {...limits, ...(passedSelectedFraction?.limits || {})}
-    const passedValuesList = passedSelectedFraction?.values || []
-    const selectedValues = (passedSelectedFraction?.values || []).filter(type => type?.id === warriorTypeSelected)?.[0]?.values || []
-    const passedWeapons = passedSelectedFraction?.weapons ? weapons.filter((weapon) => passedSelectedFraction?.weapons.includes(weapon?.id)) : weapons
-
     // console.log('Band', JSON.stringify(characters))
 
     return (
         <>
-            
             <Sticky>
                 <NonPrintableBlock>
                 <White>
                     <FlexWrapper>
                         <GridCell width={1} center> <GetIcon icon="face" /></GridCell>
-                        <GridCell width={1} center black>{characters.length}</GridCell>
+                        <GridCell width={1} center black>{charactersCount}</GridCell>
                         <GridCell width={1} center> <GetIcon icon="coin" /></GridCell>
                         <GridCell width={2} black >{allCharactersPrice}</GridCell>
                     </FlexWrapper>
-                    {/* <Mordheim /> */}
                 </White>
                 </NonPrintableBlock>
             </Sticky>
@@ -123,66 +113,50 @@ export const Band = () => {
                 <MoveUp>
                     <FlexWrapper>
                         <GridCell width={1} center> <GetIcon icon="face" /></GridCell>
-                        <GridCell width={1} center black>{characters.length}</GridCell>
+                        <GridCell width={1} center black>{charactersCount}</GridCell>
                         <GridCell width={1} center> <GetIcon icon="coin" /></GridCell>
                         <GridCell width={2} black >{allCharactersPrice}</GridCell>
                     </FlexWrapper>
                 </MoveUp>
             </OnlyPrintableBlock>
-            
-            {characters &&
-                characters.map((characterItem, index) =>
-                    <>
-                        <NonPrintableBlock>
-                            <BorderWrapper>
-                                <GridCell width={14} filled center>
+            <FlexWrapper columns>
+                {characters &&
+                    characters.map((characterItem, index) =>
+                        <PrintOrDisplayBlock printable={Boolean(characterItem?.count)}>
+                            <FlexWrapper>
+                                <NonPrintableBlock>
                                     <FlexWrapper>
-                                        {/* <GridCell width={5} inverse center>
-                                    <Button title="Дублировать" 
-                                        value={index} onClick={handleCloneCharacter} />
-                                </GridCell> */}
-
-
-                                        <GridCell width={5} center >
-                                            <SelectWithOptions onChange={selectFraction} elements={fractions} selected={fractionsSelected} index={index} passedName="armourSelect" placeholder="Фракция" />
-                                        </GridCell>
-                                        <GridCell width={5} center>
-                                            <SelectWithOptions onChange={selectWarriorType} elements={passedValuesList} selected={warriorTypeSelected} index={index} passedName="armourSelect" placeholder="Кто" />
-                                        </GridCell>
-                                        {characters.length > 1 &&
-                                            <GridCell width={4} inverse center>
-                                                <Button title="Удалить персонаж" value={index} onClick={handleRemoveCharacter} />
-                                            </GridCell>
-                                        }
+                                        <GridCell width={2} inverse center>{makeLimitsString(getLimits({ characterItem, fractions }))}</GridCell>
+                                        <GridCell center big><Button title="-" value={index} onClick={handleRemoveCharacter} /></GridCell>
+                                        <GridCell center big>{characterItem?.count || 0}</GridCell>
+                                        <GridCell center big><Button title="+" value={index} onClick={handleAddCharacter} /></GridCell>
                                     </FlexWrapper>
-                                </GridCell>
-                            </BorderWrapper>
-                        </NonPrintableBlock>
-                        <Character
-                            currentStats={characterItem}
-                            onChange={changeCharacter}
-                            onDelete={handleRemoveCharacter}
-                            index={index}
-                            weapons={passedWeapons}
-                            allTraits={traits}
-                            key={`${index}_${characterItem.title}`}
-                            skillsList={skillsList}
-                            limits={passedLimits}
-                            armours={armours}
-                            values={selectedValues}
-                        />
-                        <GridCell center />
-                    </>
-                    
-                )
-            }
-            <NonPrintableBlock>
-                <FlexWrapper>
-                    <GridCell width={5} inverse center>
-                        <Button title="Еще персонаж" onClick={handleAddCharacter} />
-                    </GridCell>
-                </FlexWrapper>
-            </NonPrintableBlock>
+                                </NonPrintableBlock>
+                                <OnlyPrintableBlock>
+                                    <GridCell center inverse >{characterItem?.count || 0}</GridCell>
+                                </OnlyPrintableBlock>
+                                <GridCell width={8} >{gerFranctionAndType({ characterItem, fractions })}</GridCell>
+                            </FlexWrapper>
+                            
+                            <ShortCharacter
+                                currentStats={characterItem}
+                                onDelete={handleRemoveCharacter}
+                                index={index}
+                                weapons={weapons}
+                                allTraits={traits}
+                                key={`${index}_${characterItem.title}`}
+                                skillsList={skillsList}
+                                armours={armours}
+                                fractions={fractions}
+                                useRemove={characters.length > 1}
+                                collapsed
+                            />
+                            <GridCell center />
+                        </PrintOrDisplayBlock>
+                    )
+                }
+            </FlexWrapper>
+
         </>
     )
 }

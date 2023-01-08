@@ -41,7 +41,7 @@ export const WeaponsSelection = ({ passedName, weapons, selected, index, onChang
                 selected={selected}
                 onChange={onChange}
                 index={index}
-                assedName={passedName}
+                passedName={passedName}
                 allTraits={allTraits}
             />
         }

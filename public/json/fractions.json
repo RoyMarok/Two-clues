@@ -27,12 +27,120 @@
             {
                 "id": "leader",
                 "title": "Предводитель",
-                "values": [8, 10, 11, 12]
+                "values": [8, 10, 11, 12],
+                "limits": {
+                    "min": 1,
+                    "max": 1
+                },
+                "actions": [
+                    {
+                        "id": "inspire",
+                        "skill": true,
+                        "attributes": {
+                            "strength": false,
+                            "agility": false,
+                            "perception": true,
+                            "intelligence": false
+                        },
+                        "action": {
+                            "duration": {
+                                "stand": 1,
+                                "hidden": 0,
+                                "panic": 0
+                            },
+                            "first": true,
+                            "remain": true
+                        }
+                    }
+                ]
             },
             {
                 "id": "hero",
                 "title": "Герой",
-                "values": [8, 10, 11, 14]
+                "values": [8, 10, 11, 14],
+                "limits": {
+                    "min": 0,
+                    "max": 2
+                }
+            },
+            {
+                "id": "master",
+                "title": "Мастер",
+                "values": [9, 9, 12, 13]
+            },
+            {
+                "id": "henchman",
+                "title": "Боец",
+                "values": [10, 12, 13, 14],
+                "limits": {
+                    "min": 0,
+                    "max": 10
+                }
+            }
+
+        ],
+        "weapons": [
+            "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_9", "weapon_12", "weapon_17", "weapon_24", "weapon_25", "weapon_39", "weapon_56", "weapon_59"
+        ]
+    },
+    {
+        "title": "Goblins",
+        "id": "original_goblins",
+        "limits": {
+            "strength": {
+                "min": 9,
+                "max": 14
+            },
+            "perception": {
+                "min": 10,
+                "max": 14
+            },
+            "health": {
+                "min": 1,
+                "max": 3
+            },
+            "move": {
+                "min": 3,
+                "max": 5
+            }
+        },
+        "values": [
+            {
+                "id": "leader",
+                "title": "Предводитель",
+                "values": [8, 10, 11, 12],
+                "limits": {
+                    "min": 1,
+                    "max": 1
+                },
+                "actions": [{
+                    "id": "inspire",
+                    "skill": true,
+                    "attributes": {
+                        "strength": false,
+                        "agility": false,
+                        "perception": true,
+                        "intelligence": false
+                    },
+                    "action": {
+                        "duration": {
+                            "stand": 1,
+                            "hidden": 0,
+                            "panic": 0
+                        },
+                        "first": true,
+                        "remain": true
+                    }
+                }]
+            },
+            {
+                "id": "hero",
+                "title": "Герой",
+                "values": [8, 10, 11, 14],
+                "limits": {
+                    "min": 0,
+                    "max": 2
+                }
             },
             {
                 "id": "master",
@@ -47,7 +155,212 @@
 
         ],
         "weapons": [
-            "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_9", "weapon_12", "weapon_17", "weapon_24", "weapon_25", "weapon_39", "weapon_56", "weapon_59"
-        ]
+            "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_7"
+            , "weapon_9", "weapon_12", "weapon_14"
+            , "weapon_17", "weapon_24", "weapon_25", "weapon_38"
+            , "weapon_39", "weapon_56", "weapon_59", "weapon_72"
+        ],
+        "crew": [{
+            "characteristics": {
+                "strength": 12,
+                "agility": 8,
+                "perception": 10,
+                "intelligence": 11,
+                "health": 2,
+                "move": 5,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "inspire": "0",
+                "acrobathics": "1",
+                "guns": "1"
+            },
+            "actions": 2,
+            "title": "Яроцап Хилый",
+            "price": 44,
+            "weapons": ["weapon_7", "weapon_24"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 0,
+            "fraction": "original_goblins",
+            "warriorType": "leader"
+        }, {
+            "characteristics": {
+                "strength": 14,
+                "agility": 11,
+                "perception": 10,
+                "intelligence": 8,
+                "health": 1,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "guns": "1",
+                "acrobathics": "1"
+            },
+            "actions": 2,
+            "title": "Феликс Криворучко-Бухин",
+            "price": 42,
+            "weapons": ["weapon_39"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 1,
+            "fraction": "original_goblins",
+            "warriorType": "hero"
+        }, {
+            "characteristics": {
+                "strength": 14,
+                "agility": 11,
+                "perception": 10,
+                "intelligence": 8,
+                "health": 1,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "guns": "1",
+                "acrobathics": "1"
+            },
+            "actions": 2,
+            "title": "Касьян Крошка",
+            "price": 42,
+            "weapons": ["weapon_72"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 2,
+            "fraction": "original_goblins",
+            "warriorType": "hero"
+        }, {
+            "characteristics": {
+                "strength": 14,
+                "agility": 11,
+                "perception": 10,
+                "intelligence": 8,
+                "health": 1,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "acrobathics": "1",
+                "guns": "1"
+            },
+            "actions": 2,
+            "title": "Сигизмунд Зубков",
+            "price": 42,
+            "weapons": ["weapon_38"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 3,
+            "fraction": "original_goblins",
+            "warriorType": "hero"
+        }, {
+            "characteristics": {
+                "strength": 14,
+                "agility": 13,
+                "perception": 10,
+                "intelligence": 12,
+                "health": 1,
+                "move": 3,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "guns": "0",
+                "acrobathics": "0"
+            },
+            "actions": 2,
+            "title": "Яма-Бабайкин",
+            "price": 27,
+            "weapons": ["weapon_56"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 4,
+            "fraction": "original_goblins",
+            "warriorType": "henchman"
+        }, {
+            "characteristics": {
+                "strength": 10,
+                "agility": 8,
+                "perception": 11,
+                "intelligence": 14,
+                "health": 3,
+                "move": 5,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "acrobathics": "1",
+                "melee": "1"
+            },
+            "actions": 2,
+            "title": "Панфил Свинарь-Кривоногов",
+            "price": 42,
+            "weapons": ["weapon_14"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 5,
+            "fraction": "original_goblins",
+            "warriorType": "hero"
+        }, {
+            "characteristics": {
+                "strength": 10,
+                "agility": 8,
+                "perception": 11,
+                "intelligence": 14,
+                "health": 3,
+                "move": 5,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "acrobathics": "0",
+                "melee": "1"
+            },
+            "actions": 2,
+            "title": "Зиновий Зануда-Кактус",
+            "price": 38,
+            "weapons": ["weapon_9"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 6,
+            "fraction": "original_goblins",
+            "warriorType": "hero"
+        }, {
+            "characteristics": {
+                "strength": 10,
+                "agility": 12,
+                "perception": 13,
+                "intelligence": 14,
+                "health": 3,
+                "move": 3,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "acrobathics": "0",
+                "melee": "0"
+            },
+            "actions": 2,
+            "title": "Порфирий Лютодравович Крупинка",
+            "price": 27,
+            "weapons": ["weapon_2", "weapon_2"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 7,
+            "fraction": "original_goblins",
+            "warriorType": "henchman"
+        }]
     }
 ]

@@ -55,25 +55,8 @@
             "first": true,
             "remain": true
         }
-    }, {
-        "id": "stealth",
-        "skill": true,
-        "attributes": {
-            "strength": false,
-            "agility": true,
-            "perception": false,
-            "intelligence": false
-        },
-        "action": {
-            "duration": {
-                "stand": 1,
-                "hidden": 0,
-                "panic": 0
-            },
-            "first": true,
-            "remain": true
-        }
     },
+
     {
         "id": "melee",
         "skill": true,
@@ -90,7 +73,7 @@
                 "panic": 0
             },
             "first": true,
-            "remain": false
+            "remain": true
         }
     },
     {

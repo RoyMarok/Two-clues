@@ -20,7 +20,7 @@ export const defaultHuman = {
     title: '',
     price: '20',
     weapons: [],
-    faction: 'Common_0',
+    names: 'Common_0',
     armour: ''
 }
 
@@ -64,6 +64,20 @@ export const cloneCharacterInState = selector({
     }
 })
 
+export const addCharactersInState = selector({
+    key: 'addCharactersInState',
+    get: ({get}) => get(characterState),
+    set: ({get, set}, insertingCaracters = []) => {
+        const characters = get(characterState)
+        const baseIndex = characters.length
+        const passedInsertingCharacters = insertingCaracters.map((character, characterIndex) => ({
+            ...character,
+            index: characterIndex + baseIndex
+        }))
+        set(characterState, [...characters, ...passedInsertingCharacters])
+    }
+})
+
 export const removeCharacterFromState = selector({
     key: 'removeCharacterFromState',
     get: ({get}) => get(characterState),
@@ -76,6 +90,7 @@ export const removeCharacterFromState = selector({
 export const CharacterState = {
     setState: characterState,
     add: cloneCharacterInState,
+    insert: addCharactersInState,
     change: changeCharacterInState,
     clone: cloneCharacterInState,
     remove: removeCharacterFromState

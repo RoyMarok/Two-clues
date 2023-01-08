@@ -7,6 +7,7 @@ import { FieldNumber } from './field-number'
 import { GetIcon } from './get-icon'
 import { SelectWithOptions } from './weapons-selection'
 import { Traits } from './traits'
+import { IconedElement } from './short-character'
 
 export const Weapon = (props) => {
     const {
@@ -134,7 +135,10 @@ export const Weapon = (props) => {
     }
 
     const restWeapons = weapons.filter(weapon => weapon.index !== index)
-    const slaveWeapons = weapons.filter(weapon => weapon.masterIndex === index)
+    let passedReload = parseInt(reload) ? 1 : 2
+    if (parseInt(range) === 1) {
+        passedReload = 0
+    }
     
     return (
         <div>
@@ -151,17 +155,26 @@ export const Weapon = (props) => {
                 <GridCell width={1} center filled> <GetIcon color="secondary" icon="coin" /></GridCell>
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
+                {controlled ? <FlexWrapper>
+                    <FieldNumber title="Даль" value={range} onChange={changeRange} icon="range" filled controlled={controlled} />
+                    <FieldNumber title="Встр" value={shots} onChange={changeShots} icon="shots" controlled={controlled} />
+                    <FieldNumber title="Маг" value={drum} onChange={changeDrum} icon="drum" filled controlled={controlled} />
+                    <FieldNumber title="Прз" value={reload} onChange={changeReload} icon="reload" controlled={controlled} />
+                    <FieldNumber title="Пробив" value={ap} onChange={changeAp} icon="ap" filled controlled={controlled} />
+                    <FieldNumber title="Урон" value={dmg} onChange={changeDmg} icon="dmg" controlled={controlled} />
+                    <FieldNumber title="Вес" value={mass} onChange={changeMass} icon="mass" filled controlled={controlled} />
+                </FlexWrapper>
+                : <FlexWrapper>
+                    <IconedElement value={range} icon="range" filled />
+                    <IconedElement value={shots} icon="shots" />
+                    <IconedElement value={drum} icon="drum" filled />
+                    <IconedElement value={passedReload} squared icon="reload" />
+                    <IconedElement value={ap} icon="ap" filled />
+                    <IconedElement value={dmg} icon="dmg" />
+                    <IconedElement value={mass} icon="mass" filled />
+                    </FlexWrapper>
+                }
             
-            <FlexWrapper>
-                {/* <GridCell width={2} center /> */}
-                <FieldNumber title="Даль" value={range} onChange={changeRange} icon="range" filled controlled={controlled} />
-                <FieldNumber title="Встр" value={shots} onChange={changeShots} icon="shots" controlled={controlled} />
-                <FieldNumber title="Маг" value={drum} onChange={changeDrum} icon="drum" filled controlled={controlled} />
-                <FieldNumber title="Прз" value={reload} onChange={changeReload} icon="reload" controlled={controlled} />
-                <FieldNumber title="Пробив" value={ap} onChange={changeAp} icon="ap" filled controlled={controlled} />
-                <FieldNumber title="Урон" value={dmg} onChange={changeDmg} icon="dmg" controlled={controlled} />
-                <FieldNumber title="Вес" value={mass} onChange={changeMass} icon="mass" filled controlled={controlled} />
-            </FlexWrapper>
                 {(controlled || Boolean(traits.length)) && <FlexWrapper>
                 <GridCell width={14} height={controlled ? 2 : 1} center>
                     <Traits

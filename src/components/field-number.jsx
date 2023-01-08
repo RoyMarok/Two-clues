@@ -4,13 +4,13 @@ import { Button, GridCell, Value, NonPrintableBlock, OnlyPrintableBlock, FlexWra
 
 import { GetIcon } from './get-icon'
 
-const FourValues = ({ values = [], limits, onChange, value }) => (
+const FourValues = ({ values = [], limits, onChange, value, filled }) => (
     <FlexWrapper>
         {
             values.map((item) => {
                 const validValue = item >= limits?.min && item <= limits?.max
                 return (
-                    <GridCell center inverse={value === item} filled={value !== item} muted={!validValue}>
+                    <GridCell center inverse={value === item} filled={value !== item && filled} muted={!validValue}>
                     {validValue 
                         ? <Button value={parseInt(item)} title={item} onClick={onChange} />
                         : item}
@@ -50,6 +50,7 @@ export const FieldNumber = ({ title, value, onChange, icon, filled, controlled =
                 limits={limits}
                 onChange={onChange}
                 value={value}
+                filled={filled}
             />
             }
             </NonPrintableBlock>

@@ -7,8 +7,10 @@ import {
     AppWrapper,
     Band,
     Button,
+    Characters,
     Character,
     FlexWrapper,
+    Fractions,
     GetIcon,
     GridCell,
     Loader,
@@ -36,6 +38,12 @@ export const App = ({ t }) => (
                         <Link to="/band">{t('band.title')}</Link>
                     </GridCell>
                     <GridCell width={3} inverse center>
+                        <Link to="/characters">{t('characters.title')}</Link>
+                    </GridCell>
+                    <GridCell width={3} inverse center>
+                        <Link to="/fractions">{t('fractions.title')}</Link>
+                    </GridCell>
+                    <GridCell width={3} inverse center>
                         <Link to="/weapons">{t('weapons.title')}</Link>
                     </GridCell>
                     <GridCell width={3} inverse center>
@@ -56,6 +64,8 @@ export const App = ({ t }) => (
         <Routes>
             <Route path="/" element={<NamesGenerator />} />
             <Route path="/band" element={<Band />} />
+            <Route path="/characters" element={<Characters />} />
+            <Route path="/fractions" element={<Fractions />} />
             <Route path="/weapons" element={<Weapons />} />
             <Route path="/armours" element={<Armours />} />
             <Route path="/rules" element={<Rules />} />

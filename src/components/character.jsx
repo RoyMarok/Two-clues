@@ -20,6 +20,7 @@ import { WeaponsSelection, SelectWithOptions } from './weapons-selection'
 import { Mass } from './mass'
 import { InsertedNames } from './names-generator'
 import { Actions } from './actions'
+import { CalculateWeaponsPriceMass } from './short-character'
 
 const actionsOptions = [
     {
@@ -43,7 +44,7 @@ const actionsOptions = [
 
 
 export const CharacterComponent = (props) => {
-    const { index, currentStats, onChange, weapons, allTraits, t, skillsList, limits, armours, values } = props
+    const { index, currentStats, onChange, weapons, allTraits, t, skillsList, limits, armours, fractions, useRemove, onDelete } = props
 
     const [titleValue, setTitleValue] = useState(currentStats?.title  || '')
 
@@ -57,7 +58,9 @@ export const CharacterComponent = (props) => {
         skills,
         armour,
         actions,
-        faction
+        fraction,
+        names,
+        warriorType
     } = currentStats
     const {
         agility,
@@ -70,7 +73,35 @@ export const CharacterComponent = (props) => {
         fly
     } = characteristics
 
-  
+    const passedSelectedFraction = fractions.filter(fractionItem => fractionItem?.id === fraction)?.[0]
+    const passedLimits = { ...limits, ...(passedSelectedFraction?.limits || {}) }
+
+    const passedValuesList = passedSelectedFraction?.values || []
+    const selectedWarriorData = (passedSelectedFraction?.values || []).filter(type => type?.id === warriorType)?.[0] || []
+    const selectedValues = selectedWarriorData?.values || []
+
+    const selectedWeapons = [...(passedSelectedFraction?.weapons || []), ...(selectedWarriorData?.weapons || [])]
+    const passedWeapons = selectedWeapons?.length > 0 ? weapons.filter((weapon) => selectedWeapons.includes(weapon?.id)) : weapons
+
+    const fractionActions = [...(passedSelectedFraction?.actions || []), ...(selectedWarriorData?.actions || [])]
+    const passedSkills = [...(skillsList || []), ...(fractionActions || [])]
+
+    const selectFraction = (e) => {
+        const { value } = e.target
+        onChange({
+            ...currentStats,
+            index,
+            fraction: value
+        })
+    }
+    const selectWarriorType = (e) => {
+        const { value } = e.target
+        onChange({
+            ...currentStats,
+            index,
+            warriorType: value
+        })
+    }
 
     const changeStrength = (e) => {
         e.preventDefault()
@@ -96,7 +127,7 @@ export const CharacterComponent = (props) => {
             characteristics: {
                 ...currentStats?.characteristics,
                 agility: passedValue,
-                move: CalculateMove(passedValue)
+                move: clamp(CalculateMove(passedValue), limits?.move?.min, limits?.move?.max)
             }
         })
     }
@@ -206,11 +237,11 @@ export const CharacterComponent = (props) => {
         })
     }
 
-    const setSelectedFaction = (value) => {
+    const setSelectedNames = (value) => {
         onChange({
             ...currentStats,
             index,
-            faction: value
+            names: value
         })
     }
 
@@ -235,7 +266,6 @@ export const CharacterComponent = (props) => {
     const changeWeapon = (weaponIndex) => (e) => {
         e.preventDefault()
         const { value } = e.target
-        console.log('changeWeapon', weaponIndex, value, currentStats.weapons)
         const passedWeapons = [...currentStats.weapons]
         value !== 'clear'
             ? passedWeapons.splice(
@@ -253,22 +283,45 @@ export const CharacterComponent = (props) => {
     const armourParams = armours.filter(armouritem => armouritem?.id === armour)?.[0]
     const armourMass = parseInt(armourParams?.mass)
 
-    let allWeaponsPrice = parseInt(armourParams?.price) || 0
-    let allWeaponsMass = armourMass || 0
-    currentStats.weapons.map(item => {
-        const singleWeapon = getElementByProp({ elements: weapons, prop: 'id', value: item })
-        allWeaponsPrice += parseInt(singleWeapon?.price || 0)
-        allWeaponsMass += parseInt(singleWeapon?.mass || 0)
-        return null
+    const weaponPriceMass = CalculateWeaponsPriceMass({
+        armourParams,
+        currentStats,
+        weapons
     })
+    const allWeaponsPrice = weaponPriceMass?.price
+    const overallMass = weaponPriceMass?.mass
 
-    const overallPrice = parseInt(price) + parseInt(allWeaponsPrice)
-    const overallMass = allWeaponsMass
-
+    const overallPrice = parseInt(price) + parseInt(weaponPriceMass?.price || 0)
+    
     return (
         <>  
             <FlexWrapper>
                 <div>
+                    <NonPrintableBlock>
+                        <BorderWrapper>
+                            <GridCell width={14} filled center>
+                                <FlexWrapper>
+                                    {/* <GridCell width={5} inverse center>
+                                    <Button title="Дублировать" 
+                                        value={index} onClick={handleCloneCharacter} />
+                                </GridCell> */}
+
+
+                                    <GridCell width={5} center >
+                                        <SelectWithOptions onChange={selectFraction} elements={fractions} selected={fraction} index={index} passedName="armourSelect" placeholder="Фракция" />
+                                    </GridCell>
+                                    <GridCell width={5} center>
+                                        <SelectWithOptions onChange={selectWarriorType} elements={passedValuesList} selected={warriorType} index={index} passedName="armourSelect" placeholder="Кто" />
+                                    </GridCell>
+                                    {useRemove &&
+                                        <GridCell width={4} inverse center>
+                                            <Button title="Удалить персонаж" value={index} onClick={onDelete} />
+                                        </GridCell>
+                                    }
+                                </FlexWrapper>
+                            </GridCell>
+                        </BorderWrapper>
+                    </NonPrintableBlock>
                     <div>
                         <BorderWrapper>
                             <FlexWrapper>
@@ -279,7 +332,7 @@ export const CharacterComponent = (props) => {
                             <FlexWrapper>
                                 <NonPrintableBlock>
                                     <GridCell width={8} center>
-                                        <InsertedNames onChange={generateTitle} index={index} selectedFaction={faction} setSelectedFaction={setSelectedFaction} />
+                                        <InsertedNames onChange={generateTitle} index={index} selectedFaction={names} setSelectedFaction={setSelectedNames} />
                                     </GridCell>
 
                                 </NonPrintableBlock>
@@ -303,16 +356,16 @@ export const CharacterComponent = (props) => {
                                             value={strength}
                                             onChange={changeStrength} filled
                                             icon="strength"
-                                            values={values}
-                                            limits={limits?.strength}
+                                            values={selectedValues}
+                                            limits={passedLimits?.strength}
                                         />
                                         <FieldNumber
                                             title="Лов"
                                             value={agility}
                                             onChange={changeAgility}
                                             icon="agility"
-                                            values={values}
-                                            limits={limits?.agility}
+                                            values={selectedValues}
+                                            limits={passedLimits?.agility}
                                         />
                                         <FieldNumber
                                             title="Вос"
@@ -320,16 +373,16 @@ export const CharacterComponent = (props) => {
                                             onChange={changePerception}
                                             filled
                                             icon="perception"
-                                            values={values}
-                                            limits={limits?.perception}
+                                            values={selectedValues}
+                                            limits={passedLimits?.perception}
                                         />
                                         <FieldNumber
                                             title="Инт"
                                             value={intelligence}
                                             onChange={changeIntelligence}
                                             icon="intelligence"
-                                            values={values}
-                                            limits={limits?.intelligence}
+                                            values={selectedValues}
+                                            limits={passedLimits?.intelligence}
                                             />
                                     </FlexWrapper>
                                     <FlexWrapper>
@@ -409,7 +462,7 @@ export const CharacterComponent = (props) => {
                                     <GridCell width="1" center >%</GridCell>
                                 </FlexWrapper>
                                 {
-                                    skillsList.filter(item => item?.skill).map((item, index) => (
+                                    passedSkills.filter(item => item?.skill).map((item, index) => (
                                         <Skill
                                             {...(item?.attributes || {})}
                                             title={t(`band.character.skill.${item?.id}`)}
@@ -422,7 +475,7 @@ export const CharacterComponent = (props) => {
                                 }
                             </NonPrintableBlock>
                             
-                            <Actions character={currentStats} />
+                            <Actions character={currentStats} skills={passedSkills} />
                         </BorderWrapper>
                     </div>
                     
@@ -439,7 +492,7 @@ export const CharacterComponent = (props) => {
                         <WeaponsSelection
                             passedName={`${index}_${index2}`}
                             key={`${index}_${index2}_${item}`}
-                            weapons={weapons}
+                            weapons={passedWeapons}
                             allTraits={allTraits}
                             selected={item}
                             index={index2}

@@ -26,7 +26,8 @@ export const GridCell = styled.div(({
             serif = false,
             open = false,
             wrapper = false,
-            pageBreak = false
+            pageBreak = false,
+            verticalCenter = false
 
         }) => css`
     display: block;
@@ -41,6 +42,7 @@ export const GridCell = styled.div(({
     color: ${inverse ? theme.white : theme.secondary};
     ${black && 'color: '+theme.primary+';' }
     ${center && 'text-align: center; padding: 0;'}
+    ${verticalCenter && 'margin: '+(height * gridBase /2)+'px auto;'}
     ${muted && 'opacity: 0.5;'}
     ${big && 'font-size: '+(baseFontSize * 2)+'px;'}
     ${serif && 'font-family: sans-serif; font-weight: 700;'}
@@ -80,6 +82,8 @@ export const GridCell = styled.div(({
 export const BorderWrapper = styled.div`
     display: inline-block;
     border: 4px solid ${theme.tetriary};
+    height: fit-content;
+    width: fit-content;
 `
 
 export const AppWrapper = styled.div`
@@ -102,10 +106,12 @@ export const AppWrapper = styled.div`
         }
     }
 `
-export const FlexWrapper = styled.div(({ nowrap = false, columns = false }) => css`
+export const FlexWrapper = styled.div(({ nowrap = false, columns = false, vertical = false }) => css`
     display: flex;
     flex-wrap: ${nowrap ? 'nowrap' : 'wrap'};
+    
     ${ columns && 'grid-column-gap:'+gridBase+'px;'}
+    ${vertical && 'flex-direction: column; align-items: flex-start; justify-content: space-between;'}
 `)
 
 export const NonPrintableBlock = styled.div`
@@ -126,6 +132,13 @@ export const OnlyPrintableBlock = styled.div`
         display: block;
     }
 `
+
+export const PrintOrDisplayBlock = styled.div(({ printable = true }) => css`
+    @media print {
+        display: ${!printable ? 'none' : 'block'};
+        break-inside: avoid;
+    }
+`)
 
 export const OnlyPrintableText = styled.span`
     display: none;

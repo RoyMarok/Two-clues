@@ -8,8 +8,9 @@ import { SkillsList } from '../atoms'
 
 const HEIGHT = 2
 
-export const ActionsComponent = ({ t, character }) => {
+export const ActionsComponent = ({ t, character, skills = [] }) => {
     const actions = useRecoilValue(SkillsList.setState)
+    const passedActions = skills?.length > 0 ? skills : actions
     return (
 
         <GridCell width={14} center open>
@@ -37,7 +38,7 @@ export const ActionsComponent = ({ t, character }) => {
                 <GridCell width={1} filled black center big height={HEIGHT}>1</GridCell>
                 <GridCell width={1} filled black center big height={HEIGHT}>2+</GridCell>
             </FlexWrapper>
-            {actions.map((item, key) => {
+            {passedActions.map((item, key) => {
                 const even = (key % 2)
                 const stand =item?.action?.duration?.stand
                 const hidden = item?.action?.duration?.hidden

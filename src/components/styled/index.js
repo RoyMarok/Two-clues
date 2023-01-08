@@ -18,7 +18,8 @@ export {
     OnlyPrintableText,
     Sticky,
     White,
-    MoveUp
+    MoveUp,
+    PrintOrDisplayBlock
 }
 from './common.style'
 export { SelectStyled } from './selected.style'
