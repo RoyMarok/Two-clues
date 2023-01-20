@@ -42,9 +42,10 @@ const LoadFile = ({ axios, src, stateLoaded, setState }) => {
 }
 
 const loadingFiles = [
+    { ...TraitsState },
     { ...WeaponsState },
     { ...ArmourState },
-    { ...TraitsState },
+    
     { ...RussianNames },
     { ...SweedenNames },
     { ...SpanishNames },

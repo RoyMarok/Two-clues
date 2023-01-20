@@ -1,8 +1,19 @@
 import React, { useState } from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { withTranslation } from 'react-i18next'
 
 import { clamp, CalculateHealth, CalculateMove, getElementByProp } from '../utils'
+import {
+    ArmourState,
+    characterState,
+    changeCharacterInState,
+    cloneCharacterInState,
+    removeCharacterFromState,
+    weaponState,
+    weaponTraitsState,
+    SkillsList,
+    FractionsList
+} from '../atoms'
 import {
     BorderWrapper,
     Button,
@@ -44,7 +55,9 @@ const actionsOptions = [
 
 
 export const CharacterComponent = (props) => {
-    const { index, currentStats, onChange, weapons, allTraits, t, skillsList, limits, armours, fractions, useRemove, onDelete } = props
+    const { index, currentStats, weapons, allTraits, t, skillsList, limits, armours, fractions, useRemove, onDelete } = props
+
+    const onChange = useSetRecoilState(changeCharacterInState)
 
     const [titleValue, setTitleValue] = useState(currentStats?.title  || '')
 

@@ -56,7 +56,7 @@ export const CharactersComponent = (props) => {
     const characters = useRecoilValue(characterState)
     const weapons = useRecoilValue(weaponState)
     const traits = useRecoilValue(weaponTraitsState)
-    const changeCharacter = useSetRecoilState(changeCharacterInState)
+    // const changeCharacter = useSetRecoilState(changeCharacterInState)
     const cloneCharacter = useSetRecoilState(cloneCharacterInState)
     const removeCharacter = useSetRecoilState(removeCharacterFromState)
 
@@ -88,7 +88,7 @@ export const CharactersComponent = (props) => {
         })
     }
 
-    // console.log('Band', JSON.stringify(characters))
+    console.log('CHaracters', JSON.stringify(characters))
 
     return (
         <>
@@ -96,18 +96,19 @@ export const CharactersComponent = (props) => {
             <Sticky>
                 <NonPrintableBlock>
                     <White>
-                        <FlexWrapper>
+                        {/* <FlexWrapper>
                             <GridCell width={1} center> <GetIcon icon="face" /></GridCell>
                             <GridCell width={1} center black>{characters.length}</GridCell>
                             <GridCell width={1} center> <GetIcon icon="coin" /></GridCell>
                             <GridCell width={2} black >{allCharactersPrice}</GridCell>
-                        </FlexWrapper>
+                        </FlexWrapper> */}
+                        <GridCell />
                         {/* <Mordheim /> */}
                     </White>
                 </NonPrintableBlock>
             </Sticky>
 
-            <OnlyPrintableBlock>
+            {/* <OnlyPrintableBlock>
                 <MoveUp>
                     <FlexWrapper>
                         <GridCell width={1} center> <GetIcon icon="face" /></GridCell>
@@ -116,14 +117,14 @@ export const CharactersComponent = (props) => {
                         <GridCell width={2} black >{allCharactersPrice}</GridCell>
                     </FlexWrapper>
                 </MoveUp>
-            </OnlyPrintableBlock>
+            </OnlyPrintableBlock> */}
 
             {characters &&
                 characters.map((characterItem, index) =>
                     <>
                         <Character
                             currentStats={characterItem}
-                            onChange={changeCharacter}
+                            // onChange={changeCharacter}
                             onDelete={handleRemoveCharacter}
                             index={index}
                             weapons={weapons}

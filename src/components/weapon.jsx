@@ -48,9 +48,9 @@ export const Weapon = (props) => {
         const { value } = e.target
         let passedValue = value
         if (value === '5') {
-            passedValue = 1
+            passedValue = 2
         }
-        else if (value === '2' || (value === '7' && range === 8)) {
+        else if (value === '3' || (value === '7' && range === 8)) {
             passedValue = 6
         } else if (value === '7' || value === '11') {
             passedValue = 8

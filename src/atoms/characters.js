@@ -2,6 +2,7 @@ import { atom, selector } from 'recoil'
 
 import { getCharacterPrice } from './utils'
 import { skillsState } from './skills'
+import { fractionsState } from './fractions'
 
 export const defaultHuman = {
     characteristics: {
@@ -34,12 +35,21 @@ export const changeCharacterInState = selector({
     get: ({get}) => get(characterState),
     set: ({get, set}, props) => {
         const characters = get(characterState)
-        const skillList = get(skillsState)
+        const skillsList = get(skillsState)
+        const fractions = get(fractionsState)
+        const passedSelectedFraction = fractions.filter(fractionItem => fractionItem?.id === props?.fraction)?.[0]
+        const selectedWarriorData = (passedSelectedFraction?.values || []).filter(type => type?.id === props?.warriorType)?.[0] || []
         const passedProps = {
             ...props,
             price: getCharacterPrice({
                 ...props,
-                skillList
+                skillList: [
+                    ...(skillsList || []),
+                    ...[
+                        ...(passedSelectedFraction?.actions || []),
+                        ...(selectedWarriorData?.actions || [])
+                    ]
+                ]
             })
         }
         set(characterState, [

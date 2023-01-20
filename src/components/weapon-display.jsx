@@ -11,6 +11,10 @@ export const WeaponDisplay = (props) => {
         collapsed
     } = props
 
+    if (!currentStats) {
+        return null
+    }
+
     const {
         range,
         shots,

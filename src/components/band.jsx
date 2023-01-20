@@ -92,7 +92,7 @@ export const Band = () => {
             return null
         })
     }
-    // console.log('Band', JSON.stringify(characters))
+    console.log('Band', JSON.stringify(characters))
 
     return (
         <>
