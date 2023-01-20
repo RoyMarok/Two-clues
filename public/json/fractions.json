@@ -1,4 +1,198 @@
-[{
+[
+    {
+        "title": "Witch Hunters",
+        "id": "human_witch_hunters",
+        "limits": {
+            "move": {
+                "min": 4,
+                "max": 6
+            }
+        },
+        "values": [],
+        "crew": [{
+            "characteristics": {
+                "strength": 12,
+                "agility": 11,
+                "perception": 10,
+                "intelligence": 8,
+                "health": 2,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "guns": "1",
+                "inspire": "0",
+                "melee": "0"
+            },
+            "actions": 2,
+            "title": "Евфросиния Антоновна Малая",
+            "price": 48,
+            "weapons": ["weapon_77", "weapon_73", "weapon_4"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 1,
+            "fraction": "human_witch_hunters",
+            "warriorType": "leader",
+            "count": 1
+        }, {
+            "characteristics": {
+                "strength": 8,
+                "agility": 10,
+                "perception": 11,
+                "intelligence": 14,
+                "health": 4,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "melee": "1",
+                "guns": "1"
+            },
+            "actions": 2,
+            "title": "Павел Сильвестрович Гром",
+            "price": 42,
+            "weapons": ["weapon_14", "weapon_73"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 2,
+            "fraction": "human_witch_hunters",
+            "warriorType": "hero",
+            "count": 1
+        }, {
+            "characteristics": {
+                "strength": 14,
+                "agility": 11,
+                "perception": 8,
+                "intelligence": 10,
+                "health": 1,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "guns": "1"
+            },
+            "actions": 2,
+            "title": "Нагложоп Николаевич Береза-Капуста",
+            "price": 30,
+            "weapons": ["weapon_77", "weapon_4"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 3,
+            "fraction": "human_witch_hunters",
+            "warriorType": "hero",
+            "count": 1
+        }, {
+            "characteristics": {
+                "strength": 14,
+                "agility": 13,
+                "perception": 10,
+                "intelligence": 12,
+                "health": 1,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "guns": "1",
+                "melee": "-1"
+            },
+            "actions": 2,
+            "title": "Куселют Вночискокович Кощей",
+            "price": 29,
+            "weapons": ["weapon_39", "weapon_4"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 4,
+            "fraction": "human_witch_hunters",
+            "warriorType": "henchman",
+            "count": 2
+        }, {
+            "characteristics": {
+                "strength": 14,
+                "agility": 13,
+                "perception": 10,
+                "intelligence": 12,
+                "health": 1,
+                "move": 5,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "guns": "1",
+                "acrobathics": "0"
+            },
+            "actions": 2,
+            "title": "Дана Валерьяновна Тараканова",
+            "price": 35,
+            "weapons": ["weapon_73", "weapon_73"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 5,
+            "fraction": "human_witch_hunters",
+            "warriorType": "henchman",
+            "count": 2
+        }, {
+            "characteristics": {
+                "strength": 10,
+                "agility": 12,
+                "perception": 13,
+                "intelligence": 14,
+                "health": 3,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "melee": "1",
+                "guns": "0"
+            },
+            "actions": 2,
+            "title": "Булат Русланович Старошершавин",
+            "price": 33,
+            "weapons": ["weapon_4", "weapon_73"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 6,
+            "fraction": "human_witch_hunters",
+            "warriorType": "henchman",
+            "count": 1
+        }, {
+            "characteristics": {
+                "strength": 14,
+                "agility": 13,
+                "perception": 10,
+                "intelligence": 12,
+                "health": 1,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "guns": "0"
+            },
+            "actions": 2,
+            "title": "Мордотресь Мышеборович Косых-Буль",
+            "price": 21,
+            "weapons": ["weapon_24", "weapon_24", "weapon_56"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 7,
+            "fraction": "human_witch_hunters",
+            "warriorType": "henchman",
+            "count": 1
+        }]
+    },
+    {
         "title": "Dwarf",
         "id": "original_dwarf",
         "limits": {
@@ -23,65 +217,191 @@
                 "max": 3
             }
         },
-        "values": [
-            {
-                "id": "leader",
-                "title": "Предводитель",
-                "values": [8, 10, 11, 12],
-                "limits": {
-                    "min": 1,
-                    "max": 1
-                },
-                "actions": [
-                    {
-                        "id": "inspire",
-                        "skill": true,
-                        "attributes": {
-                            "strength": false,
-                            "agility": false,
-                            "perception": true,
-                            "intelligence": false
-                        },
-                        "action": {
-                            "duration": {
-                                "stand": 1,
-                                "hidden": 0,
-                                "panic": 0
-                            },
-                            "first": true,
-                            "remain": true
-                        }
-                    }
-                ]
-            },
-            {
-                "id": "hero",
-                "title": "Герой",
-                "values": [8, 10, 11, 14],
-                "limits": {
-                    "min": 0,
-                    "max": 2
-                }
-            },
-            {
-                "id": "master",
-                "title": "Мастер",
-                "values": [9, 9, 12, 13]
-            },
-            {
-                "id": "henchman",
-                "title": "Боец",
-                "values": [10, 12, 13, 14],
-                "limits": {
-                    "min": 0,
-                    "max": 10
-                }
-            }
-
-        ],
+        "values": [],
         "weapons": [
             "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_9", "weapon_12", "weapon_17", "weapon_24", "weapon_25", "weapon_39", "weapon_56", "weapon_59"
         ]
+    },
+    {
+        "title": "Elf",
+        "id": "wood_elves",
+        "limits": {
+            "strength": {
+                "min": 6,
+                "max": 14
+            },
+            "agility": {
+                "min": 10,
+                "max": 14
+            },
+            "perception": {
+                "min": 6,
+                "max": 14
+            },
+            "health": {
+                "min": 1,
+                "max": 10
+            },
+            "move": {
+                "min": 4,
+                "max": 8
+            }
+        },
+        "values": [],
+        "weapons": [
+            "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5", "weapon_9", "weapon_12", "weapon_17", "weapon_24", "weapon_25", "weapon_39", "weapon_56", "weapon_59", "bow", "compound_bow"
+        ],
+        "actions": [{
+            "id": "bow_shot",
+            "skill": true,
+            "attributes": {
+                "strength": true,
+                "agility": false,
+                "perception": true,
+                "intelligence": false
+            },
+            "action": {
+                "duration": {
+                    "stand": 1,
+                    "hidden": 1,
+                    "panic": 0
+                },
+                "first": false,
+                "remain": true
+            }
+        }],
+        "crew": [{
+            "characteristics": {
+                "strength": 8,
+                "agility": 10,
+                "perception": 11,
+                "intelligence": 12,
+                "health": 4,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "acrobathics": "1",
+                "melee": "1",
+                "bow_shot": "1",
+                "inspire": "0"
+            },
+            "actions": 2,
+            "title": "Антонина Архиповна Сахарок",
+            "price": 64,
+            "weapons": ["weapon_12", "bow"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 0,
+            "fraction": "wood_elves",
+            "warriorType": "leader"
+        }, {
+            "characteristics": {
+                "strength": 8,
+                "agility": 10,
+                "perception": 11,
+                "intelligence": 14,
+                "health": 4,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "bow_shot": "1",
+                "acrobathics": "1",
+                "melee": "1"
+            },
+            "actions": 2,
+            "title": "Матвей Лаврентиевич Хвост",
+            "price": 54,
+            "weapons": ["weapon_5", "compound_bow"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 1,
+            "fraction": "wood_elves",
+            "warriorType": "hero"
+        }, {
+            "characteristics": {
+                "strength": 8,
+                "agility": 11,
+                "perception": 10,
+                "intelligence": 14,
+                "health": 4,
+                "move": 6,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "bow_shot": "1",
+                "melee": "1",
+                "acrobathics": "-2"
+            },
+            "actions": 2,
+            "title": "Никифор Святогорович Криворогов",
+            "price": 46,
+            "weapons": ["weapon_4", "compound_bow"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 2,
+            "fraction": "wood_elves",
+            "warriorType": "hero"
+        }, {
+            "characteristics": {
+                "strength": 10,
+                "agility": 13,
+                "perception": 12,
+                "intelligence": 14,
+                "health": 3,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "bow_shot": "1",
+                "melee": "0",
+                "acrobathics": "0"
+            },
+            "actions": 2,
+            "title": "Валерьян Фаддеевич Кукиш-Мир",
+            "price": 41,
+            "weapons": ["compound_bow", "weapon_4"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 3,
+            "fraction": "wood_elves",
+            "warriorType": "henchman"
+        }, {
+            "characteristics": {
+                "strength": 10,
+                "agility": 13,
+                "perception": 12,
+                "intelligence": 14,
+                "health": 3,
+                "move": 4,
+                "panic": 0,
+                "defence": 0,
+                "fly": false
+            },
+            "skills": {
+                "bow_shot": "1",
+                "melee": "0",
+                "acrobathics": "0"
+            },
+            "actions": 2,
+            "title": "Агап Гедеонович Непогода-Блюм",
+            "price": 41,
+            "weapons": ["weapon_4", "bow"],
+            "names": "Common_0",
+            "armour": "",
+            "index": 4,
+            "fraction": "wood_elves",
+            "warriorType": "henchman"
+        }]
     },
     {
         "title": "Goblins",
@@ -104,61 +424,9 @@
                 "max": 5
             }
         },
-        "values": [
-            {
-                "id": "leader",
-                "title": "Предводитель",
-                "values": [8, 10, 11, 12],
-                "limits": {
-                    "min": 1,
-                    "max": 1
-                },
-                "actions": [{
-                    "id": "inspire",
-                    "skill": true,
-                    "attributes": {
-                        "strength": false,
-                        "agility": false,
-                        "perception": true,
-                        "intelligence": false
-                    },
-                    "action": {
-                        "duration": {
-                            "stand": 1,
-                            "hidden": 0,
-                            "panic": 0
-                        },
-                        "first": true,
-                        "remain": true
-                    }
-                }]
-            },
-            {
-                "id": "hero",
-                "title": "Герой",
-                "values": [8, 10, 11, 14],
-                "limits": {
-                    "min": 0,
-                    "max": 2
-                }
-            },
-            {
-                "id": "master",
-                "title": "Мастер",
-                "values": [9, 9, 12, 13]
-            },
-            {
-                "id": "henchman",
-                "title": "Боец",
-                "values": [10, 12, 13, 14]
-            }
-
-        ],
+        "values": [],
         "weapons": [
-            "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_7"
-            , "weapon_9", "weapon_12", "weapon_14"
-            , "weapon_17", "weapon_24", "weapon_25", "weapon_38"
-            , "weapon_39", "weapon_56", "weapon_59", "weapon_72"
+            "weapon_0", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_7", "weapon_9", "weapon_12", "weapon_14", "weapon_17", "weapon_24", "weapon_25", "bow", "weapon_39", "weapon_56", "weapon_59", "weapon_72"
         ],
         "crew": [{
             "characteristics": {
@@ -255,7 +523,7 @@
             "actions": 2,
             "title": "Сигизмунд Зубков",
             "price": 42,
-            "weapons": ["weapon_38"],
+            "weapons": ["bow"],
             "names": "Common_0",
             "armour": "",
             "index": 3,

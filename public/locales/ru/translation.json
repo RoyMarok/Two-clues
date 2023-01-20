@@ -24,6 +24,7 @@
     "band.character.skill.medicine": "Медицина",
     "band.character.skill.defence": "Защита",
     "band.character.skill.inspire": "Вдохновление",
+    "band.character.skill.bow_shot": "Из лука",
     "band.character.action": "Действия",
     "band.character.action.title": "## Действия",
     "band.character.action.single": "действие",
@@ -38,6 +39,7 @@
     "band.character.action.reload": "Перезарядить",
     "band.character.action.move": "Движение",
     "band.character.action.inspire": "Вдохновить",
+    "band.character.action.bow_shot": "Из лука",
     "band.character.action.moveRandom": "Беготня",
 
     "band.character.action.descriprion.move": "## Движение \n Во время этого действия персонаж может подвигаться по любой траектории, длинной не более своей характеристики *Ходьба* в дюймах. Персонаж может передвигаться по лестницам. Персонаж может преодолевать препятствия не более 1 дюйма в высоту. *Движение* по *труднопроходимой* местности не может быть дальше половины характеристики *Ходьба*. \n\r ### Труднопроходимая местность \n\r Болота, сугробы, песок, вода, кусты",

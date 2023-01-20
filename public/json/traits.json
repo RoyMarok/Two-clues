@@ -49,7 +49,7 @@
     },
     {
         "id": "limited",
-        "title": "Ограничено",
+        "title": "Мало",
         "description": "",
         "price": 0
     },
@@ -144,9 +144,15 @@
         "price": 10
     },
     {
+        "id": "granade",
+        "title": "Граната",
+        "description": "Дальность - текущее здоровье +4",
+        "price": 15
+    },
+    {
         "id": "poison",
         "title": "Яд",
-        "description": "",
+        "description": "Каждую следующую фазу восстановления проверка мощи на урон",
         "price": 15
     }
 ]
