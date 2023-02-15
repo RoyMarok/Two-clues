@@ -96,6 +96,25 @@
         }
     },
     {
+        "id": "throw",
+        "skill": false,
+        "attributes": {
+            "strength": true,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "action": {
+            "duration": {
+                "stand": 1,
+                "hidden": 1,
+                "panic": 0
+            },
+            "first": false,
+            "remain": true
+        }
+    },
+    {
         "id": "aim",
         "skill": false,
         "attributes": {
