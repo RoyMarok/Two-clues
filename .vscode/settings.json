@@ -1,3 +1,7 @@
 {
-    "svg.preview.background": "white"
+    "svg.preview.background": "white",
+    "workbench.colorTheme": "Monokai Dimmed",
+    "editor.fontFamily": "'Fira Code Retina', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "files.autoSave": "onFocusChange"
 }

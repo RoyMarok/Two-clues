@@ -4,7 +4,7 @@ import { gridBase, theme } from './common.style'
 
 const baseIconSize = parseInt(gridBase * 0.7)
 
-export const Icon = styled.div(({ size = 1, color = 'primary', rotate = 0 }) => css`
+export const Icon = styled.span(({ size = 1, color = 'primary', inverse = false, rotate = 0 }) => css`
     height: ${parseInt(size  * baseIconSize)}px;
     width: ${parseInt(size  * baseIconSize) * 1.34}px;
     display: inline-block;
@@ -14,7 +14,7 @@ export const Icon = styled.div(({ size = 1, color = 'primary', rotate = 0 }) => 
     transform: rotate(${rotate}deg);
     svg {
         position: relative;
-        fill: ${theme?.[color]};
+        fill: ${theme?.[inverse ? 'white' : color]};
         width: 100%;
         height: 100%;
         box-sizing: border-box;

@@ -114,6 +114,8 @@ export {
     CharacterState
 } from './characters'
 
+export { characterD6State, CharacterD6StateObj } from './d6_character'
+
 export {
     defaultWeapon,
     weaponState,

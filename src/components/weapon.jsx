@@ -10,6 +10,7 @@ import { Traits } from './traits'
 import { IconedElement } from './short-character'
 
 export const Weapon = (props) => {
+    
     const {
         currentStats,
         onChange = noop,

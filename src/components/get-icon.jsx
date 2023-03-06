@@ -25,6 +25,14 @@ import { ReactComponent as FlyIcon } from '../icons/fly.svg'
 import { ReactComponent as HiddenIcon } from '../icons/invisible.svg'
 import { ReactComponent as LikeIcon } from '../icons/like.svg'
 import { ReactComponent as ConfusedIcon } from '../icons/confused.svg'
+import { ReactComponent as DiceIcon } from '../icons/dice.svg'
+import { ReactComponent as PencilIcon } from '../icons/pencil.svg'
+import { ReactComponent as AtomIcon } from '../icons/atom.svg'
+import { ReactComponent as GearIcon } from '../icons/gear.svg'
+import { ReactComponent as MagicIcon } from '../icons/bahai.svg'
+import { ReactComponent as SkillIcon } from '../icons/phyllotaxis.svg'
+import { ReactComponent as WeaponIcon } from '../icons/weapon.svg'
+import { ReactComponent as ScrollIcon } from '../icons/parchment.svg'
 
 export const GetIcon = ({ icon, ...props }) => {
     switch (icon) {
@@ -78,7 +86,59 @@ export const GetIcon = ({ icon, ...props }) => {
             return <Icon {...props}><LikeIcon /></Icon>
         case 'confused':
             return <Icon {...props}><ConfusedIcon /></Icon>
+        case 'dice':
+            return <Icon {...props}><DiceIcon /></Icon>
+        case 'pencil':
+            return <Icon {...props}><PencilIcon /></Icon>
+        case 'atom':
+            return <Icon {...props}><AtomIcon /></Icon>
+        case 'gear':
+            return <Icon {...props}><GearIcon /></Icon>
+        case 'magic':
+            return <Icon {...props}><ScrollIcon /></Icon>
+        case 'skill':
+            return <Icon {...props}><SkillIcon /></Icon>
+        case 'weapon':
+            return <Icon {...props}><WeaponIcon /></Icon>
+        case 'scroll':
+            return <Icon {...props}><ScrollIcon /></Icon>
         default:
             return null
     }
 }
+
+GetIcon.list = [
+    'strength',
+    'agility',
+    'perception',
+    'intelligence',
+    'health',
+    'move',
+    'up',
+    'down',
+    'panic',
+    'defence',
+    'range',
+    'shots',
+    'drum',
+    'reload',
+    'ap',
+    'dmg',
+    'coin',
+    'mass',
+    'face',
+    'cross',
+    'fly',
+    'print',
+    'hidden',
+    'like',
+    'confused',
+    'dice',
+    'pencil',
+    'atom',
+    'gear',
+    'magic',
+    'skill',
+    'weapon',
+    'scroll'
+]

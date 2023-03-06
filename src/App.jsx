@@ -8,7 +8,7 @@ import {
     Band,
     Button,
     Characters,
-    Character,
+    // Character,
     FlexWrapper,
     Fractions,
     GetIcon,
@@ -22,6 +22,7 @@ import {
     NamesGenerator,
     Rules
 } from './components'
+import { BandD6, Character } from './components/d6'
 
 const Home = () => null
 
@@ -39,6 +40,9 @@ export const App = ({ t }) => (
                     </GridCell>
                     <GridCell width={3} inverse center>
                         <Link to="/characters">{t('characters.title')}</Link>
+                    </GridCell>
+                    <GridCell width={3} inverse center>
+                        <Link to="/characters-d6">{t('characters.d6.title')}</Link>
                     </GridCell>
                     <GridCell width={3} inverse center>
                         <Link to="/fractions">{t('fractions.title')}</Link>
@@ -65,6 +69,7 @@ export const App = ({ t }) => (
             <Route path="/" element={<NamesGenerator />} />
             <Route path="/band" element={<Band />} />
             <Route path="/characters" element={<Characters />} />
+            <Route path="/characters-d6" element={<BandD6 />} />
             <Route path="/fractions" element={<Fractions />} />
             <Route path="/weapons" element={<Weapons />} />
             <Route path="/armours" element={<Armours />} />

@@ -6,6 +6,8 @@ import {
 
 } from '../../atoms'
 
+import { noop } from '../../utils'
+
 import {
     BorderWrapper,
     Button,
@@ -22,20 +24,22 @@ import { SelectWithOptions } from '../weapons-selection'
 
 import { factionList } from './names-generator'
 
-const factionOptions = []
+const getOptions = () => {
+    const factionOptions = []
+    factionList.map(faction => faction.list.map((item, index) => {
+        factionOptions.push({
+            id: `${faction?.title}_${index}`,
+            random: generateRandomNames,
+            ...item
+        })
+        return null
+    }))
+    return factionOptions
+}
 
-factionList.map(faction => faction.list.map((item, index) => {
-    factionOptions.push({
-        id: `${faction?.title}_${index}`,
-        random: generateRandomNames,
-        ...item
-    })
-    return null
-}))
-
-export const InsertedNames = ({ onChange, options = factionOptions, index, selectedFaction, setSelectedFaction }) => {
-    
-    const selectedFactionData = options.filter(item => item?.id === selectedFaction)?.[0]
+export const InsertedNames = ({ onChange, options, index, selectedFaction = 'Common_0', setSelectedFaction = noop }) => {
+    const passedOption = options || getOptions()
+    const selectedFactionData = passedOption.filter(item => item?.id === selectedFaction)?.[0]
     const { random, setState } = selectedFactionData 
     const namesState = useRecoilValue(setState)
     const generateTitle = (e) => {
@@ -52,7 +56,7 @@ export const InsertedNames = ({ onChange, options = factionOptions, index, selec
                 <Button title="Ж" value="female" onClick={generateTitle} />
             </GridCell>
             <GridCell width={6} color="primary" center>
-                <SelectWithOptions onChange={(e) => setSelectedFaction(e.target.value)} elements={options} selected={selectedFaction} passedName={index} index={index} />
+                <SelectWithOptions onChange={(e) => setSelectedFaction(e.target.value)} elements={passedOption} selected={selectedFaction} passedName={index} index={index} />
             </GridCell>
         </FlexWrapper>
        

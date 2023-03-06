@@ -30,13 +30,13 @@ export const Traits = ({ traits = [], selectedTraits =[], onChange, controlled =
     const removeTrait = (e) => {
         e.preventDefault()
         const { value } = e.target
-        console.log('Traits removeTrait', value)
+        // console.log('Traits removeTrait', value)
         onChange(selectedTraits.filter(item => item !== value))
     }
     const addTrait = (e) => {
         e.preventDefault()
         const { value } = e.target
-        console.log('Traits addTrait', value, [...selectedTraits, value])
+        // console.log('Traits addTrait', value, [...selectedTraits, value])
         onChange([...selectedTraits, value])
     }
     const inTraits = [...traits]
