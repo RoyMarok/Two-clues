@@ -164,7 +164,7 @@ export const getD6CharacterPrice = (character) => {
         weapons = [],
         spells = [],
         skills=[],
-        equipment,
+        //  equipment,
         allTraits,
         spelltraits = []
     } = character
@@ -185,7 +185,7 @@ export const getD6CharacterPrice = (character) => {
         + calculateAttr(agility)
         + calculateAttr(perception)
         + calculateAttr(intelligence)
-    const moveCalculated = Math.pow(2, parseInt(move) - 1) * (fly ? 2 : 1)
+    const moveCalculated = Math.round(Math.pow(1.5, parseInt(move) - 1) * (fly ? 2 : 1))
     let calculatedWeapons = 0
     weapons.map((weapon) => calculatedWeapons += getD6WeaponPrice({ ...weapon, allTraits }))
     let calculatedSpells = 0
