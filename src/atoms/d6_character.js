@@ -65,7 +65,7 @@ const defaultD6Charcter = {
     },
     actions: 2,
     title: '',
-    price: 19,
+    price: 33,
     count: 0,
     weapons: [
         defaultD6Weapon
@@ -77,6 +77,36 @@ const defaultD6Charcter = {
 }
 
 const PRICE_KOEFF = 1
+const WEAPONS_RANGE = [
+    {
+        range: 1,
+        price: 1
+    },
+    {
+        range: 2,
+        price: 2
+    },
+    {
+        range: 3,
+        price: 4
+    },
+    {
+        range: 6,
+        price: 6
+    },
+    {
+        range: 8,
+        price: 8
+    },
+    {
+        range: 12,
+        price: 10
+    },
+    {
+        range: 30,
+        price: 12
+    }
+]
 
 const getD6WeaponPrice = (weapon) => {
     const {
@@ -98,8 +128,11 @@ const getD6WeaponPrice = (weapon) => {
         }
         return null
     })
+    const passedRangePrice = WEAPONS_RANGE.filter(
+        (item, index) => range === item.range || (range > WEAPONS_RANGE?.[Math.max(index - 1, 0)].range && range < item.range))[0]?.price
+
     const dmgRange = ((parseInt(dmg) + 1) * shots * 2 * range * 0.275) / 5
-    const dmgRange2 = (parseInt(dmg) + 1) * shots * range
+    const dmgRange2 = (parseInt(dmg) + 1) * shots * passedRangePrice
 
     return Math.max(
         Math.round(
@@ -185,7 +218,7 @@ export const getD6CharacterPrice = (character) => {
         + calculateAttr(agility)
         + calculateAttr(perception)
         + calculateAttr(intelligence)
-    const moveCalculated = Math.round(Math.pow(1.5, parseInt(move) - 1) * (fly ? 2 : 1))
+    const moveCalculated = Math.round(Math.pow(2, parseInt(move) - 1) * (fly ? 2 : 1))
     let calculatedWeapons = 0
     weapons.map((weapon) => calculatedWeapons += getD6WeaponPrice({ ...weapon, allTraits }))
     let calculatedSpells = 0

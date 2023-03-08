@@ -37,7 +37,7 @@ const getOptions = () => {
     return factionOptions
 }
 
-export const InsertedNames = ({ onChange, options, index, selectedFaction = 'Common_0', setSelectedFaction = noop }) => {
+export const InsertedNames = ({ onChange, options, index, selectedFaction = 'Common_0', setSelectedFaction = noop, showSelect = true }) => {
     const passedOption = options || getOptions()
     const selectedFactionData = passedOption.filter(item => item?.id === selectedFaction)?.[0]
     const { random, setState } = selectedFactionData 
@@ -55,9 +55,9 @@ export const InsertedNames = ({ onChange, options, index, selectedFaction = 'Com
             <GridCell width={1} inverse center>
                 <Button title="Ж" value="female" onClick={generateTitle} />
             </GridCell>
-            <GridCell width={6} color="primary" center>
+            {showSelect && <GridCell width={6} color="primary" center>
                 <SelectWithOptions onChange={(e) => setSelectedFaction(e.target.value)} elements={passedOption} selected={selectedFaction} passedName={index} index={index} />
-            </GridCell>
+            </GridCell>}
         </FlexWrapper>
        
     )

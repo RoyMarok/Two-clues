@@ -14,6 +14,7 @@ import {
     FlexWrapper
 } from '../../styled'
 
+import { SelectWithOptions } from '../../weapons-selection'
 import { InsertedNames } from '../../names-generator'
 import { GetIcon } from '../../get-icon'
 
@@ -88,6 +89,47 @@ const limits = {
     }
 }
 
+const WARRIOR_TYPES_VALUES = [
+    {
+        id: "leader",
+        title: "Предводитель",
+        values: [
+            3,
+            4,
+            4,
+            5
+        ],
+        limits: {
+            min: 1,
+            max: 1
+        }
+    },
+    {
+        id: "hero",
+        title: "Герой",
+        values: [
+            3,
+            4,
+            5,
+            6
+        ],
+        limits: {
+            min: 0,
+            max: 2
+        }
+    },
+    {
+        id: "henchman",
+        title: "Боец",
+        values: [
+            4,
+            5,
+            6,
+            6
+        ]
+    }
+]
+
 export const Character = (props) => {
     const {
         index = 0,
@@ -96,25 +138,28 @@ export const Character = (props) => {
     } = props
     const [characters, setCharacter] = useRecoilState(CharacterD6StateObj.change)
     const character = characters[index]
-    const [titleValue, setTitleValue] = useState(character?.title || '')
-    const removeCharacter = useSetRecoilState(CharacterD6StateObj.remove)
-    const addWeapon = useSetRecoilState(CharacterD6StateObj.addWeapon)
-    const addSpell = useSetRecoilState(CharacterD6StateObj.addSpell)
-    const addSkill = useSetRecoilState(CharacterD6StateObj.addSkill)
-    const handleDeleteCharacter = (e) => removeCharacter(index)
-
     const {
         price,
         characteristics,
         weapons,
         spells,
         skills,
+        warriorType = 'henchman',
         count
     } = character
 
+    const [titleValue, setTitleValue] = useState(character?.title || '')
+    const removeCharacter = useSetRecoilState(CharacterD6StateObj.remove)
+    const addWeapon = useSetRecoilState(CharacterD6StateObj.addWeapon)
+    const addSpell = useSetRecoilState(CharacterD6StateObj.addSpell)
+    const addSkill = useSetRecoilState(CharacterD6StateObj.addSkill)
+    const handleDeleteCharacter = (e) => removeCharacter(index)
+   
+    const selectedWarriorData = WARRIOR_TYPES_VALUES.filter(type => type?.id === warriorType)?.[0] || []
+    const selectedValues = selectedWarriorData?.values || []
+
     const handleControlled = (e) => setControlled(index)
     const handleSetTitleValue = (e) => setTitleValue(e.target.value)
-    
     
     const handleAddWeapon = (e) => addWeapon(index)
     const handleAddSpell = (e) => addSpell(index)
@@ -129,9 +174,8 @@ export const Character = (props) => {
     }
     const changesMaker = (attr) => (e) => {
         const passedChars = {...characteristics}
-        const { value } = e.target
-        const passedValue = limits?.[attr] ? clamp(value, limits?.[attr]?.min, limits?.[attr]?.max) : value
-        passedChars[attr] = passedValue
+        const passedValue = e?.target?.value ? e.target.value : e
+        passedChars[attr] = limits?.[attr] ? clamp(passedValue, limits?.[attr]?.min, limits?.[attr]?.max) : passedValue
         setCharacter({
             ...character,
             characteristics: passedChars
@@ -141,6 +185,10 @@ export const Character = (props) => {
     const handleSetTitleValueAll = (e) => {
         setTitleValue(e)
         changesCharMaker('title')(e)
+    }
+
+    const selectWarriorType = (e) => {
+        changesCharMaker('warriorType')(e)
     }
 
     const weaponChangesMaker = (attr) => (index) => (e) => {
@@ -260,7 +308,10 @@ export const Character = (props) => {
                         onClick={handleAddCharacter} 
                     />
                 </GridCell>
-                <InsertedNames onChange={handleSetTitleValueAll} index={index} />
+                <InsertedNames onChange={handleSetTitleValueAll} index={index} showSelect={false} />
+                <GridCell width={5} center>
+                    <SelectWithOptions onChange={selectWarriorType} elements={WARRIOR_TYPES_VALUES} selected={warriorType} index={index} passedName="armourSelect" placeholder="Кто" />
+                </GridCell>
             </FlexWrapper>
         
             <BorderWrapper>
@@ -279,12 +330,13 @@ export const Character = (props) => {
                 </FlexWrapper>
                 <FlexWrapper>
                     <Attributes
-                        values={values}
+                        values={selectedValues}
                         attributes={characteristics}
                         changes={changes}
                         limits={limits}
                         controlled={isControlled}
                     />
+                    <GridCell width={4} center />
                     <IconedField
                         title="atom"
                         filled

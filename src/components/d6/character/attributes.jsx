@@ -16,7 +16,7 @@ export const Might = ({ values = [], limits, onChange, value, filled, controlled
         title="strength"
         filled={filled}
     >
-        {/* {controlled ? <SquareChooser
+        {controlled ? <SquareChooser
             values={values}
             limits={limits}
             onChange={onChange}
@@ -24,14 +24,14 @@ export const Might = ({ values = [], limits, onChange, value, filled, controlled
             filled={filled}
         /> : <GridCell width={2} height="2" center big>
             {value}
-        </GridCell>} */}
-        {controlled ? <ValueField
+        </GridCell>}
+        {/* {controlled ? <ValueField
             onChange={onChange}
             value={value}
             filled={filled}
         /> : <GridCell black width={2} height="2" center big>
             {value}
-        </GridCell>}
+        </GridCell>} */}
     </IconedField>
 )
 
@@ -40,7 +40,7 @@ export const Dex = ({ values = [], limits, onChange, value, filled, controlled =
         title="agility"
         filled={filled}
     >
-        {/* {controlled ? <SquareChooser
+        {controlled ? <SquareChooser
             values={values}
             limits={limits}
             onChange={onChange}
@@ -48,14 +48,14 @@ export const Dex = ({ values = [], limits, onChange, value, filled, controlled =
             filled={filled}
         /> : <GridCell width={2} height="2" center big>
             {value}
-        </GridCell>} */}
-        {controlled ? <ValueField
+        </GridCell>}
+        {/* {controlled ? <ValueField
             onChange={onChange}
             value={value}
             filled={filled}
         /> : <GridCell black width={2} height="2" center big>
             {value}
-        </GridCell>}
+        </GridCell>} */}
     </IconedField>
 )
 
@@ -64,7 +64,7 @@ export const Mind = ({ values = [], limits, onChange, value, filled, controlled 
         title="perception"
         filled={filled}
     >
-        {/* {controlled ? <SquareChooser
+        {controlled ? <SquareChooser
             values={values}
             limits={limits}
             onChange={onChange}
@@ -72,14 +72,14 @@ export const Mind = ({ values = [], limits, onChange, value, filled, controlled 
             filled={filled}
         /> : <GridCell width={2} height="2" center big>
             {value}
-        </GridCell>} */}
-        {controlled ? <ValueField
+        </GridCell>}
+        {/* {controlled ? <ValueField
             onChange={onChange}
             value={value}
             filled={filled}
         /> : <GridCell black width={2} height="2" center big>
             {value}
-        </GridCell>}
+        </GridCell>} */}
     </IconedField>
 )
 
@@ -88,7 +88,7 @@ export const Brain = ({ values = [], limits, onChange, value, filled, controlled
         title="intelligence"
         filled={filled}
     >
-        {/* {controlled ? <SquareChooser
+        {controlled ? <SquareChooser
             values={values}
             limits={limits}
             onChange={onChange}
@@ -96,14 +96,14 @@ export const Brain = ({ values = [], limits, onChange, value, filled, controlled
             filled={filled}
         /> : <GridCell width={2} height="2" center big>
             {value}
-        </GridCell>} */}
-        {controlled ? <ValueField
+        </GridCell>}
+        {/* {controlled ? <ValueField
             onChange={onChange}
             value={value}
             filled={filled}
         /> : <GridCell black width={2} height="2" center big>
             {value}
-        </GridCell>}
+        </GridCell>} */}
     </IconedField>
 )
 
