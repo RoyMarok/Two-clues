@@ -157,6 +157,7 @@ export const Weapon = (props) => {
         traits,
         index,
         characterIndex,
+        limits,
         price
     } = props
 

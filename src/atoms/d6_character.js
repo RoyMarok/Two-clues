@@ -63,6 +63,12 @@ const defaultD6Charcter = {
         defence: 0,
         fly: false
     },
+    // armour: {
+    //     head: 0,
+    //     chest: 0,
+    //     hands: 0,
+    //     legs: 0
+    // },
     actions: 2,
     title: '',
     price: 33,
@@ -199,8 +205,15 @@ export const getD6CharacterPrice = (character) => {
         skills=[],
         //  equipment,
         allTraits,
-        spelltraits = []
+        spelltraits = [],
+        armour
     } = character
+    // const {
+    //     head = 0,
+    //     chest = 0,
+    //     hands = 0,
+    //     legs = 0
+    // } = armour
     const {
         strength,
         agility,
@@ -213,12 +226,14 @@ export const getD6CharacterPrice = (character) => {
         fly
     } = characteristics
 
+    // const armourSum = (parseInt(head) + parseInt(chest) + parseInt(hands) + parseInt(legs)) * 3
     const attributeSum =
         calculateAttr(strength)
         + calculateAttr(agility)
         + calculateAttr(perception)
         + calculateAttr(intelligence)
     const moveCalculated = Math.round(Math.pow(2, parseInt(move) - 1) * (fly ? 2 : 1))
+    const healthCalculated = Math.round(Math.pow(2, parseInt(health) - 1) * 6)
     let calculatedWeapons = 0
     weapons.map((weapon) => calculatedWeapons += getD6WeaponPrice({ ...weapon, allTraits }))
     let calculatedSpells = 0
@@ -228,11 +243,13 @@ export const getD6CharacterPrice = (character) => {
 
     const characteristicSum =
         (attributeSum + moveCalculated + parseInt(defence) * 3) * actions
-        + parseInt(health) * 6
+        // + parseInt(health) * 6
+        + healthCalculated
         - panic
         + parseInt(calculatedWeapons)
         + parseInt(calculatedSpells)
         + parseInt(calculatedSkills)
+        // + armourSum
     return characteristicSum
 }
 

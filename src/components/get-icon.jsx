@@ -34,6 +34,11 @@ import { ReactComponent as SkillIcon } from '../icons/phyllotaxis.svg'
 import { ReactComponent as WeaponIcon } from '../icons/weapon.svg'
 import { ReactComponent as ScrollIcon } from '../icons/parchment.svg'
 
+import { ReactComponent as HelmetIcon } from '../icons/mandalorian.svg'
+import { ReactComponent as ArmIcon } from '../icons/gloves.svg'
+import { ReactComponent as ChestIcon } from '../icons/singlet.svg'
+import { ReactComponent as LegIcon } from '../icons/valenki.svg'
+
 export const GetIcon = ({ icon, ...props }) => {
     switch (icon) {
         case 'strength':
@@ -102,6 +107,14 @@ export const GetIcon = ({ icon, ...props }) => {
             return <Icon {...props}><WeaponIcon /></Icon>
         case 'scroll':
             return <Icon {...props}><ScrollIcon /></Icon>
+        case 'helmet':
+            return <Icon {...props}><HelmetIcon /></Icon>
+        case 'hands':
+            return <Icon {...props}><ArmIcon /></Icon>
+        case 'chest':
+            return <Icon {...props}><ChestIcon /></Icon>
+        case 'legs':
+            return <Icon {...props}><LegIcon /></Icon>
         default:
             return null
     }
@@ -140,5 +153,9 @@ GetIcon.list = [
     'magic',
     'skill',
     'weapon',
-    'scroll'
+    'scroll',
+    'helmet',
+    'hands',
+    'chest',
+    'legs'
 ]

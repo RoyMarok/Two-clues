@@ -38,7 +38,7 @@ export const App = ({ t }) => (
                     <GridCell width={3} inverse center>
                         <Link to="/band">{t('band.title')}</Link>
                     </GridCell>
-                    <GridCell width={3} inverse center>
+                    {/* <GridCell width={3} inverse center>
                         <Link to="/characters">{t('characters.title')}</Link>
                     </GridCell>
                     <GridCell width={3} inverse center>
@@ -52,7 +52,7 @@ export const App = ({ t }) => (
                     </GridCell>
                     <GridCell width={3} inverse center>
                         <Link to="/armours">{t('armours.title')}</Link>
-                    </GridCell>
+                    </GridCell> */}
                     <GridCell width={3} inverse center>
                         <Link to="/rules">{t('rules.title')}</Link>
                     </GridCell>
@@ -67,12 +67,13 @@ export const App = ({ t }) => (
 
         <Routes>
             <Route path="/" element={<NamesGenerator />} />
-            <Route path="/band" element={<Band />} />
-            <Route path="/characters" element={<Characters />} />
-            <Route path="/characters-d6" element={<BandD6 />} />
-            <Route path="/fractions" element={<Fractions />} />
+            {/* <Route path="/band" element={<Band />} /> */}
+            {/* <Route path="/characters" element={<Characters />} /> */}
+            {/* <Route path="/characters-d6" element={<BandD6 />} /> */}
+            <Route path="/band" element={<BandD6 />} />
+            {/* <Route path="/fractions" element={<Fractions />} />
             <Route path="/weapons" element={<Weapons />} />
-            <Route path="/armours" element={<Armours />} />
+            <Route path="/armours" element={<Armours />} /> */}
             <Route path="/rules" element={<Rules />} />
         </Routes>
     </AppWrapper>

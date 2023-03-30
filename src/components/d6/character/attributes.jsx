@@ -16,22 +16,18 @@ export const Might = ({ values = [], limits, onChange, value, filled, controlled
         title="strength"
         filled={filled}
     >
-        {controlled ? <SquareChooser
+        {values.length > 0 ? <SquareChooser
             values={values}
             limits={limits}
             onChange={onChange}
             value={value}
             filled={filled}
-        /> : <GridCell width={2} height="2" center big>
-            {value}
-        </GridCell>}
-        {/* {controlled ? <ValueField
+        /> : <ValueField
             onChange={onChange}
             value={value}
             filled={filled}
-        /> : <GridCell black width={2} height="2" center big>
-            {value}
-        </GridCell>} */}
+        />}
+
     </IconedField>
 )
 
@@ -40,22 +36,17 @@ export const Dex = ({ values = [], limits, onChange, value, filled, controlled =
         title="agility"
         filled={filled}
     >
-        {controlled ? <SquareChooser
+        {values.length > 0 ? <SquareChooser
             values={values}
             limits={limits}
             onChange={onChange}
             value={value}
             filled={filled}
-        /> : <GridCell width={2} height="2" center big>
-            {value}
-        </GridCell>}
-        {/* {controlled ? <ValueField
+        /> : <ValueField
             onChange={onChange}
             value={value}
             filled={filled}
-        /> : <GridCell black width={2} height="2" center big>
-            {value}
-        </GridCell>} */}
+        />}
     </IconedField>
 )
 
@@ -64,22 +55,17 @@ export const Mind = ({ values = [], limits, onChange, value, filled, controlled 
         title="perception"
         filled={filled}
     >
-        {controlled ? <SquareChooser
+        {values.length > 0 ? <SquareChooser
             values={values}
             limits={limits}
             onChange={onChange}
             value={value}
             filled={filled}
-        /> : <GridCell width={2} height="2" center big>
-            {value}
-        </GridCell>}
-        {/* {controlled ? <ValueField
+        /> : <ValueField
             onChange={onChange}
             value={value}
             filled={filled}
-        /> : <GridCell black width={2} height="2" center big>
-            {value}
-        </GridCell>} */}
+        />}
     </IconedField>
 )
 
@@ -88,22 +74,17 @@ export const Brain = ({ values = [], limits, onChange, value, filled, controlled
         title="intelligence"
         filled={filled}
     >
-        {controlled ? <SquareChooser
+        {values.length > 0 ? <SquareChooser
             values={values}
             limits={limits}
             onChange={onChange}
             value={value}
             filled={filled}
-        /> : <GridCell width={2} height="2" center big>
-            {value}
-        </GridCell>}
-        {/* {controlled ? <ValueField
+        /> : <ValueField
             onChange={onChange}
             value={value}
             filled={filled}
-        /> : <GridCell black width={2} height="2" center big>
-            {value}
-        </GridCell>} */}
+        />}
     </IconedField>
 )
 
@@ -169,13 +150,29 @@ export const Defence = ({ onChange, value, filled, controlled = true }) => (
     </IconedField>
 )
 
+export const Actions = ({ onChange, value, filled, controlled = true }) => (
+    <IconedField
+        title="atom"
+        filled={filled}
+    >
+        {controlled ?<SquareChooser
+            values={[1, 2, 3, 4]}
+            onChange={onChange}
+            value={value}
+        /> : <GridCell black width={2} height="2" center big>
+            {value}
+        </GridCell>}
+    </IconedField>
+)
+
 export const Attributes = (props) => {
     const {
         values,
         attributes,
         changes,
         limits,
-        controlled
+        controlled,
+        actions
     } = props
     const {
         strength,
@@ -236,15 +233,15 @@ export const Attributes = (props) => {
                     changeFly={changes.fly}
                     controlled={controlled}
                 />
-                <Panic
-                    onChange={changes.panic}
-                    value={panic}
-                    filled
-                    controlled={controlled}
-                />
                 <Defence
                     onChange={changes.defence}
                     value={defence}
+                    filled
+                    controlled={controlled}
+                />
+                <Actions
+                    onChange={changes.actions}
+                    value={actions}
                     controlled={controlled}
                 />
             </FlexWrapper>

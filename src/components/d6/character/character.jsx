@@ -24,6 +24,7 @@ import { Spell } from './spell'
 import { Skill } from './skill'
 import { SquareChooser } from './square-choser'
 import { IconedField } from './iconed-field'
+import { Defencies } from './defencies'
 
 const limits = {
     strength: {
@@ -44,10 +45,10 @@ const limits = {
     },
     health: {
         min: 1,
-        max: 10
+        max: 20
     },
     move: {
-        min: 3,
+        min: 0,
         max: 8
     },
     panic: {
@@ -145,7 +146,8 @@ export const Character = (props) => {
         spells,
         skills,
         warriorType = 'henchman',
-        count
+        count,
+        armour
     } = character
 
     const [titleValue, setTitleValue] = useState(character?.title || '')
@@ -251,6 +253,7 @@ export const Character = (props) => {
         panic: changesMaker('panic'),
         defence: changesMaker('defence'),
         actions: changesCharMaker('actions'),
+        armour: changesCharMaker('armour'),
         title: changesCharMaker('title'),
         fly: noop
     }
@@ -335,9 +338,16 @@ export const Character = (props) => {
                         changes={changes}
                         limits={limits}
                         controlled={isControlled}
+                        actions={character.actions}
                     />
-                    <GridCell width={4} center />
-                    <IconedField
+                    <GridCell width={2} center />
+                    {/* <GridCell width={4} height={6} center >
+                        <Defencies
+                            values={armour}
+                            onChange={changesCharMaker('armour')}
+                        />
+                    </GridCell> */}
+                    {/* <IconedField
                         title="atom"
                         filled
                     > 
@@ -346,7 +356,7 @@ export const Character = (props) => {
                             value={character.actions}
                             onChange={changes.actions}
                         />
-                    </IconedField>
+                    </IconedField> */}
                 </FlexWrapper>
                 {isControlled && <FlexWrapper>
                     <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="weapon" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddWeapon} /></GridCell>
@@ -362,6 +372,7 @@ export const Character = (props) => {
                         characterIndex={index}
                         changes={weaponChanges(weaponIndex)}
                         controlled={isControlled}
+                        limits={limits}
                     />)
                 }
                 {spells.map((spell, spellIndex) =>
