@@ -69,6 +69,7 @@ const defaultD6Charcter = {
     //     hands: 0,
     //     legs: 0
     // },
+    fearless: false,
     actions: 2,
     title: '',
     price: 33,
@@ -206,6 +207,7 @@ export const getD6CharacterPrice = (character) => {
         //  equipment,
         allTraits,
         spelltraits = [],
+        fearless = false,
         armour
     } = character
     // const {
@@ -249,7 +251,9 @@ export const getD6CharacterPrice = (character) => {
         + parseInt(calculatedWeapons)
         + parseInt(calculatedSpells)
         + parseInt(calculatedSkills)
+        + (fearless ? 15 : 0)
         // + armourSum
+
     return characteristicSum
 }
 

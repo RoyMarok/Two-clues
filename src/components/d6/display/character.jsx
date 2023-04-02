@@ -34,10 +34,7 @@ const IconedElement = ({ icon, value, filled = false, black = false, color = 'se
                         <GridCell center width={0.5} height={0.5} filled={checkboxes} />
                         <GridCell center width={0.5} height={0.5} filled={checkboxes} muted/>
                     </FlexWrapper>
-                    <GridCell center height={0.5} muted>{description}</GridCell>
-                    
-                    
-                    
+                    <GridCell center height={0.5} muted>{description}</GridCell> 
                 </GridCell>}
             </FlexWrapper>
         </GridCell>

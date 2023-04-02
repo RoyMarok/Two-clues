@@ -147,6 +147,7 @@ export const Character = (props) => {
         skills,
         warriorType = 'henchman',
         count,
+        fearless,
         armour
     } = character
 
@@ -166,7 +167,6 @@ export const Character = (props) => {
     const handleAddWeapon = (e) => addWeapon(index)
     const handleAddSpell = (e) => addSpell(index)
     const handleAddSkill = (e) => addSkill(index)
-
     const changesCharMaker = (attr) => (e) => {
         const passedChars = {...character}
         passedChars[attr] = e?.target?.value ? e.target.value : e
@@ -176,7 +176,8 @@ export const Character = (props) => {
     }
     const changesMaker = (attr) => (e) => {
         const passedChars = {...characteristics}
-        const passedValue = e?.target?.value ? e.target.value : e
+        const passedE = attr === 'fly' ? !characteristics.fly : e
+        const passedValue = passedE?.target?.value ? passedE.target.value : passedE
         passedChars[attr] = limits?.[attr] ? clamp(passedValue, limits?.[attr]?.min, limits?.[attr]?.max) : passedValue
         setCharacter({
             ...character,
@@ -255,7 +256,7 @@ export const Character = (props) => {
         actions: changesCharMaker('actions'),
         armour: changesCharMaker('armour'),
         title: changesCharMaker('title'),
-        fly: noop
+        fly: changesMaker('fly')
     }
     const values = [
         6, 6, 6, 6
