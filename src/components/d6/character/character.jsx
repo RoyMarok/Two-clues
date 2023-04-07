@@ -22,7 +22,7 @@ import { Attributes } from './attributes'
 import { Weapon } from './weapon'
 import { Spell } from './spell'
 import { Skill } from './skill'
-import { SquareChooser } from './square-choser'
+import { ValueField } from './value-field'
 import { IconedField } from './iconed-field'
 import { Defencies } from './defencies'
 
@@ -87,7 +87,11 @@ const limits = {
     mod: {
         min: -2,
         max: 2
-    }
+    },
+    height: {
+        min: -1,
+        max: 1
+    },
 }
 
 const WARRIOR_TYPES_VALUES = [
@@ -148,7 +152,7 @@ export const Character = (props) => {
         warriorType = 'henchman',
         count,
         fearless,
-        armour
+        height
     } = character
 
     const [titleValue, setTitleValue] = useState(character?.title || '')
@@ -169,7 +173,8 @@ export const Character = (props) => {
     const handleAddSkill = (e) => addSkill(index)
     const changesCharMaker = (attr) => (e) => {
         const passedChars = {...character}
-        passedChars[attr] = e?.target?.value ? e.target.value : e
+        const passedValue = e?.target?.value ? e.target.value : e
+        passedChars[attr] = limits?.[attr] ? clamp(passedValue, limits?.[attr]?.min, limits?.[attr]?.max) : passedValue
         setCharacter({
             ...passedChars
         })
@@ -341,6 +346,16 @@ export const Character = (props) => {
                         controlled={isControlled}
                         actions={character.actions}
                     />
+                    <IconedField
+                        title="height"
+                        filled
+                    >
+                        <ValueField
+                            onChange={changesCharMaker('height')}
+                            value={height}
+                            limits={limits.height}
+                        />
+                    </IconedField>
                     <GridCell width={2} center />
                     {/* <GridCell width={4} height={6} center >
                         <Defencies

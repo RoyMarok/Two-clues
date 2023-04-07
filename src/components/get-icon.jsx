@@ -63,6 +63,8 @@ export const GetIcon = ({ icon, ...props }) => {
             return <Icon {...props}><DefenceIcon /></Icon>
         case 'range':
             return <Icon {...props}><RangeIcon /></Icon>
+        case 'height':
+            return <Icon {...props} rotate={90}><RangeIcon /></Icon>
         case 'shots':
             return <Icon {...props}><ShotsIcon /></Icon>
         case 'drum':
@@ -157,5 +159,6 @@ GetIcon.list = [
     'helmet',
     'hands',
     'chest',
-    'legs'
+    'legs',
+    'height'
 ]
