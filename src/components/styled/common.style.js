@@ -21,6 +21,7 @@ export const GridCell = styled.div(({
             inverse = false,
             black = false,
             center = false,
+            left = false,
             muted = false,
             big = false,
             serif = false,
@@ -42,6 +43,7 @@ export const GridCell = styled.div(({
     color: ${inverse ? theme.white : theme.secondary};
     ${black && 'color: '+theme.primary+';' }
     ${center && 'text-align: center; padding: 0;'}
+    ${left && 'text-align: left; padding: 0;'}
     ${verticalCenter && 'margin: '+(height * gridBase /2)+'px auto;'}
     ${muted && 'opacity: 0.5;'}
     ${big && 'font-size: '+(baseFontSize * 2)+'px;'}

@@ -38,6 +38,13 @@ import { ReactComponent as HelmetIcon } from '../icons/mandalorian.svg'
 import { ReactComponent as ArmIcon } from '../icons/gloves.svg'
 import { ReactComponent as ChestIcon } from '../icons/singlet.svg'
 import { ReactComponent as LegIcon } from '../icons/valenki.svg'
+import { ReactComponent as HussarIcon } from '../icons/hussar.svg'
+import { ReactComponent as NapoleongIcon } from '../icons/napoleon.svg'
+import { ReactComponent as PoisonIcon } from '../icons/poison.svg'
+import { ReactComponent as ClockIcon } from '../icons/clock.svg'
+import { ReactComponent as CloudIcon } from '../icons/cloud.svg'
+import { ReactComponent as FogIcon } from '../icons/fog.svg'
+import { ReactComponent as GobletIcon } from '../icons/goblet.svg'
 
 export const GetIcon = ({ icon, ...props }) => {
     switch (icon) {
@@ -117,6 +124,21 @@ export const GetIcon = ({ icon, ...props }) => {
             return <Icon {...props}><ChestIcon /></Icon>
         case 'legs':
             return <Icon {...props}><LegIcon /></Icon>
+        case 'hussar':
+            return <Icon {...props}><HussarIcon /></Icon>
+        case 'napoleon':
+            return <Icon {...props}><NapoleongIcon /></Icon>
+        case 'poison':
+            return <Icon {...props}><PoisonIcon /></Icon>
+        case 'clock':
+            return <Icon {...props}><ClockIcon /></Icon>
+        case 'cloud':
+            return <Icon {...props}><CloudIcon /></Icon>
+        case 'fog':
+            return <Icon {...props}><FogIcon /></Icon>
+        case 'goblet':
+            return <Icon {...props}><GobletIcon /></Icon>
+
         default:
             return null
     }
@@ -160,5 +182,12 @@ GetIcon.list = [
     'hands',
     'chest',
     'legs',
-    'height'
+    'height',
+    'hussar',
+    'napoleon',
+    'poison',
+    'clock',
+    'cloud',
+    'fog',
+    'goblet',
 ]

@@ -13,7 +13,6 @@ import {
     Value,
     FlexWrapper
 } from '../../styled'
-
 import { SelectWithOptions } from '../../weapons-selection'
 import { InsertedNames } from '../../names-generator'
 import { GetIcon } from '../../get-icon'
@@ -21,10 +20,11 @@ import { GetIcon } from '../../get-icon'
 import { Attributes } from './attributes'
 import { Weapon } from './weapon'
 import { Spell } from './spell'
+import { Poison } from './poison'
 import { Skill } from './skill'
 import { ValueField } from './value-field'
 import { IconedField } from './iconed-field'
-import { Defencies } from './defencies'
+import { WarriorSelect } from './warrior-select'
 
 const limits = {
     strength: {
@@ -94,10 +94,11 @@ const limits = {
     },
 }
 
-const WARRIOR_TYPES_VALUES = [
+export const WARRIOR_TYPES_VALUES = [
     {
         id: "leader",
         title: "Предводитель",
+        icon: 'napoleon',
         values: [
             3,
             4,
@@ -112,6 +113,7 @@ const WARRIOR_TYPES_VALUES = [
     {
         id: "hero",
         title: "Герой",
+        icon: 'hussar',
         values: [
             3,
             4,
@@ -126,6 +128,7 @@ const WARRIOR_TYPES_VALUES = [
     {
         id: "henchman",
         title: "Боец",
+        icon: 'face',
         values: [
             4,
             5,
@@ -149,6 +152,7 @@ export const Character = (props) => {
         weapons,
         spells,
         skills,
+        poisons,
         warriorType = 'henchman',
         count,
         fearless,
@@ -159,6 +163,7 @@ export const Character = (props) => {
     const removeCharacter = useSetRecoilState(CharacterD6StateObj.remove)
     const addWeapon = useSetRecoilState(CharacterD6StateObj.addWeapon)
     const addSpell = useSetRecoilState(CharacterD6StateObj.addSpell)
+    const addPoison = useSetRecoilState(CharacterD6StateObj.addPoison)
     const addSkill = useSetRecoilState(CharacterD6StateObj.addSkill)
     const handleDeleteCharacter = (e) => removeCharacter(index)
    
@@ -170,6 +175,7 @@ export const Character = (props) => {
     
     const handleAddWeapon = (e) => addWeapon(index)
     const handleAddSpell = (e) => addSpell(index)
+    const handleAddPoison = (e) => addPoison(index)
     const handleAddSkill = (e) => addSkill(index)
     const changesCharMaker = (attr) => (e) => {
         const passedChars = {...character}
@@ -219,6 +225,17 @@ export const Character = (props) => {
         setCharacter({
             ...character,
             spells: passedSpells
+        })
+    }
+    const poisonChangesMaker = (attr) => (index) => (e) => {
+        const passedPoisons = [...poisons]
+        const passedPoison = { ...poisons[index]}
+        const value = e?.target?.value && !isNaN(parseInt(e.target.value)) ? parseInt(clamp(e.target.value, -2, 2)) : e
+        passedPoison[attr] = attr === 'title' ? e.target.value : value
+        passedPoisons[index] = passedPoison
+        setCharacter({
+            ...character,
+            poisons: passedPoisons
         })
     }
     const skillChangesMaker = (attr) => (index) => (e) => {
@@ -291,10 +308,23 @@ export const Character = (props) => {
         title: spellChangesMaker('title')(index),
         traits: spellChangesMaker('traits')(index)
     })
+    const poisonChanges = (index) => ({
+        dice: poisonChangesMaker('dice')(index),
+        strength: poisonChangesMaker('strength')(index),
+        agility: poisonChangesMaker('agility')(index),
+        perception: poisonChangesMaker('perception')(index),
+        intelligence: poisonChangesMaker('intelligence')(index),
+        move: poisonChangesMaker('move')(index),
+        panic: poisonChangesMaker('panic')(index),
+        mod: poisonChangesMaker('mod')(index),
+        activation: poisonChangesMaker('activation')(index),
+        title: poisonChangesMaker('title')(index)
+    })
     const skillChanges = (index) => ({
         ready: skillChangesMaker('ready')(index),
         hidden: skillChangesMaker('hidden')(index),
         panic: skillChangesMaker('panic')(index),
+        out: skillChangesMaker('out')(index),
         mod: skillChangesMaker('mod')(index),
         dependencies: skillChangesMaker('dependencies')(index),
         title: skillChangesMaker('title')(index),
@@ -319,14 +349,14 @@ export const Character = (props) => {
                 </GridCell>
                 <InsertedNames onChange={handleSetTitleValueAll} index={index} showSelect={false} />
                 <GridCell width={5} center>
-                    <SelectWithOptions onChange={selectWarriorType} elements={WARRIOR_TYPES_VALUES} selected={warriorType} index={index} passedName="armourSelect" placeholder="Кто" />
+                    <WarriorSelect onChange={selectWarriorType} elements={WARRIOR_TYPES_VALUES} selected={warriorType} index={index} passedName="armourSelect" placeholder="Кто" />
                 </GridCell>
             </FlexWrapper>
         
             <BorderWrapper>
                 <FlexWrapper>
                     <GridCell inverse center ><Button title="—" onClick={handleDeleteCharacter} /> </GridCell>
-                    <GridCell width={10} filled>
+                    <GridCell width={10} filled >
                         <Value
                             value={titleValue}
                             onChange={handleSetTitleValue}
@@ -346,9 +376,10 @@ export const Character = (props) => {
                         controlled={isControlled}
                         actions={character.actions}
                     />
+                    <GridCell width={4} center />
                     <IconedField
                         title="height"
-                        filled
+                        
                     >
                         <ValueField
                             onChange={changesCharMaker('height')}
@@ -356,7 +387,7 @@ export const Character = (props) => {
                             limits={limits.height}
                         />
                     </IconedField>
-                    <GridCell width={2} center />
+                    
                     {/* <GridCell width={4} height={6} center >
                         <Defencies
                             values={armour}
@@ -378,7 +409,7 @@ export const Character = (props) => {
                     <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="weapon" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddWeapon} /></GridCell>
                     <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="magic" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddSpell} /></GridCell>
                     <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="skill" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddSkill} /></GridCell>
-                    {/* <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="gear" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} /></GridCell> */}
+                    <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="poison" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddPoison} /></GridCell>
                 </FlexWrapper>}
                 
                 {weapons.map((weapon, weaponIndex) =>
@@ -400,6 +431,15 @@ export const Character = (props) => {
                         controlled={isControlled}
                     />)
                 }
+                {poisons.map((poison, poisonIndex) =>
+                    <Poison
+                        {...poison}
+                        index={poisonIndex}
+                        characterIndex={index}
+                        changes={poisonChanges(poisonIndex)}
+                        controlled={isControlled}
+                    />)
+                }
                 {skills.map((skill, skillIndex) =>
                     <Skill
                         {...skill}
@@ -409,6 +449,7 @@ export const Character = (props) => {
                         controlled={isControlled}
                     />)
                 }
+                
             </BorderWrapper>
             <GridCell />
         </div>

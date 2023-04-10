@@ -25,6 +25,7 @@ import {
     Panic
 } from './attributes'
 import { Mod } from './weapon'
+import { WarriorSelect } from './warrior-select'
 
 export const Dice = ({ onChange, value, filled, controlled = true }) => (
     <IconedField
@@ -46,9 +47,9 @@ const limits = {
     max: 2
 }
 
-export const Spell = (props) => {
-    const removeSpell = useSetRecoilState(CharacterD6StateObj.removeSpell)
-    
+export const Poison = (props) => {
+    const removePoison = useSetRecoilState(CharacterD6StateObj.removePoison)
+
     const [titleValue, setTitleValue] = useState(props?.title || '')
     const handleSetTitleValue = (e) => setTitleValue(e.target.value)
     const {
@@ -59,9 +60,8 @@ export const Spell = (props) => {
         intelligence,
         move,
         panic,
+        activation,
         mod,
-        traits,
-        allTraits,
         changes,
         index,
         characterIndex,
@@ -69,14 +69,14 @@ export const Spell = (props) => {
         price
     } = props
 
-    const handleRemoveSpell = (e) => removeSpell({ index, characterIndex })
+    const handleRemovePoison = (e) => removePoison({ index, characterIndex })
 
     return (
         <>
             <FlexWrapper>
-                <GridCell inverse center ><Button title="—" onClick={handleRemoveSpell} /> </GridCell>
-                <GridCell filled center><GetIcon icon="magic" /></GridCell>
-                
+                <GridCell inverse center ><Button title="—" onClick={handleRemovePoison} /> </GridCell>
+                <GridCell filled center><GetIcon icon="poison" /></GridCell>
+
                 <GridCell width={8} filled >
                     <Value
                         value={titleValue}
@@ -84,7 +84,7 @@ export const Spell = (props) => {
                         onBlur={changes.title}
                     />
                 </GridCell>
-                <GridCell filled center><GetIcon icon="perception"  /></GridCell>
+                <GridCell filled center><GetIcon icon="perception" /></GridCell>
                 <GridCell filled center><GetIcon icon="intelligence" /></GridCell>
                 <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                 <GridCell width={1} inverse center>{price}</GridCell>
@@ -148,14 +148,15 @@ export const Spell = (props) => {
                         />
                     </FlexWrapper>
                 </GridCell>
-                <GridCell width="6" height="6" center>
-                    <Traits
-                        traits={allTraits}
-                        selectedTraits={traits}
-                        controlled={controlled}
-                        onChange={changes.traits}
+                <GridCell width={2} center>
+                    <WarriorSelect
+                        elements={CharacterD6StateObj.constants.POISON_ACTIVATION}
+                        selected={activation}
+                        onChange={changes.activation}
                     />
                 </GridCell>
+                
+
             </FlexWrapper>
         </>
     )

@@ -33,7 +33,22 @@ const defaultD6Spell = {
     panic: 0,
     mod: -2,
     traits: [],
-    price: 5
+    price: 15
+}
+
+const defaultD6Poison = {
+    dice: -1,
+    title: 'Яд',
+    strength: 0,
+    agility: 0,
+    perception: 0,
+    intelligence: 0,
+    move: 0,
+    panic: 0,
+    mod: -2,
+    traits: [],
+    activation: 'drink',
+    price: 15
 }
 
 const defaultD6Skill = {
@@ -48,6 +63,7 @@ const defaultD6Skill = {
     ready: 1,
     hidden: 0,
     panic: 0,
+    out: 0,
     price: 5
 }
 
@@ -80,9 +96,26 @@ const defaultD6Charcter = {
     ],
     spells: [],
     skills: [],
+    poisons: [],
     names: 'Common_0',
+    warriorType: 'henchman',
     index: 0
 }
+
+export const POISON_ACTIVATION = [
+    {
+        id: 'drink',
+        title: '',
+        icon: 'goblet',
+        price: 0
+    },
+    {
+        id: 'smoke',
+        title: '',
+        icon: 'fog',
+        price: 4
+    }
+]
 
 const PRICE_KOEFF = 1
 const WEAPONS_RANGE = [
@@ -177,6 +210,26 @@ const getD6SpellPrice = (spell) => {
         , 1)
 }
 
+const getD6PoisonPrice = (poisons) => {
+    const {
+        dice,
+        strength,
+        agility,
+        perception,
+        intelligence,
+        move,
+        panic,
+        mod,
+        activation
+    } = poisons
+
+    const traitsPrice = POISON_ACTIVATION.filter(trait => activation === trait.id)?.[0]?.price
+
+    return Math.max(
+        Math.round(((5 * Math.abs(dice) + (Math.abs(strength) + Math.abs(agility) + Math.abs(perception) + Math.abs(intelligence) + Math.abs(move) + Math.abs(panic)) * 4) * (parseInt(mod) + 5) + parseInt(traitsPrice)) / PRICE_KOEFF)
+        , 1)
+}
+
 const getConditionKoefficient = (value) => value === 0 ? 0 : parseInt(2 / value)
 
 const getD6SkillPrice = (skill) => {
@@ -205,6 +258,7 @@ export const getD6CharacterPrice = (character) => {
         weapons = [],
         spells = [],
         skills=[],
+        poisons=[],
         //  equipment,
         allTraits,
         spelltraits = [],
@@ -243,6 +297,8 @@ export const getD6CharacterPrice = (character) => {
     spells.map((spell) => calculatedSpells += getD6SpellPrice({ ...spell, allTraits: spelltraits }))
     let calculatedSkills = 0
     skills.map((skill) => calculatedSkills += getD6SkillPrice({ ...skill }))
+    let calculatedPoisons = 0
+    poisons.map((poison) => calculatedPoisons += getD6PoisonPrice({ ...poison }))
 
     const characteristicSum =
         (attributeSum + moveCalculated + parseInt(defence) * 3 - (height * 3)) * actions
@@ -252,6 +308,7 @@ export const getD6CharacterPrice = (character) => {
         + parseInt(calculatedWeapons)
         + parseInt(calculatedSpells)
         + parseInt(calculatedSkills)
+        + parseInt(calculatedPoisons)
         + (fearless ? 15 : 0)
         
         // + armourSum
@@ -270,16 +327,18 @@ export const changeCharacterD6InState = selector({
     set: ({ get, set }, props) => {
         const characters = get(characterD6State)
         const allTraits = get(weaponTraitsState)
-        const { weapons, spells, skills, index } = props
+        const { weapons, spells, poisons, skills, index } = props
         const passedWeapons = weapons.map((weapon) => ({ ...weapon, price: getD6WeaponPrice({ ...weapon, allTraits }) }))
         const passedSpells = spells.map((spell) => ({ ...spell, price: getD6SpellPrice({ ...spell, allTraits }) }))
         const passedSkills = skills.map((skill) => ({ ...skill, price: getD6SkillPrice({ ...skill }) }))
+        const passedPoisons = poisons.map((poison) => ({ ...poison, price: getD6PoisonPrice({ ...poison }) }))
 
         const passedProps = {
             ...props,
             weapons: passedWeapons,
             spells: passedSpells,
             skills: passedSkills,
+            poisons: passedPoisons,
             price: getD6CharacterPrice({
                 ...props,
                 allTraits
@@ -425,6 +484,60 @@ export const removeSpellD6InState = selector({
     }
 })
 
+export const addPoisonD6InState = selector({
+    key: 'addPoisonD6InState',
+    get: ({ get }) => get(characterD6State),
+    set: ({ get, set }, index) => {
+        const characters = get(characterD6State)
+        const character = characters[index]
+        const passedCharacter = {
+            ...character,
+            poisons: [...character.poisons, defaultD6Poison]
+        }
+        const allTraits = get(weaponTraitsState)
+        const passedProps = {
+            ...passedCharacter,
+            price: getD6CharacterPrice({
+                ...passedCharacter,
+                allTraits
+            })
+        }
+
+        set(characterD6State, [
+            ...characters.slice(0, index),
+            passedProps,
+            ...characters.slice(index + 1)
+        ])
+    }
+})
+
+export const removePoisonD6InState = selector({
+    key: 'removePoisonD6InState',
+    get: ({ get }) => get(characterD6State),
+    set: ({ get, set }, { index, characterIndex }) => {
+        const characters = get(characterD6State)
+        const character = characters[characterIndex]
+        const { poisons } = character
+        const passedCharacter = {
+            ...character,
+            poisons: poisons.length === 1 ? [] : [...poisons.slice(0, index), ...poisons.slice(index + 1)]
+        }
+        const allTraits = get(weaponTraitsState)
+        const passedProps = {
+            ...passedCharacter,
+            price: getD6CharacterPrice({
+                ...passedCharacter,
+                allTraits
+            })
+        }
+        set(characterD6State, [
+            ...characters.slice(0, characterIndex),
+            passedProps,
+            ...characters.slice(characterIndex + 1)
+        ])
+    }
+})
+
 export const addSkillD6InState = selector({
     key: 'addSkillD6InState',
     get: ({ get }) => get(characterD6State),
@@ -476,6 +589,9 @@ export const removeSkillD6InState = selector({
 })
 
 export const CharacterD6StateObj = {
+    constants: {
+        POISON_ACTIVATION
+    },
     setState: characterD6State,
     change: changeCharacterD6InState,
     add: addCharactersD6InState,
@@ -484,6 +600,8 @@ export const CharacterD6StateObj = {
     removeWeapon: removeWeaponD6InState,
     addSpell: addSpellD6InState,
     removeSpell: removeSpellD6InState,
+    addPoison: addPoisonD6InState,
+    removePoison: removePoisonD6InState,
     addSkill: addSkillD6InState,
     removeSkill: removeSkillD6InState
 }

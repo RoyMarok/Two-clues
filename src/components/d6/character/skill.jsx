@@ -58,6 +58,21 @@ export const Panic = ({ onChange, value, filled, controlled = true }) => (
     </IconedField>
 )
 
+export const OutOfGame = ({ onChange, value, filled, controlled = true }) => (
+    <IconedField
+        title="clock"
+        filled={filled}
+    >
+        {controlled ? <ValueField
+            onChange={onChange}
+            value={value}
+            filled={filled}
+        /> : <GridCell black width={2} height="2" center big>
+            {value}
+        </GridCell>}
+    </IconedField>
+)
+
 export const Skill = (props) => {
     const removeSkill = useSetRecoilState(CharacterD6StateObj.removeSkill)
     const [titleValue, setTitleValue] = useState(props?.title || '')
@@ -67,6 +82,7 @@ export const Skill = (props) => {
         ready,
         hidden,
         panic,
+        out,
         dependencies,
         mod,
         changes,
@@ -116,11 +132,17 @@ export const Skill = (props) => {
                     value={panic}
                     controlled={controlled}
                 />
+                <OutOfGame
+                    onChange={changes.out}
+                    value={out}
+                    controlled={controlled}
+                    filled
+                />
                 <Mod
                     onChange={changes.mod}
                     value={mod}
                     controlled={controlled}
-                    filled
+                    
                 />
             </FlexWrapper>
         </>
