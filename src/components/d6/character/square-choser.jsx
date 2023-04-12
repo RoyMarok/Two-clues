@@ -8,7 +8,7 @@ import {
 
 import { GetIcon } from '../../get-icon'
 
-export const SquareChooser = ({ values = [], limits = { min: 0, max: 6}, onChange, value, filled }) => {
+export const SquareChooser = ({ values = [], limits = { min: 1, max: 6}, onChange, value, filled }) => {
     // const [isUsedValue, setUsedVAlue] = useState(false)
     const handleClick = (e) => {
         const { value } = e.target
@@ -18,7 +18,7 @@ export const SquareChooser = ({ values = [], limits = { min: 0, max: 6}, onChang
         <FlexWrapper>
             {
                 values.map((item, index) => {
-                    // const validValue = item >= limits?.min && item <= limits?.max
+                    const validValue = item >= limits?.min && item <= limits?.max
                     const buttonTitle = String(item).length < 3 ? item : <GetIcon icon={item} />
                     const isInverse = String(value) === String(item)
                     // if (!isUsedValue && String(value) === String(item)) {
@@ -30,13 +30,13 @@ export const SquareChooser = ({ values = [], limits = { min: 0, max: 6}, onChang
                             center
                             inverse={isInverse}
                             filled={value !== item && filled}
-                            // muted={!validValue}
+                            muted={!validValue}
                         >
-                            {/* {validValue
+                            {validValue
                             ? <Button value={index} title={buttonTitle} onClick={handleClick} />
                             : item
-                            } */}
-                            <Button value={index} title={buttonTitle} onClick={handleClick} />
+                            }
+                            {/* <Button value={index} title={buttonTitle} onClick={handleClick} /> */}
                         </GridCell>
                     )
                 })

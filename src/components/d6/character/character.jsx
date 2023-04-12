@@ -26,7 +26,7 @@ import { ValueField } from './value-field'
 import { IconedField } from './iconed-field'
 import { WarriorSelect } from './warrior-select'
 
-const limits = {
+const limitsBase = {
     strength: {
         min: 2,
         max: 6
@@ -89,8 +89,8 @@ const limits = {
         max: 2
     },
     height: {
-        min: -1,
-        max: 1
+        min: -2,
+        max: 2
     },
 }
 
@@ -138,6 +138,59 @@ export const WARRIOR_TYPES_VALUES = [
     }
 ]
 
+const sizeLimits = {
+    '-2': {
+        strength: {
+            min: 5,
+            max: 6
+        },
+        health: {
+            min: 1,
+            max: 2
+        },
+    },
+    '-1': {
+        strength: {
+            min: 4,
+            max: 6
+        },
+        health: {
+            min: 1,
+            max: 3
+        },
+    },
+    '0': {
+        strength: {
+            min: 5,
+            max: 6
+        },
+        health: {
+            min: 1,
+            max: 8
+        },
+    },
+    '1': {
+        strength: {
+            min: 2,
+            max: 4
+        },
+        health: {
+            min: 3,
+            max: 6
+        },
+    },
+    '2': {
+        strength: {
+            min: 2,
+            max: 3
+        },
+        health: {
+            min: 5,
+            max: 8
+        },
+    },
+}
+
 export const Character = (props) => {
     const {
         index = 0,
@@ -159,6 +212,11 @@ export const Character = (props) => {
         height
     } = character
 
+    const limits = {
+        ...limitsBase,
+        // ...sizeLimits[height]
+    }
+
     const [titleValue, setTitleValue] = useState(character?.title || '')
     const removeCharacter = useSetRecoilState(CharacterD6StateObj.remove)
     const addWeapon = useSetRecoilState(CharacterD6StateObj.addWeapon)
@@ -179,6 +237,7 @@ export const Character = (props) => {
     const handleAddSkill = (e) => addSkill(index)
     const changesCharMaker = (attr) => (e) => {
         const passedChars = {...character}
+        const passedCharacteristics = { ...characteristics }
         const passedValue = e?.target?.value ? e.target.value : e
         passedChars[attr] = limits?.[attr] ? clamp(passedValue, limits?.[attr]?.min, limits?.[attr]?.max) : passedValue
         setCharacter({

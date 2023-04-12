@@ -18,7 +18,7 @@ import { Traits } from '../../traits'
 import { GetIcon } from '../../get-icon'
 import { WARRIOR_TYPES_VALUES } from '../character/character'
 
-const IconedElement = (props) => {
+export const IconedElement = (props) => {
     const {
         icon,
         value,

@@ -22,6 +22,7 @@ import { GetIcon } from '../get-icon'
 
 import { Character } from './character'
 import { DisplayCharacter } from './display'
+import { Mordheim } from './mordheim'
 
 export const BandD6 = () => {
     const [controlledIndex, setControlledIndex] = useState(0)
@@ -68,6 +69,7 @@ export const BandD6 = () => {
                     </FlexWrapper>
                 </MoveUp>
             </OnlyPrintableBlock>
+            <Mordheim />
             <FlexWrapper columns>
                 {characters &&
                     characters.map((characterItem, index) => {

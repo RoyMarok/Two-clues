@@ -1,1 +1,1 @@
-export { DisplayCharacter } from './character'
+export { DisplayCharacter, IconedElement } from './character'
