@@ -175,8 +175,13 @@ const Spell = (props) => {
         panic,
         mod,
         price,
+        
         character
     } = props
+
+    const {
+        defence
+    } = character
     
 
     return (
@@ -196,7 +201,7 @@ const Spell = (props) => {
                 <IconedElement icon="move" value={move} nonZero />
                 <IconedElement icon="panic" value={panic} filled nonZero />
                 <GridCell />
-                <IconedElement icon="±" value={mod} important={false} />
+                <IconedElement icon="±" value={mod-defence} important={false} />
                 <IconedElement icon="perception"  value={character.perception} plus />
                 <IconedElement icon="intelligence"  value={character.intelligence} plus />
             </FlexWrapper>

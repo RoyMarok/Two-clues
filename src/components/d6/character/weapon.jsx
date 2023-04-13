@@ -16,14 +16,19 @@ import { Traits } from '../../traits'
 import { IconedField } from './iconed-field'
 import { ValueField } from './value-field'
 import { AttributeChoser } from './attribute-choser'
+import { SquareChooser } from './square-choser'
 
-export const Range = ({ onChange, value, filled, controlled = true }) => (
+export const Range = ({ onChange, value, values = [], filled, controlled = true, changeCC, isCloseCombat }) => (
     <IconedField
-        title="range"
+        title={isCloseCombat ? 'weapon' : 'range'}
         filled={filled}
+        iconButton
+        iconButtonClick={changeCC}
     >
-        {controlled ? <ValueField
+        {controlled ? <SquareChooser
+            values={values}
             onChange={onChange}
+            limits={{min: 1, max: 30}}
             value={value}
             filled={filled}
         /> : <GridCell black width={2} height="2" center big>
@@ -157,11 +162,14 @@ export const Weapon = (props) => {
         traits,
         index,
         characterIndex,
-        limits,
         price
     } = props
 
+    const [isCloseCombat, setCloseCombat] = useState(range < 6)
     const handleRemoveWeapon = (e) => removeWeapon({ index, characterIndex })
+    const handleChangeCC = (e) => setCloseCombat(!isCloseCombat)
+
+    const rangeValues = isCloseCombat ? [1, 2, 3] : [6, 8, 12, 30]
 
     return (
         <>
@@ -186,8 +194,11 @@ export const Weapon = (props) => {
                         <Range
                             onChange={changes.range}
                             value={range}
+                            values={rangeValues}
                             filled
                             controlled={controlled}
+                            changeCC={handleChangeCC}
+                            isCloseCombat={isCloseCombat}
                         />
                         <Shots
                             onChange={changes.shots}

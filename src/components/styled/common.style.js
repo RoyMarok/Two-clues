@@ -28,7 +28,8 @@ export const GridCell = styled.div(({
             open = false,
             wrapper = false,
             pageBreak = false,
-            verticalCenter = false
+            verticalCenter = false,
+            error=false
 
         }) => css`
     display: block;
@@ -40,6 +41,7 @@ export const GridCell = styled.div(({
     overflow: hidden;
     box-sizing: border-box;
     background-color: ${filled ? theme.tetriary : (inverse ? theme.secondary : theme.transparent)};
+    ${error && `background-color: ${theme.error};`}
     color: ${inverse ? theme.white : theme.secondary};
     ${black && 'color: '+theme.primary+';' }
     ${center && 'text-align: center; padding: 0;'}

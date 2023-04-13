@@ -12,7 +12,7 @@ export const IconedField = ({ title, children, filled, iconButton = false, iconB
     const PassedIcon = iconButton ? <Button title={passedTitle} onClick={iconButtonClick} /> : passedTitle
     return (
     <GridCell width={2} height="3" center>
-        <GridCell width={2} height="1" center black big>
+            <GridCell width={2} height="1" center black filled={iconButton} big>
             {PassedIcon}
         </GridCell>
         <GridCell width={2} height={2} center filled={filled}>

@@ -140,53 +140,53 @@ export const WARRIOR_TYPES_VALUES = [
 
 const sizeLimits = {
     '-2': {
-        strength: {
-            min: 5,
-            max: 6
+        // strength: {
+        //     min: 5,
+        //     max: 6
+        // },
+        health: {
+            min: 1,
+            max: 1
         },
+    },
+    '-1': {
+        // strength: {
+        //     min: 4,
+        //     max: 6
+        // },
         health: {
             min: 1,
             max: 2
         },
     },
-    '-1': {
-        strength: {
-            min: 4,
-            max: 6
-        },
-        health: {
-            min: 1,
-            max: 3
-        },
-    },
     '0': {
-        strength: {
-            min: 5,
-            max: 6
-        },
+        // strength: {
+        //     min: 5,
+        //     max: 6
+        // },
         health: {
             min: 1,
             max: 8
         },
     },
     '1': {
-        strength: {
-            min: 2,
-            max: 4
-        },
+        // strength: {
+        //     min: 2,
+        //     max: 4
+        // },
         health: {
-            min: 3,
-            max: 6
+            min: 5,
+            max: 10
         },
     },
     '2': {
-        strength: {
-            min: 2,
-            max: 3
-        },
+        // strength: {
+        //     min: 2,
+        //     max: 3
+        // },
         health: {
-            min: 5,
-            max: 8
+            min: 7,
+            max: 15
         },
     },
 }
@@ -214,7 +214,7 @@ export const Character = (props) => {
 
     const limits = {
         ...limitsBase,
-        // ...sizeLimits[height]
+        ...sizeLimits[height]
     }
 
     const [titleValue, setTitleValue] = useState(character?.title || '')
@@ -236,12 +236,22 @@ export const Character = (props) => {
     const handleAddPoison = (e) => addPoison(index)
     const handleAddSkill = (e) => addSkill(index)
     const changesCharMaker = (attr) => (e) => {
+        let limits = limitsBase
+        if (attr === 'height') {
+            limits = {
+                ...limitsBase,
+                ...sizeLimits[e.target.value]
+            }
+        }
+        
         const passedChars = {...character}
         const passedCharacteristics = { ...characteristics }
+        passedCharacteristics.health = clamp(passedCharacteristics?.health, limits?.health?.min, limits?.health?.max)
         const passedValue = e?.target?.value ? e.target.value : e
         passedChars[attr] = limits?.[attr] ? clamp(passedValue, limits?.[attr]?.min, limits?.[attr]?.max) : passedValue
         setCharacter({
-            ...passedChars
+            ...passedChars,
+            characteristics: passedCharacteristics
         })
     }
     const changesMaker = (attr) => (e) => {
@@ -484,6 +494,7 @@ export const Character = (props) => {
                 {spells.map((spell, spellIndex) =>
                     <Spell
                         {...spell}
+                        attributes={characteristics}
                         index={spellIndex}
                         characterIndex={index}
                         changes={spellChanges(spellIndex)}

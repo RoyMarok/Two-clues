@@ -13,6 +13,7 @@ import { GetIcon } from '../../get-icon'
 
 import { Traits } from '../../traits'
 
+import { IconedElement } from '../display'
 import { IconedField } from './iconed-field'
 import { ValueField } from './value-field'
 
@@ -66,8 +67,11 @@ export const Spell = (props) => {
         index,
         characterIndex,
         controlled,
-        price
+        price,
+        attributes
     } = props
+
+    const { defence } = attributes
 
     const handleRemoveSpell = (e) => removeSpell({ index, characterIndex })
 
@@ -149,12 +153,19 @@ export const Spell = (props) => {
                     </FlexWrapper>
                 </GridCell>
                 <GridCell width="6" height="6" center>
-                    <Traits
-                        traits={allTraits}
-                        selectedTraits={traits}
-                        controlled={controlled}
-                        onChange={changes.traits}
-                    />
+                    <GridCell width="6" height="4" center>
+                        <Traits
+                            traits={allTraits}
+                            selectedTraits={traits}
+                            controlled={controlled}
+                            onChange={changes.traits}
+                        />
+                    </GridCell>
+                    {Boolean(defence) && <FlexWrapper>
+                        <GridCell height="2" center big black error>!</GridCell>
+                        <IconedElement icon="±" value={mod - defence} important={false} />
+                    </FlexWrapper>}
+                    
                 </GridCell>
             </FlexWrapper>
         </>
