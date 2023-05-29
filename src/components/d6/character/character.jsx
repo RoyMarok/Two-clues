@@ -57,7 +57,7 @@ const limitsBase = {
     },
     defence: {
         min: 0,
-        max: 6
+        max: 2
     },
     count: {
         min: 1,
@@ -77,7 +77,7 @@ const limitsBase = {
         max: 10
     },
     dmg: {
-        min: 1,
+        min: 0,
         max: 8
     },
     drum: {

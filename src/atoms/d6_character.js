@@ -15,11 +15,11 @@ const defaultD6Weapon = {
         perception: false,
         intelligence: false
     },
-    mod: -2,
+    mod: 1,
     drum: 0,
     traits: [],
     customValues: {},
-    price: 2
+    price: 5
 }
 
 const defaultD6Spell = {
@@ -79,16 +79,11 @@ const defaultD6Charcter = {
         defence: 0,
         fly: false
     },
-    // armour: {
-    //     head: 0,
-    //     chest: 0,
-    //     hands: 0,
-    //     legs: 0
-    // },
+
     fearless: false,
     actions: 2,
     title: '',
-    price: 33,
+    price: 14,
     count: 0,
     height: 0,
     weapons: [
@@ -117,7 +112,7 @@ export const POISON_ACTIVATION = [
     }
 ]
 
-const PRICE_KOEFF = 1
+const PRICE_KOEFF = 3
 const WEAPONS_RANGE = [
     {
         range: 1,
@@ -159,7 +154,8 @@ const getD6WeaponPrice = (weapon) => {
         mod = -2,
         drum = 1,
         traits = [],
-        allTraits = []
+        allTraits = [],
+        title
     } = weapon
 
     let traitsPrice = 0
@@ -172,12 +168,15 @@ const getD6WeaponPrice = (weapon) => {
     const passedRangePrice = WEAPONS_RANGE.filter(
         (item, index) => range === item.range || (range > WEAPONS_RANGE?.[Math.max(index - 1, 0)].range && range < item.range))[0]?.price
 
-    const dmgRange = ((parseInt(dmg) + 1) * shots * 2 * range * 0.275) / 5
-    const dmgRange2 = (parseInt(dmg) + 1) * shots * passedRangePrice
+    // const dmgRange = ((parseInt(dmg) + 1) * shots * 2 * range * 0.275) / 5
+    // const dmgRange2 = (parseInt(dmg) + 1) * shots * passedRangePrice
+    const dmgRange2 =  Math.pow((parseInt(dmg) + 1), Math.max(shots, 1) ) * passedRangePrice
+
+    const drumKoeff = Math.min(Math.max(parseInt(drum), 1), 2)
 
     return Math.max(
         Math.round(
-            ((dmgRange2 + Math.max(parseInt(drum) - 1, 1) + (ap * 3)) * count + (parseInt(mod) + 2) * 3 + parseInt(traitsPrice) / 5) / PRICE_KOEFF
+            parseInt(dmg) + ((dmgRange2 + Math.max(parseInt(drum) - 1, 1) + (ap * 3)) * drumKoeff * count + (parseInt(mod) + 2) * 3 + parseInt(traitsPrice) / 5) / PRICE_KOEFF
         )
         , 1)
 }
@@ -291,6 +290,7 @@ export const getD6CharacterPrice = (character) => {
         + calculateAttr(intelligence)
     const moveCalculated = Math.round(Math.pow(2, parseInt(move) - 1) * (fly ? 2 : 1))
     const healthCalculated = Math.round(Math.pow(2, parseInt(health) - 1) * 6)
+    const defenceCalculated = Math.round(Math.pow(2, parseInt(defence) - 1) * 3)
     let calculatedWeapons = 0
     weapons.map((weapon) => calculatedWeapons += getD6WeaponPrice({ ...weapon, allTraits }))
     let calculatedSpells = 0
@@ -301,15 +301,20 @@ export const getD6CharacterPrice = (character) => {
     poisons.map((poison) => calculatedPoisons += getD6PoisonPrice({ ...poison }))
 
     const characteristicSum =
-        (attributeSum + moveCalculated + parseInt(defence) * 3 - (height * 3)) * actions
-        // + parseInt(health) * 6
-        + healthCalculated
-        - panic
+        Math.ceil(((
+            attributeSum
+            + moveCalculated
+            // + parseInt(defence) * 3
+            + defenceCalculated
+            - (height * 3)
+            ) * actions
+        + healthCalculated + (fearless ? 15 : 0)) / PRICE_KOEFF)
+        // - panic
         + parseInt(calculatedWeapons)
         + parseInt(calculatedSpells)
         + parseInt(calculatedSkills)
         + parseInt(calculatedPoisons)
-        + (fearless ? 15 : 0)
+        
         
         // + armourSum
 

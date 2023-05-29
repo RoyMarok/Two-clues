@@ -113,7 +113,7 @@ const getAttributes = (props) => {
     } = props
 
     const BSchance = percent(BS / DICE)
-    const WSchance = percent(WSToHit[WS] / DICE)
+    const WSchance = percent(convertToD6(WSToHit[WS]) / DICE)
     const passedStrength = WSToWound[strength]
     const passedAgility = convertToD6(initiative)
     const perceprionChance = percent(calculateChanceMordheim2d6(leadership))

@@ -69,7 +69,10 @@ export const BandD6 = () => {
                     </FlexWrapper>
                 </MoveUp>
             </OnlyPrintableBlock>
-            <Mordheim />
+            <NonPrintableBlock>
+                <Mordheim />
+            </NonPrintableBlock>
+            
             <FlexWrapper columns>
                 {characters &&
                     characters.map((characterItem, index) => {

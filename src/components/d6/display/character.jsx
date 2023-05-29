@@ -24,6 +24,7 @@ export const IconedElement = (props) => {
         value,
         filled = false,
         plus = false,
+        minus = false,
         black = false,
         inverse = false,
         color = 'secondary',
@@ -36,7 +37,7 @@ export const IconedElement = (props) => {
     const passedTitle = GetIcon.list.includes(icon)
         ? <GetIcon icon={icon} color={black || nonZeroPassed ? 'primary' : color} />
         : <GridCell center big black={black} >{icon}</GridCell>
-    const passedValue = value !== 0 && `${value}${plus ? '+' : ''}`
+    const passedValue = value !== 0 && `${value}${plus ? '+' : ''}${minus ? '-' : ''}`
     return (
         <GridCell height={Boolean(description) ? 3 : 2} center>
             <FlexWrapper>
@@ -128,7 +129,7 @@ const Weapon = (props) => {
         perception,
         intelligence
     } = character
-    const calculatedHits = shots * count
+    const calculatedHits = shots
     return (
         <>
             <FlexWrapper>
@@ -140,17 +141,18 @@ const Weapon = (props) => {
             </FlexWrapper>
             <FlexWrapper>
                 <IconedElement icon="range" value={range} filled nonZero />
-                <IconedElement icon="drum" value={drum} nonZero />
-                <IconedElement icon="ap" value={ap} filled nonZero />
-                <IconedElement icon="dmg" value={dmg} nonZero />
-                <GridCell width={4} />
+                <IconedElement icon="shots" value={shots}  nonZero />
+                <IconedElement icon="drum" value={drum} filled nonZero />
+                <IconedElement icon="ap" value={ap} nonZero />
+                <IconedElement icon="dmg" value={dmg} filled nonZero />
+                <GridCell width={3} />
                 
                 <IconedElement icon="±" value={mod} important={false} />
                 {dependencies.strength && <IconedElement icon="strength" value={strength}  plus />}
                 {dependencies.agility && <IconedElement icon="agility" value={agility}  plus />}
                 {dependencies.perception && <IconedElement icon="perception" value={perception}  plus />}
                 {dependencies.intelligence && <IconedElement icon="intelligence" value={intelligence}  plus />}
-                {calculatedHits > 1 && <IconedElement icon="*" value={calculatedHits} important={false} />}
+                {/* {calculatedHits > 1 && <IconedElement icon="*" value={calculatedHits} important={false} />} */}
             </FlexWrapper>
             {traits?.length > 0 && <GridCell width={14} center>
                 <Traits
@@ -193,7 +195,7 @@ const Spell = (props) => {
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
             <FlexWrapper>
-                <IconedElement icon="dice" value={dice} filled nonZero />
+                <IconedElement icon="health" value={dice} filled nonZero />
                 <IconedElement icon="strength" value={strength} nonZero />
                 <IconedElement icon="agility" value={agility} filled nonZero />
                 <IconedElement icon="perception" value={perception} nonZero />
@@ -237,7 +239,7 @@ const Poison = (props) => {
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
             <FlexWrapper>
-                <IconedElement icon="dice" value={dice} filled nonZero />
+                <IconedElement icon="health" value={dice} filled nonZero />
                 <IconedElement icon="strength" value={strength} nonZero />
                 <IconedElement icon="agility" value={agility} filled nonZero />
                 <IconedElement icon="perception" value={perception} nonZero />
@@ -302,18 +304,20 @@ export const DisplayCharacter = (props) => {
     const {
         index = 0,
         isControlled = true,
-        setControlled = noop
+        setControlled = noop,
+        isDemo = false,
+        characterProps = {}
     } = props
     const [characters, setCharacter] = useRecoilState(CharacterD6StateObj.change)
-    const character = characters[index]
+    const character = characters[index] || characterProps
     const removeCharacter = useSetRecoilState(CharacterD6StateObj.remove)
     const {
         price,
         characteristics,
-        weapons,
-        spells,
-        poisons,
-        skills,
+        weapons = [],
+        spells = [],
+        poisons = [],
+        skills = [],
         count,
         actions,
         title,
@@ -345,7 +349,7 @@ export const DisplayCharacter = (props) => {
 
     return (
         <div>
-            <NonPrintableBlock>
+            {!isDemo && <NonPrintableBlock>
                 <FlexWrapper>
                     <GridCell center big>
                         <Button
@@ -361,13 +365,13 @@ export const DisplayCharacter = (props) => {
                         />
                     </GridCell>
                 </FlexWrapper>
-            </NonPrintableBlock>
+            </NonPrintableBlock>}
             
             <BorderWrapper>
                 <FlexWrapper>
                     <GridCell inverse center >
                         <NonPrintableBlock>
-                            <Button title="—" onClick={handleDeleteCharacter} />
+                            {isDemo ? count : <Button title="—" onClick={handleDeleteCharacter} />}
                         </NonPrintableBlock>
                         <OnlyPrintableBlock>{count || 0}</OnlyPrintableBlock>
                     </GridCell>
@@ -376,9 +380,9 @@ export const DisplayCharacter = (props) => {
                     </GridCell>
                     <GridCell width={9} black filled >{title}</GridCell>
                     <GridCell width={1} center filled>
-                        <NonPrintableBlock>
+                        {!isDemo && <NonPrintableBlock>
                             <Button title={<GetIcon color={isControlled ? 'primary' : 'secondary'} icon="pencil" />} onClick={handleControlled} />
-                        </NonPrintableBlock>
+                        </NonPrintableBlock>}
                     </GridCell>
                     <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                     <GridCell width={1} inverse center>{price}</GridCell>

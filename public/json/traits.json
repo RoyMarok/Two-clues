@@ -51,7 +51,7 @@
         "id": "limited",
         "title": "Мало",
         "description": "",
-        "price": 0
+        "price": -10
     },
     {
         "id": "mastercrafted",

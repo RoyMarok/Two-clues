@@ -29,7 +29,7 @@ import { Mod } from './weapon'
 
 export const Dice = ({ onChange, value, filled, controlled = true }) => (
     <IconedField
-        title="dice"
+        title="health"
         filled={filled}
     >
         {controlled ? <ValueField
