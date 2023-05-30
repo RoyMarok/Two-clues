@@ -24,8 +24,9 @@ import {
     Move,
     Panic
 } from './attributes'
-import { Mod } from './weapon'
+import { Dependencies, Mod } from './weapon'
 import { WarriorSelect } from './warrior-select'
+import { Quality } from './spell'
 
 export const Dice = ({ onChange, value, filled, controlled = true }) => (
     <IconedField
@@ -53,13 +54,8 @@ export const Poison = (props) => {
     const [titleValue, setTitleValue] = useState(props?.title || '')
     const handleSetTitleValue = (e) => setTitleValue(e.target.value)
     const {
-        dice,
-        strength,
-        agility,
-        perception,
-        intelligence,
-        move,
-        panic,
+        target,
+        quality,
         activation,
         mod,
         changes,
@@ -90,53 +86,17 @@ export const Poison = (props) => {
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
             <FlexWrapper>
-                <GridCell width={8} height={6} center>
+                <GridCell width={6} height={3} center>
                     <FlexWrapper>
-                        <Might
+                        <Quality
+                            onChange={changes.quality}
                             limits={limits}
-                            onChange={changes.strength}
-                            value={strength}
-                            filled
+                            value={quality}
                             controlled={controlled}
                         />
-                        <Dex
-                            limits={limits}
-                            onChange={changes.agility}
-                            value={agility}
-                            controlled={controlled}
-                        />
-                        <Mind
-                            limits={limits}
-                            onChange={changes.perception}
-                            value={perception}
-                            filled
-                            controlled={controlled}
-                        />
-                        <Brain
-                            limits={limits}
-                            onChange={changes.intelligence}
-                            value={intelligence}
-                            controlled={controlled}
-                        />
-                    </FlexWrapper>
-                    <FlexWrapper>
-                        <Dice
-                            onChange={changes.dice}
-                            value={dice}
-                            limits={limits}
-                            filled
-                            controlled={controlled}
-                        />
-                        <Move
-                            onChange={changes.move}
-                            value={move}
-                            limits={limits}
-                            controlled={controlled}
-                        />
-                        <Panic
-                            onChange={changes.panic}
-                            value={panic}
-                            limits={limits}
+                        <Dependencies
+                            onChange={changes.target}
+                            value={target}
                             filled
                             controlled={controlled}
                         />

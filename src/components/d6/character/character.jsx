@@ -28,20 +28,20 @@ import { WarriorSelect } from './warrior-select'
 
 const limitsBase = {
     strength: {
-        min: 2,
-        max: 6
+        min: 1,
+        max: 12
     },
     agility: {
-        min: 2,
-        max: 6
+        min: 1,
+        max: 12
     },
     perception: {
-        min: 2,
-        max: 6
+        min: 1,
+        max: 12
     },
     intelligence: {
-        min: 2,
-        max: 6
+        min: 1,
+        max: 12
     },
     health: {
         min: 1,
@@ -57,7 +57,7 @@ const limitsBase = {
     },
     defence: {
         min: 0,
-        max: 2
+        max: 4
     },
     count: {
         min: 1,
@@ -77,16 +77,16 @@ const limitsBase = {
         max: 10
     },
     dmg: {
-        min: 0,
-        max: 8
+        min: -1,
+        max: 6
     },
     drum: {
         min: 0,
         max: 30
     },
     mod: {
-        min: -2,
-        max: 2
+        min: -1,
+        max: 1
     },
     height: {
         min: -2,
@@ -100,10 +100,10 @@ export const WARRIOR_TYPES_VALUES = [
         title: "Предводитель",
         icon: 'napoleon',
         values: [
+            4,
             3,
-            4,
-            4,
-            5
+            3,
+            2
         ],
         limits: {
             min: 1,
@@ -115,10 +115,10 @@ export const WARRIOR_TYPES_VALUES = [
         title: "Герой",
         icon: 'hussar',
         values: [
-            3,
             4,
-            5,
-            6
+            3,
+            2,
+            1
         ],
         limits: {
             min: 0,
@@ -130,64 +130,69 @@ export const WARRIOR_TYPES_VALUES = [
         title: "Боец",
         icon: 'face',
         values: [
-            4,
-            5,
-            6,
-            6
+            3,
+            2,
+            1,
+            1
         ]
     }
 ]
 
-const sizeLimits = {
+export const sizeLimits = {
     '-2': {
-        // strength: {
-        //     min: 5,
-        //     max: 6
-        // },
-        health: {
+        strength: {
             min: 1,
             max: 1
         },
+        // health: {
+        //     min: 1,
+        //     max: 1
+        // },
+        move: 0
     },
     '-1': {
-        // strength: {
-        //     min: 4,
-        //     max: 6
-        // },
-        health: {
+        strength: {
             min: 1,
-            max: 2
+            max: 3
         },
+        // health: {
+        //     min: 1,
+        //     max: 2
+        // },
+        move: 1
     },
     '0': {
-        // strength: {
-        //     min: 5,
-        //     max: 6
-        // },
-        health: {
+        strength: {
             min: 1,
-            max: 8
+            max: 12
         },
+        // health: {
+        //     min: 1,
+        //     max: 8
+        // },
+        move: 2
     },
     '1': {
-        // strength: {
-        //     min: 2,
-        //     max: 4
-        // },
-        health: {
-            min: 5,
-            max: 10
+        strength: {
+            min: 4,
+            max: 12
         },
+        // health: {
+        //     min: 5,
+        //     max: 10
+        // },
+        move: 3
     },
     '2': {
-        // strength: {
-        //     min: 2,
-        //     max: 3
-        // },
-        health: {
-            min: 7,
-            max: 15
+        strength: {
+            min: 5,
+            max: 12
         },
+        // health: {
+        //     min: 7,
+        //     max: 15
+        // },
+        move: 4
     },
 }
 
@@ -198,7 +203,7 @@ export const Character = (props) => {
         setControlled = noop
     } = props
     const [characters, setCharacter] = useRecoilState(CharacterD6StateObj.change)
-    const character = characters[index]
+    const character = characters.find((item) => item.index === index)
     const {
         price,
         characteristics,
@@ -341,6 +346,7 @@ export const Character = (props) => {
         perception: changesMaker('perception'),
         intelligence: changesMaker('intelligence'),
         health: changesMaker('health'),
+        height: changesCharMaker('height'),
         move: changesMaker('move'),
         panic: changesMaker('panic'),
         defence: changesMaker('defence'),
@@ -366,25 +372,15 @@ export const Character = (props) => {
         title: weaponChangesMaker('title')(index)
     })
     const spellChanges = (index) => ({
-        dice: spellChangesMaker('dice')(index),
-        strength: spellChangesMaker('strength')(index),
-        agility: spellChangesMaker('agility')(index),
-        perception: spellChangesMaker('perception')(index),
-        intelligence: spellChangesMaker('intelligence')(index),
-        move: spellChangesMaker('move')(index),
-        panic: spellChangesMaker('panic')(index),
+        target: spellChangesMaker('target')(index),
+        quality: spellChangesMaker('quality')(index),
         mod: spellChangesMaker('mod')(index),
         title: spellChangesMaker('title')(index),
         traits: spellChangesMaker('traits')(index)
     })
     const poisonChanges = (index) => ({
-        dice: poisonChangesMaker('dice')(index),
-        strength: poisonChangesMaker('strength')(index),
-        agility: poisonChangesMaker('agility')(index),
-        perception: poisonChangesMaker('perception')(index),
-        intelligence: poisonChangesMaker('intelligence')(index),
-        move: poisonChangesMaker('move')(index),
-        panic: poisonChangesMaker('panic')(index),
+        target: poisonChangesMaker('target')(index),
+        quality: poisonChangesMaker('quality')(index),
         mod: poisonChangesMaker('mod')(index),
         activation: poisonChangesMaker('activation')(index),
         title: poisonChangesMaker('title')(index)
@@ -439,14 +435,14 @@ export const Character = (props) => {
                 <FlexWrapper>
                     <Attributes
                         values={selectedValues}
-                        attributes={characteristics}
+                        attributes={{ ...characteristics, height }}
                         changes={changes}
                         limits={limits}
                         controlled={isControlled}
                         actions={character.actions}
                     />
                     <GridCell width={4} center />
-                    <IconedField
+                    {/* <IconedField
                         title="height"
                         
                     >
@@ -455,7 +451,7 @@ export const Character = (props) => {
                             value={height}
                             limits={limits.height}
                         />
-                    </IconedField>
+                    </IconedField> */}
                     
                     {/* <GridCell width={4} height={6} center >
                         <Defencies

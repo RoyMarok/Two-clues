@@ -29,6 +29,7 @@ export const IconedElement = (props) => {
         inverse = false,
         color = 'secondary',
         description = '',
+        prefix = '',
         checkboxes = false,
         nonZero = false,
         important = true
@@ -37,7 +38,7 @@ export const IconedElement = (props) => {
     const passedTitle = GetIcon.list.includes(icon)
         ? <GetIcon icon={icon} color={black || nonZeroPassed ? 'primary' : color} />
         : <GridCell center big black={black} >{icon}</GridCell>
-    const passedValue = value !== 0 && `${value}${plus ? '+' : ''}${minus ? '-' : ''}`
+    const passedValue = value !== 0 && `${prefix}${value}${plus ? '+' : ''}${minus && value > 1 ? '-' : ''}`
     return (
         <GridCell height={Boolean(description) ? 3 : 2} center>
             <FlexWrapper>
@@ -75,19 +76,20 @@ const Attributes = (props) => {
     } = props
 
     return (
-        <FlexWrapper>
-            
-            <IconedElement icon="health" value={health} filled black />
-            <IconedElement icon={fly ? 'fly' : 'move'} value={move} black />
-            <IconedElement icon="atom" value={actions} filled important={false} />
-            {/* <IconedElement icon="skill" value="" /> */}
-            <IconedElement icon="strength" value={strength} inverse plus/>
-            <IconedElement icon="agility" value={agility} inverse black plus />
-            <IconedElement icon="perception" value={perception} inverse plus />
-            <IconedElement icon="intelligence" value={intelligence} inverse plus />
-            
-            
-            {/* {armour ? <FlexWrapper><GridCell width={1} height={2} center>
+        <>
+            <FlexWrapper>
+
+                {/* <IconedElement icon="health" value={health} filled black /> */}
+                
+                
+                {/* <IconedElement icon="skill" value="" /> */}
+                <IconedElement icon="strength" value={strength}  minus />
+                <IconedElement icon="agility" value={agility} inverse black minus />
+                <IconedElement icon="perception" value={perception} inverse minus />
+                <IconedElement icon="intelligence" value={intelligence}  minus />
+
+
+                {/* {armour ? <FlexWrapper><GridCell width={1} height={2} center>
                 <GetIcon icon="defence" color="secondary" />
             </GridCell>
                 <IconedElement icon="legs" value={armour?.legs} filled color="tetriary" description="1" checkboxes/>
@@ -96,14 +98,22 @@ const Attributes = (props) => {
                 <IconedElement icon="helmet" value={armour?.head} color="tetriary" description="6" />
             </FlexWrapper>
                 : <GridCell width={5} />} */}
-            <IconedElement icon="height" value={height} />
-            <IconedElement icon="defence" value={defence} black important={false} />
-            <IconedElement icon="agility" value={agility}  plus />
-            <IconedElement icon="perception" value={perception}  plus />
-            <GridCell />
-            <IconedElement icon="panic" value={panic} black filled plus />
-            <IconedElement icon="perception" value={perception}  plus />
-        </FlexWrapper>
+                
+                
+                {/* <IconedElement icon="agility" value={agility} minus /> */}
+                {/* <IconedElement icon="perception" value={perception} minus /> */}
+                {/* <GridCell /> */}
+                {/* <IconedElement icon="panic" value={panic} black filled plus />
+            <IconedElement icon="perception" value={perception}  plus /> */}
+            </FlexWrapper>
+            <FlexWrapper>
+                <IconedElement icon="atom" value={actions} />
+                <IconedElement icon={fly ? 'fly' : 'move'} value={move} black />
+                <IconedElement icon="defence" value={defence} inverse/>
+                <IconedElement icon="height" value={height} />
+            </FlexWrapper>
+        </>
+        
     )
 }
 
@@ -142,16 +152,16 @@ const Weapon = (props) => {
             <FlexWrapper>
                 <IconedElement icon="range" value={range} filled nonZero />
                 <IconedElement icon="shots" value={shots}  nonZero />
-                <IconedElement icon="drum" value={drum} filled nonZero />
+                {drum > 0 && <IconedElement icon="drum" value={drum} filled nonZero />}
                 <IconedElement icon="ap" value={ap} nonZero />
-                <IconedElement icon="dmg" value={dmg} filled nonZero />
-                <GridCell width={3} />
+                <IconedElement icon="dmg" value={dmg} filled nonZero prefix={range < 6 ? '+' : ''}/>
+                <GridCell width={drum > 0 ? 3 : 4} />
                 
                 <IconedElement icon="±" value={mod} important={false} />
-                {dependencies.strength && <IconedElement icon="strength" value={strength}  plus />}
-                {dependencies.agility && <IconedElement icon="agility" value={agility}  plus />}
-                {dependencies.perception && <IconedElement icon="perception" value={perception}  plus />}
-                {dependencies.intelligence && <IconedElement icon="intelligence" value={intelligence}  plus />}
+                {dependencies.strength && <IconedElement icon="strength" value={0}  plus />}
+                {dependencies.agility && <IconedElement icon="agility" value={0}  plus />}
+                {dependencies.perception && <IconedElement icon="perception" value={0}  plus />}
+                {dependencies.intelligence && <IconedElement icon="intelligence" value={0}  plus />}
                 {/* {calculatedHits > 1 && <IconedElement icon="*" value={calculatedHits} important={false} />} */}
             </FlexWrapper>
             {traits?.length > 0 && <GridCell width={14} center>
@@ -309,7 +319,7 @@ export const DisplayCharacter = (props) => {
         characterProps = {}
     } = props
     const [characters, setCharacter] = useRecoilState(CharacterD6StateObj.change)
-    const character = characters[index] || characterProps
+    const character = characters.find((item) => item.index === index) || characterProps
     const removeCharacter = useSetRecoilState(CharacterD6StateObj.remove)
     const {
         price,

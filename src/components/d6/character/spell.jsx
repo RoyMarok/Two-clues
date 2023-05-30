@@ -25,11 +25,11 @@ import {
     Move,
     Panic
 } from './attributes'
-import { Mod } from './weapon'
+import { Dependencies, Mod } from './weapon'
 
-export const Dice = ({ onChange, value, filled, controlled = true }) => (
+export const Quality = ({ onChange, value, filled, controlled = true }) => (
     <IconedField
-        title="health"
+        title=""
         filled={filled}
     >
         {controlled ? <ValueField
@@ -53,13 +53,8 @@ export const Spell = (props) => {
     const [titleValue, setTitleValue] = useState(props?.title || '')
     const handleSetTitleValue = (e) => setTitleValue(e.target.value)
     const {
-        dice,
-        strength,
-        agility,
-        perception,
-        intelligence,
-        move,
-        panic,
+        target,
+        quality,
         mod,
         traits,
         allTraits,
@@ -94,53 +89,17 @@ export const Spell = (props) => {
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
             <FlexWrapper>
-                <GridCell width={8} height={6} center>
+                <GridCell width={8} height={3} center>
                     <FlexWrapper>
-                        <Might
+                        <Quality
+                            onChange={changes.quality}
                             limits={limits}
-                            onChange={changes.strength}
-                            value={strength}
-                            filled
+                            value={quality}
                             controlled={controlled}
                         />
-                        <Dex
-                            limits={limits}
-                            onChange={changes.agility}
-                            value={agility}
-                            controlled={controlled}
-                        />
-                        <Mind
-                            limits={limits}
-                            onChange={changes.perception}
-                            value={perception}
-                            filled
-                            controlled={controlled}
-                        />
-                        <Brain
-                            limits={limits}
-                            onChange={changes.intelligence}
-                            value={intelligence}
-                            controlled={controlled}
-                        />
-                    </FlexWrapper>
-                    <FlexWrapper>
-                        <Dice
-                            onChange={changes.dice}
-                            value={dice}
-                            limits={limits}
-                            filled
-                            controlled={controlled}
-                        />
-                        <Move
-                            onChange={changes.move}
-                            value={move}
-                            limits={limits}
-                            controlled={controlled}
-                        />
-                        <Panic
-                            onChange={changes.panic}
-                            value={panic}
-                            limits={limits}
+                        <Dependencies
+                            onChange={changes.target}
+                            value={target}
                             filled
                             controlled={controlled}
                         />
@@ -152,15 +111,15 @@ export const Spell = (props) => {
                         />
                     </FlexWrapper>
                 </GridCell>
-                <GridCell width="6" height="6" center>
-                    <GridCell width="6" height="4" center>
+                <GridCell width="6" height="3" center>
+                    {/* <GridCell width="6" height="4" center>
                         <Traits
                             traits={allTraits}
                             selectedTraits={traits}
                             controlled={controlled}
                             onChange={changes.traits}
                         />
-                    </GridCell>
+                    </GridCell> */}
                     {Boolean(defence) && <FlexWrapper>
                         <GridCell height="2" center big black error>!</GridCell>
                         <IconedElement icon="±" value={mod - defence} important={false} />

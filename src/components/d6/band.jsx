@@ -70,12 +70,13 @@ export const BandD6 = () => {
                 </MoveUp>
             </OnlyPrintableBlock>
             <NonPrintableBlock>
-                <Mordheim />
+                {/* <Mordheim /> */}
             </NonPrintableBlock>
             
             <FlexWrapper columns>
                 {characters &&
-                    characters.map((characterItem, index) => {
+                    characters.map((characterItem) => {
+                        const index = characterItem.index
                         const isControlled = index === controlledIndex
                         if (!isControlled) {
                             return (

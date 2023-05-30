@@ -6,7 +6,7 @@ const defaultD6Weapon = {
     range: 1,
     shots: 1,
     ap: 0,
-    dmg: 1,
+    dmg: 0,
     count: 1,
     title: 'Кулаки',
     dependencies: {
@@ -19,33 +19,33 @@ const defaultD6Weapon = {
     drum: 0,
     traits: [],
     customValues: {},
-    price: 5
+    price: 4
 }
 
 const defaultD6Spell = {
-    dice: -1,
     title: 'Проклятие',
-    strength: 0,
-    agility: 0,
-    perception: 0,
-    intelligence: 0,
-    move: 0,
-    panic: 0,
-    mod: -2,
+    target: {
+        strength: false,
+        agility: false,
+        perception: true,
+        intelligence: false
+    },
+    quality: -1,
+    mod: 1,
     traits: [],
     price: 15
 }
 
 const defaultD6Poison = {
-    dice: -1,
     title: 'Яд',
-    strength: 0,
-    agility: 0,
-    perception: 0,
-    intelligence: 0,
-    move: 0,
-    panic: 0,
-    mod: -2,
+    target: {
+        strength: true,
+        agility: false,
+        perception: false,
+        intelligence: false
+    },
+    quality: -1,
+    mod: 1,
     traits: [],
     activation: 'drink',
     price: 15
@@ -69,12 +69,12 @@ const defaultD6Skill = {
 
 const defaultD6Charcter = {
     characteristics: {
-        strength: 6,
-        agility: 6,
-        perception: 6,
-        intelligence: 6,
+        strength: 1,
+        agility: 1,
+        perception: 1,
+        intelligence: 1,
         health: 1,
-        move: 4,
+        move: 2,
         panic: 0,
         defence: 0,
         fly: false
@@ -102,13 +102,13 @@ export const POISON_ACTIVATION = [
         id: 'drink',
         title: '',
         icon: 'goblet',
-        price: 0
+        price: 1
     },
     {
         id: 'smoke',
         title: '',
         icon: 'fog',
-        price: 4
+        price: 2
     }
 ]
 
@@ -120,27 +120,27 @@ const WEAPONS_RANGE = [
     },
     {
         range: 2,
-        price: 2
+        price: 3
     },
     {
         range: 3,
-        price: 4
-    },
-    {
-        range: 6,
         price: 6
     },
     {
+        range: 6,
+        price: 9
+    },
+    {
         range: 8,
-        price: 8
+        price: 12
     },
     {
         range: 12,
-        price: 10
+        price: 15
     },
     {
         range: 30,
-        price: 12
+        price: 18
     }
 ]
 
@@ -170,7 +170,7 @@ const getD6WeaponPrice = (weapon) => {
 
     // const dmgRange = ((parseInt(dmg) + 1) * shots * 2 * range * 0.275) / 5
     // const dmgRange2 = (parseInt(dmg) + 1) * shots * passedRangePrice
-    const dmgRange2 =  Math.pow((parseInt(dmg) + 1), Math.max(shots, 1) ) * passedRangePrice
+    const dmgRange2 =  Math.pow((parseInt(dmg) + 3), Math.max(shots, 1) ) * passedRangePrice
 
     const drumKoeff = Math.min(Math.max(parseInt(drum), 1), 2)
 
@@ -183,13 +183,8 @@ const getD6WeaponPrice = (weapon) => {
 
 const getD6SpellPrice = (spell) => {
     const {
-        dice,
-        strength,
-        agility,
-        perception,
-        intelligence,
-        move,
-        panic,
+        target,
+        quality,
         mod,
         traits,
         allTraits
@@ -203,29 +198,25 @@ const getD6SpellPrice = (spell) => {
         return null
     })
 
+    const dependenciesSum = (target.strength + 0) + (target.agility + 0) + (target.perception + 0) + (target.intelligence + 0)
 
     return Math.max(
-        Math.round(((5 * Math.abs(dice) + (Math.abs(strength) + Math.abs(agility) + Math.abs(perception) + Math.abs(intelligence) + Math.abs(move) + Math.abs(panic)) * 4) * (parseInt(mod) + 5) + parseInt(traitsPrice)) / PRICE_KOEFF)
-        , 1)
+        Math.round(dependenciesSum * (parseInt(mod) + 3) * Math.abs(quality) * 4), 1)
 }
 
 const getD6PoisonPrice = (poisons) => {
     const {
-        dice,
-        strength,
-        agility,
-        perception,
-        intelligence,
-        move,
-        panic,
+        target,
+        quality,
         mod,
         activation
     } = poisons
 
     const traitsPrice = POISON_ACTIVATION.filter(trait => activation === trait.id)?.[0]?.price
+    const dependenciesSum = (target.strength + 0) + (target.agility + 0) + (target.perception + 0) + (target.intelligence + 0)
 
     return Math.max(
-        Math.round(((5 * Math.abs(dice) + (Math.abs(strength) + Math.abs(agility) + Math.abs(perception) + Math.abs(intelligence) + Math.abs(move) + Math.abs(panic)) * 4) * (parseInt(mod) + 5) + parseInt(traitsPrice)) / PRICE_KOEFF)
+        Math.round(dependenciesSum * (parseInt(mod) + 3) * Math.abs(quality) * 4 * traitsPrice)
         , 1)
 }
 
@@ -248,7 +239,8 @@ const getD6SkillPrice = (skill) => {
         , 5)
 }
 
-const calculateAttr = (attribute) => (6 - parseInt(attribute)) * 3 + 1
+const calculateAttr = (attribute) => parseInt(attribute) * (attribute >= 6 ? attribute - 4 : 1)
+// const calculateAttr = (attribute) => (6 - parseInt(attribute)) * 3 + 1
 
 export const getD6CharacterPrice = (character) => {
     const {
@@ -288,9 +280,9 @@ export const getD6CharacterPrice = (character) => {
         + calculateAttr(agility)
         + calculateAttr(perception)
         + calculateAttr(intelligence)
-    const moveCalculated = Math.round(Math.pow(2, parseInt(move) - 1) * (fly ? 2 : 1))
-    const healthCalculated = Math.round(Math.pow(2, parseInt(health) - 1) * 6)
-    const defenceCalculated = Math.round(Math.pow(2, parseInt(defence) - 1) * 3)
+    
+    const defenceCalculated = Math.round(Math.pow(2, parseInt(defence)))
+    
     let calculatedWeapons = 0
     weapons.map((weapon) => calculatedWeapons += getD6WeaponPrice({ ...weapon, allTraits }))
     let calculatedSpells = 0
@@ -300,15 +292,16 @@ export const getD6CharacterPrice = (character) => {
     let calculatedPoisons = 0
     poisons.map((poison) => calculatedPoisons += getD6PoisonPrice({ ...poison }))
 
+    const flyMod = (calculateAttr(agility) + height + 2) * (fly ? 1 : 0)
+
     const characteristicSum =
-        Math.ceil(((
+        Math.ceil((
             attributeSum
-            + moveCalculated
-            // + parseInt(defence) * 3
             + defenceCalculated
-            - (height * 3)
+            + flyMod
+            - height
             ) * actions
-        + healthCalculated + (fearless ? 15 : 0)) / PRICE_KOEFF)
+        )
         // - panic
         + parseInt(calculatedWeapons)
         + parseInt(calculatedSpells)
@@ -350,10 +343,12 @@ export const changeCharacterD6InState = selector({
             })
         }
 
+        const findedIndex = characters.findIndex((item) => item.index === index)
+
         set(characterD6State, [
-            ...characters.slice(0, index),
+            ...characters.slice(0, findedIndex),
             passedProps,
-            ...characters.slice(index + 1)
+            ...characters.slice(findedIndex + 1)
         ])
     }
 })
@@ -366,7 +361,7 @@ export const addCharactersD6InState = selector({
         const baseIndex = characters.length
         const passedInsertingCharacters = {
             ...defaultD6Charcter,
-            index: baseIndex
+            index: new Date().getMilliseconds()
         }
         set(characterD6State, [...characters, passedInsertingCharacters])
     }
@@ -377,7 +372,8 @@ export const removeCharacterD6FromState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, index) => {
         const characters = get(characterD6State)
-        set(characterD6State, [...characters.slice(0, index), ...characters.slice(index + 1)])
+        const findedIndex = characters.findIndex((item) => item.index === index)
+        set(characterD6State, [...characters.slice(0, findedIndex), ...characters.slice(findedIndex + 1)])
     }
 })
 
@@ -386,7 +382,7 @@ export const addWeaponD6InState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, index) => {
         const characters = get(characterD6State)
-        const character = characters[index]
+        const character = characters.find((item) => item.index === index)
         const passedCharacter = {
             ...character,
             weapons: [...character.weapons, defaultD6Weapon]
@@ -400,10 +396,12 @@ export const addWeaponD6InState = selector({
             })
         }
 
+        const findedIndex = characters.findIndex((item) => item.index === index)
+
         set(characterD6State, [
-            ...characters.slice(0, index),
+            ...characters.slice(0, findedIndex),
             passedProps,
-            ...characters.slice(index + 1)
+            ...characters.slice(findedIndex + 1)
         ])
     }
 })
@@ -413,7 +411,7 @@ export const removeWeaponD6InState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, { index, characterIndex }) => {
         const characters = get(characterD6State)
-        const character = characters[characterIndex]
+        const character = characters.find((item) => item.index === characterIndex)
         const { weapons } = character
         const passedCharacter = {
             ...character,
@@ -427,10 +425,12 @@ export const removeWeaponD6InState = selector({
                 allTraits
             })
         }
+        const findedIndex = characters.findIndex((item) => item.index === characterIndex)
+
         set(characterD6State, [
-            ...characters.slice(0, characterIndex),
+            ...characters.slice(0, findedIndex),
             passedProps,
-            ...characters.slice(characterIndex + 1)
+            ...characters.slice(findedIndex + 1)
         ])
     }
 })
@@ -440,7 +440,7 @@ export const addSpellD6InState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, index) => {
         const characters = get(characterD6State)
-        const character = characters[index]
+        const character = characters.find((item) => item.index === index)
         const passedCharacter = {
             ...character,
             spells: [...character.spells, defaultD6Spell]
@@ -454,10 +454,12 @@ export const addSpellD6InState = selector({
             })
         }
 
+        const findedIndex = characters.findIndex((item) => item.index === index)
+
         set(characterD6State, [
-            ...characters.slice(0, index),
+            ...characters.slice(0, findedIndex),
             passedProps,
-            ...characters.slice(index + 1)
+            ...characters.slice(findedIndex + 1)
         ])
     }
 })
@@ -467,7 +469,7 @@ export const removeSpellD6InState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, { index, characterIndex }) => {
         const characters = get(characterD6State)
-        const character = characters[characterIndex]
+        const character = characters.find((item) => item.index === characterIndex)
         const { spells } = character
         const passedCharacter = {
             ...character,
@@ -481,10 +483,12 @@ export const removeSpellD6InState = selector({
                 allTraits
             })
         }
+        const findedIndex = characters.findIndex((item) => item.index === characterIndex)
+
         set(characterD6State, [
-            ...characters.slice(0, characterIndex),
+            ...characters.slice(0, findedIndex),
             passedProps,
-            ...characters.slice(characterIndex + 1)
+            ...characters.slice(findedIndex + 1)
         ])
     }
 })
@@ -494,7 +498,7 @@ export const addPoisonD6InState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, index) => {
         const characters = get(characterD6State)
-        const character = characters[index]
+        const character = characters.find((item) => item.index === index)
         const passedCharacter = {
             ...character,
             poisons: [...character.poisons, defaultD6Poison]
@@ -508,10 +512,12 @@ export const addPoisonD6InState = selector({
             })
         }
 
+        const findedIndex = characters.findIndex((item) => item.index === index)
+
         set(characterD6State, [
-            ...characters.slice(0, index),
+            ...characters.slice(0, findedIndex),
             passedProps,
-            ...characters.slice(index + 1)
+            ...characters.slice(findedIndex + 1)
         ])
     }
 })
@@ -521,7 +527,7 @@ export const removePoisonD6InState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, { index, characterIndex }) => {
         const characters = get(characterD6State)
-        const character = characters[characterIndex]
+        const character = characters.find((item) => item.index === characterIndex)
         const { poisons } = character
         const passedCharacter = {
             ...character,
@@ -535,10 +541,12 @@ export const removePoisonD6InState = selector({
                 allTraits
             })
         }
+        const findedIndex = characters.findIndex((item) => item.index === characterIndex)
+
         set(characterD6State, [
-            ...characters.slice(0, characterIndex),
+            ...characters.slice(0, findedIndex),
             passedProps,
-            ...characters.slice(characterIndex + 1)
+            ...characters.slice(findedIndex + 1)
         ])
     }
 })
@@ -548,7 +556,7 @@ export const addSkillD6InState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, index) => {
         const characters = get(characterD6State)
-        const character = characters[index]
+        const character = characters.find((item) => item.index === index)
         const passedCharacter = {
             ...character,
             skills: [...character.skills, defaultD6Skill]
@@ -560,10 +568,12 @@ export const addSkillD6InState = selector({
             })
         }
 
+        const findedIndex = characters.findIndex((item) => item.index === index)
+
         set(characterD6State, [
-            ...characters.slice(0, index),
+            ...characters.slice(0, findedIndex),
             passedProps,
-            ...characters.slice(index + 1)
+            ...characters.slice(findedIndex + 1)
         ])
     }
 })
@@ -573,7 +583,7 @@ export const removeSkillD6InState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, {index, characterIndex}) => {
         const characters = get(characterD6State)
-        const character = characters[characterIndex]
+        const character = characters.find((item) => item.index === characterIndex)
         const { skills } = character
         const passedCharacter = {
             ...character,
@@ -585,10 +595,12 @@ export const removeSkillD6InState = selector({
                 ...passedCharacter
             })
         }
+        const findedIndex = characters.findIndex((item) => item.index === characterIndex)
+
         set(characterD6State, [
-            ...characters.slice(0, characterIndex),
+            ...characters.slice(0, findedIndex),
             passedProps,
-            ...characters.slice(characterIndex + 1)
+            ...characters.slice(findedIndex + 1)
         ])
     }
 })

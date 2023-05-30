@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {
     Button,
@@ -7,16 +7,53 @@ import {
     Value
 } from '../../styled'
 
+import { sizeLimits } from './character'
 import { IconedField } from './iconed-field'
 import { ValueField } from './value-field'
 import { SquareChooser } from './square-choser'
 
-export const Might = ({ values = [], limits, onChange, value, filled, controlled = true }) => (
+export const MainAttribute = ({ values = [], title = '', limits, onChange, value, filled, controlled = true }) => {
+    const [showSquare, setView] = useState(values.length > 0)
+    const handleChangeInput = () => {
+        setView(!showSquare)
+    }
+    return (
+        <IconedField
+            title={title}
+            filled={filled}
+            iconButton
+            iconButtonClick={handleChangeInput}
+        >
+            {showSquare ? <SquareChooser
+                values={values}
+                limits={limits}
+                onChange={onChange}
+                value={value}
+                filled={filled}
+            /> : <ValueField
+                onChange={onChange}
+                value={value}
+                filled={filled}
+                limits={limits}
+            />}
+
+        </IconedField>
+    )
+}
+
+export const Might = ({ values = [], limits, onChange, value, filled, controlled = true }) => {
+    const [showSquare, setView] = useState(values.length > 0)
+    const handleChangeInput = () => {
+        setView(!showSquare)
+    }
+    return (
     <IconedField
         title="strength"
         filled={filled}
+        iconButton
+        iconButtonClick={handleChangeInput}
     >
-        {values.length > 0 ? <SquareChooser
+        {showSquare ? <SquareChooser
             values={values}
             limits={limits}
             onChange={onChange}
@@ -26,10 +63,11 @@ export const Might = ({ values = [], limits, onChange, value, filled, controlled
             onChange={onChange}
             value={value}
             filled={filled}
+            limits={limits}
         />}
 
     </IconedField>
-)
+)}
 
 export const Dex = ({ values = [], limits, onChange, value, filled, controlled = true }) => (
     <IconedField
@@ -101,6 +139,24 @@ export const Health = ({ onChange, value, filled, controlled = true }) => (
             {value}
         </GridCell>}
     </IconedField>
+)
+
+
+export const Height = ({ onChange, value, filled, limits, controlled = true }) => (
+    <IconedField
+        title="height"
+        filled={filled}
+    >
+        {controlled ?<ValueField
+            onChange={onChange}
+            value={value}
+            filled={filled}
+            limits={limits}
+        /> : <GridCell black width={2} height="2" center big>
+            {value}
+        </GridCell>}
+    </IconedField>
+    
 )
 
 export const Move = ({ onChange, value, filled, changeFly, fly, controlled = true }) => (
@@ -183,12 +239,21 @@ export const Attributes = (props) => {
         move,
         panic,
         defence,
+        height,
         fly
     } = attributes
+
+    const setHeightMove = (e) => {
+        const { value } = e.target
+        console.log('setHeightMove', e, value, sizeLimits[value].move)
+        changes.move(sizeLimits[value].move)
+        changes.height(e)
+    }
     return (
         <GridCell width={8} height={6} center>
             <FlexWrapper>
-                <Might
+                <MainAttribute
+                    title="strength"
                     values={values}
                     limits={limits.strength}
                     onChange={changes.strength}
@@ -196,14 +261,16 @@ export const Attributes = (props) => {
                     filled
                     controlled={controlled}
                 />
-                <Dex
+                <MainAttribute
+                    title="agility"
                     values={values}
                     limits={limits.agility}
                     onChange={changes.agility}
                     value={agility}
                     controlled={controlled}
                 />
-                <Mind
+                <MainAttribute
+                    title="perception"
                     values={values}
                     limits={limits.perception}
                     onChange={changes.perception}
@@ -211,7 +278,8 @@ export const Attributes = (props) => {
                     filled
                     controlled={controlled}
                 />
-                <Brain
+                <MainAttribute
+                    title="intelligence"
                     values={values}
                     limits={limits.intelligence}
                     onChange={changes.intelligence}
@@ -220,30 +288,33 @@ export const Attributes = (props) => {
                 />
             </FlexWrapper>
             <FlexWrapper>
-                <Health
-                    onChange={changes.health}
-                    value={health}
-                    filled
+                <Actions
+                    onChange={changes.actions}
+                    value={actions}
                     controlled={controlled}
+                    filled
                 />
                 <Move
-                    onChange={changes.move}
-                    value={move}
+                    // onChange={changes.move}
+                    value={sizeLimits[height].move}
                     fly={fly}
+                    
                     changeFly={changes.fly}
-                    controlled={controlled}
+                    controlled={false}
                 />
+               
                 <Defence
                     onChange={changes.defence}
                     value={defence}
                     filled
                     controlled={controlled}
                 />
-                <Actions
-                    onChange={changes.actions}
-                    value={actions}
-                    controlled={controlled}
+                <Height
+                    onChange={setHeightMove}
+                    value={height}
+                    
                 />
+                
             </FlexWrapper>
         </GridCell>
     )
