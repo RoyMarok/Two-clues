@@ -25,7 +25,7 @@ import {
     Move,
     Panic
 } from './attributes'
-import { Dependencies, Mod } from './weapon'
+import { AP, Dependencies, DMG, Mod } from './weapon'
 
 export const Quality = ({ onChange, value, filled, controlled = true }) => (
     <IconedField
@@ -56,8 +56,8 @@ export const Spell = (props) => {
         target,
         quality,
         mod,
-        traits,
-        allTraits,
+        ap,
+        dmg,
         changes,
         index,
         characterIndex,
@@ -69,38 +69,51 @@ export const Spell = (props) => {
     const { defence } = attributes
 
     const handleRemoveSpell = (e) => removeSpell({ index, characterIndex })
+    const powerAcumulate = ((target.strength + 0) + (target.agility + 0) + (target.perception + 0) + (target.intelligence + 0)) * Math.abs(quality) + Math.abs(ap) + Math.abs(dmg) - 1
 
     return (
         <>
             <FlexWrapper>
                 <GridCell inverse center ><Button title="—" onClick={handleRemoveSpell} /> </GridCell>
+                {<GridCell inverse center>{Boolean(powerAcumulate) && `+${powerAcumulate}`}</GridCell>}
                 <GridCell filled center><GetIcon icon="magic" /></GridCell>
                 
-                <GridCell width={8} filled >
+                <GridCell width={9} filled >
                     <Value
                         value={titleValue}
                         onChange={handleSetTitleValue}
                         onBlur={changes.title}
                     />
                 </GridCell>
-                <GridCell filled center><GetIcon icon="perception"  /></GridCell>
-                <GridCell filled center><GetIcon icon="intelligence" /></GridCell>
+                {/* <GridCell filled center><GetIcon icon="perception"  /></GridCell>
+                <GridCell filled center><GetIcon icon="intelligence" /></GridCell> */}
                 <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
             <FlexWrapper>
-                <GridCell width={8} height={3} center>
+                <GridCell width={10} height={3} center>
                     <FlexWrapper>
                         <Quality
                             onChange={changes.quality}
                             limits={limits}
                             value={quality}
                             controlled={controlled}
+                            filled
                         />
                         <Dependencies
                             onChange={changes.target}
                             value={target}
+                            controlled={controlled}
+                        />
+                        <AP
+                            onChange={changes.ap}
+                            value={ap}
                             filled
+                            controlled={controlled}
+                        />
+                        <DMG
+                            onChange={changes.dmg}
+                            value={dmg}
                             controlled={controlled}
                         />
                         <Mod
@@ -108,10 +121,11 @@ export const Spell = (props) => {
                             limits={limits}
                             value={mod}
                             controlled={controlled}
+                            filled
                         />
                     </FlexWrapper>
                 </GridCell>
-                <GridCell width="6" height="3" center>
+                <GridCell width="4" height="3" center>
                     {/* <GridCell width="6" height="4" center>
                         <Traits
                             traits={allTraits}

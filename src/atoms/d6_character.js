@@ -1,12 +1,14 @@
 import { atom, selector } from 'recoil'
 
+import { getChance } from '../utils'
+
 import { weaponTraitsState } from './weapons'
 
 const defaultD6Weapon = {
     range: 1,
     shots: 1,
     ap: 0,
-    dmg: 0,
+    dmg: -1,
     count: 1,
     title: 'Кулаки',
     dependencies: {
@@ -31,6 +33,8 @@ const defaultD6Spell = {
         intelligence: false
     },
     quality: -1,
+    ap: 0,
+    dmg: 0,
     mod: 1,
     traits: [],
     price: 15
@@ -45,6 +49,8 @@ const defaultD6Poison = {
         intelligence: false
     },
     quality: -1,
+    ap: 0,
+    dmg: 0,
     mod: 1,
     traits: [],
     activation: 'drink',
@@ -116,33 +122,42 @@ const PRICE_KOEFF = 3
 const WEAPONS_RANGE = [
     {
         range: 1,
+        // price: 2
         price: 1
     },
     {
         range: 2,
-        price: 3
+        // price: 3
+        price: 1.5
     },
     {
         range: 3,
-        price: 6
+        // price: 4
+        price: 2
     },
     {
         range: 6,
-        price: 9
+        // price: 6
+        price: 2.5
     },
     {
         range: 8,
-        price: 12
+        // price: 8
+        price: 3
     },
     {
         range: 12,
-        price: 15
+        // price: 10
+        price: 4
     },
     {
         range: 30,
-        price: 18
+        // price: 12
+        price: 6
     }
 ]
+
+const shotsBaseValues = [0, 1, 2, 3, 6]
 
 const getD6WeaponPrice = (weapon) => {
     const {
@@ -167,16 +182,27 @@ const getD6WeaponPrice = (weapon) => {
     })
     const passedRangePrice = WEAPONS_RANGE.filter(
         (item, index) => range === item.range || (range > WEAPONS_RANGE?.[Math.max(index - 1, 0)].range && range < item.range))[0]?.price
+    
+    const shotsPrice = shotsBaseValues[shotsBaseValues.findIndex((element) => element === shots) - 1] + parseInt(shots)
 
-    // const dmgRange = ((parseInt(dmg) + 1) * shots * 2 * range * 0.275) / 5
-    // const dmgRange2 = (parseInt(dmg) + 1) * shots * passedRangePrice
-    const dmgRange2 =  Math.pow((parseInt(dmg) + 3), Math.max(shots, 1) ) * passedRangePrice
+    const dmgRange = passedRangePrice * (parseInt(dmg) + 2) * ((parseInt(shots) + 1) / 2)
+    // const dmgRange2 = (Math.pow((parseInt(dmg) + 1), Math.max(shots, 1)) + ap) * passedRangePrice
+    const passedDrumKoeff = Math.min(parseInt(drum), 4)
 
-    const drumKoeff = Math.min(Math.max(parseInt(drum), 1), 2)
+    const passedMod = Boolean(mod) ? (mod > 0 ? -1 : 1) * (10 + (Math.abs(mod) * 5)) : 0
+    const passedAP = Boolean(ap) ? 10 + (parseInt(ap) * 5) : 0
+
+    console.log('Weapon Price', title, shots, shotsPrice, dmgRange )
 
     return Math.max(
-        Math.round(
-            parseInt(dmg) + ((dmgRange2 + Math.max(parseInt(drum) - 1, 1) + (ap * 3)) * drumKoeff * count + (parseInt(mod) + 2) * 3 + parseInt(traitsPrice) / 5) / PRICE_KOEFF
+        Math.ceil(
+            (
+                dmgRange
+                + passedDrumKoeff
+                + parseInt(traitsPrice) / (5 * PRICE_KOEFF)
+            ) * count
+            + passedMod
+            + passedAP
         )
         , 1)
 }
@@ -186,6 +212,8 @@ const getD6SpellPrice = (spell) => {
         target,
         quality,
         mod,
+        ap = 0,
+        dmg = 0,
         traits,
         allTraits
     } = spell
@@ -199,9 +227,12 @@ const getD6SpellPrice = (spell) => {
     })
 
     const dependenciesSum = (target.strength + 0) + (target.agility + 0) + (target.perception + 0) + (target.intelligence + 0)
+    const passedAP = Boolean(ap) ? 10 + (Math.abs(ap) * 5) : 0
+    const passedMod = Boolean(mod) ? 10 + (Math.abs(mod) * 5) : 0
 
     return Math.max(
-        Math.round(dependenciesSum * (parseInt(mod) + 3) * Math.abs(quality) * 4), 1)
+        Math.round(dependenciesSum * Math.abs(quality) * 10 + passedAP + Math.abs(dmg) * 10 + passedMod)
+        , 1)
 }
 
 const getD6PoisonPrice = (poisons) => {
@@ -209,14 +240,22 @@ const getD6PoisonPrice = (poisons) => {
         target,
         quality,
         mod,
+        ap = 0,
+        dmg = 0,
         activation
     } = poisons
 
     const traitsPrice = POISON_ACTIVATION.filter(trait => activation === trait.id)?.[0]?.price
     const dependenciesSum = (target.strength + 0) + (target.agility + 0) + (target.perception + 0) + (target.intelligence + 0)
 
+    const passedAP = Boolean(ap) ? 10 + (Math.abs(ap) * 5) : 0
+    const passedMod = Boolean(mod) ? 10 + (Math.abs(mod) * 5) : 0
+
+    // return Math.max(
+    //     Math.round((dependenciesSum * Math.abs(quality) + Math.abs(ap) + Math.abs(dmg)) * (parseInt(mod) + 3) * 3  * traitsPrice)
+    //     , 1)
     return Math.max(
-        Math.round(dependenciesSum * (parseInt(mod) + 3) * Math.abs(quality) * 4 * traitsPrice)
+        Math.round(dependenciesSum * Math.abs(quality) * 10 + passedAP + Math.abs(dmg) * 10 + passedMod) * traitsPrice
         , 1)
 }
 
@@ -274,15 +313,6 @@ export const getD6CharacterPrice = (character) => {
         fly
     } = characteristics
 
-    // const armourSum = (parseInt(head) + parseInt(chest) + parseInt(hands) + parseInt(legs)) * 3
-    const attributeSum =
-        calculateAttr(strength)
-        + calculateAttr(agility)
-        + calculateAttr(perception)
-        + calculateAttr(intelligence)
-    
-    const defenceCalculated = Math.round(Math.pow(2, parseInt(defence)))
-    
     let calculatedWeapons = 0
     weapons.map((weapon) => calculatedWeapons += getD6WeaponPrice({ ...weapon, allTraits }))
     let calculatedSpells = 0
@@ -292,16 +322,31 @@ export const getD6CharacterPrice = (character) => {
     let calculatedPoisons = 0
     poisons.map((poison) => calculatedPoisons += getD6PoisonPrice({ ...poison }))
 
-    const flyMod = (calculateAttr(agility) + height + 2) * (fly ? 1 : 0)
+
+    // const armourSum = (parseInt(head) + parseInt(chest) + parseInt(hands) + parseInt(legs)) * 3
+    // const passedAgility = fly ? agility + 3 : agility
+
+    const attributeSum = getChance(strength, agility) + getChance(perception, intelligence)
+        // calculateAttr(strength)
+        // + calculateAttr(agility)
+        // + calculateAttr(perception)
+        // + calculateAttr(intelligence)
+    
+    const defenceCalculated = Boolean(defence) ? 10 + (parseInt(defence) * 5) : 0
+    const sizeCalculated = Boolean(height) ? (height > 0 ? -1 : 1) * (10 + (Math.abs(height) * 5)) : 0
+    const flyMod = fly ? 15  : 0
+
+    console.log('Character', attributeSum, defenceCalculated, sizeCalculated, flyMod)
 
     const characteristicSum =
-        Math.ceil((
+        Math.max(Math.ceil((
             attributeSum
             + defenceCalculated
             + flyMod
-            - height
-            ) * actions
-        )
+            + sizeCalculated
+            )
+            //  * (actions / 2)
+        ), 6)
         // - panic
         + parseInt(calculatedWeapons)
         + parseInt(calculatedSpells)

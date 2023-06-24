@@ -24,7 +24,7 @@ import {
     Move,
     Panic
 } from './attributes'
-import { Dependencies, Mod } from './weapon'
+import { AP, Dependencies, DMG, Mod } from './weapon'
 import { WarriorSelect } from './warrior-select'
 import { Quality } from './spell'
 
@@ -58,6 +58,8 @@ export const Poison = (props) => {
         quality,
         activation,
         mod,
+        ap,
+        dmg,
         changes,
         index,
         characterIndex,
@@ -73,31 +75,42 @@ export const Poison = (props) => {
                 <GridCell inverse center ><Button title="—" onClick={handleRemovePoison} /> </GridCell>
                 <GridCell filled center><GetIcon icon="poison" /></GridCell>
 
-                <GridCell width={8} filled >
+                <GridCell width={10} filled >
                     <Value
                         value={titleValue}
                         onChange={handleSetTitleValue}
                         onBlur={changes.title}
                     />
                 </GridCell>
-                <GridCell filled center><GetIcon icon="perception" /></GridCell>
-                <GridCell filled center><GetIcon icon="intelligence" /></GridCell>
+                {/* <GridCell filled center><GetIcon icon="perception" /></GridCell>
+                <GridCell filled center><GetIcon icon="intelligence" /></GridCell> */}
                 <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
             <FlexWrapper>
-                <GridCell width={6} height={3} center>
+                <GridCell width={10} height={3} center>
                     <FlexWrapper>
                         <Quality
                             onChange={changes.quality}
                             limits={limits}
                             value={quality}
                             controlled={controlled}
+                            filled
                         />
                         <Dependencies
                             onChange={changes.target}
                             value={target}
+                            controlled={controlled}
+                        />
+                        <AP
+                            onChange={changes.ap}
+                            value={ap}
                             filled
+                            controlled={controlled}
+                        />
+                        <DMG
+                            onChange={changes.dmg}
+                            value={dmg}
                             controlled={controlled}
                         />
                         <Mod
@@ -105,10 +118,11 @@ export const Poison = (props) => {
                             limits={limits}
                             value={mod}
                             controlled={controlled}
+                            filled
                         />
                     </FlexWrapper>
                 </GridCell>
-                <GridCell width={2} center>
+                <GridCell width={4} center>
                     <WarriorSelect
                         elements={CharacterD6StateObj.constants.POISON_ACTIVATION}
                         selected={activation}

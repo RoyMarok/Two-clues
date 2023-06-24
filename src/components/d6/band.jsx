@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next'
 
 import { CharacterD6StateObj } from '../../atoms'
 
-import { clamp, noop } from '../../utils'
+
 
 import {
     BorderWrapper,
@@ -20,9 +20,11 @@ import {
 } from '../styled'
 import { GetIcon } from '../get-icon'
 
+import { Scenarios } from './display/scenarios'
 import { Character } from './character'
 import { DisplayCharacter } from './display'
-import { Mordheim } from './mordheim'
+import { Mordheim, getChance } from './mordheim'
+import { Chances } from './chances'
 
 export const BandD6 = () => {
     const [controlledIndex, setControlledIndex] = useState(0)
@@ -41,8 +43,6 @@ export const BandD6 = () => {
             allCharactersPrice += (character?.count) * parseInt(character.price)
         })
     }
-
-    // console.log('D6 Band', JSON.stringify(characters))
 
     return (
         <>
@@ -109,6 +109,16 @@ export const BandD6 = () => {
                     )
                 }
             </FlexWrapper>
+            {/* <Scenarios /> */}
+            <FlexWrapper>
+                <Chances />
+                <Chances mod={1} />
+                <Chances mod={-1} />
+                <Chances mod={-2} />
+                <Chances mod={-3} />
+                <Chances mod={-4} />
+            </FlexWrapper>
+            
         </>
     )
 }

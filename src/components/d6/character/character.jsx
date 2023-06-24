@@ -105,6 +105,7 @@ export const WARRIOR_TYPES_VALUES = [
             3,
             2
         ],
+        exp: 5,
         limits: {
             min: 1,
             max: 1
@@ -120,6 +121,7 @@ export const WARRIOR_TYPES_VALUES = [
             2,
             1
         ],
+        exp: 3,
         limits: {
             min: 0,
             max: 2
@@ -241,7 +243,9 @@ export const Character = (props) => {
     const handleAddPoison = (e) => addPoison(index)
     const handleAddSkill = (e) => addSkill(index)
     const changesCharMaker = (attr) => (e) => {
+        
         let limits = limitsBase
+        const passedValue = e?.target?.value || e?.target?.value === '' || e?.target?.value === 0 ? e.target.value : e
         if (attr === 'height') {
             limits = {
                 ...limitsBase,
@@ -252,12 +256,18 @@ export const Character = (props) => {
         const passedChars = {...character}
         const passedCharacteristics = { ...characteristics }
         passedCharacteristics.health = clamp(passedCharacteristics?.health, limits?.health?.min, limits?.health?.max)
-        const passedValue = e?.target?.value ? e.target.value : e
-        passedChars[attr] = limits?.[attr] ? clamp(passedValue, limits?.[attr]?.min, limits?.[attr]?.max) : passedValue
-        setCharacter({
-            ...passedChars,
-            characteristics: passedCharacteristics
-        })
+        
+        
+        if (passedValue !== passedChars[attr]) {
+            passedChars[attr] = limits?.[attr] ? clamp(passedValue, limits?.[attr]?.min, limits?.[attr]?.max) : passedValue
+            setCharacter({
+                ...passedChars,
+                characteristics: passedCharacteristics
+            })
+        } else {
+            console.log('changesCharMaker', attr, passedChars[attr], passedValue)
+        }
+        
     }
     const changesMaker = (attr) => (e) => {
         const passedChars = {...characteristics}
@@ -375,6 +385,8 @@ export const Character = (props) => {
         target: spellChangesMaker('target')(index),
         quality: spellChangesMaker('quality')(index),
         mod: spellChangesMaker('mod')(index),
+        ap: spellChangesMaker('ap')(index),
+        dmg: spellChangesMaker('dmg')(index),
         title: spellChangesMaker('title')(index),
         traits: spellChangesMaker('traits')(index)
     })
@@ -382,6 +394,8 @@ export const Character = (props) => {
         target: poisonChangesMaker('target')(index),
         quality: poisonChangesMaker('quality')(index),
         mod: poisonChangesMaker('mod')(index),
+        ap: poisonChangesMaker('ap')(index),
+        dmg: poisonChangesMaker('dmg')(index),
         activation: poisonChangesMaker('activation')(index),
         title: poisonChangesMaker('title')(index)
     })
@@ -473,7 +487,7 @@ export const Character = (props) => {
                 {isControlled && <FlexWrapper>
                     <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="weapon" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddWeapon} /></GridCell>
                     <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="magic" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddSpell} /></GridCell>
-                    <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="skill" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddSkill} /></GridCell>
+                    {/* <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="skill" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddSkill} /></GridCell> */}
                     <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="poison" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddPoison} /></GridCell>
                 </FlexWrapper>}
                 

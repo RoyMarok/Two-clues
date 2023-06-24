@@ -288,12 +288,17 @@ export const Attributes = (props) => {
                 />
             </FlexWrapper>
             <FlexWrapper>
-                <Actions
+                <Height
+                    onChange={setHeightMove}
+                    value={height}
+
+                />
+                {/* <Actions
                     onChange={changes.actions}
                     value={actions}
                     controlled={controlled}
                     filled
-                />
+                /> */}
                 <Move
                     // onChange={changes.move}
                     value={sizeLimits[height].move}
@@ -309,11 +314,7 @@ export const Attributes = (props) => {
                     filled
                     controlled={controlled}
                 />
-                <Height
-                    onChange={setHeightMove}
-                    value={height}
-                    
-                />
+                
                 
             </FlexWrapper>
         </GridCell>

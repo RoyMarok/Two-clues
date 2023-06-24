@@ -81,7 +81,7 @@ const calculateChanceMordheim2d6 = (value) => {
 
 const DICE = 6
 
-const getChance = (a = 3, b = 3, mod = 0) => {
+export const getChance = (a = 3, b = 3, mod = 0) => {
     const side = DICE - Math.max(a, b) + 1
     const sideDiff = Math.min(a, b) - 1
     let chance = (Math.pow(side, 2) + 2 * Math.abs(a - b) * side) / Math.pow(DICE, 2)

@@ -29,6 +29,7 @@ export const GridCell = styled.div(({
             wrapper = false,
             pageBreak = false,
             verticalCenter = false,
+            mirror = false,
             error=false
 
         }) => css`
@@ -53,6 +54,7 @@ export const GridCell = styled.div(({
     ${height === 0.5 && '&>button { top: -'+gridBase/6+'px; }'}
     ${open && 'height: auto; line-height: 1em;'}
     ${pageBreak && 'break-before: page;'}
+    ${mirror && 'transform: rotate(180deg);'}
     h2 {
         font-size: ${baseFontSize * 2}px;
         line-height: ${baseFontSize * 2}px;

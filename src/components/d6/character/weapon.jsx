@@ -37,18 +37,23 @@ export const Range = ({ onChange, value, values = [], filled, controlled = true,
     </IconedField>
 )
 
-export const Shots = ({ onChange, value, filled, controlled = true }) => (
+export const Shots = ({ onChange, values = [1, 2, 3, 6], value, filled, controlled = true, showSquare }) => (
     <IconedField
         title="shots"
         filled={filled}
     >
-        {controlled ? <ValueField
+        {showSquare ? <SquareChooser
+            values={values}
+            // limits={limits}
             onChange={onChange}
             value={value}
             filled={filled}
-        /> : <GridCell black width={2} height="2" center big>
-            {value}
-        </GridCell>}
+        /> : <ValueField
+            onChange={onChange}
+            value={value}
+            filled={filled}
+            // limits={limits}
+        />}
     </IconedField>
 )
 
@@ -204,6 +209,7 @@ export const Weapon = (props) => {
                             onChange={changes.shots}
                             value={shots}
                             controlled={controlled}
+                            showSquare
                         />
                         <AP
                             onChange={changes.ap}
