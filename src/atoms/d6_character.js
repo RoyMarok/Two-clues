@@ -118,7 +118,7 @@ export const POISON_ACTIVATION = [
     }
 ]
 
-const PRICE_KOEFF = 3
+const PRICE_KOEFF = 5
 const WEAPONS_RANGE = [
     {
         range: 1,
@@ -128,17 +128,17 @@ const WEAPONS_RANGE = [
     {
         range: 2,
         // price: 3
-        price: 1.5
+        price: 2
     },
     {
         range: 3,
         // price: 4
-        price: 2
+        price: 3
     },
     {
         range: 6,
         // price: 6
-        price: 2.5
+        price: 2
     },
     {
         range: 8,
@@ -153,7 +153,7 @@ const WEAPONS_RANGE = [
     {
         range: 30,
         // price: 12
-        price: 6
+        price: 5
     }
 ]
 
@@ -183,26 +183,31 @@ const getD6WeaponPrice = (weapon) => {
     const passedRangePrice = WEAPONS_RANGE.filter(
         (item, index) => range === item.range || (range > WEAPONS_RANGE?.[Math.max(index - 1, 0)].range && range < item.range))[0]?.price
     
-    const shotsPrice = shotsBaseValues[shotsBaseValues.findIndex((element) => element === shots) - 1] + parseInt(shots)
+    // const shotsPrice = shotsBaseValues[shotsBaseValues.findIndex((element) => element === shots) - 1] + parseInt(shots)
 
-    const dmgRange = passedRangePrice * (parseInt(dmg) + 2) * ((parseInt(shots) + 1) / 2)
+    const passedDMG = range > 4 ? parseInt(dmg) * 10 : Math.max((parseInt(dmg) + 2) * 10, 1)
+
+    const dmgRange = passedRangePrice * passedDMG * ((parseInt(shots) + 1) / 2)
     // const dmgRange2 = (Math.pow((parseInt(dmg) + 1), Math.max(shots, 1)) + ap) * passedRangePrice
-    const passedDrumKoeff = Math.min(parseInt(drum), 4)
+    const passedDrumKoeff = drum < 10 ? Math.min(parseInt(drum), 4) : Math.max(Math.round(drum / 5), 4)
 
-    const passedMod = Boolean(mod) ? (mod > 0 ? -1 : 1) * (10 + (Math.abs(mod) * 5)) : 0
+    const passedMod = Boolean(mod) ? (mod > 0 ? 1 : -1) * (10 + (Math.abs(mod) * 5)) : 0
     const passedAP = Boolean(ap) ? 10 + (parseInt(ap) * 5) : 0
 
-    console.log('Weapon Price', title, shots, shotsPrice, dmgRange )
+    // console.log('Weapon Price', title, shots, shotsPrice, dmgRange )
 
     return Math.max(
         Math.ceil(
             (
-                dmgRange
-                + passedDrumKoeff
-                + parseInt(traitsPrice) / (5 * PRICE_KOEFF)
-            ) * count
-            + passedMod
-            + passedAP
+                (
+                    dmgRange
+                    + passedDrumKoeff
+                    + parseInt(traitsPrice)
+                ) * count
+                + passedMod
+                // + 10
+                + passedAP
+            ) / PRICE_KOEFF
         )
         , 1)
 }
@@ -231,7 +236,7 @@ const getD6SpellPrice = (spell) => {
     const passedMod = Boolean(mod) ? 10 + (Math.abs(mod) * 5) : 0
 
     return Math.max(
-        Math.round(dependenciesSum * Math.abs(quality) * 10 + passedAP + Math.abs(dmg) * 10 + passedMod)
+        Math.round((dependenciesSum * Math.abs(quality) * 10 + passedAP + Math.abs(dmg) * 10 + passedMod) / PRICE_KOEFF)
         , 1)
 }
 
@@ -255,7 +260,7 @@ const getD6PoisonPrice = (poisons) => {
     //     Math.round((dependenciesSum * Math.abs(quality) + Math.abs(ap) + Math.abs(dmg)) * (parseInt(mod) + 3) * 3  * traitsPrice)
     //     , 1)
     return Math.max(
-        Math.round(dependenciesSum * Math.abs(quality) * 10 + passedAP + Math.abs(dmg) * 10 + passedMod) * traitsPrice
+        Math.round(((dependenciesSum * Math.abs(quality) * 10 + passedAP + Math.abs(dmg) * 10 + passedMod) * traitsPrice) / PRICE_KOEFF)
         , 1)
 }
 
@@ -339,14 +344,14 @@ export const getD6CharacterPrice = (character) => {
     console.log('Character', attributeSum, defenceCalculated, sizeCalculated, flyMod)
 
     const characteristicSum =
-        Math.max(Math.ceil((
+        Math.ceil(Math.max(Math.ceil((
             attributeSum
             + defenceCalculated
             + flyMod
             + sizeCalculated
             )
             //  * (actions / 2)
-        ), 6)
+        ), 6) / PRICE_KOEFF)
         // - panic
         + parseInt(calculatedWeapons)
         + parseInt(calculatedSpells)

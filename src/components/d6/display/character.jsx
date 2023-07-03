@@ -128,7 +128,7 @@ const Attributes = (props) => {
                 <GridCell />
                 <GridCell height={2} width={2} center>
                     <GridCell center width={2}>
-                        <GetIcon icon="move" color="secondary" />
+                        <GetIcon icon={fly ? 'fly' : 'move'} color="secondary" />
                     </GridCell>
                     <GridCell center width={2} black>
                         <GetIcon icon="agility" />
@@ -442,8 +442,14 @@ export const DisplayCharacter = (props) => {
     spells.map((item) => spellExperience += parseInt(item.mod) + 1)
     let poisonExperience = 0
     poisons.map((item) => poisonExperience += parseInt(item.mod) + 1)
-    const expirience = warriorTypeItem?.exp ? heroExpPoints[
-        parseInt(warriorTypeItem?.exp) - 1
+    const { strength,
+        agility,
+        perception,
+        intelligence } = characteristics
+    const chcracteristicSum = parseInt(strength) + parseInt(agility) + parseInt(perception) + parseInt(intelligence) 
+    const expirience = chcracteristicSum >=7 ? heroExpPoints[
+        // parseInt(warriorTypeItem?.exp) - 1
+        chcracteristicSum - 8
         // + weaponExperience
         + spellExperience
         + poisonExperience

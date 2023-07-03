@@ -86,7 +86,7 @@ const limitsBase = {
     },
     mod: {
         min: -1,
-        max: 1
+        max: 5
     },
     height: {
         min: -2,

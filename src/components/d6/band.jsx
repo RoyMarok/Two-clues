@@ -110,7 +110,7 @@ export const BandD6 = () => {
                 }
             </FlexWrapper>
             {/* <Scenarios /> */}
-            <FlexWrapper>
+            <NonPrintableBlock> <FlexWrapper>
                 <Chances />
                 <Chances mod={1} />
                 <Chances mod={-1} />
@@ -118,7 +118,7 @@ export const BandD6 = () => {
                 <Chances mod={-3} />
                 <Chances mod={-4} />
             </FlexWrapper>
-            
+            </NonPrintableBlock>
         </>
     )
 }

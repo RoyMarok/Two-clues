@@ -42,13 +42,14 @@ export const Chances = ({ mod = 0 }) => {
     let chancesMatrixColumns = new Array(DICE)
     let chancesMatrix = chancesMatrixRows.fill(chancesMatrixColumns.fill(0))
     let averangeDiff = 0
-
+    let averange = 0
 
     const getLocalChanse = (a, b) => {
         if (mod) {
             averangeDiff += getChance(a, b, mod) - getChance(a, b)
             return getChance(a, b, mod)
         } else {
+            averange += getChance(a, b)
             return getChance(a, b)
         }
     }
@@ -78,7 +79,7 @@ export const Chances = ({ mod = 0 }) => {
                 <FlexWrapper>
                     <GridCell center>{mod}</GridCell>
                     {/* <GridCell /> */}
-                    <GridCell center width={2}>{Math.round(averangeDiff / Math.pow(DICE - 1, 2))}</GridCell>
+                    <GridCell center width={2}>{Math.round((averangeDiff ? averangeDiff : averange)/ Math.pow(DICE - 1, 2))}</GridCell>
                     {/* <GridCell center width={2}>{averangeDiff}</GridCell> */}
                 </FlexWrapper>
             </GridCell>
