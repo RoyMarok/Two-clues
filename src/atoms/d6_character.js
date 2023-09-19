@@ -12,10 +12,22 @@ const defaultD6Weapon = {
     count: 1,
     title: 'Кулаки',
     dependencies: {
-        strength: true,
-        agility: true,
-        perception: false,
-        intelligence: false
+        strength: {
+            min: 1,
+            use: true
+        },
+        agility: {
+            min: 1,
+            use: false
+        },
+        perception: {
+            min: 1,
+            use: false
+        },
+        intelligence: {
+            min: 1,
+            use: false
+        }
     },
     mod: 1,
     drum: 0,
@@ -75,10 +87,10 @@ const defaultD6Skill = {
 
 const defaultD6Charcter = {
     characteristics: {
-        strength: 1,
-        agility: 1,
-        perception: 1,
-        intelligence: 1,
+        strength: 3,
+        agility: 3,
+        perception: 3,
+        intelligence: 3,
         health: 1,
         move: 2,
         panic: 0,
@@ -89,7 +101,7 @@ const defaultD6Charcter = {
     fearless: false,
     actions: 2,
     title: '',
-    price: 14,
+    price: 56,
     count: 0,
     height: 0,
     weapons: [
@@ -158,6 +170,7 @@ const WEAPONS_RANGE = [
 ]
 
 const shotsBaseValues = [0, 1, 2, 3, 6]
+const BASE_MOD_PRICE = 15
 
 const getD6WeaponPrice = (weapon) => {
     const {
@@ -191,7 +204,7 @@ const getD6WeaponPrice = (weapon) => {
     // const dmgRange2 = (Math.pow((parseInt(dmg) + 1), Math.max(shots, 1)) + ap) * passedRangePrice
     const passedDrumKoeff = drum < 10 ? Math.min(parseInt(drum), 4) : Math.max(Math.round(drum / 5), 4)
 
-    const passedMod = Boolean(mod) ? (mod > 0 ? 1 : -1) * (10 + (Math.abs(mod) * 5)) : 0
+    const passedMod = Boolean(mod) ? (mod > 0 ? 1 : -1) * (BASE_MOD_PRICE + (Math.abs(mod) * 5)) : 0
     const passedAP = Boolean(ap) ? 10 + (parseInt(ap) * 5) : 0
 
     // console.log('Weapon Price', title, shots, shotsPrice, dmgRange )
@@ -232,8 +245,8 @@ const getD6SpellPrice = (spell) => {
     })
 
     const dependenciesSum = (target.strength + 0) + (target.agility + 0) + (target.perception + 0) + (target.intelligence + 0)
-    const passedAP = Boolean(ap) ? 10 + (Math.abs(ap) * 5) : 0
-    const passedMod = Boolean(mod) ? 10 + (Math.abs(mod) * 5) : 0
+    const passedAP = Boolean(ap) ? BASE_MOD_PRICE + (Math.abs(ap) * 5) : 0
+    const passedMod = Boolean(mod) ? BASE_MOD_PRICE + (Math.abs(mod) * 5) : 0
 
     return Math.max(
         Math.round((dependenciesSum * Math.abs(quality) * 10 + passedAP + Math.abs(dmg) * 10 + passedMod) / PRICE_KOEFF)
@@ -253,8 +266,8 @@ const getD6PoisonPrice = (poisons) => {
     const traitsPrice = POISON_ACTIVATION.filter(trait => activation === trait.id)?.[0]?.price
     const dependenciesSum = (target.strength + 0) + (target.agility + 0) + (target.perception + 0) + (target.intelligence + 0)
 
-    const passedAP = Boolean(ap) ? 10 + (Math.abs(ap) * 5) : 0
-    const passedMod = Boolean(mod) ? 10 + (Math.abs(mod) * 5) : 0
+    const passedAP = Boolean(ap) ? BASE_MOD_PRICE + (Math.abs(ap) * 5) : 0
+    const passedMod = Boolean(mod) ? BASE_MOD_PRICE + (Math.abs(mod) * 5) : 0
 
     // return Math.max(
     //     Math.round((dependenciesSum * Math.abs(quality) + Math.abs(ap) + Math.abs(dmg)) * (parseInt(mod) + 3) * 3  * traitsPrice)
@@ -337,8 +350,8 @@ export const getD6CharacterPrice = (character) => {
         // + calculateAttr(perception)
         // + calculateAttr(intelligence)
     
-    const defenceCalculated = Boolean(defence) ? 10 + (parseInt(defence) * 5) : 0
-    const sizeCalculated = Boolean(height) ? (height > 0 ? -1 : 1) * (10 + (Math.abs(height) * 5)) : 0
+    const defenceCalculated = Boolean(defence) ? BASE_MOD_PRICE + (parseInt(defence) * 5) : 0
+    const sizeCalculated = Boolean(height) ? (height > 0 ? -1 : 1) * (BASE_MOD_PRICE + (Math.abs(height) * 5)) : 0
     const flyMod = fly ? 15  : 0
 
     console.log('Character', attributeSum, defenceCalculated, sizeCalculated, flyMod)
@@ -351,7 +364,7 @@ export const getD6CharacterPrice = (character) => {
             + sizeCalculated
             )
             //  * (actions / 2)
-        ), 6) / PRICE_KOEFF)
+        ), 6) / 1)
         // - panic
         + parseInt(calculatedWeapons)
         + parseInt(calculatedSpells)

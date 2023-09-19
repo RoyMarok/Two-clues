@@ -455,7 +455,7 @@ export const Character = (props) => {
                         controlled={isControlled}
                         actions={character.actions}
                     />
-                    <GridCell width={4} center />
+                    {/* <GridCell width={4} center /> */}
                     {/* <IconedField
                         title="height"
                         

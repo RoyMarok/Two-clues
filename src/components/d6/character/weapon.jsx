@@ -9,6 +9,7 @@ import {
     Value
 } from '../../styled'
 
+import { clamp, noop } from '../../../utils'
 import { GetIcon } from '../../get-icon'
 
 import { Traits } from '../../traits'
@@ -17,6 +18,38 @@ import { IconedField } from './iconed-field'
 import { ValueField } from './value-field'
 import { AttributeChoser } from './attribute-choser'
 import { SquareChooser } from './square-choser'
+
+export const MinAttribute = ({ title, limits = { min: 1, max: 12 }, onChange, value, filled }) => {
+    const { use, min } = value
+    const handleChangeInput = () => {
+        onChange({
+            ...value,
+            use: true
+        })
+    }
+    const changeValue = (e) => {
+        onChange({
+            ...value,
+            min: clamp(e?.target?.value, limits.min, limits.max)
+        })
+    }
+    return (
+        <IconedField
+            title={title}
+            filled={filled}
+            iconButton
+            iconButtonClick={handleChangeInput}
+            muted={!use}
+        >
+            <ValueField
+                onChange={changeValue}
+                value={min}
+                filled={filled}
+            />
+
+        </IconedField>
+    )
+}
 
 export const Range = ({ onChange, value, values = [], filled, controlled = true, changeCC, isCloseCombat }) => (
     <IconedField
@@ -174,6 +207,22 @@ export const Weapon = (props) => {
     const handleRemoveWeapon = (e) => removeWeapon({ index, characterIndex })
     const handleChangeCC = (e) => setCloseCombat(!isCloseCombat)
 
+    const handleChangeCreator = (title) => (value) => {
+        const newValue = {...dependencies}
+        Object.getOwnPropertyNames(dependencies).map((element) => {
+            if (element === title) {
+                newValue[element] = value
+            } else {
+                newValue[element] = {
+                    ...newValue[element], 
+                    use: value.use ? false : newValue[element]['use']
+            }
+            }
+            return void 0
+        })
+        changes.dependencies(newValue)
+    }
+
     const rangeValues = isCloseCombat ? [1, 2, 3] : [6, 8, 12, 30]
 
     return (
@@ -193,62 +242,91 @@ export const Weapon = (props) => {
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
             
+
+            <GridCell width={14} height={3} center>
+                <FlexWrapper>
+                    <Count
+                        onChange={changes.count}
+                        value={count}
+                        filled
+                        controlled={controlled}
+                    />
+                    <Range
+                        onChange={changes.range}
+                        value={range}
+                        values={rangeValues}
+                        
+                        controlled={controlled}
+                        changeCC={handleChangeCC}
+                        isCloseCombat={isCloseCombat}
+                    />
+                    <Shots
+                        onChange={changes.shots}
+                        value={shots}
+                        controlled={controlled}
+                        showSquare
+                        filled
+                    />
+                    <AP
+                        onChange={changes.ap}
+                        value={ap}
+                        
+                        controlled={controlled}
+                    />
+                    <DMG
+                        onChange={changes.dmg}
+                        value={dmg}
+                        controlled={controlled}
+                        filled
+                    />
+                    
+                    {/* <Drum
+                        onChange={changes.drum}
+                        value={drum}
+                        controlled={controlled}
+                    /> */}
+                    {/* <Dependencies
+                        onChange={changes.dependencies}
+                        value={dependencies}
+                        filled
+                        controlled={controlled}
+                    /> */}
+                    <Mod
+                        onChange={changes.mod}
+                        value={mod}
+                        controlled={controlled}
+                    />
+                </FlexWrapper>
+            </GridCell>
             <FlexWrapper>
-                <GridCell width={8} height={6} center>
+                <GridCell width="8" height="3" center>
                     <FlexWrapper>
-                        <Range
-                            onChange={changes.range}
-                            value={range}
-                            values={rangeValues}
+                        <MinAttribute
+                            title="strength"
+                            onChange={handleChangeCreator('strength')}
+                            value={dependencies?.strength}
+                        />
+                        <MinAttribute
+                            title="agility"
+                            onChange={handleChangeCreator('agility')}
+                            value={dependencies?.agility}
                             filled
-                            controlled={controlled}
-                            changeCC={handleChangeCC}
-                            isCloseCombat={isCloseCombat}
                         />
-                        <Shots
-                            onChange={changes.shots}
-                            value={shots}
-                            controlled={controlled}
-                            showSquare
+                        <MinAttribute
+                            title="perception"
+                            onChange={handleChangeCreator('perception')}
+                            value={dependencies?.perception}
                         />
-                        <AP
-                            onChange={changes.ap}
-                            value={ap}
+                        <MinAttribute
+                            title="intelligence"
+                            onChange={handleChangeCreator('intelligence')}
+                            value={dependencies?.intelligence}
                             filled
-                            controlled={controlled}
                         />
-                        <DMG
-                            onChange={changes.dmg}
-                            value={dmg}
-                            controlled={controlled}
-                        />
-                    </FlexWrapper>
-                    <FlexWrapper>
-                        <Count
-                            onChange={changes.count}
-                            value={count}
-                            filled
-                            controlled={controlled}
-                        />
-                        <Drum
-                            onChange={changes.drum}
-                            value={drum}
-                            controlled={controlled}
-                        />
-                        <Dependencies
-                            onChange={changes.dependencies}
-                            value={dependencies}
-                            filled
-                            controlled={controlled}
-                        />
-                        <Mod
-                            onChange={changes.mod}
-                            value={mod}
-                            controlled={controlled}
-                        />
+
                     </FlexWrapper>
                 </GridCell>
-                <GridCell width="6" height="6" center>
+                <GridCell width="6" height="3" center>
                     <Traits
                         traits={allTraits}
                         selectedTraits={traits}
@@ -256,7 +334,10 @@ export const Weapon = (props) => {
                         onChange={changes.traits}
                     />
                 </GridCell>
+
             </FlexWrapper>
+            
+
             
         </>
         

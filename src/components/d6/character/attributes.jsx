@@ -41,90 +41,7 @@ export const MainAttribute = ({ values = [], title = '', limits, onChange, value
     )
 }
 
-export const Might = ({ values = [], limits, onChange, value, filled, controlled = true }) => {
-    const [showSquare, setView] = useState(values.length > 0)
-    const handleChangeInput = () => {
-        setView(!showSquare)
-    }
-    return (
-    <IconedField
-        title="strength"
-        filled={filled}
-        iconButton
-        iconButtonClick={handleChangeInput}
-    >
-        {showSquare ? <SquareChooser
-            values={values}
-            limits={limits}
-            onChange={onChange}
-            value={value}
-            filled={filled}
-        /> : <ValueField
-            onChange={onChange}
-            value={value}
-            filled={filled}
-            limits={limits}
-        />}
 
-    </IconedField>
-)}
-
-export const Dex = ({ values = [], limits, onChange, value, filled, controlled = true }) => (
-    <IconedField
-        title="agility"
-        filled={filled}
-    >
-        {values.length > 0 ? <SquareChooser
-            values={values}
-            limits={limits}
-            onChange={onChange}
-            value={value}
-            filled={filled}
-        /> : <ValueField
-            onChange={onChange}
-            value={value}
-            filled={filled}
-        />}
-    </IconedField>
-)
-
-export const Mind = ({ values = [], limits, onChange, value, filled, controlled = true }) => (
-    <IconedField
-        title="perception"
-        filled={filled}
-    >
-        {values.length > 0 ? <SquareChooser
-            values={values}
-            limits={limits}
-            onChange={onChange}
-            value={value}
-            filled={filled}
-        /> : <ValueField
-            onChange={onChange}
-            value={value}
-            filled={filled}
-        />}
-    </IconedField>
-)
-
-export const Brain = ({ values = [], limits, onChange, value, filled, controlled = true }) => (
-    <IconedField
-        title="intelligence"
-        filled={filled}
-    >
-        {values.length > 0 ? <SquareChooser
-            values={values}
-            limits={limits}
-            onChange={onChange}
-            value={value}
-            filled={filled}
-        /> : <ValueField
-            onChange={onChange}
-            value={value}
-            filled={filled}
-        />}
-    </IconedField>
-)
 
 export const Health = ({ onChange, value, filled, controlled = true }) => (
     <IconedField
@@ -250,7 +167,7 @@ export const Attributes = (props) => {
         changes.height(e)
     }
     return (
-        <GridCell width={8} height={6} center>
+        <GridCell width={14} height={3} center>
             <FlexWrapper>
                 <MainAttribute
                     title="strength"
@@ -286,33 +203,25 @@ export const Attributes = (props) => {
                     value={intelligence}
                     controlled={controlled}
                 />
-            </FlexWrapper>
-            <FlexWrapper>
-                <Height
-                    onChange={setHeightMove}
-                    value={height}
-
-                />
-                {/* <Actions
-                    onChange={changes.actions}
-                    value={actions}
-                    controlled={controlled}
-                    filled
-                /> */}
                 <Move
                     // onChange={changes.move}
                     value={sizeLimits[height].move}
                     fly={fly}
-                    
+                    filled
                     changeFly={changes.fly}
                     controlled={false}
                 />
-               
+                
                 <Defence
                     onChange={changes.defence}
                     value={defence}
-                    filled
+                    
                     controlled={controlled}
+                />
+                <Height
+                    onChange={setHeightMove}
+                    value={height}
+                    filled
                 />
                 
                 

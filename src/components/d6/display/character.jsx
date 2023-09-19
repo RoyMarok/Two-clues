@@ -19,17 +19,17 @@ import { GetIcon } from '../../get-icon'
 import { WARRIOR_TYPES_VALUES, sizeLimits } from '../character/character'
 
 const FULL_EXP = []
-FULL_EXP.length = 100
+FULL_EXP.length = 116
 FULL_EXP.fill(0)
 
 const heroExpPoints = [
-    2, 4, 6, 8, 11, 14, 17, 20, 24, 28, 32, 36, 41, 46, 51, 57, 63, 69, 76, 83, 90, 100
+    2, 4, 6, 8, 11, 14, 17, 20, 24, 28, 32, 36, 41, 46, 51, 57, 63, 69, 76, 83, 90, 100, 116
 ]
 
 const skillsNames = {
+    fight: ['Зверь', 'Бронекулак', 'Напосошок', 'Мясник', 'Град Ударов', 'Твёрдый'],
     speed: ['Спринт', 'Верхолаз', 'Сальто', 'Молния', 'Бей-Беги', 'Акробат'],
     shooting: ['Перерыв', 'Охотник', 'Пистольеро', 'Ловкие Руки', 'Орлиный Глаз', 'Стрелок'],
-    fight: ['Зверь', 'Бронекулак', 'Напосошок', 'Мясник', 'Град Ударов', 'Твёрдый'],
     trickster: ['Безликий', 'Устрашающий', 'Проныра', 'Фокусник', 'Торговец', 'Боевой Маг'],
 }
 
@@ -37,7 +37,7 @@ const henchmanExpPoints = [2, 5, 9, 14]
 
 const Experience = ({ initialExp = 0}) => (
     <FlexWrapper>
-        <GridCell center width={12.5} height={2}>
+        <GridCell center width={14.5} height={2}>
             <FlexWrapper>
                 {FULL_EXP.map((el, index) => <GridCell center width={0.5} height={0.5} filled={(index + 1) % 2 === 0 && !heroExpPoints.includes(index + 1)} inverse={heroExpPoints.includes(index + 1)} >{index < initialExp ? '•' : ''}</GridCell>)}
             </FlexWrapper>
@@ -52,8 +52,8 @@ const Experience = ({ initialExp = 0}) => (
 const Skills = () => (
     <FlexWrapper>
         {Object.getOwnPropertyNames(skillsNames).map((itemName) => (
-            <GridCell center width={3.5} height={3}>
-                {skillsNames[itemName].map((item) => <GridCell left height={0.5} width={3.5}>{item}</GridCell>)}
+            <GridCell center width={4} height={3}>
+                {skillsNames[itemName].map((item, index) => <FlexWrapper><GridCell height={0.5} width={0.5} filled={!(index % 2)} /><GridCell left height={0.5} width={3.5}>{item}</GridCell></FlexWrapper>)}
             </GridCell>
         ))}
         
@@ -74,7 +74,8 @@ export const IconedElement = (props) => {
         prefix = '',
         checkboxes = false,
         nonZero = false,
-        important = true
+        important = true,
+        minimal = false
     } = props
     const nonZeroPassed = nonZero && value !== 0
     const passedTitle = GetIcon.list.includes(icon)
@@ -88,7 +89,13 @@ export const IconedElement = (props) => {
                     {passedTitle}
                 </GridCell>
                 <GridCell center black={(black || important) && !inverse} filled={filled} inverse={inverse}>
-                    {passedValue}
+                    {!minimal
+                    ? passedValue
+                    : <div>
+                        <GridCell center width={0.5} height={0.5} >{passedValue}</GridCell>
+                        <GridCell center width={0.5} height={0.5} />
+                    </div>
+                    }
                 </GridCell>
                 {Boolean(description) && <GridCell center >
                     <FlexWrapper>
@@ -121,11 +128,11 @@ const Attributes = (props) => {
         <>
             <FlexWrapper>
 
-                <IconedElement icon="strength" value={strength} filled minus />
-                <IconedElement icon="agility" value={agility}  black minus />
-                <IconedElement icon="perception" value={perception} filled minus />
-                <IconedElement icon="intelligence" value={intelligence}  minus />
-                <GridCell />
+                <IconedElement icon="strength" value={strength} filled minus minimal />
+                <IconedElement icon="agility" value={agility}  minus minimal />
+                <IconedElement icon="perception" value={perception} filled minus minimal />
+                <IconedElement icon="intelligence" value={intelligence} minus minimal />
+                {/* <GridCell /> */}
                 <GridCell height={2} width={2} center>
                     <GridCell center width={2}>
                         <GetIcon icon={fly ? 'fly' : 'move'} color="secondary" />
@@ -136,9 +143,10 @@ const Attributes = (props) => {
                         {sizeLimits[height].move}
                     </GridCell>
                 </GridCell>
-                <GridCell />
+                {/* <GridCell /> */}
+                <IconedElement icon="defence" value={height} />
                 <IconedElement icon="height" value={height} />
-                <GridCell />
+                {/* <GridCell />
                 <GridCell height={2} center>
                     <GridCell />
                     <GridCell center>
@@ -146,7 +154,7 @@ const Attributes = (props) => {
                     </GridCell>
                     
                 </GridCell>
-                <IconedElement icon="±" value={defence} />
+                <IconedElement icon="±" value={defence} minimal />
                 <GridCell height={2} width={2} center>
                     <GridCell center width={2}>
                         <GetIcon icon="dice" color="secondary" />
@@ -155,12 +163,28 @@ const Attributes = (props) => {
                         <GetIcon icon="agility" />
                         <GetIcon icon="perception" />
                     </GridCell>
-                </GridCell>
+                </GridCell> */}
             </FlexWrapper>
         </>
         
     )
 }
+
+const WeaponExpirience = ({ title, inverse }) => (
+    <GridCell height={2} center>
+        <GridCell center filled={inverse}>
+            {title}
+        </GridCell>
+        <GridCell center >
+            <FlexWrapper>
+                {[1, 0, 0, 1].map((item) => (
+                    <GridCell center width={0.5} height={0.5} filled={Boolean(item)} />
+                ))}
+            </FlexWrapper>
+           
+        </GridCell>
+    </GridCell>
+)
 
 const Weapon = (props) => {
     const allTraits = useRecoilValue(weaponTraitsState)
@@ -179,7 +203,7 @@ const Weapon = (props) => {
     } = props
 
     const passedShots = shots > 1 ? `Д${shots}` : shots
-    const meleeIcon = range > 3 ? 'range' : 'weapon'
+    const rangeText = `${range > 3 ? 2 : 1}-${range}`
 
     return (
         <>
@@ -191,27 +215,52 @@ const Weapon = (props) => {
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
             <FlexWrapper>
-                <IconedElement icon={meleeIcon} value={range} filled nonZero />
-                <IconedElement icon="shots" value={passedShots}  nonZero />
-                {drum > 0 && <IconedElement icon="drum" value={drum} filled nonZero />}
-                <IconedElement icon="ap" value={ap} nonZero />
-                <IconedElement icon="dmg" value={dmg} filled nonZero prefix={range < 6 && dmg > 0 ? '+' : ''}/>
-                <GridCell width={drum > 0 ? 6 : 7} />
-                
-                <IconedElement icon="±" value={mod} />
-                <GridCell height={2} width={2} center>
-                    <GridCell center width={2}>
-                        <GetIcon icon="dice" color="secondary" />
-                    </GridCell>
-                    <GridCell center width={2}>
-                        {dependencies.strength && <GetIcon icon="strength" />}
-                        {dependencies.agility && <GetIcon icon="agility" />}
-                        {dependencies.perception && <GetIcon icon="perception" />}
-                        {dependencies.intelligence && <GetIcon icon="intelligence" />}
+                <IconedElement icon="range" value={rangeText} filled  />
+                <IconedElement icon="shots" value={passedShots}   />
+                <IconedElement icon="ap" value={ap} filled  />
+                <IconedElement icon="dmg" value={dmg}  prefix={range < 6 && dmg > 0 ? '+' : ''}/>
+
+                <IconedElement
+                    icon="strength"
+                    value={dependencies.strength?.min || 1}
+                    filled
+                    black={dependencies.strength?.use}
+                    important={false}
+                    plus
+                />
+                <IconedElement
+                    icon="agility"
+                    value={dependencies.agility?.min || 1}
+                    black={dependencies.agility?.use}
+                    important={false}
+                    plus
+                />
+                <IconedElement
+                    icon="perception"
+                    value={dependencies.perception?.min || 1}
+                    filled
+                    black={dependencies.perception?.use}
+                    important={false}
+                    plus
+                />
+                <IconedElement
+                    icon="intelligence"
+                    value={dependencies.intelligence?.min || 1}
+                    black={dependencies.intelligence?.use}
+                    important={false}
+                    plus
+                />
+
+                <GridCell height={2} center>
+                    <GridCell center filled black>
+                        {1}
                     </GridCell>
                 </GridCell>
-                {/* <IconedElement icon="±" value={mod} important={false} /> */}
-                
+                <WeaponExpirience title={2} />
+                <WeaponExpirience title={3} inverse />
+                <WeaponExpirience title={4} />
+                <WeaponExpirience title={5} inverse />
+                <IconedElement icon="±" value={mod} minimal/>
 
             </FlexWrapper>
             {traits?.length > 0 && <GridCell width={14} center>
@@ -477,6 +526,10 @@ export const DisplayCharacter = (props) => {
                 </FlexWrapper>
             </NonPrintableBlock>}
             
+            <FlexWrapper>
+
+
+            
             <BorderWrapper>
                 <FlexWrapper>
                     <GridCell inverse center >
@@ -497,14 +550,14 @@ export const DisplayCharacter = (props) => {
                     <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                     <GridCell width={1} inverse center>{price}</GridCell>
                 </FlexWrapper>
+
+
                 <Attributes {...characteristics} armour={armour} actions={actions} height={height} />
-                <Experience initialExp={expirience}/>
-                {/* <Skills /> */}
                 {weapons.map((weapon) =>
                     <Weapon
                         character={characteristics}
                         {...weapon}
-                        
+
                     />)
                 }
                 {spells.map((spell) =>
@@ -526,8 +579,21 @@ export const DisplayCharacter = (props) => {
                         {...skill}
                     />)
                 }
-                
+
             </BorderWrapper>
+            <GridCell />
+                <BorderWrapper>
+                    <FlexWrapper>
+                        <GridCell left  width={4} ><GetIcon icon="strength" color="secondary" />{'4+'}</GridCell>
+                        <GridCell left width={4} ><GetIcon icon="agility" color="secondary" />{'4+'}</GridCell>
+                        <GridCell left width={4} ><GetIcon icon="perception" color="secondary" />{'4+'}</GridCell>
+                        <GridCell left  width={4} ><GetIcon icon="intelligence" color="secondary" />{'4+'}</GridCell>
+                    </FlexWrapper>
+                    <Skills />
+                    
+                    <Experience initialExp={expirience} />
+                </BorderWrapper>
+            </FlexWrapper>
             <GridCell />
         </div>
     )
