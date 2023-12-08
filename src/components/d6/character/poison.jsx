@@ -24,7 +24,7 @@ import {
     Move,
     Panic
 } from './attributes'
-import { AP, Dependencies, DMG, Mod } from './weapon'
+import { STR, Dependencies, DMG, Exp } from './weapon'
 import { WarriorSelect } from './warrior-select'
 import { Quality } from './spell'
 
@@ -102,7 +102,7 @@ export const Poison = (props) => {
                             value={target}
                             controlled={controlled}
                         />
-                        <AP
+                        {/* <STR
                             onChange={changes.ap}
                             value={ap}
                             filled
@@ -112,8 +112,8 @@ export const Poison = (props) => {
                             onChange={changes.dmg}
                             value={dmg}
                             controlled={controlled}
-                        />
-                        <Mod
+                        /> */}
+                        <Exp
                             onChange={changes.mod}
                             limits={limits}
                             value={mod}

@@ -45,6 +45,9 @@ import { ReactComponent as ClockIcon } from '../icons/clock.svg'
 import { ReactComponent as CloudIcon } from '../icons/cloud.svg'
 import { ReactComponent as FogIcon } from '../icons/fog.svg'
 import { ReactComponent as GobletIcon } from '../icons/goblet.svg'
+import { ReactComponent as ChartIcon } from '../icons/chart-up.svg'
+import { ReactComponent as ToughtIcon } from '../icons/toughness.svg'
+import { ReactComponent as FistIcon } from '../icons/fist.svg'
 
 export const GetIcon = ({ icon, ...props }) => {
     switch (icon) {
@@ -138,6 +141,12 @@ export const GetIcon = ({ icon, ...props }) => {
             return <Icon {...props}><FogIcon /></Icon>
         case 'goblet':
             return <Icon {...props}><GobletIcon /></Icon>
+        case 'chart':
+            return <Icon {...props}><ChartIcon /></Icon>
+        case 'tough':
+            return <Icon {...props}><ToughtIcon /></Icon>
+        case 'fist':
+            return <Icon {...props}><FistIcon /></Icon>
 
         default:
             return null
@@ -190,4 +199,6 @@ GetIcon.list = [
     'cloud',
     'fog',
     'goblet',
+    'chart',
+    'fist',
 ]

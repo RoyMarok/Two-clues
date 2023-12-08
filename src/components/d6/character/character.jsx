@@ -13,7 +13,9 @@ import {
     Value,
     FlexWrapper
 } from '../../styled'
+
 import { SelectWithOptions } from '../../weapons-selection'
+
 import { InsertedNames } from '../../names-generator'
 import { GetIcon } from '../../get-icon'
 
@@ -22,27 +24,20 @@ import { Weapon } from './weapon'
 import { Spell } from './spell'
 import { Poison } from './poison'
 import { Skill } from './skill'
-import { ValueField } from './value-field'
-import { IconedField } from './iconed-field'
+import { RACES } from './config'
+
 import { WarriorSelect } from './warrior-select'
 
+const defaultLimits = {
+    min: 1,
+    max: 12
+}
+
 const limitsBase = {
-    strength: {
-        min: 1,
-        max: 12
-    },
-    agility: {
-        min: 1,
-        max: 12
-    },
-    perception: {
-        min: 1,
-        max: 12
-    },
-    intelligence: {
-        min: 1,
-        max: 12
-    },
+    strength: defaultLimits,
+    agility: defaultLimits,
+    perception: defaultLimits,
+    intelligence: defaultLimits,
     health: {
         min: 1,
         max: 20
@@ -57,7 +52,7 @@ const limitsBase = {
     },
     defence: {
         min: 0,
-        max: 4
+        max: 8
     },
     count: {
         min: 1,
@@ -77,7 +72,11 @@ const limitsBase = {
         max: 10
     },
     dmg: {
-        min: -1,
+        min: 0,
+        max: 6
+    },
+    str: {
+        min: 0,
         max: 6
     },
     drum: {
@@ -85,7 +84,11 @@ const limitsBase = {
         max: 30
     },
     mod: {
-        min: -1,
+        min: 0,
+        max: 4
+    },
+    exp: {
+        min: 0,
         max: 5
     },
     height: {
@@ -140,69 +143,14 @@ export const WARRIOR_TYPES_VALUES = [
     }
 ]
 
-export const sizeLimits = {
-    '-2': {
-        strength: {
-            min: 1,
-            max: 1
-        },
-        // health: {
-        //     min: 1,
-        //     max: 1
-        // },
-        move: 0
-    },
-    '-1': {
-        strength: {
-            min: 1,
-            max: 3
-        },
-        // health: {
-        //     min: 1,
-        //     max: 2
-        // },
-        move: 1
-    },
-    '0': {
-        strength: {
-            min: 1,
-            max: 12
-        },
-        // health: {
-        //     min: 1,
-        //     max: 8
-        // },
-        move: 2
-    },
-    '1': {
-        strength: {
-            min: 4,
-            max: 12
-        },
-        // health: {
-        //     min: 5,
-        //     max: 10
-        // },
-        move: 3
-    },
-    '2': {
-        strength: {
-            min: 5,
-            max: 12
-        },
-        // health: {
-        //     min: 7,
-        //     max: 15
-        // },
-        move: 4
-    },
-}
+const passedRaces = Object.keys(RACES).map((key) => ({ id: key, title: RACES[key].title }))
+
 
 export const Character = (props) => {
     const {
         index = 0,
         isControlled = true,
-        setControlled = noop
+        // setControlled = noop
     } = props
     const [characters, setCharacter] = useRecoilState(CharacterD6StateObj.change)
     const character = characters.find((item) => item.index === index)
@@ -213,15 +161,24 @@ export const Character = (props) => {
         spells,
         skills,
         poisons,
-        warriorType = 'henchman',
+        warriorType = 'human',
         count,
-        fearless,
-        height
+        // fearless,
+        // height
     } = character
+
+    const race = RACES[warriorType]
+    const raceLimits = {
+        strength: race?.strength || defaultLimits,
+        agility: race?.agility || defaultLimits,
+        perception: race?.perception || defaultLimits,
+        intelligence: race?.intelligence || defaultLimits
+    }
 
     const limits = {
         ...limitsBase,
-        ...sizeLimits[height]
+        ...raceLimits
+        // ...sizeLimits[height]
     }
 
     const [titleValue, setTitleValue] = useState(character?.title || '')
@@ -229,33 +186,27 @@ export const Character = (props) => {
     const addWeapon = useSetRecoilState(CharacterD6StateObj.addWeapon)
     const addSpell = useSetRecoilState(CharacterD6StateObj.addSpell)
     const addPoison = useSetRecoilState(CharacterD6StateObj.addPoison)
-    const addSkill = useSetRecoilState(CharacterD6StateObj.addSkill)
+    // const addSkill = useSetRecoilState(CharacterD6StateObj.addSkill)
     const handleDeleteCharacter = (e) => removeCharacter(index)
    
     const selectedWarriorData = WARRIOR_TYPES_VALUES.filter(type => type?.id === warriorType)?.[0] || []
     const selectedValues = selectedWarriorData?.values || []
 
-    const handleControlled = (e) => setControlled(index)
+    // const handleControlled = (e) => setControlled(index)
     const handleSetTitleValue = (e) => setTitleValue(e.target.value)
     
     const handleAddWeapon = (e) => addWeapon(index)
     const handleAddSpell = (e) => addSpell(index)
     const handleAddPoison = (e) => addPoison(index)
-    const handleAddSkill = (e) => addSkill(index)
+    // const handleAddSkill = (e) => addSkill(index)
     const changesCharMaker = (attr) => (e) => {
         
         let limits = limitsBase
         const passedValue = e?.target?.value || e?.target?.value === '' || e?.target?.value === 0 ? e.target.value : e
-        if (attr === 'height') {
-            limits = {
-                ...limitsBase,
-                ...sizeLimits[e.target.value]
-            }
-        }
         
         const passedChars = {...character}
         const passedCharacteristics = { ...characteristics }
-        passedCharacteristics.health = clamp(passedCharacteristics?.health, limits?.health?.min, limits?.health?.max)
+        // passedCharacteristics.health = clamp(passedCharacteristics?.health, limits?.health?.min, limits?.health?.max)
         
         
         if (passedValue !== passedChars[attr]) {
@@ -264,16 +215,14 @@ export const Character = (props) => {
                 ...passedChars,
                 characteristics: passedCharacteristics
             })
-        } else {
-            console.log('changesCharMaker', attr, passedChars[attr], passedValue)
         }
-        
     }
     const changesMaker = (attr) => (e) => {
         const passedChars = {...characteristics}
         const passedE = attr === 'fly' ? !characteristics.fly : e
         const passedValue = passedE?.target?.value ? passedE.target.value : passedE
         passedChars[attr] = limits?.[attr] ? clamp(passedValue, limits?.[attr]?.min, limits?.[attr]?.max) : passedValue
+
         setCharacter({
             ...character,
             characteristics: passedChars
@@ -286,7 +235,30 @@ export const Character = (props) => {
     }
 
     const selectWarriorType = (e) => {
-        changesCharMaker('warriorType')(e)
+        const passedValue = e?.target?.value
+        const passedChars = { ...character }
+        const passedCharacteristics = { ...characteristics }
+        const newRace = RACES[e?.target?.value]
+
+        const passedProps = {
+            ...passedChars,
+            warriorType: passedValue,
+            title: newRace.title,
+            characteristics: {
+                ...passedCharacteristics,
+                strength: newRace.strength.avg,
+                agility: newRace.agility.avg,
+                perception: newRace.perception.avg,
+                intelligence: newRace.intelligence.avg,
+                move: newRace.move,
+                fly: newRace.fly,
+                defence: newRace.defence
+            }
+        }
+        setTitleValue(newRace.title)
+        console.log('selectWarriorType', passedProps)
+        
+        setCharacter(passedProps)
     }
 
     const weaponChangesMaker = (attr) => (index) => (e) => {
@@ -365,20 +337,22 @@ export const Character = (props) => {
         title: changesCharMaker('title'),
         fly: changesMaker('fly')
     }
-    const values = [
-        6, 6, 6, 6
-    ]
+    // const values = [
+    //     6, 6, 6, 6
+    // ]
 
     const weaponChanges = (index) => ({
         range: weaponChangesMaker('range')(index),
         shots: weaponChangesMaker('shots')(index),
         ap: weaponChangesMaker('ap')(index),
         dmg: weaponChangesMaker('dmg')(index),
+        str: weaponChangesMaker('str')(index),
         count: weaponChangesMaker('count')(index),
         drum: weaponChangesMaker('drum')(index),
         dependencies: weaponChangesMaker('dependencies')(index),
         traits: weaponChangesMaker('traits')(index),
         mod: weaponChangesMaker('mod')(index),
+        exp: weaponChangesMaker('exp')(index),
         title: weaponChangesMaker('title')(index)
     })
     const spellChanges = (index) => ({
@@ -409,9 +383,13 @@ export const Character = (props) => {
         title: skillChangesMaker('title')(index),
     })
 
+    const warriorTypeItem = WARRIOR_TYPES_VALUES.filter((item) => item?.id === warriorType)?.[0]
+    const warriorTypeIcon = warriorTypeItem?.icon
+
     return (
         <div>
             <FlexWrapper>
+                <GridCell inverse center ><Button title="—" onClick={handleDeleteCharacter} /> </GridCell>
                 <GridCell center big>
                     <Button
                         title="-"
@@ -428,61 +406,42 @@ export const Character = (props) => {
                 </GridCell>
                 <InsertedNames onChange={handleSetTitleValueAll} index={index} showSelect={false} />
                 <GridCell width={5} center>
-                    <WarriorSelect onChange={selectWarriorType} elements={WARRIOR_TYPES_VALUES} selected={warriorType} index={index} passedName="armourSelect" placeholder="Кто" />
+                    {/* <WarriorSelect onChange={selectWarriorType} elements={WARRIOR_TYPES_VALUES} selected={warriorType} index={index} passedName="armourSelect" placeholder="Кто" /> */}
+                    <SelectWithOptions onChange={selectWarriorType} elements={passedRaces} selected={warriorType} />
                 </GridCell>
             </FlexWrapper>
-        
+            <FlexWrapper>
+
+
+            
             <BorderWrapper>
                 <FlexWrapper>
-                    <GridCell inverse center ><Button title="—" onClick={handleDeleteCharacter} /> </GridCell>
-                    <GridCell width={10} filled >
+                    {/* <GridCell filled center >
+                        <GetIcon color="secondary" icon={warriorTypeIcon} />
+                    </GridCell> */}
+                    <GridCell filled center >
+                        {count || ''}
+                    </GridCell>
+                    <GridCell width={11} filled >
                         <Value
                             value={titleValue}
                             onChange={handleSetTitleValue}
                             onBlur={changes.title}
                         />
                     </GridCell>
-                    <GridCell width={1} center filled><Button title={<GetIcon color={isControlled ? 'primary' : 'secondary'} icon="pencil" />} onClick={handleControlled} /> </GridCell>
+                    
                     <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                     <GridCell width={1} inverse center>{price}</GridCell>
                 </FlexWrapper>
                 <FlexWrapper>
                     <Attributes
                         values={selectedValues}
-                        attributes={{ ...characteristics, height }}
+                        attributes={{ ...characteristics }}
                         changes={changes}
                         limits={limits}
                         controlled={isControlled}
                         actions={character.actions}
                     />
-                    {/* <GridCell width={4} center /> */}
-                    {/* <IconedField
-                        title="height"
-                        
-                    >
-                        <ValueField
-                            onChange={changesCharMaker('height')}
-                            value={height}
-                            limits={limits.height}
-                        />
-                    </IconedField> */}
-                    
-                    {/* <GridCell width={4} height={6} center >
-                        <Defencies
-                            values={armour}
-                            onChange={changesCharMaker('armour')}
-                        />
-                    </GridCell> */}
-                    {/* <IconedField
-                        title="atom"
-                        filled
-                    > 
-                        <SquareChooser
-                            values={[1, 2, 3, 4]}
-                            value={character.actions}
-                            onChange={changes.actions}
-                        />
-                    </IconedField> */}
                 </FlexWrapper>
                 {isControlled && <FlexWrapper>
                     <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="weapon" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddWeapon} /></GridCell>
@@ -499,6 +458,7 @@ export const Character = (props) => {
                         changes={weaponChanges(weaponIndex)}
                         controlled={isControlled}
                         limits={limits}
+                        person
                     />)
                 }
                 {spells.map((spell, spellIndex) =>
@@ -531,7 +491,9 @@ export const Character = (props) => {
                 }
                 
             </BorderWrapper>
-            <GridCell />
+            {/* <GridCell /> */}
+
+            </FlexWrapper>
         </div>
     )
 }

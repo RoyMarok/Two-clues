@@ -2,6 +2,7 @@ import React from 'react'
 import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil'
 
 import { CharacterD6StateObj, weaponTraitsState } from '../../../atoms'
+import { WEAPONS_DAMAGE } from '../../../atoms/d6_character'
 
 import { clamp, noop } from '../../../utils'
 
@@ -16,14 +17,11 @@ import {
 
 import { Traits } from '../../traits'
 import { GetIcon } from '../../get-icon'
-import { WARRIOR_TYPES_VALUES, sizeLimits } from '../character/character'
+import { WARRIOR_TYPES_VALUES } from '../character/character'
 
-const FULL_EXP = []
-FULL_EXP.length = 116
-FULL_EXP.fill(0)
 
 const heroExpPoints = [
-    2, 4, 6, 8, 11, 14, 17, 20, 24, 28, 32, 36, 41, 46, 51, 57, 63, 69, 76, 83, 90, 100, 116
+    2, 4, 6, 8, 11, 14, 17, 20, 24, 28, 32, 36, 41, 46, 51, 57, 63, 69, 76, 83, 90, 98, 116, 124, 133, 142, 151, 160
 ]
 
 const skillsNames = {
@@ -35,19 +33,39 @@ const skillsNames = {
 
 const henchmanExpPoints = [2, 5, 9, 14]
 
-const Experience = ({ initialExp = 0}) => (
-    <FlexWrapper>
-        <GridCell center width={14.5} height={2}>
-            <FlexWrapper>
-                {FULL_EXP.map((el, index) => <GridCell center width={0.5} height={0.5} filled={(index + 1) % 2 === 0 && !heroExpPoints.includes(index + 1)} inverse={heroExpPoints.includes(index + 1)} >{index < initialExp ? '•' : ''}</GridCell>)}
-            </FlexWrapper>
-        </GridCell>
-        <GridCell center width={0.5}/>
-        <GridCell center filled mirror>{'З'}</GridCell>
-    </FlexWrapper>
-    
-    
-)
+const Experience = ({ initialExp = 0, width = 7, height = 4 }) => {
+    const FULL_EXP = []
+    FULL_EXP.length = width * 4 * height
+    FULL_EXP.fill(0)
+    return (
+        <FlexWrapper>
+            <GridCell center width={width} height={height}>
+                <FlexWrapper>
+                    {FULL_EXP.map((el, index) =>{
+                        const divider = width * 2
+                        return (
+                        <GridCell
+                            center
+                            width={0.5}
+                            height={0.5}
+                            filled={
+                                (index + (index - index % (divider)) / divider % 2) % 2 === 0
+                                && !heroExpPoints.includes(index + 1)
+                            }
+                            inverse={
+                                heroExpPoints.includes(index + 1)
+                                || index + 1 === FULL_EXP.length
+                            }
+                        >
+                                {index < initialExp ? '•' : ''}
+                        </GridCell>)}
+                        )
+                    }
+                </FlexWrapper>
+            </GridCell>
+        </FlexWrapper>
+    )
+}
 
 const Skills = () => (
     <FlexWrapper>
@@ -88,7 +106,7 @@ export const IconedElement = (props) => {
                 <GridCell center >
                     {passedTitle}
                 </GridCell>
-                <GridCell center black={(black || important) && !inverse} filled={filled} inverse={inverse}>
+                {Boolean(value) && <GridCell center black={(black || important) && !inverse} filled={filled} inverse={inverse}>
                     {!minimal
                     ? passedValue
                     : <div>
@@ -96,7 +114,7 @@ export const IconedElement = (props) => {
                         <GridCell center width={0.5} height={0.5} />
                     </div>
                     }
-                </GridCell>
+                </GridCell>}
                 {Boolean(description) && <GridCell center >
                     <FlexWrapper>
                         <GridCell center width={0.5} height={0.5} filled={checkboxes} />
@@ -121,89 +139,72 @@ const Attributes = (props) => {
         panic,
         defence,
         height,
-        fly
+        fly,
+        price,
+        warriorTypeIcon
     } = props
 
     return (
-        <>
+        <GridCell height={4} width={4} center>
             <FlexWrapper>
 
-                <IconedElement icon="strength" value={strength} filled minus minimal />
-                <IconedElement icon="agility" value={agility}  minus minimal />
-                <IconedElement icon="perception" value={perception} filled minus minimal />
-                <IconedElement icon="intelligence" value={intelligence} minus minimal />
-                {/* <GridCell /> */}
-                <GridCell height={2} width={2} center>
-                    <GridCell center width={2}>
-                        <GetIcon icon={fly ? 'fly' : 'move'} color="secondary" />
-                    </GridCell>
-                    <GridCell center width={2} black>
-                        <GetIcon icon="agility" />
-                        {'+'}
-                        {sizeLimits[height].move}
-                    </GridCell>
-                </GridCell>
-                {/* <GridCell /> */}
-                <IconedElement icon="defence" value={height} />
-                <IconedElement icon="height" value={height} />
-                {/* <GridCell />
-                <GridCell height={2} center>
-                    <GridCell />
-                    <GridCell center>
-                        <GetIcon icon="defence" color="secondary" />
-                    </GridCell>
-                    
-                </GridCell>
-                <IconedElement icon="±" value={defence} minimal />
-                <GridCell height={2} width={2} center>
-                    <GridCell center width={2}>
-                        <GetIcon icon="dice" color="secondary" />
-                    </GridCell>
-                    <GridCell center width={2}>
-                        <GetIcon icon="agility" />
-                        <GetIcon icon="perception" />
-                    </GridCell>
-                </GridCell> */}
+                <IconedElement icon="strength" value={strength} filled minimal />
+                <IconedElement icon="agility" value={agility} minimal />
+                <IconedElement icon="perception" value={perception} filled minimal />
+                <IconedElement icon="intelligence" value={intelligence}  minimal />
             </FlexWrapper>
-        </>
+            <FlexWrapper>
+                <IconedElement icon="defence" value={defence} minimal />
+                <IconedElement icon={fly ? 'fly' : 'move'} value={move}/>
+                {/* <IconedElement icon={warriorTypeIcon} />
+                <IconedElement icon="coin" value={price}/> */}
+            </FlexWrapper>
+        </GridCell>
         
     )
 }
 
-const WeaponExpirience = ({ title, inverse }) => (
-    <GridCell height={2} center>
-        <GridCell center filled={inverse}>
-            {title}
-        </GridCell>
-        <GridCell center >
-            <FlexWrapper>
-                {[1, 0, 0, 1].map((item) => (
-                    <GridCell center width={0.5} height={0.5} filled={Boolean(item)} />
-                ))}
-            </FlexWrapper>
-           
-        </GridCell>
-    </GridCell>
-)
+// const WeaponExpirienceElement = ({ title, filled, current, black }) => 
+// <GridCell height={2} center>
+//     <GridCell center filled={filled} black={black}>
+//         {title}
+//     </GridCell>
+//     {!current && <GridCell center >
+//         <FlexWrapper>
+//             {[1, 0, 0, 1].map((item) => (
+//                 <GridCell center width={0.5} height={0.5} filled={Boolean(item)} />
+//             ))}
+//         </FlexWrapper>
+        
+//     </GridCell>}
+// </GridCell>
+
+// const WeaponExpirience = ({ value }) => (
+//     <>
+//         <WeaponExpirienceElement title={1} filled current={value >= 1} black={value === 1} />
+//         <WeaponExpirienceElement title="2-" current={value >= 2} black={value === 2} />
+//         <WeaponExpirienceElement title="3-" filled current={value >= 3} black={value === 3} />
+//         <WeaponExpirienceElement title="4-" current={value >= 4} black={value === 4} />
+//         <WeaponExpirienceElement title="5-" filled current={value >= 5} black={value === 5} />
+//     </>
+// )
+
 
 const Weapon = (props) => {
     const allTraits = useRecoilValue(weaponTraitsState)
     const {
         range,
-        shots,
-        ap,
+        str,
         dmg,
         count,
-        drum,
+        exp,
         dependencies,
-        mod,
         traits,
         title,
         price
     } = props
 
-    const passedShots = shots > 1 ? `Д${shots}` : shots
-    const rangeText = `${range > 3 ? 2 : 1}-${range}`
+    const rangeText = `${range.min}-${range.max}`
 
     return (
         <>
@@ -216,60 +217,60 @@ const Weapon = (props) => {
             </FlexWrapper>
             <FlexWrapper>
                 <IconedElement icon="range" value={rangeText} filled  />
-                <IconedElement icon="shots" value={passedShots}   />
-                <IconedElement icon="ap" value={ap} filled  />
-                <IconedElement icon="dmg" value={dmg}  prefix={range < 6 && dmg > 0 ? '+' : ''}/>
-
+                <IconedElement icon="fist" value={str}   />
+                <IconedElement icon="dmg" value={WEAPONS_DAMAGE[dmg].title} nonZero filled />
+                <IconedElement icon="chart" value={exp} minimal />
                 <IconedElement
                     icon="strength"
-                    value={dependencies.strength?.min || 1}
+                    value={dependencies.strength?.min > 1 ? dependencies.strength?.min : 0}
                     filled
                     black={dependencies.strength?.use}
                     important={false}
-                    plus
+                    
                 />
                 <IconedElement
                     icon="agility"
-                    value={dependencies.agility?.min || 1}
+                    value={dependencies.agility?.min > 1 ? dependencies.agility?.min : 0}
                     black={dependencies.agility?.use}
                     important={false}
-                    plus
+                    
                 />
                 <IconedElement
                     icon="perception"
-                    value={dependencies.perception?.min || 1}
+                    value={dependencies.perception?.min > 1 ? dependencies.perception?.min : 0}
                     filled
                     black={dependencies.perception?.use}
                     important={false}
-                    plus
+                    
                 />
                 <IconedElement
                     icon="intelligence"
-                    value={dependencies.intelligence?.min || 1}
+                    value={dependencies.intelligence?.min > 1 ? dependencies.intelligence?.min : 0}
                     black={dependencies.intelligence?.use}
                     important={false}
-                    plus
+                    
                 />
 
-                <GridCell height={2} center>
+                {/* <GridCell height={2} center>
                     <GridCell center filled black>
                         {1}
                     </GridCell>
                 </GridCell>
-                <WeaponExpirience title={2} />
-                <WeaponExpirience title={3} inverse />
-                <WeaponExpirience title={4} />
-                <WeaponExpirience title={5} inverse />
-                <IconedElement icon="±" value={mod} minimal/>
-
+                <WeaponExpirienceElement title={2} />
+                <WeaponExpirienceElement title={3} filled />
+                <WeaponExpirienceElement title={4} />
+                <WeaponExpirienceElement title={5} filled /> */}
+                {/* <WeaponExpirience value={exp} />
+                <IconedElement icon="±" value={mod} minimal/> */}
+                {traits?.length > 0 && <GridCell width={6} center>
+                    <Traits
+                        traits={allTraits}
+                        selectedTraits={traits}
+                        controlled={false}
+                    />
+                </GridCell>}
             </FlexWrapper>
-            {traits?.length > 0 && <GridCell width={14} center>
-                <Traits
-                    traits={allTraits}
-                    selectedTraits={traits}
-                    controlled={false}
-                />
-            </GridCell>}
+            
         </>
     )
 }
@@ -292,8 +293,9 @@ const Spell = (props) => {
     return (
         <>
             <FlexWrapper>
-                {<GridCell inverse center>{Boolean(powerAcumulate) && `+${powerAcumulate}`}</GridCell>}
+                
                 <GridCell filled center><GetIcon icon="magic" /></GridCell>
+                <GridCell center filled color="secondary" >{Boolean(powerAcumulate) && `+${powerAcumulate}`}</GridCell>
                 <GridCell width={10} filled black >{title}</GridCell>
                 <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                 <GridCell width={1} inverse center>{price}</GridCell>
@@ -308,10 +310,11 @@ const Spell = (props) => {
                 <GridCell height={2} center>
                     <GridCell />
                     <GridCell center>
-                        <GetIcon icon="weapon" color="secondary" />
+                        <GetIcon icon="intelligence" color="secondary" />
                     </GridCell>
                 </GridCell>
-                <IconedElement icon="ap" value={ap} nonZero />
+                <IconedElement icon="chart" value={mod} />
+                {/* <IconedElement icon="ap" value={ap} nonZero />
                 <IconedElement icon="dmg" value={dmg} filled nonZero />
 
                 <GridCell width={3}/>
@@ -324,7 +327,7 @@ const Spell = (props) => {
                         <GetIcon icon="perception" />
                         <GetIcon icon="intelligence" />
                     </GridCell>
-                </GridCell>
+                </GridCell> */}
             </FlexWrapper>
         </>
     )
@@ -349,7 +352,8 @@ const Poison = (props) => {
         <>
             <FlexWrapper>
                 <GridCell filled center><GetIcon icon="poison"  /></GridCell>
-                <GridCell width={11} filled black >{title}</GridCell>
+                <GridCell filled center><GetIcon icon={activationIcon} color="secondary" /></GridCell>
+                <GridCell width={10} filled black >{title}</GridCell>
                 <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
@@ -361,6 +365,13 @@ const Poison = (props) => {
                 <IconedElement icon="intelligence" value={target.intelligence ? quality : 0} nonZero />
                 <GridCell />
                 <GridCell height={2} center>
+                    <GridCell />
+                    <GridCell center>
+                        <GetIcon icon="intelligence" color="secondary" />
+                    </GridCell>
+                </GridCell>
+                <IconedElement icon="chart" value={mod} />
+                {/* <GridCell height={2} center>
                     <GridCell />
                     <GridCell center>
                         <GetIcon icon="weapon" color="secondary" />
@@ -387,7 +398,7 @@ const Poison = (props) => {
                         <GetIcon icon="perception" />
                         <GetIcon icon="intelligence" />
                     </GridCell>
-                </GridCell>
+                </GridCell> */}
             </FlexWrapper>
         </>
     )
@@ -438,6 +449,52 @@ const Skill = (props) => {
     )
 }
 
+export const ExperienceBlock = (props) => {
+    const {
+        weapons = [],
+        spells = [],
+        poisons = [],
+        characteristics,
+        width = 7,
+        height = 4
+    } = props
+
+    const CHARACTER_SUM_TRESHOLD = 12
+
+    let weaponExperience = 0
+    weapons.map((item) => weaponExperience += parseInt(item.mod) + 1)
+    let spellExperience = 0
+    spells.map((item) => spellExperience += parseInt(item.mod) + 1)
+    let poisonExperience = 0
+    poisons.map((item) => poisonExperience += parseInt(item.mod) + 1)
+    const { strength,
+        agility,
+        perception,
+        intelligence } = characteristics
+    const chcracteristicSum = parseInt(strength) + parseInt(agility) + parseInt(perception) + parseInt(intelligence)
+    const expirience = chcracteristicSum >= CHARACTER_SUM_TRESHOLD ? heroExpPoints[
+        // parseInt(warriorTypeItem?.exp) - 1
+        chcracteristicSum - CHARACTER_SUM_TRESHOLD - 1
+        // + weaponExperience
+        + spellExperience
+        + poisonExperience
+    ] : 0
+
+
+    return (
+        <div>
+            {/* <FlexWrapper>
+                <GridCell left width={4} ><GetIcon icon="strength" color="secondary" />{'4+'}</GridCell>
+                <GridCell left width={4} ><GetIcon icon="agility" color="secondary" />{'4+'}</GridCell>
+                <GridCell left width={4} ><GetIcon icon="perception" color="secondary" />{'4+'}</GridCell>
+                <GridCell left width={4} ><GetIcon icon="intelligence" color="secondary" />{'4+'}</GridCell>
+            </FlexWrapper>
+            <Skills /> */}
+            <Experience initialExp={expirience} width={width} height={height} />
+        </div>
+    )
+}
+
 export const DisplayCharacter = (props) => {
     const {
         index = 0,
@@ -460,7 +517,6 @@ export const DisplayCharacter = (props) => {
         actions,
         title,
         armour,
-        height,
         warriorType
     } = character
 
@@ -485,31 +541,22 @@ export const DisplayCharacter = (props) => {
 
     const warriorTypeItem = WARRIOR_TYPES_VALUES.filter((item) => item?.id === warriorType)?.[0]
     const warriorTypeIcon = warriorTypeItem?.icon
-    let weaponExperience = 0
-    weapons.map((item) => weaponExperience += parseInt(item.mod) + 1)
-    let spellExperience = 0
-    spells.map((item) => spellExperience += parseInt(item.mod) + 1)
-    let poisonExperience = 0
-    poisons.map((item) => poisonExperience += parseInt(item.mod) + 1)
-    const { strength,
-        agility,
-        perception,
-        intelligence } = characteristics
-    const chcracteristicSum = parseInt(strength) + parseInt(agility) + parseInt(perception) + parseInt(intelligence) 
-    const expirience = chcracteristicSum >=7 ? heroExpPoints[
-        // parseInt(warriorTypeItem?.exp) - 1
-        chcracteristicSum - 8
-        // + weaponExperience
-        + spellExperience
-        + poisonExperience
-    ] : 0
 
-
+    const experienceProps = {
+        characteristics,
+        weapons,
+        spells,
+        poisons,
+        skills,
+    }
 
     return (
         <div>
             {!isDemo && <NonPrintableBlock>
                 <FlexWrapper>
+                    <GridCell inverse center >
+                        {isDemo ? count : <Button title="—" onClick={handleDeleteCharacter} />}
+                    </GridCell>
                     <GridCell center big>
                         <Button
                             title="-"
@@ -523,76 +570,74 @@ export const DisplayCharacter = (props) => {
                             onClick={handleAddCharacter}
                         />
                     </GridCell>
-                </FlexWrapper>
-            </NonPrintableBlock>}
-            
-            <FlexWrapper>
-
-
-            
-            <BorderWrapper>
-                <FlexWrapper>
-                    <GridCell inverse center >
-                        <NonPrintableBlock>
-                            {isDemo ? count : <Button title="—" onClick={handleDeleteCharacter} />}
-                        </NonPrintableBlock>
-                        <OnlyPrintableBlock>{count || 0}</OnlyPrintableBlock>
-                    </GridCell>
-                    <GridCell filled center >
-                        <GetIcon color="secondary" icon={warriorTypeIcon} />
-                    </GridCell>
-                    <GridCell width={9} black filled >{title}</GridCell>
-                    <GridCell width={1} center filled>
+                    
+                    <GridCell width={1} center >
                         {!isDemo && <NonPrintableBlock>
                             <Button title={<GetIcon color={isControlled ? 'primary' : 'secondary'} icon="pencil" />} onClick={handleControlled} />
                         </NonPrintableBlock>}
                     </GridCell>
-                    <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
-                    <GridCell width={1} inverse center>{price}</GridCell>
                 </FlexWrapper>
-
-
-                <Attributes {...characteristics} armour={armour} actions={actions} height={height} />
-                {weapons.map((weapon) =>
-                    <Weapon
-                        character={characteristics}
-                        {...weapon}
-
-                    />)
-                }
-                {spells.map((spell) =>
-                    <Spell
-                        character={characteristics}
-                        {...spell}
-
-                    />)
-                }
-                {poisons.map((poison) =>
-                    <Poison
-                        character={characteristics}
-                        {...poison}
-                    />)
-                }
-                {skills.map((skill) =>
-                    <Skill
-                        character={characteristics}
-                        {...skill}
-                    />)
-                }
-
-            </BorderWrapper>
-            <GridCell />
+            </NonPrintableBlock>}
+            
+            <FlexWrapper>
                 <BorderWrapper>
                     <FlexWrapper>
-                        <GridCell left  width={4} ><GetIcon icon="strength" color="secondary" />{'4+'}</GridCell>
-                        <GridCell left width={4} ><GetIcon icon="agility" color="secondary" />{'4+'}</GridCell>
-                        <GridCell left width={4} ><GetIcon icon="perception" color="secondary" />{'4+'}</GridCell>
-                        <GridCell left  width={4} ><GetIcon icon="intelligence" color="secondary" />{'4+'}</GridCell>
+                        {/* <GridCell filled center >
+                            <GetIcon color="secondary" icon={warriorTypeIcon} />
+                        </GridCell> */}
+                        <GridCell filled center >
+                            {count || ''}
+                        </GridCell>
+
+                        <GridCell width={11} black filled >{title}</GridCell>
+                        
+                        <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
+                        <GridCell width={1} inverse center>{price}</GridCell>
                     </FlexWrapper>
-                    <Skills />
+
+                    <FlexWrapper>
+                        <Attributes
+                            {...characteristics}
+                            armour={armour}
+                            actions={actions}
+
+                            // price={price}
+                            // warriorTypeIcon={warriorTypeIcon}
+                        />
+
+                        <ExperienceBlock {...experienceProps} width={10} />
+                    </FlexWrapper>
                     
-                    <Experience initialExp={expirience} />
+                    {weapons.map((weapon) =>
+                        <Weapon
+                            character={characteristics}
+                            {...weapon}
+
+                        />)
+                    }
+                    {spells.map((spell) =>
+                        <Spell
+                            character={characteristics}
+                            {...spell}
+
+                        />)
+                    }
+                    {poisons.map((poison) =>
+                        <Poison
+                            character={characteristics}
+                            {...poison}
+                        />)
+                    }
+                    {skills.map((skill) =>
+                        <Skill
+                            character={characteristics}
+                            {...skill}
+                        />)
+                    }
+
                 </BorderWrapper>
+                {/* <GridCell /> */}
+                
             </FlexWrapper>
             <GridCell />
         </div>

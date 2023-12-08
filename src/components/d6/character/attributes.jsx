@@ -7,13 +7,12 @@ import {
     Value
 } from '../../styled'
 
-import { sizeLimits } from './character'
 import { IconedField } from './iconed-field'
 import { ValueField } from './value-field'
 import { SquareChooser } from './square-choser'
 
 export const MainAttribute = ({ values = [], title = '', limits, onChange, value, filled, controlled = true }) => {
-    const [showSquare, setView] = useState(values.length > 0)
+    const [showSquare, setView] = useState(false)
     const handleChangeInput = () => {
         setView(!showSquare)
     }
@@ -160,14 +159,9 @@ export const Attributes = (props) => {
         fly
     } = attributes
 
-    const setHeightMove = (e) => {
-        const { value } = e.target
-        console.log('setHeightMove', e, value, sizeLimits[value].move)
-        changes.move(sizeLimits[value].move)
-        changes.height(e)
-    }
+
     return (
-        <GridCell width={14} height={3} center>
+        <GridCell width={12} height={3} center>
             <FlexWrapper>
                 <MainAttribute
                     title="strength"
@@ -203,26 +197,29 @@ export const Attributes = (props) => {
                     value={intelligence}
                     controlled={controlled}
                 />
-                <Move
-                    // onChange={changes.move}
-                    value={sizeLimits[height].move}
-                    fly={fly}
-                    filled
-                    changeFly={changes.fly}
-                    controlled={false}
-                />
-                
                 <Defence
                     onChange={changes.defence}
                     value={defence}
-                    
+                    filled
                     controlled={controlled}
                 />
-                <Height
+                <Move
+                    title="move"
+                    // values={values}
+                    onChange={changes.move}
+                    value={move}
+                    fly={fly}
+                    
+                    changeFly={changes.fly}
+                    // controlled={false}
+                />
+                
+                
+                {/* <Height
                     onChange={setHeightMove}
                     value={height}
                     filled
-                />
+                /> */}
                 
                 
             </FlexWrapper>

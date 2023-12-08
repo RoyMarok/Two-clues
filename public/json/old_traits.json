@@ -1,0 +1,99 @@
+[
+    {
+        "id": "momentary",
+        "title": "Мгновенное",
+        "description": "",
+        "price": 30
+    },
+    {
+        "id": "sidearm",
+        "title": "Пистолет",
+        "description": "",
+        "price": 0
+    },
+    {
+        "id": "blast",
+        "title": "Взрыв",
+        "description": "",
+        "price": 0
+    },
+    {
+        "id": "knockback",
+        "title": "Отбрасывает",
+        "description": "",
+        "price": 10
+    },
+    {
+        "id": "limited",
+        "title": "Мало",
+        "description": "",
+        "price": -10
+    },
+    {
+        "id": "mastercrafted",
+        "title": "Мастеровое",
+        "description": "1 Рерол за игру",
+        "price": 20
+    },
+
+    {
+        "id": "suicide",
+        "title": "Самоубийственное",
+        "description": "",
+        "price": -20
+    },
+    {
+        "id": "optics",
+        "title": "Опт. прицел",
+        "description": "Если не двигался, то +1 до 30''",
+        "price": 20
+    },
+    {
+        "id": "collimator",
+        "title": "Коллиматор",
+        "description": "Если не двигался, то +1 до 12''",
+        "price": 15
+    },
+    {
+        "id": "laserpointer",
+        "title": "Лаз. прицел",
+        "description": "+1",
+        "price": 15
+    },
+    {
+        "id": "blast4",
+        "title": "Накрывает д4\"",
+        "description": "",
+        "price": 20
+    },
+    {
+        "id": "smoke",
+        "title": "Дым",
+        "description": "",
+        "price": 10
+    },
+    {
+        "id": "thrown",
+        "title": "Метательное",
+        "description": "",
+        "price": 0
+    },
+    {
+        "id": "jam",
+        "title": "Клинит",
+        "description": "",
+        "price": -15
+    },
+    {
+        "id": "longrapid",
+        "title": "Долгая очередь",
+        "description": "",
+        "price": 15
+    },
+    {
+        "id": "melee",
+        "title": "Рукопашное",
+        "description": "",
+        "price": 0
+    }
+]

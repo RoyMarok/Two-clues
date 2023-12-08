@@ -10,7 +10,9 @@ export const theme = {
     tetriary: '#d9dada',
     transparent: 'transparent',
     white: 'white',
-    error: 'orangered'
+    error: 'orangered',
+    red: 'red',
+    blue: 'blue'
 }
 
 export const GridCell = styled.div(({

@@ -25,7 +25,7 @@ import {
     Move,
     Panic
 } from './attributes'
-import { AP, Dependencies, DMG, Mod } from './weapon'
+import { STR, Dependencies, DMG, Exp, MinAttribute } from './weapon'
 
 export const Quality = ({ onChange, value, filled, controlled = true }) => (
     <IconedField
@@ -105,18 +105,20 @@ export const Spell = (props) => {
                             value={target}
                             controlled={controlled}
                         />
-                        <AP
+                        {/* <STR
                             onChange={changes.ap}
                             value={ap}
                             filled
                             controlled={controlled}
                         />
-                        <DMG
+                        <MinAttribute
                             onChange={changes.dmg}
                             value={dmg}
+                            title="dmg"
                             controlled={controlled}
-                        />
-                        <Mod
+                            limits={limits}
+                        /> */}
+                        <Exp
                             onChange={changes.mod}
                             limits={limits}
                             value={mod}
