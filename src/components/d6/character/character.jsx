@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 import { withTranslation } from 'react-i18next'
 
-import { CharacterD6StateObj } from '../../../atoms'
+import { CharacterD6StateObj, WeaponsState } from '../../../atoms'
 
 import { clamp, noop } from '../../../utils'
 
@@ -145,7 +145,6 @@ export const WARRIOR_TYPES_VALUES = [
 
 const passedRaces = Object.keys(RACES).map((key) => ({ id: key, title: RACES[key].title }))
 
-
 export const Character = (props) => {
     const {
         index = 0,
@@ -186,6 +185,7 @@ export const Character = (props) => {
     const addWeapon = useSetRecoilState(CharacterD6StateObj.addWeapon)
     const addSpell = useSetRecoilState(CharacterD6StateObj.addSpell)
     const addPoison = useSetRecoilState(CharacterD6StateObj.addPoison)
+    const allWeapons = useRecoilValue(WeaponsState.setState) 
     // const addSkill = useSetRecoilState(CharacterD6StateObj.addSkill)
     const handleDeleteCharacter = (e) => removeCharacter(index)
    
@@ -195,7 +195,7 @@ export const Character = (props) => {
     // const handleControlled = (e) => setControlled(index)
     const handleSetTitleValue = (e) => setTitleValue(e.target.value)
     
-    const handleAddWeapon = (e) => addWeapon(index)
+    const handleAddWeapon = (e) => addWeapon({ index })
     const handleAddSpell = (e) => addSpell(index)
     const handleAddPoison = (e) => addPoison(index)
     // const handleAddSkill = (e) => addSkill(index)
@@ -256,9 +256,12 @@ export const Character = (props) => {
             }
         }
         setTitleValue(newRace.title)
-        console.log('selectWarriorType', passedProps)
-        
         setCharacter(passedProps)
+    }
+
+    const handleSelectWeapon = (e) => {
+        const passedValue = e?.target?.value
+        addWeapon({ index, weapon: allWeapons[passedValue] })
     }
 
     const weaponChangesMaker = (attr) => (index) => (e) => {
@@ -385,6 +388,7 @@ export const Character = (props) => {
 
     const warriorTypeItem = WARRIOR_TYPES_VALUES.filter((item) => item?.id === warriorType)?.[0]
     const warriorTypeIcon = warriorTypeItem?.icon
+    const passedWeapons = Object.keys(allWeapons).map((key) => ({ id: key, title: allWeapons[key].title }))
 
     return (
         <div>
@@ -422,7 +426,7 @@ export const Character = (props) => {
                     <GridCell filled center >
                         {count || ''}
                     </GridCell>
-                    <GridCell width={11} filled >
+                    <GridCell width={11} filled wrapper>
                         <Value
                             value={titleValue}
                             onChange={handleSetTitleValue}
@@ -444,10 +448,20 @@ export const Character = (props) => {
                     />
                 </FlexWrapper>
                 {isControlled && <FlexWrapper>
-                    <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="weapon" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddWeapon} /></GridCell>
-                    <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="magic" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddSpell} /></GridCell>
+                    <GridCell width={6} center>
+                        <SelectWithOptions onChange={handleSelectWeapon} elements={passedWeapons} />
+                    </GridCell>
+                    
+                    <GridCell width={2} center>
+                        <Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="weapon" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddWeapon} />
+                    </GridCell>
+                    {/* <GridCell width={2} center>
+                        <Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="magic" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddSpell} />
+                    </GridCell> */}
                     {/* <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="skill" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddSkill} /></GridCell> */}
-                    <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="poison" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddPoison} /></GridCell>
+                    {/* <GridCell width={2} center>
+                        <Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="poison" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddPoison} />
+                    </GridCell> */}
                 </FlexWrapper>}
                 
                 {weapons.map((weapon, weaponIndex) =>
@@ -491,9 +505,10 @@ export const Character = (props) => {
                 }
                 
             </BorderWrapper>
-            {/* <GridCell /> */}
+            
 
             </FlexWrapper>
+            <GridCell />
         </div>
     )
 }

@@ -68,7 +68,7 @@ const defaultD6Weapon = {
         }
     },
     
-    traits: [],
+    traits: ['melee'],
     price: 2
 }
 
@@ -168,10 +168,7 @@ export const POISON_ACTIVATION = [
 
 const PRICE_KOEFF = 2
 
-const BASE_MOD_PRICE = 15
-
-
-const getD6WeaponPrice = (weapon) => {
+export const getD6WeaponPrice = (weapon) => {
     const {
         range = {
             min: 1,
@@ -414,12 +411,16 @@ export const removeCharacterD6FromState = selector({
 export const addWeaponD6InState = selector({
     key: 'addWeaponD6InState',
     get: ({ get }) => get(characterD6State),
-    set: ({ get, set }, index) => {
+    set: ({ get, set }, { index, weapon = defaultD6Weapon}) => {
         const characters = get(characterD6State)
         const character = characters.find((item) => item.index === index)
+        const passedWeapon = {
+            ...weapon,
+            price: getD6WeaponPrice(weapon)
+        }
         const passedCharacter = {
             ...character,
-            weapons: [...character.weapons, defaultD6Weapon]
+            weapons: [...character.weapons, passedWeapon]
         }
         const allTraits = get(weaponTraitsState)
         const passedProps = {

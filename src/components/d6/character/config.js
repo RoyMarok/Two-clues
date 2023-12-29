@@ -77,8 +77,8 @@ export const RACES = {
         move: 1,
         fly: false
     },
-    'goblin': {
-        title: 'Гоблин',
+    'goblin_night': {
+        title: 'Гоблин ночной',
         strength: {
             min: 1,
             max: 4,
@@ -101,6 +101,58 @@ export const RACES = {
         },
         defence: 0,
         move: 1,
+        fly: false
+    },
+    'goblin_big': {
+        title: 'Гоблин большой',
+        strength: {
+            min: 1,
+            max: 7,
+            avg: 4
+        },
+        agility: {
+            min: 3,
+            max: 8,
+            avg: 4
+        },
+        perception: {
+            min: 2,
+            max: 6,
+            avg: 3
+        },
+        intelligence: {
+            min: 1,
+            max: 6,
+            avg: 3
+        },
+        defence: 0,
+        move: 2,
+        fly: false
+    },
+    'orc': {
+        title: 'Орк',
+        strength: {
+            min: 3,
+            max: 8,
+            avg: 5
+        },
+        agility: {
+            min: 1,
+            max: 8,
+            avg: 3
+        },
+        perception: {
+            min: 1,
+            max: 4,
+            avg: 2
+        },
+        intelligence: {
+            min: 1,
+            max: 4,
+            avg: 2
+        },
+        defence: 0,
+        move: 2,
         fly: false
     },
     'wolf': {

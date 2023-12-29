@@ -211,7 +211,7 @@ const Weapon = (props) => {
             <FlexWrapper>
                 {count > 1 && <GridCell inverse center >{count}</GridCell>}
                 <GridCell filled center><GetIcon icon="weapon" color="secondary" /></GridCell>
-                <GridCell width={count > 1 ? 10 : 11} filled black >{title}</GridCell>
+                <GridCell width={count > 1 ? 10 : 11} filled black wrapper>{title}</GridCell>
                 <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
@@ -589,7 +589,7 @@ export const DisplayCharacter = (props) => {
                             {count || ''}
                         </GridCell>
 
-                        <GridCell width={11} black filled >{title}</GridCell>
+                        <GridCell width={11} black filled wrapper>{title}</GridCell>
                         
                         <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                         <GridCell width={1} inverse center>{price}</GridCell>

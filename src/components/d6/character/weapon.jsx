@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import { CharacterD6StateObj, weaponTraitsState } from '../../../atoms'
@@ -214,11 +214,6 @@ export const Mod = ({ onChange, value, filled, controlled = true }) => (
 )
 
 export const Weapon = (props) => {
-    const removeWeapon = useSetRecoilState(CharacterD6StateObj.removeWeapon)
-    const allTraits = useRecoilValue(weaponTraitsState)
-    const [titleValue, setTitleValue] = useState(props?.title || '')
-    const handleSetTitleValue = (e) => setTitleValue(e.target.value)
-    
     const {
         range,
         str,
@@ -232,17 +227,20 @@ export const Weapon = (props) => {
         index,
         characterIndex,
         price,
-        person = false
+        title
     } = props
 
-    const [isCloseCombat, setCloseCombat] = useState(range < 6)
+    const removeWeapon = useSetRecoilState(CharacterD6StateObj.removeWeapon)
+    const allTraits = useRecoilValue(weaponTraitsState)
+    const [titleValue, setTitleValue] = useState(title || '')
+    const handleSetTitleValue = (e) => setTitleValue(e.target.value)
+    
     const handleRemoveWeapon = (e) => removeWeapon({ index, characterIndex })
-    const handleChangeCC = (e) => setCloseCombat(!isCloseCombat)
 
-    const handleChangeCreator = (title) => (value) => {
+    const handleChangeCreator = (depTitle) => (value) => {
         const newValue = {...dependencies}
         Object.getOwnPropertyNames(dependencies).map((element) => {
-            if (element === title) {
+            if (element === depTitle) {
                 newValue[element] = value
             } else {
                 newValue[element] = {
@@ -254,24 +252,9 @@ export const Weapon = (props) => {
         })
         changes.dependencies(newValue)
     }
-
-    const handleChangeMinRange = (value) => {
-        changes.range({
-            ...range,
-            min: value
-        })
-    }
-
-    const handleChangeMaxRange = (value) => {
-        changes.range({
-            ...range,
-            max: value
-        })
-    }
-
-    const rangeValues = isCloseCombat ? [1, 2, 3] : [6, 8, 12, 30]
-
-
+    useEffect(() => {
+        setTitleValue(title)
+    }, [title])
     return (
         <>
             <FlexWrapper>
@@ -295,22 +278,9 @@ export const Weapon = (props) => {
                         <Range
                             onChange={changes.range}
                             value={range}
-                            // values={[1, 2, 3]}
                             filled
                             controlled={controlled}
-                            // changeCC={handleChangeCC}
-                            // isCloseCombat
                         />
-                        {/* <Range
-                            onChange={handleChangeMaxRange}
-                            value={range?.max}
-                            values={rangeValues}
- 
-                            controlled={controlled}
-                            changeCC={handleChangeCC}
-                            isCloseCombat={isCloseCombat}
-                        /> */}
-
                         <STR
                             onChange={changes.str}
                             value={str}

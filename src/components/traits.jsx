@@ -20,7 +20,7 @@ const calculateTraitWidth = (title) => {
 
 const TraitElement = ({ title, onChange, value, controlled }) =>  (
     <FlexWrapper nowrap>
-        <GridCell width={calculateTraitWidth(title)} center>
+        <GridCell width={calculateTraitWidth(title)} wrapper>
             {controlled ? <Button value={value} title={title} onClick={onChange} /> : title}
         </GridCell>
     </FlexWrapper>

@@ -1,6 +1,7 @@
 import { atom, selector } from 'recoil'
 
 import { getWeaponPrice } from './utils'
+import { getD6WeaponPrice } from './d6_character'
 
 export const defaultWeapon = {
     range: '1',
@@ -32,17 +33,16 @@ export const weaponStateSetFiltered = selector({
         set(
             weaponState, data.map((weapon, index) => ({
             ...weapon,
-            price: getWeaponPrice({
+                price: getD6WeaponPrice({
                 ...weapon,
-                allTraits,
-                weapons: data
+                allTraits
             })
             
         })).sort((a, b) => {
-            if (a.range > b.range) {
+            if (a?.range?.max > b?.range?.max) {
                 return 1
             } else {
-                if (a.range === b.range) {
+                if (a?.range?.max === b?.range?.max) {
                     return a.price > b.price ? 1 : -1
                 } else {
                     return -1
@@ -71,7 +71,7 @@ export const changeWeaponsInState = selector({
         const weapons = get(weaponState)
         const passedProps = {
             ...props,
-            price: getWeaponPrice({
+            price: getD6WeaponPrice({
                 ...props,
                 allTraits: get(weaponTraitsState),
                 weapons
@@ -93,7 +93,7 @@ export const addWeaponsInState = selector({
         set(weaponState, [...weapons, {
             ...defaultWeapon,
             id: `weapon_${weapons.length}`,
-            price: getWeaponPrice({
+            price: getD6WeaponPrice({
                 ...defaultWeapon,
                 allTraits: get(weaponTraitsState),
                 weapons

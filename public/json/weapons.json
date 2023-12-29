@@ -1,1041 +1,820 @@
- [{
-     "range": 1,
-     "shots": "1",
-     "drum": "0",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Штык",
-     "price": 0,
-     "mass": 0,
-     "index": 17,
-     "masterIndex": "weapon_56",
-     "id": "weapon_17"
- }, {
-     "range": "1",
-     "shots": "1",
-     "drum": "0",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Нож",
-     "traits": ["backstab"],
-     "price": 1,
-     "mass": 0,
-     "index": 0,
-     "id": "weapon_1"
- }, {
-     "range": "1",
-     "shots": "1",
-     "drum": "0",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 2,
-     "title": "Меч",
-     "price": 2,
-     "mass": "1",
-     "index": 1,
-     "traits": [],
-     "id": "weapon_4"
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": 1,
-     "dmg": "1",
-     "title": "Топор",
-     "traits": ["backstab"],
-     "price": 2,
-     "mass": "1",
-     "index": 4,
-     "id": "weapon_2"
- }, {
-     "range": "1",
-     "shots": "1",
-     "drum": "0",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Цеп",
-     "price": 2,
-     "mass": "1",
-     "id": "weapon_75",
-     "index": 75,
-     "traits": ["concussion"]
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Щит",
-     "price": 2,
-     "mass": 1,
-     "index": 2,
-     "traits": ["shield"],
-     "id": "weapon_3"
- }, {
-     "range": "1",
-     "shots": "1",
-     "drum": "0",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 2,
-     "title": "Железный кулак",
-     "price": 2,
-     "mass": 2,
-     "index": 68,
-     "id": "weapon_0"
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 1,
-     "title": "Сабля",
-     "price": 3,
-     "mass": "1",
-     "index": 8,
-     "traits": ["parry", "backstab", "silent"],
-     "id": "weapon_7"
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": "1",
-     "dmg": 2,
-     "title": "Цепной меч",
-     "price": 4,
-     "mass": "1",
-     "id": "weapon_6",
-     "index": 3
- }, {
-     "range": "1",
-     "shots": 2,
-     "drum": "0",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Когти",
-     "traits": ["backstab"],
-     "price": 4,
-     "mass": "1",
-     "index": 8,
-     "id": "weapon_5"
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": 2,
-     "dmg": "2",
-     "title": "Цепной топор",
-     "price": 6,
-     "mass": "1",
-     "id": "weapon_10",
-     "index": 7
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": 1,
-     "dmg": 2,
-     "title": "Мясницкий топор",
-     "traits": ["critical17"],
-     "price": 6,
-     "mass": "1",
-     "index": 10,
-     "id": "weapon_9"
- }, {
-     "range": "1",
-     "shots": "1",
-     "drum": "0",
-     "reload": "0",
-     "ap": 1,
-     "dmg": 3,
-     "title": "Большой цепной меч",
-     "price": 8,
-     "mass": 2,
-     "id": "weapon_78",
-     "index": 78,
-     "traits": ["critical17"]
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": 2,
-     "dmg": 3,
-     "title": "Двуручный меч",
-     "traits": ["twohanded"],
-     "price": 8,
-     "mass": 2,
-     "index": 6,
-     "id": "weapon_11"
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": 2,
-     "dmg": 3,
-     "title": "Алебарда",
-     "traits": ["twohanded"],
-     "price": 8,
-     "mass": 2,
-     "index": 12,
-     "id": "weapon_8"
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": 3,
-     "dmg": 3,
-     "title": "Двуручный топор",
-     "traits": ["twohanded"],
-     "price": 10,
-     "mass": 2,
-     "index": 4,
-     "id": "weapon_12"
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": 1,
-     "dmg": 3,
-     "title": "Большой меч",
-     "traits": ["criticallethal"],
-     "price": 10,
-     "mass": 2,
-     "index": 9,
-     "id": "weapon_14"
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": "2",
-     "dmg": "3",
-     "title": "Двуручный цепной топор",
-     "price": 12,
-     "mass": "3",
-     "index": 13,
-     "traits": ["twohanded", "criticallethal"],
-     "id": "weapon_13"
- }, {
-     "range": "1",
-     "shots": 1,
-     "drum": "0",
-     "reload": "0",
-     "ap": "10",
-     "dmg": 3,
-     "title": "Мономолекулярный меч",
-     "price": 30,
-     "mass": "1",
-     "index": 14,
-     "traits": ["critical17", "criticallethal"],
-     "id": "weapon_15"
- }, {
-     "range": "1",
-     "shots": 2,
-     "drum": "0",
-     "reload": "0",
-     "ap": "10",
-     "dmg": 4,
-     "title": "Световой меч",
-     "price": 40,
-     "mass": "1",
-     "index": 15,
-     "traits": ["suicide", "criticallethal", "critical13"],
-     "id": "weapon_16"
- }, {
-     "range": "2",
-     "shots": "1",
-     "drum": "1",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 1,
-     "title": "Копьё",
-     "price": 1,
-     "mass": "1",
-     "id": "weapon_74",
-     "index": 74,
-     "traits": ["backstab", "twohanded"]
- }, {
-     "range": 6,
-     "shots": "1",
-     "drum": "4",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 2,
-     "title": "4-х ствольный пистолет",
-     "price": 1,
-     "mass": "1",
-     "id": "weapon_73",
-     "index": 73,
-     "traits": ["sidearm"]
- }, {
-     "range": 6,
-     "shots": 1,
-     "drum": "8",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Метательные ножи",
-     "price": 6,
-     "mass": "1",
-     "index": 22,
-     "traits": ["silent", "limited", "granade"],
-     "id": "weapon_27"
- }, {
-     "range": 6,
-     "shots": "1",
-     "drum": "6",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Фраг граната",
-     "price": 6,
-     "mass": "1",
-     "index": 23,
-     "traits": ["limited", "blast3", "granade"],
-     "id": "weapon_18"
- }, {
-     "range": 6,
-     "shots": "1",
-     "drum": "6",
-     "reload": "0",
-     "ap": 0,
-     "dmg": 2,
-     "title": "Крак граната",
-     "price": 7,
-     "mass": "1",
-     "index": 24,
-     "traits": ["knockback", "limited", "granade"],
-     "id": "weapon_19"
- }, {
-     "range": 6,
-     "shots": "1",
-     "drum": "6",
-     "reload": "0",
-     "ap": 1,
-     "dmg": "1",
-     "title": "Метательные топоры",
-     "price": 8,
-     "mass": 2,
-     "id": "weapon_79",
-     "index": 25,
-     "traits": ["limited", "silent", "granade"]
- }, {
-     "range": 6,
-     "shots": "1",
-     "drum": "6",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 0,
-     "title": "Дымовая граната",
-     "price": 9,
-     "mass": "1",
-     "index": 26,
-     "traits": ["smoke", "limited", "blast4", "granade"],
-     "id": "weapon_20"
- }, {
-     "range": 6,
-     "shots": "1",
-     "drum": "6",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 0,
-     "title": "Химдым граната",
-     "price": 12,
-     "mass": "1",
-     "index": 27,
-     "traits": ["smoke", "poison", "blast4", "granade", "limited"],
-     "id": "weapon_21"
- }, {
-     "range": 6,
-     "shots": "1",
-     "drum": "5",
-     "reload": "0",
-     "ap": 1,
-     "dmg": 3,
-     "title": "Святая граната",
-     "price": 12,
-     "mass": 0,
-     "index": 58,
-     "traits": ["blast5", "knockback"],
-     "id": "weapon_22"
- }, {
-     "range": 8,
-     "shots": "1",
-     "drum": "6",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Наган",
-     "price": 1,
-     "mass": "1",
-     "index": 7,
-     "traits": ["sidearm"],
-     "id": "weapon_23"
- }, {
-     "range": 8,
-     "shots": "1",
-     "drum": "0",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 2,
-     "title": "Кремниевый пистолет",
-     "price": 2,
-     "mass": "1",
-     "index": 71,
-     "traits": ["sidearm"],
-     "id": "weapon_24"
- }, {
-     "range": 8,
-     "shots": "1",
-     "drum": "0",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Арбалет-пистолет",
-     "price": 3,
-     "mass": "1",
-     "index": 70,
-     "traits": ["sidearm", "silent"],
-     "id": "weapon_25"
- }, {
-     "range": 8,
-     "shots": "1",
-     "drum": "2",
-     "reload": "0",
-     "ap": 0,
-     "dmg": 2,
-     "title": "Двухствольный обрез",
-     "price": 4,
-     "mass": "1",
-     "index": 30,
-     "traits": ["sidearm", "knockback"],
-     "id": "weapon_26"
- }, {
-     "range": 8,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "ПП короткий",
-     "price": 6,
-     "mass": "1",
-     "index": 45,
-     "traits": ["sidearm"],
-     "id": "weapon_28"
- }, {
-     "range": 8,
-     "shots": "1",
-     "drum": "10",
-     "reload": 1,
-     "ap": 2,
-     "dmg": 2,
-     "title": "Импульсный пистолет",
-     "traits": ["sidearm"],
-     "price": 8,
-     "mass": "1",
-     "index": 19,
-     "id": "weapon_29"
- }, {
-     "range": 8,
-     "shots": "1",
-     "drum": "6",
-     "reload": 1,
-     "ap": 4,
-     "dmg": 4,
-     "title": "Импульсный разрушитель",
-     "traits": ["criticallethal", "twohanded"],
-     "price": 17,
-     "mass": "1",
-     "index": 37,
-     "id": "weapon_31"
- }, {
-     "range": 8,
-     "shots": "1",
-     "drum": "6",
-     "reload": "0",
-     "ap": 6,
-     "dmg": 4,
-     "title": "Мельта",
-     "price": 20,
-     "mass": 4,
-     "index": 24,
-     "traits": ["limited", "criticallethal"],
-     "id": "weapon_30"
- }, {
-     "range": 12,
-     "shots": 1,
-     "drum": "10",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Стрелы фраг",
-     "price": 2,
-     "mass": "1",
-     "index": 36,
-     "traits": ["blast3", "silent"],
-     "masterIndex": "bow",
-     "id": "weapon_32"
- }, {
-     "range": 12,
-     "shots": "1",
-     "drum": "8",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "Кольт 1911",
-     "price": 3,
-     "mass": "1",
-     "index": 9,
-     "traits": ["sidearm"],
-     "id": "weapon_34"
- }, {
-     "range": 12,
-     "shots": "1",
-     "drum": "10",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Маузер",
-     "price": 3,
-     "mass": "1",
-     "index": 8,
-     "traits": ["sidearm"],
-     "id": "weapon_33"
- }, {
-     "range": 12,
-     "shots": 1,
-     "drum": "10",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 2,
-     "title": "Стрелы крак",
-     "price": 3,
-     "mass": "1",
-     "index": 37,
-     "traits": ["knockback", "silent"],
-     "masterIndex": "bow",
-     "id": "weapon_35"
- }, {
-     "range": 12,
-     "shots": "1",
-     "drum": "15",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "Беретта 92",
-     "price": 4,
-     "mass": "1",
-     "index": 10,
-     "traits": ["sidearm"],
-     "id": "weapon_36"
- }, {
-     "range": 12,
-     "shots": 1,
-     "drum": "10",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 0,
-     "title": "Стрелы дым",
-     "price": 4,
-     "mass": "1",
-     "index": 35,
-     "traits": ["blast4", "smoke", "silent"],
-     "masterIndex": "bow",
-     "id": "weapon_37"
- }, {
-     "range": 12,
-     "shots": "1",
-     "drum": "4",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 2,
-     "title": "4-х ствольное кремниевое",
-     "price": 5,
-     "mass": 1,
-     "id": "weapon_72",
-     "index": 41,
-     "traits": ["knockback"]
- }, {
-     "range": 12,
-     "shots": "1",
-     "drum": "10",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 1,
-     "title": "Лук",
-     "price": 5,
-     "mass": "1",
-     "index": 38,
-     "traits": ["silent"],
-     "id": "bow"
- }, {
-     "range": 12,
-     "shots": "1",
-     "drum": "6",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 2,
-     "title": "Дробовик",
-     "price": 6,
-     "mass": "1",
-     "index": 44,
-     "traits": ["knockback"],
-     "id": "weapon_40"
- }, {
-     "range": 12,
-     "shots": "1",
-     "drum": "30",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "Лазпистолет",
-     "traits": ["laser", "sidearm"],
-     "price": 8,
-     "mass": "1",
-     "index": 11,
-     "id": "weapon_41"
- }, {
-     "range": 12,
-     "shots": 3,
-     "drum": "6",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "Пистолет-пулемет",
-     "price": 9,
-     "mass": "1",
-     "index": 15,
-     "traits": ["sidearm"],
-     "id": "weapon_42"
- }, {
-     "range": 12,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "ПП с глушителем",
-     "price": 11,
-     "mass": "1",
-     "index": 48,
-     "traits": ["silent"],
-     "id": "weapon_43"
- }, {
-     "range": 12,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "ПП коллиматор",
-     "price": 12,
-     "mass": "1",
-     "index": 46,
-     "traits": ["collimator"],
-     "id": "weapon_45"
- }, {
-     "range": 12,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "ПП лазерный прицел",
-     "price": 12,
-     "mass": "1",
-     "index": 47,
-     "traits": ["laserpointer"],
-     "id": "weapon_44"
- }, {
-     "range": 12,
-     "shots": 3,
-     "drum": "8",
-     "reload": 1,
-     "ap": 1,
-     "dmg": 2,
-     "title": "Болт-пистолет",
-     "price": 17,
-     "mass": "1",
-     "index": 16,
-     "traits": ["knockback"],
-     "id": "weapon_47"
- }, {
-     "range": 12,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "ПП на максималках",
-     "price": 17,
-     "mass": "1",
-     "index": 43,
-     "traits": ["collimator", "laserpointer", "silent"],
-     "id": "weapon_46"
- }, {
-     "range": 12,
-     "shots": 5,
-     "drum": "10",
-     "reload": 1,
-     "ap": 2,
-     "dmg": "1",
-     "title": "Сюрикен катапульта",
-     "price": 18,
-     "mass": "1",
-     "index": 39,
-     "id": "weapon_48"
- }, {
-     "range": 12,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": 3,
-     "dmg": 2,
-     "title": "Импульсный карабин",
-     "traits": ["criticallethal"],
-     "price": 23,
-     "mass": "1",
-     "index": 29,
-     "id": "weapon_49"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "10",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 0,
-     "title": "Дым гранаты для гранатомета",
-     "price": 0,
-     "mass": "1",
-     "index": 47,
-     "traits": ["smoke", "blast4"],
-     "masterIndex": "weapon_45",
-     "id": "weapon_52"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "10",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Фраг гранаты для гранатомета",
-     "price": 0,
-     "mass": "1",
-     "index": 46,
-     "traits": ["blast3"],
-     "masterIndex": "weapon_45",
-     "id": "weapon_51"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "10",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 2,
-     "title": "Крак гранаты для гранатомета",
-     "price": 0,
-     "mass": "1",
-     "index": 50,
-     "traits": ["knockback"],
-     "masterIndex": "weapon_45",
-     "id": "weapon_55"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "10",
-     "reload": 0,
-     "ap": "0",
-     "dmg": 0,
-     "title": "Гранатомет",
-     "price": 3,
-     "mass": "1",
-     "index": 47,
-     "traits": [],
-     "id": "weapon_50"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "10",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 1,
-     "title": "Блочный лук",
-     "price": 9,
-     "mass": "1",
-     "id": "compound_bow",
-     "index": 42,
-     "traits": ["silent"]
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "4",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 2,
-     "title": "Винтовка Мосина",
-     "price": 9,
-     "mass": 2,
-     "index": 13,
-     "traits": ["twohanded"],
-     "id": "weapon_53"
- }, {
-     "range": 30,
-     "shots": 1,
-     "drum": "7",
-     "reload": "0",
-     "ap": "0",
-     "dmg": 2,
-     "title": "Винчестер 1887",
-     "price": 10,
-     "mass": 2,
-     "index": 14,
-     "traits": ["twohanded"],
-     "id": "weapon_54"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "1",
-     "reload": "0",
-     "ap": 1,
-     "dmg": 2,
-     "title": "Кремниевое ружье",
-     "price": 11,
-     "mass": "1",
-     "index": 65,
-     "id": "weapon_56"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "1",
-     "reload": 1,
-     "ap": 1,
-     "dmg": 1,
-     "title": "Арбалет",
-     "price": 11,
-     "mass": "1",
-     "index": 43,
-     "traits": ["silent"],
-     "id": "weapon_39"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "30",
-     "reload": 1,
-     "ap": "0",
-     "dmg": 1,
-     "title": "Лазкарабин",
-     "traits": ["laser", "twohanded"],
-     "price": 12,
-     "mass": "1",
-     "index": 26,
-     "id": "weapon_57"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "1",
-     "reload": 1,
-     "ap": 1,
-     "dmg": 2,
-     "title": "Тяжёлый арбалет",
-     "price": 14,
-     "mass": 1,
-     "id": "weapon_77",
-     "index": 77,
-     "traits": ["twohanded", "silent"]
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "30",
-     "reload": 1,
-     "ap": "0",
-     "dmg": 2,
-     "title": "Хеллган",
-     "traits": ["laser", "twohanded"],
-     "price": 15,
-     "mass": "1",
-     "index": 27,
-     "id": "weapon_58"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "1",
-     "reload": "0",
-     "ap": 1,
-     "dmg": 2,
-     "title": "Кремниевое ружье с оптикой",
-     "price": 15,
-     "mass": "1",
-     "index": 66,
-     "traits": ["optics"],
-     "id": "weapon_59"
- }, {
-     "range": 30,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": "0",
-     "dmg": 1,
-     "title": "Автомат",
-     "price": 21,
-     "mass": 2,
-     "index": 32,
-     "traits": ["twohanded"],
-     "id": "weapon_60"
- }, {
-     "range": 30,
-     "shots": 1,
-     "drum": "30",
-     "reload": 1,
-     "ap": 1,
-     "dmg": "1",
-     "title": "Длинноствольное ружьё странников",
-     "traits": ["criticallethal", "laser", "twohanded", "optics"],
-     "price": 22,
-     "mass": 2,
-     "index": 35,
-     "id": "weapon_61"
- }, {
-     "range": 30,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": "0",
-     "dmg": 1,
-     "title": "Лазган",
-     "traits": ["laser", "twohanded"],
-     "price": 23,
-     "mass": "1",
-     "index": 31,
-     "id": "weapon_63"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "6",
-     "reload": 1,
-     "ap": 1,
-     "dmg": 2,
-     "title": "Снайперская винтовка Орка",
-     "price": 23,
-     "mass": 2,
-     "index": 36,
-     "traits": ["silent", "critical17", "knockback", "optics"],
-     "id": "weapon_62"
- }, {
-     "range": 30,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "Автомат с коллиматором",
-     "price": 24,
-     "mass": "1",
-     "index": 49,
-     "traits": ["collimator"],
-     "id": "weapon_64"
- }, {
-     "range": 30,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "Автомат с оптикой",
-     "price": 25,
-     "mass": "1",
-     "index": 50,
-     "traits": ["optics"],
-     "id": "weapon_65"
- }, {
-     "range": 30,
-     "shots": 3,
-     "drum": "10",
-     "reload": 1,
-     "ap": "0",
-     "dmg": "1",
-     "title": "Автомат с коллиматором и лазприцелом",
-     "price": 27,
-     "mass": "1",
-     "index": 51,
-     "traits": ["collimator", "laserpointer"],
-     "id": "weapon_67"
- }, {
-     "range": 30,
-     "shots": 1,
-     "drum": "20",
-     "reload": 1,
-     "ap": 8,
-     "dmg": "1",
-     "title": "Рельсовая винтовка",
-     "traits": ["twohanded", "optics"],
-     "price": 29,
-     "mass": 2,
-     "index": 39,
-     "id": "weapon_68"
- }, {
-     "range": 30,
-     "shots": "1",
-     "drum": "30",
-     "reload": 1,
-     "ap": 4,
-     "dmg": 2,
-     "title": "Импульсная винтовка",
-     "traits": ["criticallethal", "twohanded", "optics"],
-     "price": 29,
-     "mass": 2,
-     "index": 38,
-     "id": "weapon_66"
- }, {
-     "range": 30,
-     "shots": 3,
-     "drum": "6",
-     "reload": "0",
-     "ap": 2,
-     "dmg": 2,
-     "title": "Плазмаган",
-     "price": 33,
-     "mass": 3,
-     "index": 15,
-     "id": "weapon_69"
- }, {
-     "range": 30,
-     "shots": 3,
-     "drum": "8",
-     "reload": 1,
-     "ap": 1,
-     "dmg": 2,
-     "title": "Болтер",
-     "price": 35,
-     "mass": 3,
-     "index": 33,
-     "traits": ["knockback"],
-     "id": "weapon_70"
- }, {
-     "range": 30,
-     "shots": 6,
-     "drum": "12",
-     "reload": "0",
-     "ap": "0",
-     "dmg": "1",
-     "title": "Миниган",
-     "price": 42,
-     "mass": 3,
-     "index": 42,
-     "traits": ["twohanded", "knockback", "limited"],
-     "id": "weapon_71"
- }]
+[
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
+        "dmg": 0,
+        "exp": 0,
+        "count": 1,
+        "title": "Кулаки",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Челюсти",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
+        "dmg": 1,
+        "exp": 0,
+        "count": 1,
+        "title": "Нож",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Дубина",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 2,
+            "max": 3
+        },
+        "str": 0,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Хлыст",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 3
+        },
+        "str": 0,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Копье",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 3,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Сабля",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": false
+            },
+            "agility": {
+                "min": 2,
+                "use": true
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
+        "dmg": 3,
+        "exp": 0,
+        "count": 1,
+        "title": "Меч",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
+        "dmg": 5,
+        "exp": 0,
+        "count": 1,
+        "title": "Меч большой",
+        "dependencies": {
+            "strength": {
+                "min": 2,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
+        "dmg": 4,
+        "exp": 0,
+        "count": 1,
+        "title": "Топор",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
+        "dmg": 5,
+        "exp": 0,
+        "count": 1,
+        "title": "Топор большой",
+        "dependencies": {
+            "strength": {
+                "min": 2,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 6
+        },
+        "str": 3,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Топор метательный",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 2
+        },
+        "str": 0,
+        "dmg": 5,
+        "exp": 0,
+        "count": 1,
+        "title": "Алебарда",
+        "dependencies": {
+            "strength": {
+                "min": 2,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 6
+        },
+        "str": 3,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Арбалет-пистолет",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 2,
+                "use": false
+            }
+        },
+        "traits": [
+            "reload_1"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 12
+        },
+        "str": 3,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Арбалет",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 2,
+                "use": false
+            }
+        },
+        "traits": [
+            "reload_1"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 36
+        },
+        "str": 4,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Арбалеcт",
+        "dependencies": {
+            "strength": {
+                "min": 2,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 2,
+                "use": false
+            }
+        },
+        "traits": [
+            "reload_1"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 12
+        },
+        "str": 3,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Лук",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 2,
+                "use": false
+            }
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 36
+        },
+        "str": 3,
+        "dmg": 2,
+        "exp": 0,
+        "count": 1,
+        "title": "Блочный лук",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 2,
+                "use": false
+            }
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 6
+        },
+        "str": 5,
+        "dmg": 4,
+        "exp": 0,
+        "count": 1,
+        "title": "Обрез",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 3,
+                "use": false
+            }
+        },
+        "traits": [
+            "reload_2"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 8
+        },
+        "str": 5,
+        "dmg": 3,
+        "exp": 0,
+        "count": 1,
+        "title": "Пистолет",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 3,
+                "use": false
+            }
+        },
+        "traits": ["reload_1"]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 8
+        },
+        "str": 5,
+        "dmg": 3,
+        "exp": 0,
+        "count": 1,
+        "title": "Револьвер",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 3,
+                "use": false
+            }
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 8
+        },
+        "str": 5,
+        "dmg": 3,
+        "exp": 0,
+        "count": 1,
+        "title": "Пистолет 4 ствола",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 3,
+                "use": false
+            }
+        },
+        "traits": ["reload_4"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": 5,
+        "dmg": 3,
+        "exp": 0,
+        "count": 1,
+        "title": "Мушкет 4 ствола",
+        "dependencies": {
+            "strength": {
+                "min": 2,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 3,
+                "use": false
+            }
+        },
+        "traits": [
+            "reload_4"
+        ]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 36
+        },
+        "str": 5,
+        "dmg": 3,
+        "exp": 0,
+        "count": 1,
+        "title": "Мушкет",
+        "dependencies": {
+            "strength": {
+                "min": 2,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 3,
+                "use": false
+            }
+        },
+        "traits": [
+            "reload_1"
+        ]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 36
+        },
+        "str": 5,
+        "dmg": 3,
+        "exp": 0,
+        "count": 1,
+        "title": "Ружьё",
+        "dependencies": {
+            "strength": {
+                "min": 2,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 3,
+                "use": false
+            }
+        },
+        "traits": [
+            "reload_2"
+        ]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 36
+        },
+        "str": 5,
+        "dmg": 3,
+        "exp": 0,
+        "count": 1,
+        "title": "Винтовка",
+        "dependencies": {
+            "strength": {
+                "min": 2,
+                "use": false
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": true
+            },
+            "intelligence": {
+                "min": 3,
+                "use": false
+            }
+        },
+        "traits": []
+    }
+]
