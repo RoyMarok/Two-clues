@@ -340,10 +340,6 @@ export const Character = (props) => {
         title: changesCharMaker('title'),
         fly: changesMaker('fly')
     }
-    // const values = [
-    //     6, 6, 6, 6
-    // ]
-
     const weaponChanges = (index) => ({
         range: weaponChangesMaker('range')(index),
         shots: weaponChangesMaker('shots')(index),
@@ -389,7 +385,7 @@ export const Character = (props) => {
     const warriorTypeItem = WARRIOR_TYPES_VALUES.filter((item) => item?.id === warriorType)?.[0]
     const warriorTypeIcon = warriorTypeItem?.icon
     const passedWeapons = Object.keys(allWeapons).map((key) => ({ id: key, title: allWeapons[key].title }))
-
+    console.log('Weapons', JSON.stringify(allWeapons))
     return (
         <div>
             <FlexWrapper>
@@ -415,18 +411,15 @@ export const Character = (props) => {
                 </GridCell>
             </FlexWrapper>
             <FlexWrapper>
-
-
-            
             <BorderWrapper>
                 <FlexWrapper>
                     {/* <GridCell filled center >
                         <GetIcon color="secondary" icon={warriorTypeIcon} />
                     </GridCell> */}
-                    <GridCell filled center >
+                    {/* <GridCell filled center >
                         {count || ''}
-                    </GridCell>
-                    <GridCell width={11} filled wrapper>
+                    </GridCell> */}
+                    <GridCell width={12} filled wrapper>
                         <Value
                             value={titleValue}
                             onChange={handleSetTitleValue}
@@ -505,8 +498,6 @@ export const Character = (props) => {
                 }
                 
             </BorderWrapper>
-            
-
             </FlexWrapper>
             <GridCell />
         </div>

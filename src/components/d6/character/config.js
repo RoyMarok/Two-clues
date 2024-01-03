@@ -129,6 +129,58 @@ export const RACES = {
         move: 2,
         fly: false
     },
+    'gnoll': {
+        title: 'Гиена',
+        strength: {
+            min: 3,
+            max: 8,
+            avg: 5
+        },
+        agility: {
+            min: 3,
+            max: 8,
+            avg: 5
+        },
+        perception: {
+            min: 1,
+            max: 4,
+            avg: 2
+        },
+        intelligence: {
+            min: 1,
+            max: 4,
+            avg: 2
+        },
+        defence: 2,
+        move: 2,
+        fly: false
+    },
+    'cat': {
+        title: 'Кошко-человек',
+        strength: {
+            min: 3,
+            max: 8,
+            avg: 4
+        },
+        agility: {
+            min: 3,
+            max: 8,
+            avg: 5
+        },
+        perception: {
+            min: 1,
+            max: 6,
+            avg: 3
+        },
+        intelligence: {
+            min: 1,
+            max: 4,
+            avg: 2
+        },
+        defence: 2,
+        move: 2,
+        fly: false
+    },
     'orc': {
         title: 'Орк',
         strength: {

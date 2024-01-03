@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { clamp, noop } from '../utils'
-
 import { BorderWrapper, Value, GridCell, FlexWrapper, NonPrintableBlock, Trait, Button, TraitButtonWrapper } from './styled'
 import { GetIcon } from './get-icon'
 import { SelectWithOptions } from './weapons-selection'

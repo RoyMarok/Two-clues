@@ -19,7 +19,6 @@ import { Traits } from '../../traits'
 import { GetIcon } from '../../get-icon'
 import { WARRIOR_TYPES_VALUES } from '../character/character'
 
-
 const heroExpPoints = [
     2, 4, 6, 8, 11, 14, 17, 20, 24, 28, 32, 36, 41, 46, 51, 57, 63, 69, 76, 83, 90, 98, 116, 124, 133, 142, 151, 160
 ]
@@ -129,19 +128,13 @@ export const IconedElement = (props) => {
 
 const Attributes = (props) => {
     const {
-        actions,
         strength,
         agility,
         perception,
         intelligence,
-        health,
         move,
-        panic,
         defence,
-        height,
         fly,
-        price,
-        warriorTypeIcon
     } = props
 
     return (
@@ -156,39 +149,10 @@ const Attributes = (props) => {
             <FlexWrapper>
                 <IconedElement icon="defence" value={defence} minimal />
                 <IconedElement icon={fly ? 'fly' : 'move'} value={move}/>
-                {/* <IconedElement icon={warriorTypeIcon} />
-                <IconedElement icon="coin" value={price}/> */}
             </FlexWrapper>
         </GridCell>
-        
     )
 }
-
-// const WeaponExpirienceElement = ({ title, filled, current, black }) => 
-// <GridCell height={2} center>
-//     <GridCell center filled={filled} black={black}>
-//         {title}
-//     </GridCell>
-//     {!current && <GridCell center >
-//         <FlexWrapper>
-//             {[1, 0, 0, 1].map((item) => (
-//                 <GridCell center width={0.5} height={0.5} filled={Boolean(item)} />
-//             ))}
-//         </FlexWrapper>
-        
-//     </GridCell>}
-// </GridCell>
-
-// const WeaponExpirience = ({ value }) => (
-//     <>
-//         <WeaponExpirienceElement title={1} filled current={value >= 1} black={value === 1} />
-//         <WeaponExpirienceElement title="2-" current={value >= 2} black={value === 2} />
-//         <WeaponExpirienceElement title="3-" filled current={value >= 3} black={value === 3} />
-//         <WeaponExpirienceElement title="4-" current={value >= 4} black={value === 4} />
-//         <WeaponExpirienceElement title="5-" filled current={value >= 5} black={value === 5} />
-//     </>
-// )
-
 
 const Weapon = (props) => {
     const allTraits = useRecoilValue(weaponTraitsState)
@@ -250,18 +214,6 @@ const Weapon = (props) => {
                     important={false}
                     
                 />
-
-                {/* <GridCell height={2} center>
-                    <GridCell center filled black>
-                        {1}
-                    </GridCell>
-                </GridCell>
-                <WeaponExpirienceElement title={2} />
-                <WeaponExpirienceElement title={3} filled />
-                <WeaponExpirienceElement title={4} />
-                <WeaponExpirienceElement title={5} filled /> */}
-                {/* <WeaponExpirience value={exp} />
-                <IconedElement icon="±" value={mod} minimal/> */}
                 {traits?.length > 0 && <GridCell width={6} center>
                     <Traits
                         traits={allTraits}
@@ -270,7 +222,6 @@ const Weapon = (props) => {
                     />
                 </GridCell>}
             </FlexWrapper>
-            
         </>
     )
 }
@@ -480,16 +431,8 @@ export const ExperienceBlock = (props) => {
         + poisonExperience
     ] : 0
 
-
     return (
         <div>
-            {/* <FlexWrapper>
-                <GridCell left width={4} ><GetIcon icon="strength" color="secondary" />{'4+'}</GridCell>
-                <GridCell left width={4} ><GetIcon icon="agility" color="secondary" />{'4+'}</GridCell>
-                <GridCell left width={4} ><GetIcon icon="perception" color="secondary" />{'4+'}</GridCell>
-                <GridCell left width={4} ><GetIcon icon="intelligence" color="secondary" />{'4+'}</GridCell>
-            </FlexWrapper>
-            <Skills /> */}
             <Experience initialExp={expirience} width={width} height={height} />
         </div>
     )
@@ -585,11 +528,11 @@ export const DisplayCharacter = (props) => {
                         {/* <GridCell filled center >
                             <GetIcon color="secondary" icon={warriorTypeIcon} />
                         </GridCell> */}
-                        <GridCell filled center >
+                        {/* <GridCell filled center >
                             {count || ''}
-                        </GridCell>
+                        </GridCell> */}
 
-                        <GridCell width={11} black filled wrapper>{title}</GridCell>
+                        <GridCell width={12} black filled wrapper>{title}</GridCell>
                         
                         <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                         <GridCell width={1} inverse center>{price}</GridCell>
@@ -634,10 +577,7 @@ export const DisplayCharacter = (props) => {
                             {...skill}
                         />)
                     }
-
                 </BorderWrapper>
-                {/* <GridCell /> */}
-                
             </FlexWrapper>
             <GridCell />
         </div>

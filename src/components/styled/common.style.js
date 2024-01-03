@@ -92,6 +92,7 @@ export const BorderWrapper = styled.div`
     border: 4px solid ${theme.tetriary};
     height: fit-content;
     width: fit-content;
+    break-inside: avoid;
 `
 
 export const AppWrapper = styled.div`

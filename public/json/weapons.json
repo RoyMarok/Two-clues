@@ -101,6 +101,38 @@
             "max": 1
         },
         "str": 0,
+        "dmg": 3,
+        "exp": 0,
+        "count": 1,
+        "title": "Когти",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
         "dmg": 2,
         "exp": 0,
         "count": 1,
@@ -325,6 +357,38 @@
             "max": 1
         },
         "str": 0,
+        "dmg": 4,
+        "exp": 0,
+        "count": 1,
+        "title": "Цеп",
+        "dependencies": {
+            "strength": {
+                "min": 1,
+                "use": true
+            },
+            "agility": {
+                "min": 1,
+                "use": false
+            },
+            "perception": {
+                "min": 1,
+                "use": false
+            },
+            "intelligence": {
+                "min": 1,
+                "use": false
+            }
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
         "dmg": 5,
         "exp": 0,
         "count": 1,
@@ -511,7 +575,7 @@
     },
     {
         "range": {
-            "min": 1,
+            "min": 3,
             "max": 12
         },
         "str": 3,
@@ -521,7 +585,7 @@
         "title": "Лук",
         "dependencies": {
             "strength": {
-                "min": 1,
+                "min": 3,
                 "use": false
             },
             "agility": {
@@ -533,7 +597,7 @@
                 "use": true
             },
             "intelligence": {
-                "min": 2,
+                "min": 1,
                 "use": false
             }
         },
@@ -541,17 +605,17 @@
     },
     {
         "range": {
-            "min": 1,
-            "max": 36
+            "min": 3,
+            "max": 12
         },
-        "str": 3,
+        "str": 4,
         "dmg": 2,
         "exp": 0,
         "count": 1,
         "title": "Блочный лук",
         "dependencies": {
             "strength": {
-                "min": 1,
+                "min": 3,
                 "use": false
             },
             "agility": {
@@ -563,7 +627,7 @@
                 "use": true
             },
             "intelligence": {
-                "min": 2,
+                "min": 1,
                 "use": false
             }
         },

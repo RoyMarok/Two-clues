@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil'
 
-import { getChance } from '../utils'
+import { clamp, getChance } from '../utils'
 
 import { weaponTraitsState } from './weapons'
 
@@ -141,7 +141,7 @@ const defaultD6Charcter = {
     count: 0,
     height: 0,
     weapons: [
-        defaultD6Weapon
+        // defaultD6Weapon
     ],
     spells: [],
     skills: [],
@@ -191,11 +191,21 @@ export const getD6WeaponPrice = (weapon) => {
         }
         return null
     })
-    const rangeKoeff = WEAPONS_RANGE.findIndex((item) => item === range.max) - WEAPONS_RANGE.findIndex((item) => item === range.min) + 1
+    // const rangeKoeff = WEAPONS_RANGE.findIndex((item) => item === range.max) - WEAPONS_RANGE.findIndex((item) => item === range.min) + 1
+    const rangeKoeff = clamp(range.max / 2 - range.min, 1, 36)
     const depKoeff = dependencies.strength.min + dependencies.agility.min + dependencies.perception.min + dependencies.intelligence.min  - 4
     const rangeDMG = rangeKoeff * WEAPONS_DAMAGE[dmg].value
    
-    // console.log('Weapon Price', title, str, exp, rangeDMG, depKoeff )
+
+
+    // console.log(
+    //     'Weapon Price',
+    //     title,
+    //     rangeKoeff,
+    //     clamp(range.max / 2 - range.min, 1, 36),
+    //     rangeKoeff * WEAPONS_DAMAGE[dmg].value,
+    //     clamp(range.max / 2 - range.min, 1, 36) * WEAPONS_DAMAGE[dmg].value,
+    // )
 
     return Math.max(
         Math.ceil(
@@ -334,6 +344,8 @@ export const getD6CharacterPrice = (character) => {
         + parseInt(intelligence)
         + calculatedMove
         + parseInt(defence)
+    
+    
 
     const characteristicSum =
         Math.ceil(Math.max(Math.ceil(attributeSum), 4) * PRICE_KOEFF)
@@ -341,7 +353,7 @@ export const getD6CharacterPrice = (character) => {
         + parseInt(calculatedSpells)
         + parseInt(calculatedSkills)
         + parseInt(calculatedPoisons)
-
+    // console.log('Character sum', attributeSum, Math.ceil(Math.max(Math.ceil(attributeSum), 4) * PRICE_KOEFF), parseInt(calculatedWeapons), characteristicSum)
     return characteristicSum
 }
 
@@ -389,10 +401,9 @@ export const addCharactersD6InState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, insertingCaracters = []) => {
         const characters = get(characterD6State)
-        const baseIndex = characters.length
         const passedInsertingCharacters = {
             ...defaultD6Charcter,
-            index: new Date().getMilliseconds()
+            index: Date.now()
         }
         set(characterD6State, [...characters, passedInsertingCharacters])
     }
@@ -414,15 +425,16 @@ export const addWeaponD6InState = selector({
     set: ({ get, set }, { index, weapon = defaultD6Weapon}) => {
         const characters = get(characterD6State)
         const character = characters.find((item) => item.index === index)
+        const allTraits = get(weaponTraitsState)
         const passedWeapon = {
             ...weapon,
-            price: getD6WeaponPrice(weapon)
+            price: getD6WeaponPrice({ ...weapon, allTraits })
         }
         const passedCharacter = {
             ...character,
             weapons: [...character.weapons, passedWeapon]
         }
-        const allTraits = get(weaponTraitsState)
+        
         const passedProps = {
             ...passedCharacter,
             price: getD6CharacterPrice({

@@ -21,7 +21,7 @@ export const MainAttribute = ({ values = [], title = '', limits, onChange, value
             title={title}
             filled={filled}
             iconButton
-            iconButtonClick={handleChangeInput}
+            // iconButtonClick={handleChangeInput}
         >
             {showSquare ? <SquareChooser
                 values={values}
