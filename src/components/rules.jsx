@@ -4,11 +4,11 @@ import { withTranslation } from 'react-i18next'
 import { useRecoilValue } from 'recoil'
 
 import { SkillsList } from '../atoms'
-import { DisplayCharacter } from './d6'
+import { defaultD6Charcter } from '../atoms/d6_character'
+import { DisplayCharacter, Weapon } from './d6/display'
 import { BorderWrapper, Value, GridCell, FlexWrapper, NonPrintableBlock } from './styled'
 import { GetIcon } from './get-icon'
 import { CharacterDisplay } from './character-display'
-import { Weapon } from './weapon'
 
 export const COLUMN_WIDTH = 14
 
@@ -40,42 +40,68 @@ const weaponProps = {
 }
 
 const defaultD6MeleeWeapon = {
-    range: 1,
-    shots: 1,
-    ap: 0,
-    dmg: 2,
-    count: 1,
-    title: 'Сабля',
-    dependencies: {
-        strength: true,
-        agility: true,
-        perception: false,
-        intelligence: false
+    "range": {
+        "min": 1,
+        "max": 1
     },
-    mod: 1,
-    drum: 0,
-    traits: [],
-    customValues: {},
-    price: 14
+    "str": 0,
+    "dmg": 3,
+    "exp": 0,
+    "count": 2,
+    price: 14,
+    "title": "Когти",
+    "dependencies": {
+        "strength": {
+            "min": 1,
+            "use": true
+        },
+        "agility": {
+            "min": 1,
+            "use": false
+        },
+        "perception": {
+            "min": 1,
+            "use": false
+        },
+        "intelligence": {
+            "min": 1,
+            "use": false
+        }
+    },
+    "traits": [
+        "melee"
+    ]
 }
 const defaultD6RangeWeapon = {
-    range: 6,
-    shots: 1,
-    ap: 0,
-    dmg: 2,
-    count: 2,
-    title: '4-х ствольный пистолет',
-    dependencies: {
-        strength: true,
-        agility: true,
-        perception: false,
-        intelligence: false
+    "range": {
+        "min": 3,
+        "max": 12
     },
-    mod: 1,
-    drum: 4,
-    traits: [],
-    customValues: {},
-    price: 302
+    "str": 3,
+    "dmg": 2,
+    "exp": 1,
+    "count": 1,
+    price: 16,
+    "title": "Лук",
+    "dependencies": {
+        "strength": {
+            "min": 3,
+            "use": false
+        },
+        "agility": {
+            "min": 1,
+            "use": false
+        },
+        "perception": {
+            "min": 1,
+            "use": true
+        },
+        "intelligence": {
+            "min": 1,
+            "use": false
+        }
+    },
+    "traits": []
 }
 
 const defaultD6Spell = {
@@ -128,26 +154,26 @@ export const RulesComponent = ({ t }) => {
     // const actions = useRecoilValue(SkillsList.setState)
     const demoCharacter = {
         characteristics: {
-            strength: 6,
-            agility: 6,
-            perception: 6,
-            intelligence: 6,
+            strength: 3,
+            agility: 3,
+            perception: 3,
+            intelligence: 3,
             health: 1,
-            move: 4,
+            move: 2,
             panic: 0,
-            defence: 0,
+            defence: 1,
             fly: false
         },
 
         fearless: false,
         actions: 2,
-        price: 33,
-        count: 1,
+        price: 28,
+        count: 0,
         height: 0,
-        // weapons: [defaultD6MeleeWeapon, defaultD6RangeWeapon],
-        // spells: [defaultD6Spell],
-        // skills: [defaultD6Skill],
-        // poisons: [defaultD6Poison],
+        weapons: [],
+        spells: [],
+        skills: [],
+        poisons: [],
         names: 'Common_0',
         warriorType: 'leader',
         title: t('band.character.title'),
@@ -177,7 +203,18 @@ export const RulesComponent = ({ t }) => {
             isControlled={false}
             characterProps={demoCharacter}
         />
-        
+         <GridCell width={COLUMN_WIDTH} open wrapper>
+            <FlexWrapper>
+                <Describe t={t} title="strength" prefix={characteristicsPrefix} />
+                <Describe t={t} title="agility" prefix={characteristicsPrefix} />
+                <Describe t={t} title="perception" prefix={characteristicsPrefix} />
+                <Describe t={t} title="intelligence" prefix={characteristicsPrefix} />
+                <Describe t={t} title="defence" prefix={characteristicsPrefix} />
+                <Describe t={t} title="move" prefix={characteristicsPrefix} />
+                <Describe t={t} title="coin" prefix={characteristicsPrefix} />
+            </FlexWrapper>
+            <ReactMarkdown>{t('rules.character.characteristics')}</ReactMarkdown>
+        </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper >
             <ReactMarkdown>{t('rules.character')}</ReactMarkdown>
             <ReactMarkdown>{t('rules.character.condition')}</ReactMarkdown>
@@ -195,29 +232,26 @@ export const RulesComponent = ({ t }) => {
             </FlexWrapper>
         </GridCell>
 
-        <GridCell width={COLUMN_WIDTH} open center>
-            <FlexWrapper>
-                    <Describe t={t} title="napoleon" prefix={characteristicsPrefix} />
-                    <Describe t={t} title="coin" prefix={characteristicsPrefix} />
-
-                    <Describe t={t} title="health" prefix={characteristicsPrefix} />
-                    <Describe t={t} title="move" prefix={characteristicsPrefix} />
-                    <Describe t={t} title="atom" prefix={characteristicsPrefix} />
-
-                    <Describe t={t} title="strength" prefix={characteristicsPrefix} />
-                    <Describe t={t} title="agility" prefix={characteristicsPrefix} />
-                    <Describe t={t} title="perception" prefix={characteristicsPrefix} />
-                    <Describe t={t} title="intelligence" prefix={characteristicsPrefix} />
-                    
-                    <Describe t={t} title="height" prefix={characteristicsPrefix} />
-                    <Describe t={t} title="defence" prefix={characteristicsPrefix} />
-
-                    <Describe t={t} title="panic" prefix={characteristicsPrefix} />
-                    
-            </FlexWrapper>
+       
+        <GridCell width={COLUMN_WIDTH * 2 + 1} center open wrapper>
+                <ReactMarkdown>{t('rules.weapon.charteristics.title')}</ReactMarkdown>
         </GridCell>
-
-        
+        <GridCell width={COLUMN_WIDTH} open wrapper>
+            <Weapon {...defaultD6MeleeWeapon} />
+            <Weapon {...defaultD6RangeWeapon} />
+            
+        </GridCell>
+        <GridCell width={COLUMN_WIDTH} open wrapper>
+            <FlexWrapper>
+                <GridCell inverse center >{defaultD6MeleeWeapon?.count}</GridCell>
+                <GridCell width={COLUMN_WIDTH-1} >{t('weapons.characteristics.count')}</GridCell>
+            </FlexWrapper>
+            <Describe t={t} title="coin" prefix={weaponsPrefix} />
+            <Describe t={t} title="range" prefix={weaponsPrefix} />
+            <Describe t={t} title="fist" prefix={weaponsPrefix} />
+            <Describe t={t} title="dmg" prefix={weaponsPrefix} />
+            <Describe t={t} title="chart" prefix={weaponsPrefix} />
+        </GridCell>
         {/* <GridCell width={COLUMN_WIDTH+1} open center>
             
             <Describe t={t} title="range" prefix={weaponsPrefix} />
@@ -231,7 +265,9 @@ export const RulesComponent = ({ t }) => {
         </GridCell> */}
         
         
-        
+        <GridCell width={COLUMN_WIDTH * 2 + 1} center open wrapper>
+            <ReactMarkdown>{t('rules.game.title')}</ReactMarkdown>
+        </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper >
             <ReactMarkdown>{t('rules.game')}</ReactMarkdown>
         </GridCell>
@@ -240,53 +276,43 @@ export const RulesComponent = ({ t }) => {
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper >
             <ReactMarkdown>{t('rules.game.recovery')}</ReactMarkdown>
-            <ReactMarkdown>{t('rules.game.panic.check')}</ReactMarkdown>
+            {/* <ReactMarkdown>{t('rules.game.panic.check')}</ReactMarkdown> */}
+        </GridCell>
+        <GridCell width={COLUMN_WIDTH} open wrapper pageBreak>
+            <ReactMarkdown>{t('rules.game.movement')}</ReactMarkdown>
+        </GridCell>
+        <GridCell width={COLUMN_WIDTH} open wrapper pageBreak>
+            <ReactMarkdown>{t('rules.game.shooting')}</ReactMarkdown>
+        </GridCell>
+        <GridCell width={COLUMN_WIDTH} open wrapper pageBreak>
+            <ReactMarkdown>{t('rules.game.melee')}</ReactMarkdown>
         </GridCell>
 
-        <GridCell width={COLUMN_WIDTH} open wrapper >
+        {/* <GridCell width={COLUMN_WIDTH} open wrapper >
             <ReactMarkdown>{t('rules.game.fast')}</ReactMarkdown>
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper >
             <ReactMarkdown>{t('rules.game.slow')}</ReactMarkdown>
-        </GridCell>
-
-        <GridCell width={COLUMN_WIDTH*2 + 1} open center wrapper >
-            <ReactMarkdown>{t('band.character.action.title')}</ReactMarkdown>
-        </GridCell>
-        {/* {actions.map((item, key) => (
-            <GridCell width={COLUMN_WIDTH} open wrapper>
-                <ReactMarkdown>{t(`band.character.action.description.${item?.id}`)}</ReactMarkdown>
-            </GridCell>
-        ))} */}
-
+        </GridCell> */}
         <GridCell width={COLUMN_WIDTH} open wrapper >
             <ReactMarkdown>{t('rules.game.damage')}</ReactMarkdown>
             <GridCell center />
             <FlexWrapper>
                 <div>
-                    <GridCell width={2} center inverse>1...4</GridCell>
-                    <FlexWrapper>
-                        <GridCell center black>+1</GridCell>
-                        <GridCell center><GetIcon icon="strength" /></GridCell>
-                    </FlexWrapper>
+                    <GridCell width={2} center inverse>1...2</GridCell>
+                    <GridCell width={2} center><GetIcon icon="agility" /></GridCell>
                 </div>
                 <GridCell center />
                 <div>
-                    <GridCell width={2} center inverse>5...8</GridCell>
-                    <FlexWrapper>
-                        <GridCell center black>+1</GridCell>
-                        <GridCell center><GetIcon icon="agility" /></GridCell>
-                    </FlexWrapper>
+                    <GridCell width={2} center inverse>3...5</GridCell>
+                    <GridCell width={2} center><GetIcon icon="strength" /></GridCell>
                 </div>
                 <GridCell center />
                 <div>
-                    <GridCell width={2} center inverse>9...12</GridCell>
-                    <FlexWrapper>
-                        <GridCell center black>+1</GridCell>
-                        <GridCell center><GetIcon icon="perception" /></GridCell>
-                    </FlexWrapper>
+                    <GridCell width={2} center inverse>6</GridCell>
+                    <GridCell width={2} center><GetIcon icon="health" /></GridCell>
                 </div>
-                <GridCell center />
+                {/* <GridCell center />
                 <div>
                     <GridCell width={2} center inverse>13...16</GridCell>
                     <FlexWrapper>
@@ -301,10 +327,18 @@ export const RulesComponent = ({ t }) => {
                         <GridCell center black>-1</GridCell>
                         <GridCell center><GetIcon icon="move" /></GridCell>
                     </FlexWrapper>
-                </div>
+                </div> */}
                 
             </FlexWrapper>
         </GridCell>
+        {/* <GridCell width={COLUMN_WIDTH * 2 + 1} open center wrapper >
+            <ReactMarkdown>{t('band.character.action.title')}</ReactMarkdown>
+        </GridCell> */}
+        {/* {actions.map((item, key) => (
+        <GridCell width={COLUMN_WIDTH} open wrapper>
+            <ReactMarkdown>{t(`band.character.action.description.${item?.id}`)}</ReactMarkdown>
+        </GridCell>
+    ))} */}
     </FlexWrapper>
 )}
 

@@ -65,7 +65,7 @@ export const GridCell = styled.div(({
     }
     h3 {
         color: ${theme.primary};
-         margin: 0;
+        margin: 0;
         margin-top: ${baseFontSize/2}px;
     }
     ul {

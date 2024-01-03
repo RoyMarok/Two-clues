@@ -25,6 +25,32 @@ export const RACES = {
         move: 2,
         fly: false
     },
+    'elf': {
+        title: 'Эльф',
+        strength: {
+            min: 1,
+            max: 6,
+            avg: 3
+        },
+        agility: {
+            min: 2,
+            max: 6,
+            avg: 4
+        },
+        perception: {
+            min: 3,
+            max: 6,
+            avg: 4
+        },
+        intelligence: {
+            min: 2,
+            max: 12,
+            avg: 3
+        },
+        defence: 0,
+        move: 2,
+        fly: false
+    },
     'dwarf': {
         title: 'Гном',
         strength: {

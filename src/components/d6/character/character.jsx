@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
-import { withTranslation } from 'react-i18next'
 
 import { CharacterD6StateObj, WeaponsState } from '../../../atoms'
 
@@ -25,8 +24,6 @@ import { Spell } from './spell'
 import { Poison } from './poison'
 import { Skill } from './skill'
 import { RACES } from './config'
-
-import { WarriorSelect } from './warrior-select'
 
 const defaultLimits = {
     min: 1,
@@ -77,7 +74,7 @@ const limitsBase = {
     },
     str: {
         min: 0,
-        max: 6
+        max: 10
     },
     drum: {
         min: 0,
@@ -406,19 +403,12 @@ export const Character = (props) => {
                 </GridCell>
                 <InsertedNames onChange={handleSetTitleValueAll} index={index} showSelect={false} />
                 <GridCell width={5} center>
-                    {/* <WarriorSelect onChange={selectWarriorType} elements={WARRIOR_TYPES_VALUES} selected={warriorType} index={index} passedName="armourSelect" placeholder="Кто" /> */}
                     <SelectWithOptions onChange={selectWarriorType} elements={passedRaces} selected={warriorType} />
                 </GridCell>
             </FlexWrapper>
             <FlexWrapper>
             <BorderWrapper>
                 <FlexWrapper>
-                    {/* <GridCell filled center >
-                        <GetIcon color="secondary" icon={warriorTypeIcon} />
-                    </GridCell> */}
-                    {/* <GridCell filled center >
-                        {count || ''}
-                    </GridCell> */}
                     <GridCell width={12} filled wrapper>
                         <Value
                             value={titleValue}
@@ -448,13 +438,6 @@ export const Character = (props) => {
                     <GridCell width={2} center>
                         <Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="weapon" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddWeapon} />
                     </GridCell>
-                    {/* <GridCell width={2} center>
-                        <Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="magic" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddSpell} />
-                    </GridCell> */}
-                    {/* <GridCell width={2} center><Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="skill" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddSkill} /></GridCell> */}
-                    {/* <GridCell width={2} center>
-                        <Button title={<FlexWrapper><GridCell center><GetIcon color="secondary" icon="poison" /></GridCell><GridCell center big>{'+'}</GridCell></FlexWrapper>} onClick={handleAddPoison} />
-                    </GridCell> */}
                 </FlexWrapper>}
                 
                 {weapons.map((weapon, weaponIndex) =>

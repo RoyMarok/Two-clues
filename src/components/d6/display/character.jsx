@@ -154,7 +154,7 @@ const Attributes = (props) => {
     )
 }
 
-const Weapon = (props) => {
+export const Weapon = (props) => {
     const allTraits = useRecoilValue(weaponTraitsState)
     const {
         range,

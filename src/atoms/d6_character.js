@@ -121,7 +121,7 @@ const defaultD6Skill = {
     price: 5
 }
 
-const defaultD6Charcter = {
+export const defaultD6Charcter = {
     characteristics: {
         strength: 3,
         agility: 3,
