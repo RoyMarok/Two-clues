@@ -1,11 +1,8 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { withTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
-import { SkillsList } from '../atoms'
-import { defaultD6Charcter } from '../atoms/d6_character'
-import { DisplayCharacter, Weapon } from './d6/display'
+import { DisplayCharacter, Weapon, IconedElement, ExperienceBlock } from './d6/display'
 import { BorderWrapper, Value, GridCell, FlexWrapper, NonPrintableBlock } from './styled'
 import { GetIcon } from './get-icon'
 import { CharacterDisplay } from './character-display'
@@ -148,6 +145,8 @@ const defaultD6Poison = {
     activation: 'drink',
     price: 15
 }
+
+const DICE_VALUES = new Array(6).fill('')
   
 
 export const RulesComponent = ({ t }) => {
@@ -189,6 +188,17 @@ export const RulesComponent = ({ t }) => {
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper >
             <ReactMarkdown>{t('rules.dices')}</ReactMarkdown>
+            <GridCell />
+            <GridCell panel open width={COLUMN_WIDTH - 1} wrapper filled>
+                <ReactMarkdown>{t('rules.dices.example.1')}</ReactMarkdown>
+            </GridCell>
+            <GridCell />
+            <GridCell panel open width={COLUMN_WIDTH - 1} wrapper filled>
+                <ReactMarkdown>{t('rules.dices.example.2')}</ReactMarkdown>
+            </GridCell>
+            <GridCell />
+            <ReactMarkdown>{t('rules.dices.questions')}</ReactMarkdown>
+
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper >
             <ReactMarkdown>{t('rules.dices.mods')}</ReactMarkdown>
@@ -234,12 +244,61 @@ export const RulesComponent = ({ t }) => {
 
        
         <GridCell width={COLUMN_WIDTH * 2 + 1} center open wrapper>
-                <ReactMarkdown>{t('rules.weapon.charteristics.title')}</ReactMarkdown>
+            <ReactMarkdown>{t('rules.weapon.charteristics.title')}</ReactMarkdown>
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper>
             <Weapon {...defaultD6MeleeWeapon} />
             <Weapon {...defaultD6RangeWeapon} />
-            
+            <GridCell />
+            {/* <FlexWrapper>
+                <IconedElement
+                    icon="strength"
+                    value={3}
+                    filled
+                    important={false}
+                />
+                <IconedElement
+                    icon="agility"
+                    value={0}
+                    important={false}
+                />
+                <IconedElement
+                    icon="perception"
+                    value={0}
+                    filled
+                    black={true}
+                    important={false}
+                />
+                <IconedElement
+                    icon="intelligence"
+                    value={0}
+                    important={false}
+                />
+            </FlexWrapper>
+            <GridCell /> */}
+            <FlexWrapper>
+                <IconedElement
+                    icon="strength"
+                    value={3}
+                    filled
+                    important={false}
+                />
+                <GridCell width={COLUMN_WIDTH - 2} open>
+                    <ReactMarkdown>{t('weapons.characteristics.min.str')}</ReactMarkdown>
+                </GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                <IconedElement
+                    icon="perception"
+                    value={0}
+                    filled
+                    black={true}
+                    important={false}
+                />
+                <GridCell width={COLUMN_WIDTH - 2} open>
+                    <ReactMarkdown>{t('weapons.characteristics.main')}</ReactMarkdown>
+                </GridCell>
+            </FlexWrapper>
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper>
             <FlexWrapper>
@@ -271,8 +330,25 @@ export const RulesComponent = ({ t }) => {
         <GridCell width={COLUMN_WIDTH} open wrapper >
             <ReactMarkdown>{t('rules.game')}</ReactMarkdown>
         </GridCell>
-        <GridCell width={COLUMN_WIDTH} open wrapper pageBreak>
+        <GridCell width={COLUMN_WIDTH * 2 + 1} center open wrapper>
+            <ReactMarkdown>{t('rules.game.battle')}</ReactMarkdown>
+        </GridCell>
+        <GridCell width={COLUMN_WIDTH} open wrapper>
             <ReactMarkdown>{t('rules.game.initiative')}</ReactMarkdown>
+                <GridCell />
+            <FlexWrapper>
+                <GridCell open wrapper />
+                    <GridCell width={(COLUMN_WIDTH - 1) / 2} open wrapper>{t('rules.game.initiative.double')}</GridCell>
+                <GridCell width={(COLUMN_WIDTH - 1) / 2} open wrapper>{t('rules.game.initiative.triple')}</GridCell>
+            </FlexWrapper>
+            {DICE_VALUES.map((item, index) => (
+                <FlexWrapper key={index} >
+                    <GridCell open center wrapper><p>{index + 1}</p></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 1) / 2} open wrapper><ReactMarkdown>{t(`rules.game.initiative.double.${index + 1}`)}</ReactMarkdown></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 1) / 2} open wrapper><ReactMarkdown>{t(`rules.game.initiative.triple.${index + 1}`)}</ReactMarkdown></GridCell>
+                </FlexWrapper>
+            ))}
+            
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper >
             <ReactMarkdown>{t('rules.game.recovery')}</ReactMarkdown>
@@ -285,7 +361,7 @@ export const RulesComponent = ({ t }) => {
             <ReactMarkdown>{t('rules.game.shooting')}</ReactMarkdown>
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper pageBreak>
-            <ReactMarkdown>{t('rules.game.melee')}</ReactMarkdown>
+            <ReactMarkdown>{t('rules.game.melee.fast')}</ReactMarkdown>
         </GridCell>
 
         {/* <GridCell width={COLUMN_WIDTH} open wrapper >
@@ -330,6 +406,69 @@ export const RulesComponent = ({ t }) => {
                 </div> */}
                 
             </FlexWrapper>
+        </GridCell>
+        <GridCell width={COLUMN_WIDTH * 2 + 1} center open wrapper>
+            <ReactMarkdown>{t('rules.game.post')}</ReactMarkdown>
+        </GridCell>
+        <GridCell width={COLUMN_WIDTH} open wrapper >
+            <ReactMarkdown>{t('rules.game.post.survive')}</ReactMarkdown>
+            <GridCell />
+            <FlexWrapper>
+                <GridCell width={4} open wrapper>{t('rules.game.post.survive.table.title.1')}</GridCell>
+                <GridCell width={(COLUMN_WIDTH - 4)} open wrapper>{t('rules.game.post.survive.table.title.2')}</GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell width={4} open wrapper black><p>{'11-16'}</p></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 4)} open wrapper><ReactMarkdown>{t('rules.game.post.survive.table.value.death')}</ReactMarkdown></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell width={4} open wrapper black><p>{'21-26'}</p></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 4)} open wrapper><ReactMarkdown>{t('rules.game.post.survive.table.value.wound')}</ReactMarkdown></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell width={4} open wrapper black><p>{'31-32'}</p></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 4)} open wrapper><ReactMarkdown>{t('rules.game.post.survive.table.value.madness')}</ReactMarkdown></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell width={4} open wrapper black><p>{'33'}</p></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 4)} open wrapper><ReactMarkdown>{t('rules.game.post.survive.table.value.skip')}</ReactMarkdown></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell width={4} open wrapper black><p>{'34'}</p></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 4)} open wrapper><ReactMarkdown>{t('rules.game.post.survive.table.value.old')}</ReactMarkdown></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell width={4} open wrapper black><p>{'35'}</p></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 4)} open wrapper><ReactMarkdown>{t('rules.game.post.survive.table.value.captured')}</ReactMarkdown></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell width={4} open wrapper black><p>{'36'}</p></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 4)} open wrapper><ReactMarkdown>{t('rules.game.post.survive.table.value.lost')}</ReactMarkdown></GridCell>
+            </FlexWrapper>
+        </GridCell>
+        <GridCell width={COLUMN_WIDTH} open wrapper >
+            <ReactMarkdown>{t('rules.game.post.madness')}</ReactMarkdown>
+                {/* <GridCell /> */}
+            {DICE_VALUES.map((item, index) => (
+                <FlexWrapper key={index} >
+                    <GridCell open center wrapper><p>{index + 1}</p></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 1)} open wrapper><ReactMarkdown>{t(`rules.game.madness.table.${index + 1}`)}</ReactMarkdown></GridCell>
+                </FlexWrapper>
+            ))}
+        </GridCell>
+        <GridCell width={COLUMN_WIDTH} open wrapper >
+            <ReactMarkdown>{t('rules.game.post.expirience')}</ReactMarkdown>
+            <GridCell />
+            <BorderWrapper>
+                <ExperienceBlock {...demoCharacter} width={10} height={4} />
+            </BorderWrapper>
+            <GridCell />
+            {DICE_VALUES.map((item, index) => (
+                <FlexWrapper key={index} >
+                    <GridCell open center wrapper><p>{index + 1}</p></GridCell>
+                    <GridCell width={(COLUMN_WIDTH - 1)} open wrapper><ReactMarkdown>{t(`rules.game.expirience.table.${index + 1}`)}</ReactMarkdown></GridCell>
+                </FlexWrapper>
+            ))}
         </GridCell>
         {/* <GridCell width={COLUMN_WIDTH * 2 + 1} open center wrapper >
             <ReactMarkdown>{t('band.character.action.title')}</ReactMarkdown>

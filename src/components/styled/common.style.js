@@ -32,7 +32,8 @@ export const GridCell = styled.div(({
             pageBreak = false,
             verticalCenter = false,
             mirror = false,
-            error=false
+            error=false,
+            panel=false
 
         }) => css`
     display: block;
@@ -40,6 +41,7 @@ export const GridCell = styled.div(({
     width: ${width * gridBase}px;
     text-align: left;
     padding-left: ${wrapper ? 0 : parseInt(gridBase/2)}px;
+    ${panel && `padding: ${parseInt(gridBase / 2) }px;`}
     line-height: ${height * gridBase}px;
     overflow: hidden;
     box-sizing: border-box;

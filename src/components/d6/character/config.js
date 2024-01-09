@@ -241,14 +241,14 @@ export const RACES = {
             avg: 4
         },
         agility: {
-            min: 3,
+            min: 2,
             max: 8,
             avg: 4
         },
         perception: {
             min: 2,
             max: 6,
-            avg: 3
+            avg: 5
         },
         intelligence: {
             min: 1,
@@ -274,7 +274,7 @@ export const RACES = {
         perception: {
             min: 2,
             max: 6,
-            avg: 3
+            avg: 4
         },
         intelligence: {
             min: 1,
@@ -300,7 +300,7 @@ export const RACES = {
         perception: {
             min: 4,
             max: 12,
-            avg: 4
+            avg: 5
         },
         intelligence: {
             min: 2,
@@ -309,7 +309,8 @@ export const RACES = {
         },
         defence: 0,
         move: 3,
-        fly: true
+        fly: true,
+        traits: ['Ужас(3)']
     },
     'ghost_glave': {
         title: 'Призрак Б',
@@ -335,7 +336,8 @@ export const RACES = {
         },
         defence: 1,
         move: 3,
-        fly: true
+        fly: true,
+        traits: ['Ужас(2)']
     },
     'skeleton': {
         title: 'Скелет',
@@ -361,6 +363,7 @@ export const RACES = {
         },
         defence: 0,
         move: 2,
-        fly: false
+        fly: false,
+        traits: ['Ужас(1)']
     },
 }

@@ -15,7 +15,7 @@ import {
     OnlyPrintableBlock
 } from '../../styled'
 
-import { Traits } from '../../traits'
+import { Traits, TraitElement } from '../../traits'
 import { GetIcon } from '../../get-icon'
 import { WARRIOR_TYPES_VALUES } from '../character/character'
 
@@ -214,7 +214,7 @@ export const Weapon = (props) => {
                     important={false}
                     
                 />
-                {traits?.length > 0 && <GridCell width={6} center>
+                {traits?.length > 0 && <GridCell width={6} center open>
                     <Traits
                         traits={allTraits}
                         selectedTraits={traits}
@@ -456,6 +456,7 @@ export const DisplayCharacter = (props) => {
         spells = [],
         poisons = [],
         skills = [],
+        traits = [],
         count,
         actions,
         title,
@@ -550,6 +551,9 @@ export const DisplayCharacter = (props) => {
 
                         <ExperienceBlock {...experienceProps} width={10} />
                     </FlexWrapper>
+                    {traits?.length > 0 && <FlexWrapper>
+                        {traits.map((skill) => <TraitElement controlled={false} key={String(skill)} title={String(skill)} />)}
+                    </FlexWrapper>}
                     
                     {weapons.map((weapon) =>
                         <Weapon
@@ -558,7 +562,7 @@ export const DisplayCharacter = (props) => {
 
                         />)
                     }
-                    {spells.map((spell) =>
+                    {/* {spells.map((spell) =>
                         <Spell
                             character={characteristics}
                             {...spell}
@@ -576,7 +580,7 @@ export const DisplayCharacter = (props) => {
                             character={characteristics}
                             {...skill}
                         />)
-                    }
+                    } */}
                 </BorderWrapper>
             </FlexWrapper>
             <GridCell />

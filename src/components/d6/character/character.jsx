@@ -250,7 +250,8 @@ export const Character = (props) => {
                 move: newRace.move,
                 fly: newRace.fly,
                 defence: newRace.defence
-            }
+            },
+            traits: [newRace.title, ...(newRace?.traits || [])]
         }
         setTitleValue(newRace.title)
         setCharacter(passedProps)
@@ -382,7 +383,7 @@ export const Character = (props) => {
     const warriorTypeItem = WARRIOR_TYPES_VALUES.filter((item) => item?.id === warriorType)?.[0]
     const warriorTypeIcon = warriorTypeItem?.icon
     const passedWeapons = Object.keys(allWeapons).map((key) => ({ id: key, title: allWeapons[key].title }))
-    console.log('Weapons', JSON.stringify(allWeapons))
+    // console.log('Weapons', JSON.stringify(allWeapons))
     return (
         <div>
             <FlexWrapper>
@@ -451,7 +452,7 @@ export const Character = (props) => {
                         person
                     />)
                 }
-                {spells.map((spell, spellIndex) =>
+                {/* {spells.map((spell, spellIndex) =>
                     <Spell
                         {...spell}
                         attributes={characteristics}
@@ -478,7 +479,7 @@ export const Character = (props) => {
                         changes={skillChanges(skillIndex)}
                         controlled={isControlled}
                     />)
-                }
+                } */}
                 
             </BorderWrapper>
             </FlexWrapper>

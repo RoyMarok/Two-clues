@@ -3,6 +3,7 @@ import React from 'react'
 import { BorderWrapper, Value, GridCell, FlexWrapper, NonPrintableBlock, Trait, Button, TraitButtonWrapper } from './styled'
 import { GetIcon } from './get-icon'
 import { SelectWithOptions } from './weapons-selection'
+import { noop } from '../utils'
 
 const calculateTraitWidth = (title) => {
     const titleLength = title.length
@@ -16,7 +17,7 @@ const calculateTraitWidth = (title) => {
     return 2
 }
 
-const TraitElement = ({ title, onChange, value, controlled }) =>  (
+export const TraitElement = ({ title = '', onChange = noop, value ='', controlled = true }) =>  (
     <FlexWrapper nowrap>
         <GridCell width={calculateTraitWidth(title)} wrapper>
             {controlled ? <Button value={value} title={title} onClick={onChange} /> : title}
