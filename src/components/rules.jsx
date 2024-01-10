@@ -77,7 +77,7 @@ const defaultD6RangeWeapon = {
     "str": 3,
     "dmg": 2,
     "exp": 1,
-    "count": 1,
+    "count": 2,
     price: 16,
     "title": "Лук",
     "dependencies": {
@@ -198,6 +198,7 @@ export const RulesComponent = ({ t }) => {
             </GridCell>
             <GridCell />
             <ReactMarkdown>{t('rules.dices.questions')}</ReactMarkdown>
+            <ReactMarkdown>{t('rules.dices.route')}</ReactMarkdown>
 
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper >
@@ -207,12 +208,16 @@ export const RulesComponent = ({ t }) => {
         <GridCell width={COLUMN_WIDTH * 2 + 1} center open wrapper>
             <ReactMarkdown>{t('rules.character.charteristics.title')}</ReactMarkdown>
         </GridCell>
-        <DisplayCharacter
-            index={1000}
-            isDemo
-            isControlled={false}
-            characterProps={demoCharacter}
-        />
+        <GridCell width={COLUMN_WIDTH  + 1} open wrapper>
+            <DisplayCharacter
+                index={1000}
+                isDemo
+                isControlled={false}
+                characterProps={demoCharacter}
+            />
+            <ReactMarkdown>{t('rules.character')}</ReactMarkdown>
+        </GridCell>
+        
          <GridCell width={COLUMN_WIDTH} open wrapper>
             <FlexWrapper>
                 <Describe t={t} title="strength" prefix={characteristicsPrefix} />
@@ -226,8 +231,8 @@ export const RulesComponent = ({ t }) => {
             <ReactMarkdown>{t('rules.character.characteristics')}</ReactMarkdown>
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper >
-            <ReactMarkdown>{t('rules.character')}</ReactMarkdown>
-            <ReactMarkdown>{t('rules.character.condition')}</ReactMarkdown>
+            {/* <ReactMarkdown>{t('rules.character')}</ReactMarkdown> */}
+            {/* <ReactMarkdown>{t('rules.character.condition')}</ReactMarkdown>
             <FlexWrapper>
                 <GridCell center><GetIcon icon="like" /></GridCell>
                 <GridCell width={COLUMN_WIDTH - 2}>{t('rules.character.condition.stand')}</GridCell>
@@ -239,15 +244,15 @@ export const RulesComponent = ({ t }) => {
             <FlexWrapper>
                 <GridCell center><GetIcon icon="panic" /></GridCell>
                 <GridCell width={COLUMN_WIDTH - 2}>{t('rules.character.condition.panic')}</GridCell>
-            </FlexWrapper>
+            </FlexWrapper> */}
         </GridCell>
 
        
-        <GridCell width={COLUMN_WIDTH * 2 + 1} center open wrapper>
+        <GridCell width={COLUMN_WIDTH * 2 + 1} center open wrapper >
             <ReactMarkdown>{t('rules.weapon.charteristics.title')}</ReactMarkdown>
         </GridCell>
         <GridCell width={COLUMN_WIDTH} open wrapper>
-            <Weapon {...defaultD6MeleeWeapon} />
+            {/* <Weapon {...defaultD6MeleeWeapon} /> */}
             <Weapon {...defaultD6RangeWeapon} />
             <GridCell />
             {/* <FlexWrapper>
@@ -478,6 +483,58 @@ export const RulesComponent = ({ t }) => {
             <ReactMarkdown>{t(`band.character.action.description.${item?.id}`)}</ReactMarkdown>
         </GridCell>
     ))} */}
+        <GridCell width={COLUMN_WIDTH * 2 + 1} center open wrapper>
+            <ReactMarkdown>{t('rules.game.additional')}</ReactMarkdown>
+        </GridCell>
+        <GridCell width={COLUMN_WIDTH} open wrapper >
+            <ReactMarkdown>{t('rules.game.panic')}</ReactMarkdown>
+            <FlexWrapper >
+                <GridCell />
+                <GridCell center><GetIcon icon="strength" color="secondary" /></GridCell>
+                <GridCell center><GetIcon icon="agility" color="secondary" /></GridCell>
+                <GridCell center><GetIcon icon="perception" color="secondary" /></GridCell>
+                <GridCell center><GetIcon icon="intelligence" color="secondary" /></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell open wrapper center><p>{'1'}</p></GridCell>
+                    <GridCell width={4} />
+                <GridCell open wrapper  width={COLUMN_WIDTH - 5}><ReactMarkdown>{t('rules.game.panic.madness')}</ReactMarkdown></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell open wrapper center><p>{'2'}</p></GridCell>
+                <GridCell />
+                    <GridCell open wrapper black center><p>{'-2'}</p></GridCell>
+                    <GridCell open wrapper black center><p>{'-2'}</p></GridCell>
+                    <GridCell open wrapper black center><p>{'-2'}</p></GridCell>
+                <GridCell open wrapper width={COLUMN_WIDTH - 5}><ReactMarkdown>{t('rules.game.panic.end.activation')}</ReactMarkdown></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell open wrapper center><p>{'3'}</p></GridCell>
+                <GridCell />
+                    <GridCell open wrapper black center><p>{'-2'}</p></GridCell>
+                    <GridCell open wrapper black center><p>{'-2'}</p></GridCell>
+                    <GridCell open wrapper black center><p>{'-1'}</p></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell open wrapper center><p>{'4'}</p></GridCell>
+                    <GridCell  />
+                    <GridCell open wrapper black center><p>{'-2'}</p></GridCell>
+                    <GridCell open wrapper black center><p>{'-1'}</p></GridCell>
+                    <GridCell open wrapper black center><p>{'-1'}</p></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell open wrapper center><p>{'5'}</p></GridCell>
+                <GridCell />
+                    <GridCell open wrapper black center><p>{'-1'}</p></GridCell>
+                    <GridCell open wrapper black center><p>{'-1'}</p></GridCell>
+            </FlexWrapper>
+            <FlexWrapper>
+                    <GridCell open wrapper center><p>{'6'}</p></GridCell>
+                    <GridCell open wrapper black center ><p>{'+1'}</p></GridCell>
+                    <GridCell open wrapper black center><p>{'-1'}</p></GridCell>
+            </FlexWrapper>
+            
+        </GridCell>
     </FlexWrapper>
 )}
 
