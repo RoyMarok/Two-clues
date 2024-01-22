@@ -4,7 +4,18 @@ import { css } from '@emotion/react'
 export const commonRadius = '4px'
 export const baseFontSize = 20
 export const gridBase = parseInt(1.8 * baseFontSize)
-export const theme = {
+
+const darkTheme = {
+    primary: '#F8F8F2',
+    secondary: '#757575',
+    tetriary: '#444444',
+    transparent: 'transparent',
+    white: '#272822',
+    error: 'orangered',
+    red: '#F92772',
+    blue: '#66D9EF'
+}
+const lightTheme = {
     primary: '#2b2a29',
     secondary: '#898989',
     tetriary: '#d9dada',
@@ -14,6 +25,8 @@ export const theme = {
     red: 'red',
     blue: 'blue'
 }
+
+export const theme = lightTheme
 
 export const GridCell = styled.div(({
             height = 1,
@@ -59,6 +72,13 @@ export const GridCell = styled.div(({
     ${open && 'height: auto; line-height: 1em;'}
     ${pageBreak && 'break-before: page;'}
     ${mirror && 'transform: rotate(180deg);'}
+    h1 {
+        font-size: ${baseFontSize * 3}px;
+        line-height: ${baseFontSize * 3}px;
+        color: ${theme.primary};
+        margin: ${baseFontSize * 2}px 0 0;
+        font-weight: 800;
+    }
     h2 {
         font-size: ${baseFontSize * 2}px;
         line-height: ${baseFontSize * 2}px;
@@ -96,13 +116,13 @@ export const BorderWrapper = styled.div`
     width: fit-content;
     break-inside: avoid;
 `
-
-export const AppWrapper = styled.div`
+export const ContentWrapper = styled.div`
     color: ${theme.primary};
     font-size: ${baseFontSize}px;
     font-family: 'RodchenkoCTT';
     font-weight: 400;
-    margin: ${gridBase}px auto;
+    padding-bottom: ${gridBase*3}px;
+    margin: auto;
     width: ${gridBase * 32}px;
     input, h1, h2, h3, button {
         font-family: inherit;
@@ -115,7 +135,10 @@ export const AppWrapper = styled.div`
         &:hover {
             color: ${theme.primary};
         }
-    }
+    }   
+`
+export const AppWrapper = styled.div`
+    background-color: ${theme.white};
 `
 export const FlexWrapper = styled.div(({ nowrap = false, columns = false, vertical = false }) => css`
     display: flex;

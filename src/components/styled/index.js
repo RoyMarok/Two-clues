@@ -9,6 +9,7 @@ export {
 from './field.style'
 export {
     AppWrapper,
+    ContentWrapper,
     FlexWrapper,
     GridCell,
     BorderWrapper,

@@ -192,19 +192,16 @@ export const getD6WeaponPrice = (weapon) => {
         return null
     })
     // const rangeKoeff = WEAPONS_RANGE.findIndex((item) => item === range.max) - WEAPONS_RANGE.findIndex((item) => item === range.min) + 1
-    const rangeKoeff = clamp(range.max / 2 - range.min, 1, 36)
+    const rangeKoeff = clamp(range.max / 2 - range.min, 1, 6)
     const depKoeff = dependencies.strength.min + dependencies.agility.min + dependencies.perception.min + dependencies.intelligence.min  - 4
     const rangeDMG = rangeKoeff * WEAPONS_DAMAGE[dmg].value
    
-
-
     // console.log(
     //     'Weapon Price',
     //     title,
     //     rangeKoeff,
-    //     clamp(range.max / 2 - range.min, 1, 36),
+    //     WEAPONS_DAMAGE[dmg].value,
     //     rangeKoeff * WEAPONS_DAMAGE[dmg].value,
-    //     clamp(range.max / 2 - range.min, 1, 36) * WEAPONS_DAMAGE[dmg].value,
     // )
 
     return Math.max(

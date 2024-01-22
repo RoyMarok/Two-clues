@@ -1,8 +1,7 @@
 import React from 'react'
-import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
-import { CharacterD6StateObj, weaponTraitsState } from '../../../atoms'
-import { WEAPONS_DAMAGE } from '../../../atoms/d6_character'
+import { CharacterD6StateObj } from '../../../atoms'
 
 import { clamp, noop } from '../../../utils'
 
@@ -12,431 +11,15 @@ import {
     GridCell,
     FlexWrapper,
     NonPrintableBlock,
-    OnlyPrintableBlock
 } from '../../styled'
 
-import { Traits, TraitElement } from '../../traits'
+import { TraitElement } from '../../traits'
 import { GetIcon } from '../../get-icon'
 import { WARRIOR_TYPES_VALUES } from '../character/character'
 
-const heroExpPoints = [
-    2, 4, 6, 8, 11, 14, 17, 20, 24, 28, 32, 36, 41, 46, 51, 57, 63, 69, 76, 83, 90, 98, 116, 124, 133, 142, 151, 160
-]
-
-const skillsNames = {
-    fight: ['Зверь', 'Бронекулак', 'Напосошок', 'Мясник', 'Град Ударов', 'Твёрдый'],
-    speed: ['Спринт', 'Верхолаз', 'Сальто', 'Молния', 'Бей-Беги', 'Акробат'],
-    shooting: ['Перерыв', 'Охотник', 'Пистольеро', 'Ловкие Руки', 'Орлиный Глаз', 'Стрелок'],
-    trickster: ['Безликий', 'Устрашающий', 'Проныра', 'Фокусник', 'Торговец', 'Боевой Маг'],
-}
-
-const henchmanExpPoints = [2, 5, 9, 14]
-
-const Experience = ({ initialExp = 0, width = 7, height = 4 }) => {
-    const FULL_EXP = []
-    FULL_EXP.length = width * 4 * height
-    FULL_EXP.fill(0)
-    return (
-        <FlexWrapper>
-            <GridCell center width={width} height={height}>
-                <FlexWrapper>
-                    {FULL_EXP.map((el, index) =>{
-                        const divider = width * 2
-                        return (
-                        <GridCell
-                            center
-                            width={0.5}
-                            height={0.5}
-                            filled={
-                                (index + (index - index % (divider)) / divider % 2) % 2 === 0
-                                && !heroExpPoints.includes(index + 1)
-                            }
-                            inverse={
-                                heroExpPoints.includes(index + 1)
-                                || index + 1 === FULL_EXP.length
-                            }
-                        >
-                                {index < initialExp ? '•' : ''}
-                        </GridCell>)}
-                        )
-                    }
-                </FlexWrapper>
-            </GridCell>
-        </FlexWrapper>
-    )
-}
-
-const Skills = () => (
-    <FlexWrapper>
-        {Object.getOwnPropertyNames(skillsNames).map((itemName) => (
-            <GridCell center width={4} height={3}>
-                {skillsNames[itemName].map((item, index) => <FlexWrapper><GridCell height={0.5} width={0.5} filled={!(index % 2)} /><GridCell left height={0.5} width={3.5}>{item}</GridCell></FlexWrapper>)}
-            </GridCell>
-        ))}
-        
-    </FlexWrapper>
-)
-
-export const IconedElement = (props) => {
-    const {
-        icon,
-        value,
-        filled = false,
-        plus = false,
-        minus = false,
-        black = false,
-        inverse = false,
-        color = 'secondary',
-        description = '',
-        prefix = '',
-        checkboxes = false,
-        nonZero = false,
-        important = true,
-        minimal = false
-    } = props
-    const nonZeroPassed = nonZero && value !== 0
-    const passedTitle = GetIcon.list.includes(icon)
-        ? <GetIcon icon={icon} color={black || nonZeroPassed ? 'primary' : color} />
-        : <GridCell center big black={black} >{icon}</GridCell>
-    const passedValue = value !== 0 && `${prefix}${value}${plus ? '+' : ''}${minus && value > 1 ? '-' : ''}`
-    return (
-        <GridCell height={Boolean(description) ? 3 : 2} center>
-            <FlexWrapper>
-                <GridCell center >
-                    {passedTitle}
-                </GridCell>
-                {Boolean(value) && <GridCell center black={(black || important) && !inverse} filled={filled} inverse={inverse}>
-                    {!minimal
-                    ? passedValue
-                    : <div>
-                        <GridCell center width={0.5} height={0.5} >{passedValue}</GridCell>
-                        <GridCell center width={0.5} height={0.5} />
-                    </div>
-                    }
-                </GridCell>}
-                {Boolean(description) && <GridCell center >
-                    <FlexWrapper>
-                        <GridCell center width={0.5} height={0.5} filled={checkboxes} />
-                        <GridCell center width={0.5} height={0.5} filled={checkboxes} muted/>
-                    </FlexWrapper>
-                    <GridCell center height={0.5} muted>{description}</GridCell> 
-                </GridCell>}
-            </FlexWrapper>
-        </GridCell>
-    )
-}
-
-const Attributes = (props) => {
-    const {
-        strength,
-        agility,
-        perception,
-        intelligence,
-        move,
-        defence,
-        fly,
-    } = props
-
-    return (
-        <GridCell height={4} width={4} center>
-            <FlexWrapper>
-
-                <IconedElement icon="strength" value={strength} filled minimal />
-                <IconedElement icon="agility" value={agility} minimal />
-                <IconedElement icon="perception" value={perception} filled minimal />
-                <IconedElement icon="intelligence" value={intelligence}  minimal />
-            </FlexWrapper>
-            <FlexWrapper>
-                <IconedElement icon="defence" value={defence} minimal />
-                <IconedElement icon={fly ? 'fly' : 'move'} value={move}/>
-            </FlexWrapper>
-        </GridCell>
-    )
-}
-
-export const Weapon = (props) => {
-    const allTraits = useRecoilValue(weaponTraitsState)
-    const {
-        range,
-        str,
-        dmg,
-        count,
-        exp,
-        dependencies,
-        traits,
-        title,
-        price
-    } = props
-
-    const rangeText = `${range.min}-${range.max}`
-
-    return (
-        <>
-            <FlexWrapper>
-                {count > 1 && <GridCell inverse center >{count}</GridCell>}
-                <GridCell filled center><GetIcon icon="weapon" color="secondary" /></GridCell>
-                <GridCell width={count > 1 ? 10 : 11} filled black wrapper>{title}</GridCell>
-                <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
-                <GridCell width={1} inverse center>{price}</GridCell>
-            </FlexWrapper>
-            <FlexWrapper>
-                <IconedElement icon="range" value={rangeText} filled  />
-                <IconedElement icon="fist" value={str}   />
-                <IconedElement icon="dmg" value={WEAPONS_DAMAGE[dmg].title} nonZero filled />
-                <IconedElement icon="chart" value={exp} minimal />
-                <IconedElement
-                    icon="strength"
-                    value={dependencies.strength?.min > 1 ? dependencies.strength?.min : 0}
-                    filled
-                    black={dependencies.strength?.use}
-                    important={false}
-                    
-                />
-                <IconedElement
-                    icon="agility"
-                    value={dependencies.agility?.min > 1 ? dependencies.agility?.min : 0}
-                    black={dependencies.agility?.use}
-                    important={false}
-                    
-                />
-                <IconedElement
-                    icon="perception"
-                    value={dependencies.perception?.min > 1 ? dependencies.perception?.min : 0}
-                    filled
-                    black={dependencies.perception?.use}
-                    important={false}
-                    
-                />
-                <IconedElement
-                    icon="intelligence"
-                    value={dependencies.intelligence?.min > 1 ? dependencies.intelligence?.min : 0}
-                    black={dependencies.intelligence?.use}
-                    important={false}
-                    
-                />
-                {traits?.length > 0 && <GridCell width={6} center open>
-                    <Traits
-                        traits={allTraits}
-                        selectedTraits={traits}
-                        controlled={false}
-                    />
-                </GridCell>}
-            </FlexWrapper>
-        </>
-    )
-}
-
-const Spell = (props) => {
-    const {
-        title,
-        target,
-        quality,
-        mod,
-        ap,
-        dmg,
-        price,
-        character
-    } = props
-
-    const powerAcumulate = ((target.strength + 0) + (target.agility + 0) + (target.perception + 0) + (target.intelligence + 0)) * Math.abs(quality) + Math.abs(ap) + Math.abs(dmg) - 1
-    
-
-    return (
-        <>
-            <FlexWrapper>
-                
-                <GridCell filled center><GetIcon icon="magic" /></GridCell>
-                <GridCell center filled color="secondary" >{Boolean(powerAcumulate) && `+${powerAcumulate}`}</GridCell>
-                <GridCell width={10} filled black >{title}</GridCell>
-                <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
-                <GridCell width={1} inverse center>{price}</GridCell>
-            </FlexWrapper>
-            <FlexWrapper>
-
-                <IconedElement icon="strength" value={target.strength ? quality : 0} filled nonZero />
-                <IconedElement icon="agility" value={target.agility ? quality : 0} nonZero />
-                <IconedElement icon="perception" value={target.perception ? quality : 0} filled nonZero />
-                <IconedElement icon="intelligence" value={target.intelligence ? quality : 0}  nonZero />
-                <GridCell/>
-                <GridCell height={2} center>
-                    <GridCell />
-                    <GridCell center>
-                        <GetIcon icon="intelligence" color="secondary" />
-                    </GridCell>
-                </GridCell>
-                <IconedElement icon="chart" value={mod} />
-                {/* <IconedElement icon="ap" value={ap} nonZero />
-                <IconedElement icon="dmg" value={dmg} filled nonZero />
-
-                <GridCell width={3}/>
-                <IconedElement icon="±" value={mod} />
-                <GridCell height={2} width={2} center>
-                    <GridCell center width={2}>
-                        <GetIcon icon="dice" color="secondary" />
-                    </GridCell>
-                    <GridCell center width={2}>
-                        <GetIcon icon="perception" />
-                        <GetIcon icon="intelligence" />
-                    </GridCell>
-                </GridCell> */}
-            </FlexWrapper>
-        </>
-    )
-}
-
-const Poison = (props) => {
-    const {
-        title,
-        target,
-        quality,
-        ap,
-        dmg,
-        activation,
-        mod,
-        price,
-        character
-    } = props
-    
-    const activationIcon = CharacterD6StateObj.constants.POISON_ACTIVATION.filter(trait => activation === trait.id)?.[0]?.icon
-
-    return (
-        <>
-            <FlexWrapper>
-                <GridCell filled center><GetIcon icon="poison"  /></GridCell>
-                <GridCell filled center><GetIcon icon={activationIcon} color="secondary" /></GridCell>
-                <GridCell width={10} filled black >{title}</GridCell>
-                <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
-                <GridCell width={1} inverse center>{price}</GridCell>
-            </FlexWrapper>
-            <FlexWrapper>
-
-                <IconedElement icon="strength" value={target.strength ? quality : 0} filled nonZero />
-                <IconedElement icon="agility" value={target.agility ? quality : 0} nonZero />
-                <IconedElement icon="perception" value={target.perception ? quality : 0} filled nonZero />
-                <IconedElement icon="intelligence" value={target.intelligence ? quality : 0} nonZero />
-                <GridCell />
-                <GridCell height={2} center>
-                    <GridCell />
-                    <GridCell center>
-                        <GetIcon icon="intelligence" color="secondary" />
-                    </GridCell>
-                </GridCell>
-                <IconedElement icon="chart" value={mod} />
-                {/* <GridCell height={2} center>
-                    <GridCell />
-                    <GridCell center>
-                        <GetIcon icon="weapon" color="secondary" />
-                    </GridCell>
-                </GridCell>
-                <IconedElement icon="ap" value={ap} nonZero />
-                <IconedElement icon="dmg" value={dmg} filled nonZero />
-
-                <GridCell/>
-                <GridCell height={2} center>
-                    <GridCell />
-                    <GridCell center>
-                        <GetIcon icon={activationIcon}/>
-                    </GridCell>
-                </GridCell>
-                <GridCell/>
-                
-                <IconedElement icon="±" value={mod} />
-                <GridCell height={2} width={2} center>
-                    <GridCell center width={2}>
-                        <GetIcon icon="dice" color="secondary" />
-                    </GridCell>
-                    <GridCell center width={2}>
-                        <GetIcon icon="perception" />
-                        <GetIcon icon="intelligence" />
-                    </GridCell>
-                </GridCell> */}
-            </FlexWrapper>
-        </>
-    )
-}
-
-const Skill = (props) => {
-    const {
-        title,
-        ready,
-        hidden,
-        panic,
-        out,
-        dependencies,
-        mod,
-        price,
-        character
-    } = props
-
-    const {
-        strength,
-        agility,
-        perception,
-        intelligence
-    } = character
-
-    return (
-        <>
-            <FlexWrapper>
-                <GridCell filled center><GetIcon icon="skill" /></GridCell>
-                <GridCell width={11} filled black >{title}</GridCell>
-                <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
-                <GridCell width={1} inverse center>{price}</GridCell>
-            </FlexWrapper>
-            <FlexWrapper>
-                
-                <IconedElement icon="like" value={ready} filled nonZero/>
-                <IconedElement icon="hidden" value={hidden} nonZero />
-                <IconedElement icon="panic" value={panic} filled nonZero />
-                <IconedElement icon="clock" value={out} nonZero />
-                <GridCell width={7} />
-                <IconedElement icon="±" value={mod} important={false} />
-                {dependencies.strength && <IconedElement icon="strength" value={strength}  plus />}
-                {dependencies.agility && <IconedElement icon="agility" value={agility}  plus />}
-                {dependencies.perception && <IconedElement icon="perception" value={perception}  plus />}
-                {dependencies.intelligence && <IconedElement icon="intelligence" value={intelligence}  plus />}
-            </FlexWrapper>
-        </>
-    )
-}
-
-export const ExperienceBlock = (props) => {
-    const {
-        weapons = [],
-        spells = [],
-        poisons = [],
-        characteristics,
-        width = 7,
-        height = 4
-    } = props
-
-    const CHARACTER_SUM_TRESHOLD = 12
-
-    let weaponExperience = 0
-    weapons.map((item) => weaponExperience += parseInt(item.mod) + 1)
-    let spellExperience = 0
-    spells.map((item) => spellExperience += parseInt(item.mod) + 1)
-    let poisonExperience = 0
-    poisons.map((item) => poisonExperience += parseInt(item.mod) + 1)
-    const { strength,
-        agility,
-        perception,
-        intelligence } = characteristics
-    const chcracteristicSum = parseInt(strength) + parseInt(agility) + parseInt(perception) + parseInt(intelligence)
-    const expirience = chcracteristicSum >= CHARACTER_SUM_TRESHOLD ? heroExpPoints[
-        // parseInt(warriorTypeItem?.exp) - 1
-        chcracteristicSum - CHARACTER_SUM_TRESHOLD - 1
-        // + weaponExperience
-        + spellExperience
-        + poisonExperience
-    ] : 0
-
-    return (
-        <div>
-            <Experience initialExp={expirience} width={width} height={height} />
-        </div>
-    )
-}
+import { Experience } from './expirience'
+import { Weapon } from './weapon'
+import { Attributes } from './attributes'
 
 export const DisplayCharacter = (props) => {
     const {
@@ -526,61 +109,27 @@ export const DisplayCharacter = (props) => {
             <FlexWrapper>
                 <BorderWrapper>
                     <FlexWrapper>
-                        {/* <GridCell filled center >
-                            <GetIcon color="secondary" icon={warriorTypeIcon} />
-                        </GridCell> */}
-                        {/* <GridCell filled center >
-                            {count || ''}
-                        </GridCell> */}
-
                         <GridCell width={12} black filled wrapper>{title}</GridCell>
-                        
                         <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
                         <GridCell width={1} inverse center>{price}</GridCell>
                     </FlexWrapper>
-
                     <FlexWrapper>
                         <Attributes
                             {...characteristics}
                             armour={armour}
                             actions={actions}
-
-                            // price={price}
-                            // warriorTypeIcon={warriorTypeIcon}
                         />
-
-                        <ExperienceBlock {...experienceProps} width={10} />
+                        <Experience {...experienceProps} width={10} />
                     </FlexWrapper>
                     {traits?.length > 0 && <FlexWrapper>
                         {traits.map((skill) => <TraitElement controlled={false} key={String(skill)} title={String(skill)} />)}
                     </FlexWrapper>}
-                    
                     {weapons.map((weapon) =>
                         <Weapon
                             character={characteristics}
                             {...weapon}
-
                         />)
                     }
-                    {/* {spells.map((spell) =>
-                        <Spell
-                            character={characteristics}
-                            {...spell}
-
-                        />)
-                    }
-                    {poisons.map((poison) =>
-                        <Poison
-                            character={characteristics}
-                            {...poison}
-                        />)
-                    }
-                    {skills.map((skill) =>
-                        <Skill
-                            character={characteristics}
-                            {...skill}
-                        />)
-                    } */}
                 </BorderWrapper>
             </FlexWrapper>
             <GridCell />

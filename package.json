@@ -1,6 +1,6 @@
 {
-  "name": "ezd20",
-  "version": "0.1.0",
+  "name": "Hex Hammer",
+  "version": "1.0.2",
   "private": true,
   "dependencies": {
     "@emotion/babel-plugin": "11.10.2",

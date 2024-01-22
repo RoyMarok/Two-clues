@@ -3,7 +3,7 @@ import { Routes, Route, Link } from "react-router-dom"
 import { withTranslation } from 'react-i18next'
 
 import {
-    Armours,
+    ContentWrapper,
     AppWrapper,
     Band,
     Button,
@@ -28,6 +28,7 @@ const Home = () => null
 
 export const App = ({ t }) => (
     <AppWrapper>
+        <ContentWrapper>
         <NonPrintableBlock>
             <Loader />
            
@@ -76,6 +77,7 @@ export const App = ({ t }) => (
             <Route path="/armours" element={<Armours />} /> */}
             <Route path="/rules" element={<Rules />} />
         </Routes>
+        </ContentWrapper>
     </AppWrapper>
 )
 

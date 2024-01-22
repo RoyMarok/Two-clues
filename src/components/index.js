@@ -15,6 +15,7 @@ export {
     GridCell,
     BorderWrapper,
     AppWrapper,
+    ContentWrapper,
     Button,
     FieldTitle,
     FieldWrapper,
