@@ -23,7 +23,8 @@ export const IconedElement = (props) => {
         checkboxes = false,
         nonZero = false,
         important = true,
-        minimal = false
+        minimal = false,
+        currentValue = '',
     } = props
     const nonZeroPassed = nonZero && value !== 0
     const passedTitle = GetIcon.list.includes(icon)
@@ -36,12 +37,16 @@ export const IconedElement = (props) => {
                 <GridCell center inverse={marked}>
                     {passedTitle}
                 </GridCell>
-                {Boolean(value) && <GridCell center black={(black || important) && !inverse} filled={filled} inverse={inverse}>
+                {Boolean(value || currentValue) && <GridCell center black={(black || important) && !inverse} filled={filled} inverse={inverse}>
                     {!minimal
                         ? passedValue
                         : <div>
-                            <GridCell center width={0.5} height={0.5} >{passedValue}</GridCell>
-                            <GridCell center width={0.5} height={0.5} />
+                            <GridCell center height={0.5} >{passedValue}</GridCell>
+                            <FlexWrapper>
+
+                                <GridCell center height={0.5} black>{currentValue}</GridCell>
+                            </FlexWrapper>
+                            
                         </div>
                     }
                 </GridCell>}

@@ -181,8 +181,8 @@ export const RACES = {
         move: 2,
         fly: false
     },
-    'cat': {
-        title: 'Кошко-человек',
+    'felinid': {
+        title: 'Фелинид',
         strength: {
             min: 3,
             max: 8,
@@ -203,7 +203,7 @@ export const RACES = {
             max: 4,
             avg: 2
         },
-        defence: 2,
+        defence: 0,
         move: 2,
         fly: false
     },
@@ -233,8 +233,8 @@ export const RACES = {
         move: 2,
         fly: false
     },
-    'wolf': {
-        title: 'Волк',
+    'animal': {
+        title: 'Животное',
         strength: {
             min: 3,
             max: 5,
@@ -313,7 +313,7 @@ export const RACES = {
         traits: ['Ужас(3)']
     },
     'ghost_glave': {
-        title: 'Призрак Б',
+        title: 'Призрак',
         strength: {
             min: 3,
             max: 8,
@@ -365,5 +365,32 @@ export const RACES = {
         move: 2,
         fly: false,
         traits: ['Ужас(1)']
+    },
+    'daemon': {
+        title: 'Демон',
+        strength: {
+            min: 3,
+            max: 8,
+            avg: 5
+        },
+        agility: {
+            min: 3,
+            max: 8,
+            avg: 4
+        },
+        perception: {
+            min: 2,
+            max: 8,
+            avg: 4
+        },
+        intelligence: {
+            min: 2,
+            max: 8,
+            avg: 2
+        },
+        defence: 0,
+        move: 2,
+        fly: false,
+        traits: ['Ужас(3)']
     },
 }

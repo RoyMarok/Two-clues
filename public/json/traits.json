@@ -28,5 +28,11 @@
         "title": "Рукопашное",
         "description": "",
         "price": 0
+    },
+    {
+        "id": "knockback",
+        "title": "Отбрасывает",
+        "description": "",
+        "price": 2
     }
 ]

@@ -28,7 +28,10 @@ export const Weapon = (props) => {
         price
     } = props
 
-    const rangeText = `${range.min}-${range.max}`
+    const rangeText = range.min > 1 ? `${range.min}-${range.max}` : range.max
+    const passedStr = str + count - 1
+    const passedDmg = dmg * count
+    const isMulti = count > 1
 
     return (
         <>
@@ -41,10 +44,24 @@ export const Weapon = (props) => {
             </FlexWrapper>
             <FlexWrapper>
                 <IconedElement icon="range" value={rangeText} filled />
-                <IconedElement icon="fist" value={str} />
-                <IconedElement icon="dmg" value={WEAPONS_DAMAGE[dmg].title} nonZero filled />
-                <IconedElement icon="chart" value={exp} minimal />
                 <IconedElement
+                    icon="fist"
+                    value={isMulti ? str : passedStr}
+                    minimal={isMulti}
+                    currentValue={isMulti ? passedStr : ''}
+                    
+                />
+                <IconedElement
+                    icon="dmg"
+                    value={isMulti ? dmg : passedDmg}
+                    minimal={isMulti}
+                    currentValue={isMulti ? passedDmg : ''}
+                    nonZero
+                    filled
+                />
+                <IconedElement icon="chart" value={exp} minimal />
+                {/* <GridCell /> */}
+                {/* <IconedElement
                     icon="strength"
                     value={dependencies.strength?.min > 1 ? dependencies.strength?.min : 0}
                     filled
@@ -73,8 +90,9 @@ export const Weapon = (props) => {
                     marked={dependencies.intelligence?.use}
                     important={false}
 
-                />
-                {traits?.length > 0 && <GridCell width={6} center open>
+                /> */}
+                {traits?.length > 0 && <GridCell width={10} height={2} center open>
+                    <GridCell />
                     <Traits
                         traits={allTraits}
                         selectedTraits={traits}

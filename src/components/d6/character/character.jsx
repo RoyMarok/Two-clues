@@ -70,7 +70,7 @@ const limitsBase = {
     },
     dmg: {
         min: 0,
-        max: 6
+        max: 20
     },
     str: {
         min: 0,
@@ -140,7 +140,21 @@ export const WARRIOR_TYPES_VALUES = [
     }
 ]
 
-const passedRaces = Object.keys(RACES).map((key) => ({ id: key, title: RACES[key].title }))
+const sortByTitle = (a, b) => {
+    const nameA = a.title.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.title.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+        return -1;
+    }
+    if (nameA > nameB) {
+        return 1;
+    }
+
+    // names must be equal
+    return 0;
+}
+
+const passedRaces = Object.keys(RACES).map((key) => ({ id: key, title: RACES[key].title })).sort(sortByTitle)
 
 export const Character = (props) => {
     const {

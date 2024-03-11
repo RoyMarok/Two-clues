@@ -161,68 +161,73 @@ export const Attributes = (props) => {
 
 
     return (
-        <GridCell width={12} height={3} center>
-            <FlexWrapper>
-                <MainAttribute
-                    title="strength"
-                    values={values}
-                    limits={limits.strength}
-                    onChange={changes.strength}
-                    value={strength}
-                    filled
-                    controlled={controlled}
-                />
-                <MainAttribute
-                    title="agility"
-                    values={values}
-                    limits={limits.agility}
-                    onChange={changes.agility}
-                    value={agility}
-                    controlled={controlled}
-                />
-                <MainAttribute
-                    title="perception"
-                    values={values}
-                    limits={limits.perception}
-                    onChange={changes.perception}
-                    value={perception}
-                    filled
-                    controlled={controlled}
-                />
-                <MainAttribute
-                    title="intelligence"
-                    values={values}
-                    limits={limits.intelligence}
-                    onChange={changes.intelligence}
-                    value={intelligence}
-                    controlled={controlled}
-                />
-                <Defence
-                    onChange={changes.defence}
-                    value={defence}
-                    filled
-                    controlled={controlled}
-                />
-                <Move
-                    title="move"
-                    // values={values}
-                    onChange={changes.move}
-                    value={move}
-                    fly={fly}
-                    
-                    changeFly={changes.fly}
-                    // controlled={false}
-                />
+        <FlexWrapper>
+            <MainAttribute
+                title="strength"
+                values={values}
+                limits={limits.strength}
+                onChange={changes.strength}
+                value={strength}
+                filled
+                controlled={controlled}
+            />
+            <MainAttribute
+                title="agility"
+                values={values}
+                limits={limits.agility}
+                onChange={changes.agility}
+                value={agility}
+                controlled={controlled}
+            />
+            <MainAttribute
+                title="perception"
+                values={values}
+                limits={limits.perception}
+                onChange={changes.perception}
+                value={perception}
+                filled
+                controlled={controlled}
+            />
+            <MainAttribute
+                title="intelligence"
+                values={values}
+                limits={limits.intelligence}
+                onChange={changes.intelligence}
+                value={intelligence}
+                controlled={controlled}
+            />
+            <Defence
+                onChange={changes.defence}
+                value={defence}
+                filled
+                controlled={controlled}
+            />
+            <Move
+                title="move"
+                // values={values}
+                onChange={changes.move}
+                value={move}
+                fly={fly}
                 
-                
-                {/* <Height
-                    onChange={setHeightMove}
-                    value={height}
-                    filled
-                /> */}
-                
-                
-            </FlexWrapper>
-        </GridCell>
+                changeFly={changes.fly}
+                // controlled={false}
+            />
+            <Actions
+                onChange={changes.actions}
+                value={actions}
+                filled
+                controlled={controlled}
+            />
+            
+            
+            {/* <Height
+                onChange={setHeightMove}
+                value={height}
+                filled
+            /> */}
+            
+            
+        </FlexWrapper>
+
     )
 }

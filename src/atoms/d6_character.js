@@ -137,7 +137,7 @@ export const defaultD6Charcter = {
     fearless: false,
     actions: 2,
     title: '',
-    price: 22,
+    price: 32,
     count: 0,
     height: 0,
     weapons: [
@@ -168,6 +168,14 @@ export const POISON_ACTIVATION = [
 
 const PRICE_KOEFF = 2
 
+const getMidDmg = (value) => {
+    let sum = 0
+    for (let i = 1; i <= value; i++) {
+        sum += i / value
+    }
+    return sum
+}
+
 export const getD6WeaponPrice = (weapon) => {
     const {
         range = {
@@ -194,7 +202,7 @@ export const getD6WeaponPrice = (weapon) => {
     // const rangeKoeff = WEAPONS_RANGE.findIndex((item) => item === range.max) - WEAPONS_RANGE.findIndex((item) => item === range.min) + 1
     const rangeKoeff = clamp(range.max / 2 - range.min, 1, 6)
     const depKoeff = dependencies.strength.min + dependencies.agility.min + dependencies.perception.min + dependencies.intelligence.min  - 4
-    const rangeDMG = rangeKoeff * WEAPONS_DAMAGE[dmg].value
+    const rangeDMG = rangeKoeff * getMidDmg(dmg)
    
     // console.log(
     //     'Weapon Price',
@@ -210,7 +218,7 @@ export const getD6WeaponPrice = (weapon) => {
                 str
                 + exp
                 + rangeDMG
-                - depKoeff
+                // - depKoeff
                 + traitsPrice
             ) * count * PRICE_KOEFF
         )
@@ -289,7 +297,7 @@ const getD6SkillPrice = (skill) => {
 }
 
 // const calculateAttr = (attribute) => parseInt(attribute) * (attribute >= 6 ? attribute - 4 : 1)
-const calculateAttr = (attribute) =>  Math.ceil((parseInt(attribute) / 6) * 20)
+const calculateAttr = (attribute) => Math.ceil(parseInt(attribute) > 4 ? parseInt(attribute) * 2 : parseInt(attribute))
 
 export const getD6CharacterPrice = (character) => {
     const {
@@ -332,15 +340,15 @@ export const getD6CharacterPrice = (character) => {
     let calculatedPoisons = 0
     poisons.map((poison) => calculatedPoisons += getD6PoisonPrice({ ...poison }))
 
-    const calculatedMove = Math.ceil(fly ? Math.sqrt(Math.pow(parseInt(agility) + parseInt(move), 2) / 2) * 2 - parseInt(agility) : parseInt(move))
+    const calculatedMove = Math.ceil(fly ? Math.pow(parseInt(agility), 2) + Math.pow(parseInt(move), 2) : Math.pow(parseInt(move), 2))
 
     const attributeSum =
-        parseInt(strength)
-        + parseInt(agility)
-        + parseInt(perception)
-        + parseInt(intelligence)
+        calculateAttr(strength)
+        + calculateAttr(agility)
+        + calculateAttr(perception)
+        + calculateAttr(intelligence)
         + calculatedMove
-        + parseInt(defence)
+        + parseInt(defence) * 2
     
     
 
@@ -351,7 +359,7 @@ export const getD6CharacterPrice = (character) => {
         + parseInt(calculatedSkills)
         + parseInt(calculatedPoisons)
     // console.log('Character sum', attributeSum, Math.ceil(Math.max(Math.ceil(attributeSum), 4) * PRICE_KOEFF), parseInt(calculatedWeapons), characteristicSum)
-    return characteristicSum
+    return Math.ceil(characteristicSum * actions / 2)
 }
 
 export const characterD6State = atom({

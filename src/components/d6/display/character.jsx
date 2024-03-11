@@ -68,6 +68,44 @@ export const DisplayCharacter = (props) => {
 
     const warriorTypeItem = WARRIOR_TYPES_VALUES.filter((item) => item?.id === warriorType)?.[0]
     const warriorTypeIcon = warriorTypeItem?.icon
+    const titles = []
+    const strengths = []
+    let combinedDmg = 0
+    let combinedPrice = 0
+    
+
+    const meleeWeapons = weapons.filter((weapon) =>
+        (weapon?.traits || []).length === 1
+        && (weapon?.traits || []).includes('melee')
+        && weapon.range.min === 1
+        && weapon.range.max === 1
+    ).map((weapon) => {
+        titles.push(weapon.title)
+        strengths.push(weapon.str)
+        combinedDmg += weapon.dmg
+        combinedPrice += weapon.price
+    })
+    const rangedWeapons = weapons.filter((weapon) =>
+        !(weapon?.traits || []).includes('melee')
+        || weapon.range.min !== 1
+        || weapon.range.max !== 1
+        )
+    const combinedMelee = {
+        range: {
+            min: 1,
+            max: 1
+        },
+        str: strengths.sort()[0] + strengths.length - 1,
+        dmg: combinedDmg,
+        count: 1,
+        price: combinedPrice,
+        title: titles.join(' + '),
+        traits: [
+            'melee'
+        ]
+    }
+
+    const passedWeapons = meleeWeapons.length > 1 ? [combinedMelee, ...rangedWeapons] : weapons
 
     const experienceProps = {
         characteristics,
@@ -119,12 +157,16 @@ export const DisplayCharacter = (props) => {
                             armour={armour}
                             actions={actions}
                         />
-                        <Experience {...experienceProps} width={10} />
+                        <div>
+                            <Experience {...experienceProps} width={10} height={3} />
+                            {traits?.length > 0 && <FlexWrapper>
+                                {traits.map((skill) => <TraitElement controlled={false} key={String(skill)} title={String(skill)} />)}
+                            </FlexWrapper>}
+                        </div>
+                        
                     </FlexWrapper>
-                    {traits?.length > 0 && <FlexWrapper>
-                        {traits.map((skill) => <TraitElement controlled={false} key={String(skill)} title={String(skill)} />)}
-                    </FlexWrapper>}
-                    {weapons.map((weapon) =>
+                    
+                    {passedWeapons.map((weapon) =>
                         <Weapon
                             character={characteristics}
                             {...weapon}

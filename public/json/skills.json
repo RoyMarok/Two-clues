@@ -1,156 +1,20 @@
 [
     {
-        "id": "move",
-        "skill": false,
-        "attributes": {
-            "strength": false,
-            "agility": false,
-            "perception": false,
-            "intelligence": false
-        },
-        "action": {
-            "duration": {
-                "stand": 1,
-                "hidden": 2,
-                "panic": 0
-            },
-            "first": true,
-            "remain": true
-        }
+        "id": "terror_1",
+        "title": "Ужас(1)",
+        "description": "",
+        "price": 2
     },
     {
-        "id": "moveRandom",
-        "skill": false,
-        "attributes": {
-            "strength": false,
-            "agility": false,
-            "perception": false,
-            "intelligence": false
-        },
-        "action": {
-            "duration": {
-                "stand": 0,
-                "hidden": 0,
-                "panic": 1
-            },
-            "first": true,
-            "remain": true
-        }
+        "id": "terror_2",
+        "title": "Ужас(2)",
+        "description": "",
+        "price": 4
     },
     {
-        "id": "acrobathics",
-        "skill": true,
-        "attributes": {
-            "strength": false,
-            "agility": true,
-            "perception": false,
-            "intelligence": false
-        },
-        "action": {
-            "duration": {
-                "stand": 1,
-                "hidden": 0,
-                "panic": 0
-            },
-            "first": true,
-            "remain": true
-        }
-    },
-
-    {
-        "id": "melee",
-        "skill": true,
-        "attributes": {
-            "strength": true,
-            "agility": true,
-            "perception": false,
-            "intelligence": false
-        },
-        "action": {
-            "duration": {
-                "stand": 1,
-                "hidden": 0,
-                "panic": 0
-            },
-            "first": true,
-            "remain": true
-        }
-    },
-    {
-        "id": "guns",
-        "skill": true,
-        "attributes": {
-            "strength": false,
-            "agility": false,
-            "perception": true,
-            "intelligence": true
-        },
-        "action": {
-            "duration": {
-                "stand": 1,
-                "hidden": 1,
-                "panic": 0
-            },
-            "first": false,
-            "remain": true
-        }
-    },
-    {
-        "id": "throw",
-        "skill": false,
-        "attributes": {
-            "strength": true,
-            "agility": false,
-            "perception": true,
-            "intelligence": false
-        },
-        "action": {
-            "duration": {
-                "stand": 1,
-                "hidden": 1,
-                "panic": 0
-            },
-            "first": false,
-            "remain": true
-        }
-    },
-    {
-        "id": "aim",
-        "skill": false,
-        "attributes": {
-            "strength": false,
-            "agility": false,
-            "perception": true,
-            "intelligence": false
-        },
-        "action": {
-            "duration": {
-                "stand": 1,
-                "hidden": 1,
-                "panic": 0
-            },
-            "first": true,
-            "remain": true
-        }
-    },
-    {
-        "id": "reload",
-        "skill": false,
-        "attributes": {
-            "strength": false,
-            "agility": false,
-            "perception": false,
-            "intelligence": false
-        },
-        "action": {
-            "duration": {
-                "stand": "~",
-                "hidden": "~",
-                "panic": 0
-            },
-            "first": true,
-            "remain": true
-        }
+        "id": "terror_3",
+        "title": "Ужас(3)",
+        "description": "",
+        "price": 6
     }
-    
 ]

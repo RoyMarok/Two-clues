@@ -16,6 +16,7 @@ export const Attributes = (props) => {
         move,
         defence,
         fly,
+        actions
     } = props
 
     return (
@@ -29,6 +30,7 @@ export const Attributes = (props) => {
             <FlexWrapper>
                 <IconedElement icon="defence" value={defence} minimal />
                 <IconedElement icon={fly ? 'fly' : 'move'} value={move} />
+                <IconedElement icon='atom' value={actions} />
             </FlexWrapper>
         </GridCell>
     )

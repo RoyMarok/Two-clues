@@ -5,7 +5,7 @@
             "max": 1
         },
         "str": 0,
-        "dmg": 0,
+        "dmg": 1,
         "exp": 0,
         "count": 1,
         "title": "Кулаки",
@@ -68,7 +68,7 @@
             "min": 1,
             "max": 1
         },
-        "str": 0,
+        "str": 1,
         "dmg": 1,
         "exp": 0,
         "count": 1,
@@ -100,8 +100,8 @@
             "min": 1,
             "max": 1
         },
-        "str": 0,
-        "dmg": 3,
+        "str": 1,
+        "dmg": 2,
         "exp": 0,
         "count": 1,
         "title": "Когти",
@@ -133,7 +133,7 @@
             "max": 1
         },
         "str": 0,
-        "dmg": 2,
+        "dmg": 3,
         "exp": 0,
         "count": 1,
         "title": "Дубина",
@@ -197,7 +197,7 @@
             "max": 3
         },
         "str": 0,
-        "dmg": 2,
+        "dmg": 3,
         "exp": 0,
         "count": 1,
         "title": "Копье",
@@ -228,8 +228,8 @@
             "min": 1,
             "max": 1
         },
-        "str": 3,
-        "dmg": 2,
+        "str": 1,
+        "dmg": 3,
         "exp": 0,
         "count": 1,
         "title": "Сабля",
@@ -261,7 +261,7 @@
             "max": 1
         },
         "str": 0,
-        "dmg": 3,
+        "dmg": 4,
         "exp": 0,
         "count": 1,
         "title": "Меч",
@@ -293,7 +293,7 @@
             "max": 1
         },
         "str": 0,
-        "dmg": 5,
+        "dmg": 6,
         "exp": 0,
         "count": 1,
         "title": "Меч большой",
@@ -324,7 +324,7 @@
             "min": 1,
             "max": 1
         },
-        "str": 0,
+        "str": 1,
         "dmg": 4,
         "exp": 0,
         "count": 1,
@@ -357,7 +357,7 @@
             "max": 1
         },
         "str": 0,
-        "dmg": 4,
+        "dmg": 5,
         "exp": 0,
         "count": 1,
         "title": "Цеп",
@@ -388,8 +388,8 @@
             "min": 1,
             "max": 1
         },
-        "str": 0,
-        "dmg": 5,
+        "str": 1,
+        "dmg": 6,
         "exp": 0,
         "count": 1,
         "title": "Топор большой",
@@ -420,8 +420,8 @@
             "min": 3,
             "max": 6
         },
-        "str": 3,
-        "dmg": 2,
+        "str": 2,
+        "dmg": 3,
         "exp": 0,
         "count": 1,
         "title": "Топор метательный",
@@ -450,8 +450,8 @@
             "min": 1,
             "max": 2
         },
-        "str": 0,
-        "dmg": 5,
+        "str": 1,
+        "dmg": 7,
         "exp": 0,
         "count": 1,
         "title": "Алебарда",
@@ -482,8 +482,8 @@
             "min": 1,
             "max": 6
         },
-        "str": 3,
-        "dmg": 2,
+        "str": 1,
+        "dmg": 3,
         "exp": 0,
         "count": 1,
         "title": "Арбалет-пистолет",
@@ -511,11 +511,11 @@
     },
     {
         "range": {
-            "min": 2,
+            "min": 3,
             "max": 12
         },
-        "str": 3,
-        "dmg": 2,
+        "str": 2,
+        "dmg": 3,
         "exp": 0,
         "count": 1,
         "title": "Арбалет",
@@ -546,8 +546,8 @@
             "min": 3,
             "max": 36
         },
-        "str": 4,
-        "dmg": 2,
+        "str": 2,
+        "dmg": 3,
         "exp": 0,
         "count": 1,
         "title": "Арбалеcт",
@@ -578,8 +578,8 @@
             "min": 3,
             "max": 12
         },
-        "str": 3,
-        "dmg": 2,
+        "str": 1,
+        "dmg": 3,
         "exp": 0,
         "count": 1,
         "title": "Лук",
@@ -608,8 +608,8 @@
             "min": 3,
             "max": 12
         },
-        "str": 4,
-        "dmg": 2,
+        "str": 2,
+        "dmg": 3,
         "exp": 0,
         "count": 1,
         "title": "Блочный лук",
@@ -638,10 +638,10 @@
             "min": 1,
             "max": 6
         },
-        "str": 5,
-        "dmg": 4,
+        "str": 3,
+        "dmg": 3,
         "exp": 0,
-        "count": 1,
+        "count": 2,
         "title": "Обрез",
         "dependencies": {
             "strength": {
@@ -662,7 +662,8 @@
             }
         },
         "traits": [
-            "reload_2"
+            "reload_1",
+            "knockback"
         ]
     },
     {
@@ -670,8 +671,8 @@
             "min": 1,
             "max": 8
         },
-        "str": 5,
-        "dmg": 3,
+        "str": 3,
+        "dmg": 6,
         "exp": 0,
         "count": 1,
         "title": "Пистолет",
@@ -700,8 +701,8 @@
             "min": 1,
             "max": 8
         },
-        "str": 5,
-        "dmg": 3,
+        "str": 3,
+        "dmg": 6,
         "exp": 0,
         "count": 1,
         "title": "Револьвер",
@@ -730,8 +731,8 @@
             "min": 1,
             "max": 8
         },
-        "str": 5,
-        "dmg": 3,
+        "str": 3,
+        "dmg": 6,
         "exp": 0,
         "count": 1,
         "title": "Пистолет 4 ствола",
@@ -760,8 +761,8 @@
             "min": 3,
             "max": 12
         },
-        "str": 5,
-        "dmg": 3,
+        "str": 3,
+        "dmg": 6,
         "exp": 0,
         "count": 1,
         "title": "Мушкет 4 ствола",
@@ -792,8 +793,8 @@
             "min": 3,
             "max": 36
         },
-        "str": 5,
-        "dmg": 3,
+        "str": 3,
+        "dmg": 6,
         "exp": 0,
         "count": 1,
         "title": "Мушкет",
@@ -824,8 +825,8 @@
             "min": 3,
             "max": 36
         },
-        "str": 5,
-        "dmg": 3,
+        "str": 3,
+        "dmg": 6,
         "exp": 0,
         "count": 1,
         "title": "Ружьё",
@@ -853,14 +854,14 @@
     },
     {
         "range": {
-            "min": 3,
-            "max": 36
+            "min": 1,
+            "max": 6
         },
-        "str": 5,
-        "dmg": 3,
+        "str": 0,
+        "dmg": 2,
         "exp": 0,
         "count": 1,
-        "title": "Винтовка",
+        "title": "Духовая трубка",
         "dependencies": {
             "strength": {
                 "min": 2,

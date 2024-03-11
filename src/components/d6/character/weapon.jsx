@@ -129,7 +129,7 @@ export const DMG = ({ onChange, value, filled, controlled = true }) => (
         {controlled ? <ValueField
             onChange={onChange}
             value={value}
-            showValue={WEAPONS_DAMAGE[value].title}
+            showValue={value}
             filled={filled}
         /> : <GridCell black width={2} height="2" center big>
             {value}
@@ -273,8 +273,12 @@ export const Weapon = (props) => {
             </FlexWrapper>
             
             <FlexWrapper>
-                <GridCell width={10} height={6} center>
-                    <FlexWrapper>
+                        <Count
+                            onChange={changes.count}
+                            value={count}
+                            
+
+                        />
                         <Range
                             onChange={changes.range}
                             value={range}
@@ -297,54 +301,15 @@ export const Weapon = (props) => {
                             value={exp}
                         // controlled={controlled}
                         />
-                    </FlexWrapper>
 
-                    <FlexWrapper>
-                        <Count
-                            onChange={changes.count}
-                            value={count}
-                            filled
-                        // controlled={controlled}
-                        />
-                        <MinAttribute
-                            title="strength"
-                            onChange={handleChangeCreator('strength')}
-                            value={dependencies?.strength}
-                            controlled={controlled}
-                        />
-                        <MinAttribute
-                            title="agility"
-                            onChange={handleChangeCreator('agility')}
-                            value={dependencies?.agility}
-                            filled
-                            controlled={controlled}
-                        />
-                        <MinAttribute
-                            title="perception"
-                            onChange={handleChangeCreator('perception')}
-                            value={dependencies?.perception}
-                            controlled={controlled}
-                        />
-                        <MinAttribute
-                            title="intelligence"
-                            onChange={handleChangeCreator('intelligence')}
-                            value={dependencies?.intelligence}
-                            filled
-                            controlled={controlled}
-                        />
 
-                    </FlexWrapper>
-
-                </GridCell>
-                <GridCell width="4" height="6" center>
-                    <Traits
-                        traits={allTraits}
-                        selectedTraits={traits}
-                        controlled={controlled}
-                        onChange={changes.traits}
-                    />
-                </GridCell>
             </FlexWrapper>
+            <Traits
+                traits={allTraits}
+                selectedTraits={traits}
+                controlled={controlled}
+                onChange={changes.traits}
+            />
         </>
     )
 }
