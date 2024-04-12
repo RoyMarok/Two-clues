@@ -123,12 +123,12 @@ const defaultD6Skill = {
 
 export const defaultD6Charcter = {
     characteristics: {
-        strength: 3,
-        agility: 3,
-        perception: 3,
-        intelligence: 3,
+        strength: 0,
+        agility: 0,
+        perception: 0,
+        intelligence: 0,
         health: 1,
-        move: 2,
+        move: 6,
         panic: 0,
         defence: 0,
         fly: false
@@ -167,11 +167,13 @@ export const POISON_ACTIVATION = [
 ]
 
 const PRICE_KOEFF = 2
+const SINGLE_ATTR_PRICE = 2.5
 
 const getMidDmg = (value) => {
+    const passedValue = value + 3
     let sum = 0
-    for (let i = 1; i <= value; i++) {
-        sum += i / value
+    for (let i = 1; i <= passedValue; i++) {
+        sum += i / passedValue
     }
     return sum
 }
@@ -193,30 +195,38 @@ export const getD6WeaponPrice = (weapon) => {
     } = weapon
 
     let traitsPrice = 0
-    allTraits.map(trait => {
-        if (traits.includes(trait.id)) {
-            traitsPrice += parseInt(trait.price)
-        }
-        return null
-    })
+    
     // const rangeKoeff = WEAPONS_RANGE.findIndex((item) => item === range.max) - WEAPONS_RANGE.findIndex((item) => item === range.min) + 1
     const rangeKoeff = clamp(range.max / 2 - range.min, 1, 6)
-    const depKoeff = dependencies.strength.min + dependencies.agility.min + dependencies.perception.min + dependencies.intelligence.min  - 4
-    const rangeDMG = rangeKoeff * getMidDmg(dmg)
+    const rangeDMG = rangeKoeff * ((str + dmg + 6))
    
     // console.log(
     //     'Weapon Price',
     //     title,
     //     rangeKoeff,
-    //     WEAPONS_DAMAGE[dmg].value,
-    //     rangeKoeff * WEAPONS_DAMAGE[dmg].value,
+    //     str,
+    //     dmg,
+    //     (str + dmg + 6),
+    //     rangeDMG,
     // )
+
+    allTraits.map(trait => {
+        if (traits.includes(trait.id)) {
+            if (trait?.multi) {
+                traitsPrice += rangeDMG * (parseInt(trait.price) - 1)
+            } else {
+                traitsPrice += parseInt(trait.price)
+            }
+
+        }
+        return null
+    })
 
     return Math.max(
         Math.ceil(
             (
-                str
-                + exp
+                // (str + 3)
+                // + (dmg + 3)
                 + rangeDMG
                 // - depKoeff
                 + traitsPrice
@@ -297,7 +307,7 @@ const getD6SkillPrice = (skill) => {
 }
 
 // const calculateAttr = (attribute) => parseInt(attribute) * (attribute >= 6 ? attribute - 4 : 1)
-const calculateAttr = (attribute) => Math.ceil(parseInt(attribute) > 4 ? parseInt(attribute) * 2 : parseInt(attribute))
+const calculateAttr = (attribute) => (parseInt(attribute) + 2) * SINGLE_ATTR_PRICE
 
 export const getD6CharacterPrice = (character) => {
     const {
@@ -340,7 +350,7 @@ export const getD6CharacterPrice = (character) => {
     let calculatedPoisons = 0
     poisons.map((poison) => calculatedPoisons += getD6PoisonPrice({ ...poison }))
 
-    const calculatedMove = Math.ceil(fly ? Math.pow(parseInt(agility), 2) + Math.pow(parseInt(move), 2) : Math.pow(parseInt(move), 2))
+    const calculatedMove = Math.ceil(fly ? Math.pow(parseInt(move), 2) : parseInt(move))
 
     const attributeSum =
         calculateAttr(strength)
@@ -348,7 +358,7 @@ export const getD6CharacterPrice = (character) => {
         + calculateAttr(perception)
         + calculateAttr(intelligence)
         + calculatedMove
-        + parseInt(defence) * 2
+        + parseInt(defence) * SINGLE_ATTR_PRICE
     
     
 

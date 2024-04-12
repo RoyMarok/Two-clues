@@ -34,5 +34,94 @@
         "title": "Отбрасывает",
         "description": "",
         "price": 2
+    },
+    {
+        "id": "rapid",
+        "title": "Очередь",
+        "description": "",
+        "multi": true,
+        "price": 2
+    },
+    {
+        "id": "laser",
+        "title": "Лазер",
+        "description": "",
+        "price": 0
+    },
+    {
+        "id": "melta",
+        "title": "Мельта",
+        "description": "",
+        "multi": true,
+        "price": 6
+    },
+    {
+        "id": "needle",
+        "title": "Игла",
+        "description": "",
+        "price": 0
+    },
+    {
+        "id": "poison",
+        "title": "Яд",
+        "description": "",
+        "price": 4
+    },
+    {
+        "id": "blaze",
+        "title": "Поджог",
+        "description": "",
+        "price": 4
+    },
+    {
+        "id": "disarm",
+        "title": "Выбивает",
+        "description": "",
+        "price": 2
+    },
+    {
+        "id": "rending",
+        "title": "Пробивает",
+        "description": "",
+        "price": 2
+    },
+    {
+        "id": "pulverise",
+        "title": "Размазывает",
+        "description": "",
+        "price": 4
+    },
+    {
+        "id": "granade",
+        "title": "Граната",
+        "description": "",
+        "price": -3
+    },
+    {
+        "id": "blast_3",
+        "title": "Взрыв 3",
+        "description": "",
+        "multi": true,
+        "price": 2
+    },
+    {
+        "id": "blast_5",
+        "title": "Взрыв 5",
+        "description": "",
+        "multi": true,
+        "price": 3
+    },
+    {
+        "id": "smoke",
+        "title": "Дым",
+        "description": "",
+        "multi": true,
+        "price": -1
+    },
+    {
+        "id": "template",
+        "title": "Шаблон",
+        "description": "",
+        "price": 0
     }
 ]

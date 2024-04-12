@@ -37,7 +37,7 @@ export const IconedElement = (props) => {
                 <GridCell center inverse={marked}>
                     {passedTitle}
                 </GridCell>
-                {Boolean(value || currentValue) && <GridCell center black={(black || important) && !inverse} filled={filled} inverse={inverse}>
+                <GridCell center black={(black || important) && !inverse} filled={filled} inverse={inverse}>
                     {!minimal
                         ? passedValue
                         : <div>
@@ -49,7 +49,7 @@ export const IconedElement = (props) => {
                             
                         </div>
                     }
-                </GridCell>}
+                </GridCell>
                 {Boolean(description) && <GridCell center >
                     <FlexWrapper>
                         <GridCell center width={0.5} height={0.5} filled={checkboxes} />

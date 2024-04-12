@@ -20,17 +20,17 @@ export const Attributes = (props) => {
     } = props
 
     return (
-        <GridCell height={4} width={4} center>
+        <GridCell height={2} width={7} center>
             <FlexWrapper>
-                <IconedElement icon="strength" value={strength} filled minimal />
-                <IconedElement icon="agility" value={agility} minimal />
-                <IconedElement icon="perception" value={perception} filled minimal />
-                <IconedElement icon="intelligence" value={intelligence} minimal />
-            </FlexWrapper>
-            <FlexWrapper>
-                <IconedElement icon="defence" value={defence} minimal />
-                <IconedElement icon={fly ? 'fly' : 'move'} value={move} />
-                <IconedElement icon='atom' value={actions} />
+                <IconedElement icon="strength" value={strength} filled minimal black />
+                <IconedElement icon="agility" value={agility} minimal black />
+                <IconedElement icon="perception" value={perception} filled minimal black />
+                <IconedElement icon="intelligence" value={intelligence} minimal black />
+            {/* </FlexWrapper>
+            <FlexWrapper> */}
+                <IconedElement icon="defence" value={defence} filled black />
+                <IconedElement icon={fly ? 'fly' : 'move'} value={move} black />
+                <IconedElement icon='atom' value={actions} filled black />
             </FlexWrapper>
         </GridCell>
     )

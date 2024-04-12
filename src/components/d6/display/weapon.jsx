@@ -32,6 +32,7 @@ export const Weapon = (props) => {
     const passedStr = str + count - 1
     const passedDmg = dmg * count
     const isMulti = count > 1
+    const depIcon = Object.keys(dependencies || {}).filter((attr) => dependencies?.[attr]?.use || dependencies?.[attr])[0]
 
     return (
         <>
@@ -43,23 +44,32 @@ export const Weapon = (props) => {
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
             <FlexWrapper>
-                <IconedElement icon="range" value={rangeText} filled />
+                <IconedElement icon="range" value={rangeText} filled  />
+                <GridCell height={2} center>
+                    <GridCell width={1} center ><GetIcon color="secondary" icon="dice" /></GridCell>
+                    <GridCell width={1} center ><GetIcon icon={depIcon} /></GridCell>
+                </GridCell>
                 <IconedElement
-                    icon="fist"
-                    value={isMulti ? str : passedStr}
-                    minimal={isMulti}
-                    currentValue={isMulti ? passedStr : ''}
-                    
+                    icon="hit"
+                    // value={isMulti ? str : passedStr}
+                    value={str}
+                    // minimal={isMulti}
+                    // currentValue={isMulti ? passedStr : ''}
+                    // black
+                    filled
                 />
                 <IconedElement
                     icon="dmg"
-                    value={isMulti ? dmg : passedDmg}
-                    minimal={isMulti}
-                    currentValue={isMulti ? passedDmg : ''}
-                    nonZero
-                    filled
+                    // value={isMulti ? dmg : passedDmg}
+                    value={dmg}
+                    // minimal={isMulti}
+                    // currentValue={isMulti ? passedDmg : ''}
+                    // nonZero
+                    // black
+                    
                 />
-                <IconedElement icon="chart" value={exp} minimal />
+                
+
                 {/* <GridCell /> */}
                 {/* <IconedElement
                     icon="strength"
@@ -91,8 +101,9 @@ export const Weapon = (props) => {
                     important={false}
 
                 /> */}
-                {traits?.length > 0 && <GridCell width={10} height={2} center open>
-                    <GridCell />
+                <GridCell width={0.5}/>
+                {traits?.length > 0 && <GridCell width={9} height={2} center open>
+                    
                     <Traits
                         traits={allTraits}
                         selectedTraits={traits}

@@ -4,28 +4,16 @@
             "min": 1,
             "max": 1
         },
-        "str": 0,
-        "dmg": 1,
-        "exp": 0,
+        "str": -1,
+        "dmg": -2,
+        
         "count": 1,
         "title": "Кулаки",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
             "melee"
@@ -36,28 +24,16 @@
             "min": 1,
             "max": 1
         },
-        "str": 0,
-        "dmg": 2,
-        "exp": 0,
+        "str": -1,
+        "dmg": -1,
+        
         "count": 1,
         "title": "Челюсти",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
             "melee"
@@ -68,28 +44,16 @@
             "min": 1,
             "max": 1
         },
-        "str": 1,
-        "dmg": 1,
-        "exp": 0,
+        "str": -1,
+        "dmg": 0,
+        
         "count": 1,
         "title": "Нож",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
             "melee"
@@ -100,28 +64,77 @@
             "min": 1,
             "max": 1
         },
-        "str": 1,
-        "dmg": 2,
-        "exp": 0,
+        "str": -1,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Стилет",
+        "dependencies": {
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": [
+            "melee",
+            "poison"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": -1,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "Силовой Нож",
+        "dependencies": {
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": -1,
+        "dmg": 1,
+        
         "count": 1,
         "title": "Когти",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": -1,
+        "dmg": 2,
+        
+        "count": 1,
+        "title": "Дубина",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
             "melee"
@@ -134,29 +147,18 @@
         },
         "str": 0,
         "dmg": 3,
-        "exp": 0,
+        
         "count": 1,
-        "title": "Дубина",
+        "title": "Силовой кулак",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
-            "melee"
+            "melee",
+            "pulverise"
         ]
     },
     {
@@ -164,28 +166,16 @@
             "min": 2,
             "max": 3
         },
-        "str": 0,
-        "dmg": 2,
-        "exp": 0,
+        "str": -1,
+        "dmg": -1,
+        
         "count": 1,
         "title": "Хлыст",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
             "melee"
@@ -196,28 +186,16 @@
             "min": 1,
             "max": 3
         },
-        "str": 0,
-        "dmg": 3,
-        "exp": 0,
+        "str": -1,
+        "dmg": 0,
+        
         "count": 1,
         "title": "Копье",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
             "melee"
@@ -228,28 +206,16 @@
             "min": 1,
             "max": 1
         },
-        "str": 1,
-        "dmg": 3,
-        "exp": 0,
+        "str": 0,
+        "dmg": 0,
+        
         "count": 1,
         "title": "Сабля",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": false
-            },
-            "agility": {
-                "min": 2,
-                "use": true
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
             "melee"
@@ -261,28 +227,16 @@
             "max": 1
         },
         "str": 0,
-        "dmg": 4,
-        "exp": 0,
+        "dmg": 0,
+        
         "count": 1,
         "title": "Меч",
-        "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
-        },
+       "dependencies": {
+        "strength": true,
+        "agility": false,
+        "perception": false,
+        "intelligence": false
+    },
         "traits": [
             "melee"
         ]
@@ -293,59 +247,15 @@
             "max": 1
         },
         "str": 0,
-        "dmg": 6,
-        "exp": 0,
+        "dmg": 1,
+        
         "count": 1,
         "title": "Меч большой",
         "dependencies": {
-            "strength": {
-                "min": 2,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
-        },
-        "traits": [
-            "melee"
-        ]
-    },
-    {
-        "range": {
-            "min": 1,
-            "max": 1
-        },
-        "str": 1,
-        "dmg": 4,
-        "exp": 0,
-        "count": 1,
-        "title": "Топор",
-        "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
             "melee"
@@ -357,30 +267,19 @@
             "max": 1
         },
         "str": 0,
-        "dmg": 5,
-        "exp": 0,
+        "dmg": 2,
+        
         "count": 1,
-        "title": "Цеп",
+        "title": "Цепной Меч большой",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
-            "melee"
+            "melee",
+            "rending"
         ]
     },
     {
@@ -388,60 +287,123 @@
             "min": 1,
             "max": 1
         },
-        "str": 1,
-        "dmg": 6,
-        "exp": 0,
+        "str": -1,
+        "dmg": 1,
+        
         "count": 1,
-        "title": "Топор большой",
+        "title": "Топор",
         "dependencies": {
-            "strength": {
-                "min": 2,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
-            "melee"
+            "melee",
+            "disarm"
         ]
     },
     {
         "range": {
-            "min": 3,
+            "min": 1,
+            "max": 1
+        },
+        "str": -1,
+        "dmg": 2,
+        
+        "count": 1,
+        "title": "Цепной Топор",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": [
+            "melee",
+            "disarm",
+            "rending"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "Цеп",
+        "dependencies": {
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": [
+            "melee",
+            "disarm"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": -1,
+        "dmg": 2,
+        
+        "count": 1,
+        "title": "Топор большой",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": [
+            "melee",
+            "disarm"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": -1,
+        "dmg": 3,
+        
+        "count": 1,
+        "title": "Цепной Топор большой",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": [
+            "melee",
+            "disarm",
+            "rending"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
             "max": 6
         },
-        "str": 2,
-        "dmg": 3,
-        "exp": 0,
+        "str": -1,
+        "dmg": -1,
+        
         "count": 1,
         "title": "Топор метательный",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": false,
+            "agility": true,
+            "perception": false,
+            "intelligence": false
         },
         "traits": []
     },
@@ -450,28 +412,16 @@
             "min": 1,
             "max": 2
         },
-        "str": 1,
-        "dmg": 7,
-        "exp": 0,
+        "str": 0,
+        "dmg": 2,
+        
         "count": 1,
         "title": "Алебарда",
         "dependencies": {
-            "strength": {
-                "min": 2,
-                "use": true
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": false
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
         },
         "traits": [
             "melee"
@@ -482,28 +432,16 @@
             "min": 1,
             "max": 6
         },
-        "str": 1,
-        "dmg": 3,
-        "exp": 0,
+        "str": 0,
+        "dmg": -1,
+        
         "count": 1,
         "title": "Арбалет-пистолет",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 2,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": [
             "reload_1"
@@ -514,28 +452,16 @@
             "min": 3,
             "max": 12
         },
-        "str": 2,
-        "dmg": 3,
-        "exp": 0,
+        "str": 0,
+        "dmg": -1,
+        
         "count": 1,
         "title": "Арбалет",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 2,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": [
             "reload_1"
@@ -546,28 +472,16 @@
             "min": 3,
             "max": 36
         },
-        "str": 2,
-        "dmg": 3,
-        "exp": 0,
+        "str": 0,
+        "dmg": 0,
+        
         "count": 1,
         "title": "Арбалеcт",
         "dependencies": {
-            "strength": {
-                "min": 2,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 2,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": [
             "reload_1"
@@ -578,28 +492,16 @@
             "min": 3,
             "max": 12
         },
-        "str": 1,
-        "dmg": 3,
-        "exp": 0,
+        "str": -1,
+        "dmg": -1,
+        
         "count": 1,
         "title": "Лук",
         "dependencies": {
-            "strength": {
-                "min": 3,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": []
     },
@@ -608,28 +510,16 @@
             "min": 3,
             "max": 12
         },
-        "str": 2,
-        "dmg": 3,
-        "exp": 0,
+        "str": 0,
+        "dmg": -1,
+        
         "count": 1,
         "title": "Блочный лук",
         "dependencies": {
-            "strength": {
-                "min": 3,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 1,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": []
     },
@@ -638,28 +528,16 @@
             "min": 1,
             "max": 6
         },
-        "str": 3,
-        "dmg": 3,
-        "exp": 0,
+        "str": 1,
+        "dmg": -1,
+        
         "count": 2,
         "title": "Обрез",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 3,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": [
             "reload_1",
@@ -671,28 +549,16 @@
             "min": 1,
             "max": 8
         },
-        "str": 3,
-        "dmg": 6,
-        "exp": 0,
+        "str": 0,
+        "dmg": 1,
+        
         "count": 1,
         "title": "Пистолет",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 3,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": ["reload_1"]
     },
@@ -701,28 +567,16 @@
             "min": 1,
             "max": 8
         },
-        "str": 3,
-        "dmg": 6,
-        "exp": 0,
+        "str": 0,
+        "dmg": 1,
+        
         "count": 1,
         "title": "Револьвер",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 3,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": []
     },
@@ -731,28 +585,16 @@
             "min": 1,
             "max": 8
         },
-        "str": 3,
-        "dmg": 6,
-        "exp": 0,
+        "str": 0,
+        "dmg": 1,
+        
         "count": 1,
         "title": "Пистолет 4 ствола",
         "dependencies": {
-            "strength": {
-                "min": 1,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 3,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": ["reload_4"]
     },
@@ -761,28 +603,16 @@
             "min": 3,
             "max": 12
         },
-        "str": 3,
-        "dmg": 6,
-        "exp": 0,
+        "str": 0,
+        "dmg": 1,
+        
         "count": 1,
         "title": "Мушкет 4 ствола",
         "dependencies": {
-            "strength": {
-                "min": 2,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 3,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": [
             "reload_4"
@@ -793,28 +623,16 @@
             "min": 3,
             "max": 36
         },
-        "str": 3,
-        "dmg": 6,
-        "exp": 0,
+        "str": 0,
+        "dmg": 1,
+        
         "count": 1,
         "title": "Мушкет",
         "dependencies": {
-            "strength": {
-                "min": 2,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 3,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": [
             "reload_1"
@@ -825,28 +643,16 @@
             "min": 3,
             "max": 36
         },
-        "str": 3,
-        "dmg": 6,
-        "exp": 0,
+        "str": 1,
+        "dmg": 1,
+        
         "count": 1,
         "title": "Ружьё",
         "dependencies": {
-            "strength": {
-                "min": 2,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 3,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": [
             "reload_2"
@@ -857,29 +663,487 @@
             "min": 1,
             "max": 6
         },
-        "str": 0,
-        "dmg": 2,
-        "exp": 0,
+        "str": -1,
+        "dmg": -1,
+        
         "count": 1,
         "title": "Духовая трубка",
         "dependencies": {
-            "strength": {
-                "min": 2,
-                "use": false
-            },
-            "agility": {
-                "min": 1,
-                "use": false
-            },
-            "perception": {
-                "min": 1,
-                "use": true
-            },
-            "intelligence": {
-                "min": 3,
-                "use": false
-            }
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
         },
         "traits": []
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 8
+        },
+        "str": -1,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Autopistol",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["rapid"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": -1,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Autogun",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["rapid"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 36
+        },
+        "str": 0,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "Lasgun",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["laser"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 36
+        },
+        "str": 1,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Sniper rifle",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 8
+        },
+        "str": 0,
+        "dmg": 2,
+        
+        "count": 1,
+        "title": "Bolter pistol",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["rapid"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 36
+        },
+        "str": -1,
+        "dmg": 2,
+        
+        "count": 1,
+        "title": "Bolter",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["rapid"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 48
+        },
+        "str": 0,
+        "dmg": 4,
+        
+        "count": 1,
+        "title": "Railgun",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 36
+        },
+        "str": 0,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "HYLas",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["rapid"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 36
+        },
+        "str": 0,
+        "dmg": 3,
+        
+        "count": 1,
+        "title": "Ion Beam",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 24
+        },
+        "str": 0,
+        "dmg": 3,
+        
+        "count": 1,
+        "title": "Ion Blaster",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 36
+        },
+        "str": 0,
+        "dmg": 2,
+        
+        "count": 1,
+        "title": "Pulse Carabine",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": 1,
+        "dmg": -1,
+        
+        "count": 1,
+        "title": "Shotgun",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 18
+        },
+        "str": 0,
+        "dmg": 2,
+        
+        "count": 1,
+        "title": "Plasmagun",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 48
+        },
+        "str": 0,
+        "dmg": 3,
+        
+        "count": 1,
+        "title": "Plasmacanon",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 8
+        },
+        "str": 0,
+        "dmg": 2,
+        
+        "count": 1,
+        "title": "Plasma pistol",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": []
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 8
+        },
+        "str": 0,
+        "dmg": 4,
+        
+        "count": 1,
+        "title": "Meltagun",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["melta"]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 8
+        },
+        "str": 0,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "Needle pistol",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["needle", "poison"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 36
+        },
+        "str": 0,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "Needler",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["needle",
+            "poison"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": 0,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Фраг граната",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": ["blast_3", "granade"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": 0,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Дымовая граната",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": ["blast_5", "smoke", "granade"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": 0,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Слезоточивая граната",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": ["blast_5", "poison", "granade"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": 0,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "Крак граната",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": ["granade"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": 0,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Гранатомёт с фраг",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["blast_3"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": 0,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Гранатомёт с дымовой",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["smoke", "blast_5"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": 0,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Гранатомёт со слезами",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["poison",
+            "blast_5"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": 6,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Flamer",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["blaze", "template"]
     }
 ]

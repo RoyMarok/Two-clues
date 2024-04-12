@@ -105,7 +105,8 @@ export const DisplayCharacter = (props) => {
         ]
     }
 
-    const passedWeapons = meleeWeapons.length > 1 ? [combinedMelee, ...rangedWeapons] : weapons
+    // const passedWeapons = meleeWeapons.length > 1 ? [combinedMelee, ...rangedWeapons] : weapons
+    const passedWeapons = weapons
 
     const experienceProps = {
         characteristics,
@@ -157,14 +158,18 @@ export const DisplayCharacter = (props) => {
                             armour={armour}
                             actions={actions}
                         />
-                        <div>
-                            <Experience {...experienceProps} width={10} height={3} />
+                        <GridCell width={0.5} />
+                        <GridCell width={6} height={2}wrapper>
                             {traits?.length > 0 && <FlexWrapper>
                                 {traits.map((skill) => <TraitElement controlled={false} key={String(skill)} title={String(skill)} />)}
                             </FlexWrapper>}
-                        </div>
+                        </GridCell>
+
+                        {/* <Experience {...experienceProps} width={7} height={2} /> */}
+                            
                         
                     </FlexWrapper>
+                    
                     
                     {passedWeapons.map((weapon) =>
                         <Weapon

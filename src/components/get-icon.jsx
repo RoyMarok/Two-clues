@@ -48,6 +48,8 @@ import { ReactComponent as GobletIcon } from '../icons/goblet.svg'
 import { ReactComponent as ChartIcon } from '../icons/chart-up.svg'
 import { ReactComponent as ToughtIcon } from '../icons/toughness.svg'
 import { ReactComponent as FistIcon } from '../icons/fist.svg'
+import { ReactComponent as CrosshairIcon } from '../icons/cross2.svg'
+import { ReactComponent as BowIcon } from '../icons/bow2.svg'
 
 export const GetIcon = ({ icon, ...props }) => {
     switch (icon) {
@@ -147,6 +149,10 @@ export const GetIcon = ({ icon, ...props }) => {
             return <Icon {...props}><ToughtIcon /></Icon>
         case 'fist':
             return <Icon {...props}><FistIcon /></Icon>
+        case 'bow':
+            return <Icon {...props}><BowIcon /></Icon>
+        case 'hit':
+            return <Icon {...props}><CrosshairIcon /></Icon>
 
         default:
             return null
@@ -201,4 +207,7 @@ GetIcon.list = [
     'goblet',
     'chart',
     'fist',
+    'bow',
+    'hit',
+
 ]

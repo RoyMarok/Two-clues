@@ -108,7 +108,7 @@ export const Shots = ({ onChange, values = [1, 2, 3, 6], value, filled, controll
 
 export const STR = ({ onChange, value, filled, controlled = true }) => (
     <IconedField
-        title="fist"
+        title="hit"
         filled={filled}
     >
         {controlled ? <ValueField
@@ -285,22 +285,28 @@ export const Weapon = (props) => {
                             filled
                             controlled={controlled}
                         />
+                        <Dependencies
+                            onChange={changes.dependencies}
+                            value={dependencies}
+                            controlled={controlled}
+                        />
                         <STR
                             onChange={changes.str}
                             value={str}
                             controlled={controlled}
+                            filled
                         />
                         <DMG
                             onChange={changes.dmg}
                             value={dmg}
                             controlled={controlled}
-                            filled
+                            
                         />
-                        <Exp
+                        
+                        {/* <Exp
                             onChange={changes.exp}
                             value={exp}
-                        // controlled={controlled}
-                        />
+                        /> */}
 
 
             </FlexWrapper>
