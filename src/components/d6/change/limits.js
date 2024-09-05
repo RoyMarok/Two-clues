@@ -26,7 +26,7 @@ export const limitsBase = {
     },
     count: {
         min: 1,
-        max: 4
+        max: 5
     },
     range: {
         min: 1,

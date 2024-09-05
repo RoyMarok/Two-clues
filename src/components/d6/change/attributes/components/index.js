@@ -1,0 +1,5 @@
+export { MainAttribute } from './main-attribute'
+export { Health } from './health'
+export { Actions } from './actions'
+export { Defence } from './defence'
+export { Move } from './move'

@@ -1,7 +1,6 @@
 import { atom, selector } from 'recoil'
 
-import { getWeaponPrice } from './utils'
-import { getD6WeaponPrice } from './d6_character'
+import { getD6WeaponPrice } from './utils'
 
 export const defaultWeapon = {
     range: '1',

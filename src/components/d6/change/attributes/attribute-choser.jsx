@@ -4,9 +4,9 @@ import {
     Button,
     GridCell,
     FlexWrapper
-} from '../../styled'
+} from '../../../styled'
 
-import { GetIcon } from '../../get-icon'
+import { GetIcon } from '../../../get-icon'
 
 export const AttributeChoser = (props) => {
 

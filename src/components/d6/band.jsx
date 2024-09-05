@@ -19,7 +19,7 @@ import {
 import { GetIcon } from '../get-icon'
 
 import { Scenarios } from './display/scenarios'
-import { Character } from './character'
+import { Character } from './change'
 import { DisplayCharacter } from './display'
 import { Mordheim, getChance } from './mordheim'
 import { Chances } from './chances'

@@ -2,7 +2,7 @@ export { filterWeapons } from './filter-weapons'
 export { makeCharactersStats } from './make-character-stats'
 export { getChance } from './get-chance'
 
-export { getWeaponPrice } from '../atoms/utils/get-weapon-price'
+export { getD6WeaponPrice } from '../atoms/utils/get-weapon-price'
 export {
     CalculateHealth,
     CalculateMove,

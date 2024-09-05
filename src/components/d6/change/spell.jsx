@@ -24,7 +24,7 @@ import {
     Brain,
     Move,
     Panic
-} from './attributes'
+} from './attributes/attributes'
 import { STR, Dependencies, DMG, Exp, MinAttribute } from './weapon'
 
 export const Quality = ({ onChange, value, filled, controlled = true }) => (

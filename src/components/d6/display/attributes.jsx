@@ -22,10 +22,10 @@ export const Attributes = (props) => {
     return (
         <GridCell height={2} width={7} center>
             <FlexWrapper>
-                <IconedElement icon="strength" value={strength} filled minimal black />
-                <IconedElement icon="agility" value={agility} minimal black />
-                <IconedElement icon="perception" value={perception} filled minimal black />
-                <IconedElement icon="intelligence" value={intelligence} minimal black />
+                <IconedElement icon="strength" value={strength} filled black />
+                <IconedElement icon="agility" value={agility} black />
+                <IconedElement icon="perception" value={perception} filled  black />
+                <IconedElement icon="intelligence" value={intelligence} black />
             {/* </FlexWrapper>
             <FlexWrapper> */}
                 <IconedElement icon="defence" value={defence} filled black />

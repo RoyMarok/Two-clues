@@ -25,6 +25,33 @@ export const RACES = {
         move: 5,
         fly: false
     },
+    'marine': {
+        title: 'Космодесантник',
+        strength: {
+            min: -2,
+            max: 3,
+            avg: 1
+        },
+        agility: {
+            min: -2,
+            max: 3,
+            avg: 1
+        },
+        perception: {
+            min: -2,
+            max: 2,
+            avg: 1
+        },
+        intelligence: {
+            min: -2,
+            max: 2,
+            avg: 0
+        },
+        defence: 2,
+        move: 5,
+        fly: false,
+        traits: ['strong']
+    },
     'elf': {
         title: 'Эльф',
         strength: {
@@ -75,7 +102,8 @@ export const RACES = {
         },
         defence: 0,
         move: 4,
-        fly: false
+        fly: false,
+        traits: ['strong']
     },
     'hobbit': {
         title: 'Хоббит',
@@ -207,32 +235,33 @@ export const RACES = {
         move: 6,
         fly: false
     },
-    // 'orc': {
-    //     title: 'Орк',
-    //     strength: {
-    //         min: 3,
-    //         max: 8,
-    //         avg: 5
-    //     },
-    //     agility: {
-    //         min: 1,
-    //         max: 8,
-    //         avg: 3
-    //     },
-    //     perception: {
-    //         min: 1,
-    //         max: 4,
-    //         avg: 2
-    //     },
-    //     intelligence: {
-    //         min: 1,
-    //         max: 4,
-    //         avg: 2
-    //     },
-    //     defence: 0,
-    //     move: 2,
-    //     fly: false
-    // },
+    'orc': {
+        title: 'Орк',
+        strength: {
+            min: -1,
+            max: 3,
+            avg: 1
+        },
+        agility: {
+            min: -2,
+            max: 2,
+            avg: 0
+        },
+        perception: {
+            min: -2,
+            max: 1,
+            avg: -1
+        },
+        intelligence: {
+            min: -2,
+            max: 1,
+            avg: -1
+        },
+        defence: 0,
+        move: 6,
+        fly: false,
+        traits: ['undefeat', 'immune']
+    },
     'animal': {
         title: 'Животное',
         strength: {
@@ -257,7 +286,35 @@ export const RACES = {
         },
         defence: 0,
         move: 6,
-        fly: false
+        fly: false,
+        traits: ['strong', 'animal']
+    },
+    'teranid': {
+        title: 'Теранид',
+        strength: {
+            min: -2,
+            max: 2,
+            avg: 0
+        },
+        agility: {
+            min: -1,
+            max: 3,
+            avg: 1
+        },
+        perception: {
+            min: -2,
+            max: 2,
+            avg: 1
+        },
+        intelligence: {
+            min: -2,
+            max: 0,
+            avg: -2
+        },
+        defence: 0,
+        move: 7,
+        fly: false,
+        traits: ['undefeat', 'animal']
     },
     'werewolf': {
         title: 'Оборотень',
@@ -284,6 +341,33 @@ export const RACES = {
         defence: 0,
         move: 6,
         fly: false
+    },
+    'robot': {
+        title: 'Робот',
+        strength: {
+            min: 0,
+            max: 3,
+            avg: 1
+        },
+        agility: {
+            min: -1,
+            max: 3,
+            avg: 1
+        },
+        perception: {
+            min: -2,
+            max: 2,
+            avg: -1
+        },
+        intelligence: {
+            min: -2,
+            max: 2,
+            avg: 0
+        },
+        defence: 1,
+        move: 6,
+        fly: false,
+        traits: ['strong', 'immune']
     },
     // 'vampire': {
     //     title: 'Вампир',
@@ -337,7 +421,7 @@ export const RACES = {
         defence: 1,
         move: 6,
         fly: true,
-        traits: ['Ужас(0)']
+        traits: ['Ужас(0)', 'immune']
     },
     // 'skeleton': {
     //     title: 'Скелет',

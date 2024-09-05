@@ -17,7 +17,7 @@ import { Traits } from '../../traits'
 
 import { IconedField } from './iconed-field'
 import { ValueField } from './value-field'
-import { AttributeChoser } from './attribute-choser'
+import { AttributeChoser } from './attributes/attribute-choser'
 import { SquareChooser } from './square-choser'
 
 export const MinAttribute = ({ title, limits = { min: 1, max: 12 }, onChange, value, controlled = true, filled }) => {

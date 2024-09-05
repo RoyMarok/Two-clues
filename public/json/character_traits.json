@@ -1,0 +1,26 @@
+[
+    {
+        "id": "immune",
+        "title": "Иммунитет",
+        "description": "",
+        "price": 5
+    },
+    {
+        "id": "animal",
+        "title": "Животное",
+        "description": "",
+        "price": -2
+    },
+    {
+        "id": "strong",
+        "title": "Крепкий",
+        "description": "",
+        "price": 5
+    },
+    {
+        "id": "undefeat",
+        "title": "Стойкий",
+        "description": "",
+        "price": 10
+    }
+]

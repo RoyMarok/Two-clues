@@ -18,11 +18,8 @@ import { SelectWithOptions } from '../../weapons-selection'
 import { InsertedNames } from '../../names-generator'
 import { GetIcon } from '../../get-icon'
 
-import { Attributes } from './attributes'
+import { Attributes } from './attributes/attributes'
 import { Weapon } from './weapon'
-import { Spell } from './spell'
-import { Poison } from './poison'
-import { Skill } from './skill'
 import { RACES } from './config'
 
 import { defaultLimits, limitsBase } from './limits'
@@ -375,7 +372,7 @@ export const Character = (props) => {
                         changes={changes}
                         limits={limits}
                         controlled={isControlled}
-                        actions={character.actions}
+                        actions={character?.actions}
                     />
                 </FlexWrapper>
                 {isControlled && <FlexWrapper>
@@ -399,35 +396,7 @@ export const Character = (props) => {
                         person
                     />)
                 }
-                {/* {spells.map((spell, spellIndex) =>
-                    <Spell
-                        {...spell}
-                        attributes={characteristics}
-                        index={spellIndex}
-                        characterIndex={index}
-                        changes={spellChanges(spellIndex)}
-                        controlled={isControlled}
-                    />)
-                }
-                {poisons.map((poison, poisonIndex) =>
-                    <Poison
-                        {...poison}
-                        index={poisonIndex}
-                        characterIndex={index}
-                        changes={poisonChanges(poisonIndex)}
-                        controlled={isControlled}
-                    />)
-                }
-                {skills.map((skill, skillIndex) =>
-                    <Skill
-                        {...skill}
-                        index={skillIndex}
-                        characterIndex={index}
-                        changes={skillChanges(skillIndex)}
-                        controlled={isControlled}
-                    />)
-                } */}
-                
+
             </BorderWrapper>
             </FlexWrapper>
             <GridCell />

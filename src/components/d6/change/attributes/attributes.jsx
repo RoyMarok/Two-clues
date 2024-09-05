@@ -5,11 +5,11 @@ import {
     FlexWrapper,
     GridCell,
     Value
-} from '../../styled'
+} from '../../../styled'
 
-import { IconedField } from './iconed-field'
-import { ValueField } from './value-field'
-import { SquareChooser } from './square-choser'
+import { IconedField } from '../iconed-field'
+import { ValueField } from '../value-field'
+import { SquareChooser } from '../square-choser'
 
 export const MainAttribute = ({ values = [], title = '', limits, onChange, value, filled, controlled = true }) => {
     const [showSquare, setView] = useState(false)
@@ -21,7 +21,7 @@ export const MainAttribute = ({ values = [], title = '', limits, onChange, value
             title={title}
             filled={filled}
             iconButton
-            // iconButtonClick={handleChangeInput}
+        // iconButtonClick={handleChangeInput}
         >
             {showSquare ? <SquareChooser
                 values={values}
@@ -47,7 +47,7 @@ export const Health = ({ onChange, value, filled, controlled = true }) => (
         title="health"
         filled={filled}
     >
-        {controlled ?<ValueField
+        {controlled ? <ValueField
             onChange={onChange}
             value={value}
             filled={filled}
@@ -63,7 +63,7 @@ export const Height = ({ onChange, value, filled, limits, controlled = true }) =
         title="height"
         filled={filled}
     >
-        {controlled ?<ValueField
+        {controlled ? <ValueField
             onChange={onChange}
             value={value}
             filled={filled}
@@ -72,7 +72,7 @@ export const Height = ({ onChange, value, filled, limits, controlled = true }) =
             {value}
         </GridCell>}
     </IconedField>
-    
+
 )
 
 export const Move = ({ onChange, value, filled, changeFly, fly, controlled = true }) => (
@@ -127,7 +127,7 @@ export const Actions = ({ onChange, value, filled, controlled = true }) => (
         title="atom"
         filled={filled}
     >
-        {controlled ?<SquareChooser
+        {controlled ? <SquareChooser
             values={[1, 2, 3, 4]}
             onChange={onChange}
             value={value}
@@ -208,9 +208,9 @@ export const Attributes = (props) => {
                 onChange={changes.move}
                 value={move}
                 fly={fly}
-                
+
                 changeFly={changes.fly}
-                // controlled={false}
+            // controlled={false}
             />
             <Actions
                 onChange={changes.actions}
@@ -218,15 +218,15 @@ export const Attributes = (props) => {
                 filled
                 controlled={controlled}
             />
-            
-            
+
+
             {/* <Height
                 onChange={setHeightMove}
                 value={height}
                 filled
             /> */}
-            
-            
+
+
         </FlexWrapper>
 
     )

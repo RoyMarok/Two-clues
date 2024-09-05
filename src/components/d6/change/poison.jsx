@@ -23,7 +23,7 @@ import {
     Brain,
     Move,
     Panic
-} from './attributes'
+} from './attributes/attributes'
 import { STR, Dependencies, DMG, Exp } from './weapon'
 import { WarriorSelect } from './warrior-select'
 import { Quality } from './spell'

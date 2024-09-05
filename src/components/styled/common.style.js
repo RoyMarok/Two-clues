@@ -46,22 +46,23 @@ export const GridCell = styled.div(({
             verticalCenter = false,
             mirror = false,
             error=false,
-            panel=false
+            panel=false,
+            dynamicWidth = false,
 
         }) => css`
     display: block;
     height: ${height * gridBase}px;
-    width: ${width * gridBase}px;
+    ${dynamicWidth ? `width: auto;`: `width: ${width * gridBase}px;`}
     text-align: left;
     padding-left: ${wrapper ? 0 : parseInt(gridBase/2)}px;
     ${panel && `padding: ${parseInt(gridBase / 2) }px;`}
     line-height: ${height * gridBase}px;
     overflow: hidden;
     box-sizing: border-box;
-    background-color: ${filled ? theme.tetriary : (inverse ? theme.secondary : theme.transparent)};
+    background-color: ${filled ? theme.tetriary : (inverse ? (black ? theme.primary : theme.secondary) : theme.transparent)};
     ${error && `background-color: ${theme.error};`}
     color: ${inverse ? theme.white : theme.secondary};
-    ${black && 'color: '+theme.primary+';' }
+    ${black && !inverse && 'color: '+theme.primary+';' }
     ${center && 'text-align: center; padding: 0;'}
     ${left && 'text-align: left; padding: 0;'}
     ${verticalCenter && 'margin: '+(height * gridBase /2)+'px auto;'}
@@ -109,12 +110,15 @@ export const GridCell = styled.div(({
     }
 `)
 
-export const BorderWrapper = styled.div`
+export const NobreakWrapper = styled.div`
+    break-inside: avoid;
+`
+
+export const BorderWrapper = styled(NobreakWrapper)`
     display: inline-block;
     border: 4px solid ${theme.tetriary};
     height: fit-content;
     width: fit-content;
-    break-inside: avoid;
 `
 export const ContentWrapper = styled.div`
     color: ${theme.primary};

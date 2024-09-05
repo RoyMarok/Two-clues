@@ -32,15 +32,22 @@
     {
         "id": "knockback",
         "title": "Отбрасывает",
-        "description": "",
+        "description": "on Hit Target check Strength, else move 1` and Down",
         "price": 2
     },
     {
         "id": "rapid",
         "title": "Очередь",
-        "description": "",
-        "multi": true,
-        "price": 2
+        "description": "+d6-3 toHit",
+        "multi": false,
+        "price": 4
+    },
+    {
+        "id": "rapid_2",
+        "title": "Очередь(2)",
+        "description": "+d6-1 toHit",
+        "multi": false,
+        "price": 8
     },
     {
         "id": "laser",
@@ -52,7 +59,7 @@
         "id": "melta",
         "title": "Мельта",
         "description": "",
-        "multi": true,
+        "multi": false,
         "price": 6
     },
     {
@@ -65,13 +72,13 @@
         "id": "poison",
         "title": "Яд",
         "description": "",
-        "price": 4
+        "price": 8
     },
     {
         "id": "blaze",
         "title": "Поджог",
         "description": "",
-        "price": 4
+        "price": 10
     },
     {
         "id": "disarm",
@@ -82,46 +89,68 @@
     {
         "id": "rending",
         "title": "Пробивает",
-        "description": "",
+        "description": "crit on 10+",
         "price": 2
     },
     {
         "id": "pulverise",
         "title": "Размазывает",
-        "description": "",
-        "price": 4
+        "description": "on Hit Target check Strendth-2, else Down",
+        "price": 2
     },
     {
         "id": "granade",
         "title": "Граната",
         "description": "",
-        "price": -3
+        "price": 0
+    },
+    {
+        "id": "single",
+        "title": "1шт",
+        "description": "",
+        "multi": true,
+        "price": 0.1
     },
     {
         "id": "blast_3",
         "title": "Взрыв 3",
         "description": "",
         "multi": true,
-        "price": 2
+        "price": 1.2
     },
     {
         "id": "blast_5",
         "title": "Взрыв 5",
         "description": "",
         "multi": true,
-        "price": 3
+        "price": 2
     },
     {
         "id": "smoke",
         "title": "Дым",
         "description": "",
+        "multi": false,
+        "price": 0
+    },
+    {
+        "id": "frozen",
+        "title": "Заморозка",
+        "description": "Не может активироваться до следующего хода. Должен пройти проверку на силу",
         "multi": true,
-        "price": -1
+        "price": 2
     },
     {
         "id": "template",
         "title": "Шаблон",
         "description": "",
-        "price": 0
+        "multi": true,
+        "price": 2
+    },
+    {
+        "id": "no_damage",
+        "title": "Без урона",
+        "description": "",
+        "multi": true,
+        "price": 0.2
     }
 ]

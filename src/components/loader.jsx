@@ -6,6 +6,7 @@ import {
     ArmourState,
     WeaponsState,
     TraitsState,
+    CharacterTraitsState,
     RussianNames,
     SweedenNames,
     SpanishNames,
@@ -44,6 +45,7 @@ const LoadFile = ({ axios, src, stateLoaded, setState }) => {
 const loadingFiles = [
     { ...TraitsState },
     { ...WeaponsState },
+    { ...CharacterTraitsState },
     { ...ArmourState },
     
     { ...RussianNames },

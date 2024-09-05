@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil'
 
-import { clamp, getChance } from '../utils'
+import { getD6WeaponPrice, getD6SpellPrice } from './utils'
 
 import { weaponTraitsState } from './weapons'
 
@@ -36,7 +36,7 @@ export const WEAPONS_DAMAGE = [
 ]
 
 export const WEAPONS_RANGE = [
-    1, 2, 3, 4, 6, 8, 12, 36
+    1, 2, 3, 4, 6, 9, 12, 36
 ]
 
 const defaultD6Weapon = {
@@ -166,102 +166,9 @@ export const POISON_ACTIVATION = [
     }
 ]
 
-const PRICE_KOEFF = 2
-const SINGLE_ATTR_PRICE = 2.5
+const PRICE_KOEFF = 1
 
-const getMidDmg = (value) => {
-    const passedValue = value + 3
-    let sum = 0
-    for (let i = 1; i <= passedValue; i++) {
-        sum += i / passedValue
-    }
-    return sum
-}
 
-export const getD6WeaponPrice = (weapon) => {
-    const {
-        range = {
-            min: 1,
-            max: 1
-        },
-        str = 0,
-        dmg = 1,
-        count = 1,
-        exp = 0,
-        traits = [],
-        allTraits = [],
-        dependencies,
-        title
-    } = weapon
-
-    let traitsPrice = 0
-    
-    // const rangeKoeff = WEAPONS_RANGE.findIndex((item) => item === range.max) - WEAPONS_RANGE.findIndex((item) => item === range.min) + 1
-    const rangeKoeff = clamp(range.max / 2 - range.min, 1, 6)
-    const rangeDMG = rangeKoeff * ((str + dmg + 6))
-   
-    // console.log(
-    //     'Weapon Price',
-    //     title,
-    //     rangeKoeff,
-    //     str,
-    //     dmg,
-    //     (str + dmg + 6),
-    //     rangeDMG,
-    // )
-
-    allTraits.map(trait => {
-        if (traits.includes(trait.id)) {
-            if (trait?.multi) {
-                traitsPrice += rangeDMG * (parseInt(trait.price) - 1)
-            } else {
-                traitsPrice += parseInt(trait.price)
-            }
-
-        }
-        return null
-    })
-
-    return Math.max(
-        Math.ceil(
-            (
-                // (str + 3)
-                // + (dmg + 3)
-                + rangeDMG
-                // - depKoeff
-                + traitsPrice
-            ) * count * PRICE_KOEFF
-        )
-        , 1)
-}
-
-const getD6SpellPrice = (spell) => {
-    const {
-        target,
-        quality,
-        mod,
-        ap = 0,
-        dmg = 0,
-        traits,
-        allTraits
-    } = spell
-
-    let traitsPrice = 0
-    allTraits.map(trait => {
-        if (traits.includes(trait.id)) {
-            traitsPrice += parseInt(trait.price)
-        }
-        return null
-    })
-
-    const dependenciesSum = (target.strength + 0) + (target.agility + 0) + (target.perception + 0) + (target.intelligence + 0)
-    // const passedAP = Boolean(ap) ? BASE_MOD_PRICE + (Math.abs(ap) * 5) : 0
-    // const passedMod = Boolean(mod) ? BASE_MOD_PRICE + (Math.abs(mod) * 5) : 0
-
-    return Math.max(
-        Math.round((dependenciesSum * Math.abs(quality) + mod) * PRICE_KOEFF)
-        , 1)
-}
 
 const getD6PoisonPrice = (poisons) => {
     const {
@@ -307,7 +214,7 @@ const getD6SkillPrice = (skill) => {
 }
 
 // const calculateAttr = (attribute) => parseInt(attribute) * (attribute >= 6 ? attribute - 4 : 1)
-const calculateAttr = (attribute) => (parseInt(attribute) + 2) * SINGLE_ATTR_PRICE
+const calculateAttr = (attribute) => (parseInt(attribute) + 3)
 
 export const getD6CharacterPrice = (character) => {
     const {
@@ -318,8 +225,9 @@ export const getD6CharacterPrice = (character) => {
         skills=[],
         poisons=[],
         //  equipment,
-        allTraits,
+        allTraits = [],
         spelltraits = [],
+        traits = [],
         fearless = false,
         height
     } = character
@@ -344,11 +252,11 @@ export const getD6CharacterPrice = (character) => {
     let calculatedWeapons = 0
     weapons.map((weapon) => calculatedWeapons += getD6WeaponPrice({ ...weapon, allTraits }))
     let calculatedSpells = 0
-    spells.map((spell) => calculatedSpells += getD6SpellPrice({ ...spell, allTraits: spelltraits }))
+    // spells.map((spell) => calculatedSpells += getD6SpellPrice({ ...spell, allTraits: spelltraits }))
     let calculatedSkills = 0
-    skills.map((skill) => calculatedSkills += getD6SkillPrice({ ...skill }))
+    // skills.map((skill) => calculatedSkills += getD6SkillPrice({ ...skill }))
     let calculatedPoisons = 0
-    poisons.map((poison) => calculatedPoisons += getD6PoisonPrice({ ...poison }))
+    // poisons.map((poison) => calculatedPoisons += getD6PoisonPrice({ ...poison }))
 
     const calculatedMove = Math.ceil(fly ? Math.pow(parseInt(move), 2) : parseInt(move))
 
@@ -358,18 +266,43 @@ export const getD6CharacterPrice = (character) => {
         + calculateAttr(perception)
         + calculateAttr(intelligence)
         + calculatedMove
-        + parseInt(defence) * SINGLE_ATTR_PRICE
+        + parseInt(defence)
     
+    let traitsPrice = 0
+    allTraits.map(trait => {
+        if (traits.includes(trait.id)) {
+            traitsPrice += parseInt(trait.price)
+        }
+        return null
+    })
     
 
     const characteristicSum =
-        Math.ceil(Math.max(Math.ceil(attributeSum), 4) * PRICE_KOEFF)
+        Math.ceil(Math.max(Math.ceil(attributeSum), 4) * actions)
         + parseInt(calculatedWeapons)
         + parseInt(calculatedSpells)
         + parseInt(calculatedSkills)
         + parseInt(calculatedPoisons)
+        + (traitsPrice)
     // console.log('Character sum', attributeSum, Math.ceil(Math.max(Math.ceil(attributeSum), 4) * PRICE_KOEFF), parseInt(calculatedWeapons), characteristicSum)
-    return Math.ceil(characteristicSum * actions / 2)
+    // console.log('getD6CharacterPrice', traits, allTraits, traitsPrice)
+    return Math.ceil(characteristicSum)
+}
+
+
+export const characterTraitsState = atom({
+    key: 'characterTraitsState',
+    default: []
+})
+export const characterTraitsStateLoaded = selector({
+    key: 'characterTraitsStateLoaded',
+    get: ({ get }) => get(characterTraitsState).length !== 0
+})
+
+export const CharacterTraitsState = {
+    src: 'json/character_traits.json',
+    stateLoaded: characterTraitsStateLoaded,
+    setState: characterTraitsState
 }
 
 export const characterD6State = atom({
@@ -382,7 +315,7 @@ export const changeCharacterD6InState = selector({
     get: ({ get }) => get(characterD6State),
     set: ({ get, set }, props) => {
         const characters = get(characterD6State)
-        const allTraits = get(weaponTraitsState)
+        const allTraits = [...get(weaponTraitsState), ...get(characterTraitsState)]
         const { weapons, spells, poisons, skills, index } = props
         const passedWeapons = weapons.map((weapon) => ({ ...weapon, price: getD6WeaponPrice({ ...weapon, allTraits }) }))
         const passedSpells = spells.map((spell) => ({ ...spell, price: getD6SpellPrice({ ...spell, allTraits }) }))
@@ -440,7 +373,7 @@ export const addWeaponD6InState = selector({
     set: ({ get, set }, { index, weapon = defaultD6Weapon}) => {
         const characters = get(characterD6State)
         const character = characters.find((item) => item.index === index)
-        const allTraits = get(weaponTraitsState)
+        const allTraits = [...get(weaponTraitsState), ...get(characterTraitsState)]
         const passedWeapon = {
             ...weapon,
             price: getD6WeaponPrice({ ...weapon, allTraits })
@@ -479,7 +412,7 @@ export const removeWeaponD6InState = selector({
             ...character,
             weapons: [...weapons.slice(0, index), ...weapons.slice(index + 1)]
         }
-        const allTraits = get(weaponTraitsState)
+        const allTraits = [...get(weaponTraitsState), ...get(characterTraitsState)]
         const passedProps = {
             ...passedCharacter,
             price: getD6CharacterPrice({
@@ -507,7 +440,7 @@ export const addSpellD6InState = selector({
             ...character,
             spells: [...character.spells, defaultD6Spell]
         }
-        const allTraits = get(weaponTraitsState)
+        const allTraits = [...get(weaponTraitsState), ...get(characterTraitsState)]
         const passedProps = {
             ...passedCharacter,
             price: getD6CharacterPrice({
@@ -537,7 +470,7 @@ export const removeSpellD6InState = selector({
             ...character,
             spells: spells.length === 1 ? [] : [...spells.slice(0, index), ...spells.slice(index + 1)]
         }
-        const allTraits = get(weaponTraitsState)
+        const allTraits = [...get(weaponTraitsState), ...get(characterTraitsState)]
         const passedProps = {
             ...passedCharacter,
             price: getD6CharacterPrice({
@@ -565,7 +498,7 @@ export const addPoisonD6InState = selector({
             ...character,
             poisons: [...character.poisons, defaultD6Poison]
         }
-        const allTraits = get(weaponTraitsState)
+        const allTraits = [...get(weaponTraitsState), ...get(characterTraitsState)]
         const passedProps = {
             ...passedCharacter,
             price: getD6CharacterPrice({
@@ -595,7 +528,7 @@ export const removePoisonD6InState = selector({
             ...character,
             poisons: poisons.length === 1 ? [] : [...poisons.slice(0, index), ...poisons.slice(index + 1)]
         }
-        const allTraits = get(weaponTraitsState)
+        const allTraits = [...get(weaponTraitsState), ...get(characterTraitsState)]
         const passedProps = {
             ...passedCharacter,
             price: getD6CharacterPrice({
@@ -666,6 +599,8 @@ export const removeSkillD6InState = selector({
         ])
     }
 })
+
+
 
 export const CharacterD6StateObj = {
     constants: {

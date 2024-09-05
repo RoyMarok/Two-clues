@@ -105,6 +105,46 @@
             "min": 1,
             "max": 1
         },
+        "str": 0,
+        "dmg": 3,
+        
+        "count": 1,
+        "title": "Силовой Меч",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 2
+        },
+        "str": 0,
+        "dmg": 3,
+        
+        "count": 1,
+        "title": "Силовая Алебарда",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": [
+            "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
         "str": -1,
         "dmg": 1,
         
@@ -259,6 +299,27 @@
         },
         "traits": [
             "melee"
+        ]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 1
+        },
+        "str": 0,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "Цепной Меч",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": [
+            "melee",
+            "rending"
         ]
     },
     {
@@ -547,7 +608,7 @@
     {
         "range": {
             "min": 1,
-            "max": 8
+            "max": 9
         },
         "str": 0,
         "dmg": 1,
@@ -565,13 +626,13 @@
     {
         "range": {
             "min": 1,
-            "max": 8
+            "max": 9
         },
         "str": 0,
-        "dmg": 1,
+        "dmg": 0,
         
         "count": 1,
-        "title": "Револьвер",
+        "title": "Stubpistol",
         "dependencies": {
             "strength": false,
             "agility": false,
@@ -583,7 +644,7 @@
     {
         "range": {
             "min": 1,
-            "max": 8
+            "max": 9
         },
         "str": 0,
         "dmg": 1,
@@ -679,9 +740,9 @@
     {
         "range": {
             "min": 1,
-            "max": 8
+            "max": 9
         },
-        "str": -1,
+        "str": 0,
         "dmg": 0,
         
         "count": 1,
@@ -697,9 +758,9 @@
     {
         "range": {
             "min": 3,
-            "max": 12
+            "max": 24
         },
-        "str": -1,
+        "str": 0,
         "dmg": 0,
         
         "count": 1,
@@ -711,6 +772,42 @@
             "intelligence": false
         },
         "traits": ["rapid"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 24
+        },
+        "str": -1,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "Пулемёт Вулкан",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["rapid_2"]
+    },
+    {
+        "range": {
+            "min": 1,
+            "max": 9
+        },
+        "str": 0,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "Laspistol",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["laser"]
     },
     {
         "range": {
@@ -751,10 +848,10 @@
     {
         "range": {
             "min": 1,
-            "max": 8
+            "max": 9
         },
         "str": 0,
-        "dmg": 2,
+        "dmg": 1,
         
         "count": 1,
         "title": "Bolter pistol",
@@ -764,15 +861,15 @@
             "perception": true,
             "intelligence": false
         },
-        "traits": ["rapid"]
+        "traits": ["rending"]
     },
     {
         "range": {
             "min": 3,
             "max": 36
         },
-        "str": -1,
-        "dmg": 2,
+        "str": 0,
+        "dmg": 1,
         
         "count": 1,
         "title": "Bolter",
@@ -782,7 +879,25 @@
             "perception": true,
             "intelligence": false
         },
-        "traits": ["rapid"]
+        "traits": ["rapid", "rending"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 12
+        },
+        "str": -1,
+        "dmg": 1,
+        
+        "count": 1,
+        "title": "Bolter Revolver Shotgun",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["rending"]
     },
     {
         "range": {
@@ -890,7 +1005,7 @@
             "perception": true,
             "intelligence": false
         },
-        "traits": []
+        "traits": ["knockback"]
     },
     {
         "range": {
@@ -931,7 +1046,7 @@
     {
         "range": {
             "min": 1,
-            "max": 8
+            "max": 9
         },
         "str": 0,
         "dmg": 2,
@@ -949,7 +1064,7 @@
     {
         "range": {
             "min": 3,
-            "max": 8
+            "max": 9
         },
         "str": 0,
         "dmg": 4,
@@ -967,10 +1082,10 @@
     {
         "range": {
             "min": 1,
-            "max": 8
+            "max": 9
         },
         "str": 0,
-        "dmg": 1,
+        "dmg": 0,
         
         "count": 1,
         "title": "Needle pistol",
@@ -988,7 +1103,7 @@
             "max": 36
         },
         "str": 0,
-        "dmg": 1,
+        "dmg": 0,
         
         "count": 1,
         "title": "Needler",
@@ -1004,10 +1119,10 @@
     {
         "range": {
             "min": 3,
-            "max": 12
+            "max": 9
         },
-        "str": 0,
-        "dmg": 0,
+        "str": -1,
+        "dmg": -1,
         
         "count": 1,
         "title": "Фраг граната",
@@ -1017,15 +1132,16 @@
             "perception": false,
             "intelligence": false
         },
-        "traits": ["blast_3", "granade"]
+        "traits": ["blast_5", "granade",
+            "single"]
     },
     {
         "range": {
             "min": 3,
-            "max": 12
+            "max": 9
         },
-        "str": 0,
-        "dmg": 0,
+        "str": -1,
+        "dmg": -2,
         
         "count": 1,
         "title": "Дымовая граната",
@@ -1035,15 +1151,16 @@
             "perception": false,
             "intelligence": false
         },
-        "traits": ["blast_5", "smoke", "granade"]
+        "traits": ["blast_5", "smoke", "granade",
+            "single", "no_damage"]
     },
     {
         "range": {
             "min": 3,
-            "max": 12
+            "max": 9
         },
-        "str": 0,
-        "dmg": 0,
+        "str": -1,
+        "dmg": -2,
         
         "count": 1,
         "title": "Слезоточивая граната",
@@ -1053,15 +1170,16 @@
             "perception": false,
             "intelligence": false
         },
-        "traits": ["blast_5", "poison", "granade"]
+        "traits": ["blast_5", "poison", "granade",
+            "single", "no_damage"]
     },
     {
         "range": {
             "min": 3,
-            "max": 12
+            "max": 9
         },
-        "str": 0,
-        "dmg": 1,
+        "str": -1,
+        "dmg": 0,
         
         "count": 1,
         "title": "Крак граната",
@@ -1071,15 +1189,34 @@
             "perception": false,
             "intelligence": false
         },
-        "traits": ["granade"]
+        "traits": ["blast_3", "granade", "single", "knockback"]
     },
     {
         "range": {
             "min": 3,
-            "max": 12
+            "max": 24
         },
         "str": 0,
         "dmg": 0,
+        
+        "count": 1,
+        "title": "Гранатомёт с крак",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["blast_3",
+            "granade"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 24
+        },
+        "str": 0,
+        "dmg": -1,
         
         "count": 1,
         "title": "Гранатомёт с фраг",
@@ -1089,15 +1226,35 @@
             "perception": true,
             "intelligence": false
         },
-        "traits": ["blast_3"]
+        "traits": ["blast_5",
+            "granade"]
     },
     {
         "range": {
             "min": 3,
-            "max": 12
+            "max": 24
         },
         "str": 0,
-        "dmg": 0,
+        "dmg": -2,
+        
+        "count": 1,
+        "title": "Гранатомёт с морозом",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["blast_3", "frozen",
+            "granade", "no_damage"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 24
+        },
+        "str": 0,
+        "dmg": -2,
         
         "count": 1,
         "title": "Гранатомёт с дымовой",
@@ -1107,15 +1264,16 @@
             "perception": true,
             "intelligence": false
         },
-        "traits": ["smoke", "blast_5"]
+        "traits": ["smoke", "blast_5",
+            "granade", "no_damage"]
     },
     {
         "range": {
             "min": 3,
-            "max": 12
+            "max": 24
         },
         "str": 0,
-        "dmg": 0,
+        "dmg": -2,
         
         "count": 1,
         "title": "Гранатомёт со слезами",
@@ -1126,18 +1284,37 @@
             "intelligence": false
         },
         "traits": ["poison",
-            "blast_5"]
+            "blast_5",
+            "granade", "no_damage"]
     },
     {
         "range": {
-            "min": 3,
-            "max": 12
+            "min": 2,
+            "max": 9
         },
-        "str": 6,
+        "str": 0,
         "dmg": 0,
         
         "count": 1,
         "title": "Flamer",
+        "dependencies": {
+            "strength": false,
+            "agility": false,
+            "perception": true,
+            "intelligence": false
+        },
+        "traits": ["blaze", "template"]
+    },
+    {
+        "range": {
+            "min": 2,
+            "max": 6
+        },
+        "str": 0,
+        "dmg": -1,
+        
+        "count": 1,
+        "title": "Hand Flamer",
         "dependencies": {
             "strength": false,
             "agility": false,

@@ -1,7 +1,7 @@
 import React from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 
-import { CharacterD6StateObj } from '../../../atoms'
+import { CharacterD6StateObj, characterTraitsState } from '../../../atoms'
 
 import { clamp, noop } from '../../../utils'
 
@@ -13,9 +13,9 @@ import {
     NonPrintableBlock,
 } from '../../styled'
 
-import { TraitElement } from '../../traits'
+import { TraitElement, Traits } from '../../traits'
 import { GetIcon } from '../../get-icon'
-import { WARRIOR_TYPES_VALUES } from '../character/character'
+import { WARRIOR_TYPES_VALUES } from '../change/character'
 
 import { Experience } from './expirience'
 import { Weapon } from './weapon'
@@ -30,6 +30,7 @@ export const DisplayCharacter = (props) => {
         characterProps = {}
     } = props
     const [characters, setCharacter] = useRecoilState(CharacterD6StateObj.change)
+    const allTraits = useRecoilValue(characterTraitsState)
     const character = characters.find((item) => item.index === index) || characterProps
     const removeCharacter = useSetRecoilState(CharacterD6StateObj.remove)
     const {
@@ -66,44 +67,44 @@ export const DisplayCharacter = (props) => {
         })
     }
 
-    const warriorTypeItem = WARRIOR_TYPES_VALUES.filter((item) => item?.id === warriorType)?.[0]
-    const warriorTypeIcon = warriorTypeItem?.icon
-    const titles = []
-    const strengths = []
-    let combinedDmg = 0
-    let combinedPrice = 0
+    // const warriorTypeItem = WARRIOR_TYPES_VALUES.filter((item) => item?.id === warriorType)?.[0]
+    // const warriorTypeIcon = warriorTypeItem?.icon
+    // const titles = []
+    // const strengths = []
+    // let combinedDmg = 0
+    // let combinedPrice = 0
     
 
-    const meleeWeapons = weapons.filter((weapon) =>
-        (weapon?.traits || []).length === 1
-        && (weapon?.traits || []).includes('melee')
-        && weapon.range.min === 1
-        && weapon.range.max === 1
-    ).map((weapon) => {
-        titles.push(weapon.title)
-        strengths.push(weapon.str)
-        combinedDmg += weapon.dmg
-        combinedPrice += weapon.price
-    })
-    const rangedWeapons = weapons.filter((weapon) =>
-        !(weapon?.traits || []).includes('melee')
-        || weapon.range.min !== 1
-        || weapon.range.max !== 1
-        )
-    const combinedMelee = {
-        range: {
-            min: 1,
-            max: 1
-        },
-        str: strengths.sort()[0] + strengths.length - 1,
-        dmg: combinedDmg,
-        count: 1,
-        price: combinedPrice,
-        title: titles.join(' + '),
-        traits: [
-            'melee'
-        ]
-    }
+    // const meleeWeapons = weapons.filter((weapon) =>
+    //     (weapon?.traits || []).length === 1
+    //     && (weapon?.traits || []).includes('melee')
+    //     && weapon.range.min === 1
+    //     && weapon.range.max === 1
+    // ).map((weapon) => {
+    //     titles.push(weapon.title)
+    //     strengths.push(weapon.str)
+    //     combinedDmg += weapon.dmg
+    //     combinedPrice += weapon.price
+    // })
+    // const rangedWeapons = weapons.filter((weapon) =>
+    //     !(weapon?.traits || []).includes('melee')
+    //     || weapon.range.min !== 1
+    //     || weapon.range.max !== 1
+    //     )
+    // const combinedMelee = {
+    //     range: {
+    //         min: 1,
+    //         max: 1
+    //     },
+    //     str: strengths.sort()[0] + strengths.length - 1,
+    //     dmg: combinedDmg,
+    //     count: 1,
+    //     price: combinedPrice,
+    //     title: titles.join(' + '),
+    //     traits: [
+    //         'melee'
+    //     ]
+    // }
 
     // const passedWeapons = meleeWeapons.length > 1 ? [combinedMelee, ...rangedWeapons] : weapons
     const passedWeapons = weapons
@@ -115,6 +116,8 @@ export const DisplayCharacter = (props) => {
         poisons,
         skills,
     }
+
+    // console.log('DisplayCharacter', traits, allTraits)
 
     return (
         <div>
@@ -149,8 +152,8 @@ export const DisplayCharacter = (props) => {
                 <BorderWrapper>
                     <FlexWrapper>
                         <GridCell width={12} black filled wrapper>{title}</GridCell>
-                        <GridCell width={1} center filled><GetIcon color="secondary" icon="coin" /></GridCell>
-                        <GridCell width={1} inverse center>{price}</GridCell>
+                        <GridCell width={1} center filled><GetIcon color="primary" icon="coin" /></GridCell>
+                        <GridCell width={1} inverse black center>{price}</GridCell>
                     </FlexWrapper>
                     <FlexWrapper>
                         <Attributes
@@ -161,16 +164,15 @@ export const DisplayCharacter = (props) => {
                         <GridCell width={0.5} />
                         <GridCell width={6} height={2}wrapper>
                             {traits?.length > 0 && <FlexWrapper>
-                                {traits.map((skill) => <TraitElement controlled={false} key={String(skill)} title={String(skill)} />)}
+                                <Traits
+                                    traits={allTraits}
+                                    selectedTraits={traits}
+                                    controlled={false}
+                                />
                             </FlexWrapper>}
-                        </GridCell>
-
-                        {/* <Experience {...experienceProps} width={7} height={2} /> */}
-                            
-                        
+                        </GridCell>                        
                     </FlexWrapper>
-                    
-                    
+                    {/* <Experience {...experienceProps} width={14} height={2} /> */}
                     {passedWeapons.map((weapon) =>
                         <Weapon
                             character={characteristics}

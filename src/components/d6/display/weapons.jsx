@@ -15,7 +15,7 @@ export const Weapons = () => {
     const weaponsCount = allWeapons.length
     return (
         <FlexWrapper columns>
-            <GridCell width={COLUMN_WIDTH} open wrapper>
+            {/* <GridCell width={COLUMN_WIDTH} open wrapper>
                 {
                     allWeapons.map((oneWeapon, index) => index < Math.ceil(weaponsCount /2) && <Weapon {...oneWeapon} />)
                 }
@@ -24,7 +24,10 @@ export const Weapons = () => {
                 {
                     allWeapons.map((oneWeapon, index) => index >= Math.ceil(weaponsCount / 2) && <Weapon {...oneWeapon} />)
                 }
-            </GridCell>
+            </GridCell> */}
+            {
+                allWeapons.map((oneWeapon, index) => <Weapon {...oneWeapon} />)
+            }
 
         </FlexWrapper>
         

@@ -2,7 +2,22 @@
     {
         "id": "camocloack",
         "title": "Маскхалат",
+        "description": "6-12 -1, 12+ invisible",
+        "max": 1,
+        "price": 15
+    },
+    {
+        "id": "stimpack",
+        "title": "Стимулятор",
         "description": "",
-        "price": 75
+        "max": 3,
+        "price": 5
+    },
+    {
+        "id": "medpack",
+        "title": "Медпак",
+        "description": "",
+        "max": 1,
+        "price": 15
     }
 ]

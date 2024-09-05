@@ -7,12 +7,16 @@ import { WEAPONS_DAMAGE } from '../../../atoms/d6_character'
 import {
     GridCell,
     FlexWrapper,
+    NobreakWrapper,
+
 } from '../../styled'
 
 import { Traits } from '../../traits'
 import { GetIcon } from '../../get-icon'
 
 import { IconedElement } from './iconed-element'
+
+const nonZeroValue = (value) => value !== 0 ? value : ''
 
 export const Weapon = (props) => {
     const allTraits = useRecoilValue(weaponTraitsState)
@@ -25,17 +29,26 @@ export const Weapon = (props) => {
         dependencies,
         traits,
         title,
-        price
+        price,
+        character = {},
     } = props
 
-    const rangeText = range.min > 1 ? `${range.min}-${range.max}` : range.max
-    const passedStr = str + count - 1
-    const passedDmg = dmg * count
-    const isMulti = count > 1
-    const depIcon = Object.keys(dependencies || {}).filter((attr) => dependencies?.[attr]?.use || dependencies?.[attr])[0]
+    const {
+        strength = 0,
+        agility = 0,
+        perception = 0,
+        intelligence = 0,
+    } = character
 
+    const isMelee = traits.includes('melee') && Boolean(character)
+    const depIcon = Object.keys(dependencies || {}).filter((attr) => dependencies?.[attr]?.use || dependencies?.[attr])[0]
+    console.log('WEAPON', title, character, traits.includes('melee'), Boolean(character))
+    const rangeText = range.min > 1 ? `${range.min}-${range.max}` : range.max
+    const passedStr = str + (isMelee ? agility : (character[depIcon] ?? 0))
+    const passedDmg = dmg + (isMelee ? strength : 0)
+    
     return (
-        <>
+        <NobreakWrapper>
             <FlexWrapper>
                 {count > 1 && <GridCell inverse center >{count}</GridCell>}
                 <GridCell filled center><GetIcon icon="weapon" color="secondary" /></GridCell>
@@ -46,28 +59,31 @@ export const Weapon = (props) => {
             <FlexWrapper>
                 <IconedElement icon="range" value={rangeText} filled  />
                 <GridCell height={2} center>
-                    <GridCell width={1} center ><GetIcon color="secondary" icon="dice" /></GridCell>
-                    <GridCell width={1} center ><GetIcon icon={depIcon} /></GridCell>
+                    <GridCell width={1} center ><GetIcon color="secondary" icon={isMelee ? 'agility' : depIcon} /></GridCell>
+                    <GridCell width={1} center ><GetIcon color="secondary" icon={isMelee ? 'strength' : ''} /></GridCell>
                 </GridCell>
-                <IconedElement
+                <GridCell height={2} center>
+                    <GridCell width={1} center ><GetIcon color="primary" icon="hit" /></GridCell>
+                    <GridCell width={1} center filled><GetIcon color="primary" icon="dmg" /></GridCell>
+                </GridCell>
+                <GridCell height={2} center>
+                    <GridCell width={1} center >{nonZeroValue(str)}</GridCell>
+                    <GridCell width={1} center filled>{nonZeroValue(dmg)}</GridCell>
+                </GridCell>
+                <GridCell height={2} center>
+                    <GridCell width={1} center  black>{nonZeroValue(passedStr)}</GridCell>
+                    <GridCell width={1} center filled black>{nonZeroValue(passedDmg)}</GridCell>
+                </GridCell>
+                {/* <IconedElement
                     icon="hit"
-                    // value={isMulti ? str : passedStr}
-                    value={str}
-                    // minimal={isMulti}
-                    // currentValue={isMulti ? passedStr : ''}
-                    // black
+                    value={passedStr}
                     filled
                 />
                 <IconedElement
                     icon="dmg"
-                    // value={isMulti ? dmg : passedDmg}
-                    value={dmg}
-                    // minimal={isMulti}
-                    // currentValue={isMulti ? passedDmg : ''}
-                    // nonZero
-                    // black
+                    value={passedDmg}
                     
-                />
+                /> */}
                 
 
                 {/* <GridCell /> */}
@@ -102,7 +118,7 @@ export const Weapon = (props) => {
 
                 /> */}
                 <GridCell width={0.5}/>
-                {traits?.length > 0 && <GridCell width={9} height={2} center open>
+                {traits?.length > 0 && <GridCell width={7} height={2} center open>
                     
                     <Traits
                         traits={allTraits}
@@ -111,6 +127,6 @@ export const Weapon = (props) => {
                     />
                 </GridCell>}
             </FlexWrapper>
-        </>
+        </NobreakWrapper>
     )
 }

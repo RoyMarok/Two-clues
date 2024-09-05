@@ -1,47 +1,65 @@
-export const getWeaponPrice = (props) => {
+export const getD6WeaponPrice = (weapon) => {
     const {
-        range,
-        shots,
-        drum,
-        reload,
-        ap,
-        dmg,
-        mass,
+        range = {
+            min: 1,
+            max: 1
+        },
+        str = 0,
+        dmg = 1,
+        count = 1,
+        exp = 0,
         traits = [],
         allTraits = [],
-        weapons,
-        masterIndex = ''
-    } = props
-    const calcDmg = (parseInt(dmg) + 1) * shots * 2
-    const calcRange = range * 0.275
-    const calcReload = reload * 5 + (parseInt(drum) - 10) / 2
-    // const calcMass = (mass - 1)*10
-    const calcMass = 0
+        dependencies,
+        title
+    } = weapon
 
+
+
+    // const rangeKoeff = WEAPONS_RANGE.findIndex((item) => item === range.max) - WEAPONS_RANGE.findIndex((item) => item === range.min) + 1
+    // const rangeKoeff = clamp(Math.floor(range.max / 3) - Math.floor(range.min / 3) + 1, 1, 6)
+    const rangeKoeff = Math.floor(range.max / 3) - Math.floor(range.min / 3) + 1
+    const rangeDMG = rangeKoeff + ((str + dmg + 6))
+
+    let thisTraitPrice = ''
     let traitsPrice = 0
     allTraits.map(trait => {
         if (traits.includes(trait.id)) {
-            traitsPrice += parseInt(trait.price)
+            thisTraitPrice = thisTraitPrice + ` ${JSON.stringify(trait)}`
+            if (trait?.multi && trait.price) {
+                const traitsDivider = 1 / parseFloat(trait.price)
+                traitsPrice = traitsPrice - Math.round(rangeDMG * (traitsDivider - 1) / traitsDivider)
+            } else {
+                traitsPrice = traitsPrice + trait.price
+            }
+
         }
         return null
     })
-    const priceRanged = Math.round(
-        Math.max(
-            parseInt(calcReload) + (calcDmg * calcRange) + (ap * 10) - calcMass + traitsPrice,
-            5
-        ) / 5
-    ) 
 
-    const priceCC = Math.round(
-        Math.max(
-            (calcDmg * 5) - 20 + (ap * 10) - calcMass + traitsPrice,
-            5
-            ) / 5
-        ) 
-    
-    const calculatedPrice = parseInt(range) > 1 ? priceRanged : priceCC
-    const masterWeaponPrice = weapons.filter(weapon => weapon.id === masterIndex)?.[0]?.price
+    traitsPrice = Math.floor(traitsPrice)
 
-   return (masterIndex ? Math.max(Math.floor(calculatedPrice - masterWeaponPrice), 0) : calculatedPrice)
+    // console.log(
+    //     'Weapon Price',
+    //     title,
+    //     rangeKoeff,
+    //     str,
+    //     dmg,
+    //     (str + dmg + 6),
+    //     rangeDMG,
+    //     traitsPrice,
+    //     thisTraitPrice
+    // )
 
+    return Math.max(
+        Math.ceil(
+            (
+                // (str + 3)
+                // + (dmg + 3)
+                + rangeDMG
+                // - depKoeff
+                + traitsPrice
+            ) * count
+        )
+        , 1)
 }

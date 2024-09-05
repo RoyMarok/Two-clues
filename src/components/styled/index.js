@@ -7,22 +7,7 @@ export {
     SkillTitle
 }
 from './field.style'
-export {
-    AppWrapper,
-    ContentWrapper,
-    FlexWrapper,
-    GridCell,
-    BorderWrapper,
-    NonPrintableBlock,
-    NonPrintableText,
-    OnlyPrintableBlock,
-    OnlyPrintableText,
-    Sticky,
-    White,
-    MoveUp,
-    PrintOrDisplayBlock
-}
-from './common.style'
+export * from './common.style'
 export { SelectStyled } from './selected.style'
 export { Icon } from './icon.style'
 export {

@@ -111,10 +111,11 @@ export {
     changeCharacterInState,
     cloneCharacterInState,
     removeCharacterFromState,
-    CharacterState
+    CharacterState,
+    
 } from './characters'
 
-export { characterD6State, CharacterD6StateObj } from './d6_character'
+export { characterD6State, CharacterD6StateObj, CharacterTraitsState, characterTraitsState } from './d6_character'
 
 export {
     defaultWeapon,

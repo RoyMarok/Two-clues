@@ -1,4 +1,5 @@
-export { getWeaponPrice } from './get-weapon-price'
+export { getD6WeaponPrice } from './get-weapon-price'
+export { getD6SpellPrice } from './get-d6-spell-price'
 export {
     CalculateHealth,
     CalculateMove,
