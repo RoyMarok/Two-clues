@@ -22,5 +22,17 @@
         "title": "Стойкий",
         "description": "",
         "price": 10
+    },
+    {
+        "id": "psyker",
+        "title": "Псайкер",
+        "description": "",
+        "price": 30
+    },
+    {
+        "id": "medic",
+        "title": "Медик",
+        "description": "",
+        "price": 30
     }
 ]

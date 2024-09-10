@@ -42,7 +42,7 @@ export const Weapon = (props) => {
 
     const isMelee = traits.includes('melee') && Boolean(character)
     const depIcon = Object.keys(dependencies || {}).filter((attr) => dependencies?.[attr]?.use || dependencies?.[attr])[0]
-    console.log('WEAPON', title, character, traits.includes('melee'), Boolean(character))
+    // console.log('WEAPON', title, character, traits.includes('melee'), Boolean(character))
     const rangeText = range.min > 1 ? `${range.min}-${range.max}` : range.max
     const passedStr = str + (isMelee ? agility : (character[depIcon] ?? 0))
     const passedDmg = dmg + (isMelee ? strength : 0)

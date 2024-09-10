@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 
-import { CharacterD6StateObj, WeaponsState } from '../../../atoms'
+import { CharacterD6StateObj, WeaponsState, characterTraitsState } from '../../../atoms'
 
 import { clamp, noop } from '../../../utils'
 
@@ -20,6 +20,7 @@ import { GetIcon } from '../../get-icon'
 
 import { Attributes } from './attributes/attributes'
 import { Weapon } from './weapon'
+import { Traits } from '../../traits'
 import { RACES } from './config'
 
 import { defaultLimits, limitsBase } from './limits'
@@ -102,6 +103,7 @@ export const Character = (props) => {
         skills,
         poisons,
         warriorType = 'human',
+        traits = [],
         count,
         // fearless,
         // height
@@ -126,7 +128,8 @@ export const Character = (props) => {
     const addWeapon = useSetRecoilState(CharacterD6StateObj.addWeapon)
     const addSpell = useSetRecoilState(CharacterD6StateObj.addSpell)
     const addPoison = useSetRecoilState(CharacterD6StateObj.addPoison)
-    const allWeapons = useRecoilValue(WeaponsState.setState) 
+    const allWeapons = useRecoilValue(WeaponsState.setState)
+    const allTraits = useRecoilValue(characterTraitsState)
     // const addSkill = useSetRecoilState(CharacterD6StateObj.addSkill)
     const handleDeleteCharacter = (e) => removeCharacter(index)
    
@@ -280,6 +283,7 @@ export const Character = (props) => {
         actions: changesCharMaker('actions'),
         armour: changesCharMaker('armour'),
         title: changesCharMaker('title'),
+        traits: changesCharMaker('traits'),
         fly: changesMaker('fly')
     }
     const weaponChanges = (index) => ({
@@ -375,6 +379,12 @@ export const Character = (props) => {
                         actions={character?.actions}
                     />
                 </FlexWrapper>
+                <Traits
+                    traits={allTraits}
+                    selectedTraits={traits}
+                    controlled
+                    onChange={changes.traits}
+                />
                 {isControlled && <FlexWrapper>
                     <GridCell width={6} center>
                         <SelectWithOptions onChange={handleSelectWeapon} elements={passedWeapons} />

@@ -18,8 +18,9 @@ export const getD6WeaponPrice = (weapon) => {
 
     // const rangeKoeff = WEAPONS_RANGE.findIndex((item) => item === range.max) - WEAPONS_RANGE.findIndex((item) => item === range.min) + 1
     // const rangeKoeff = clamp(Math.floor(range.max / 3) - Math.floor(range.min / 3) + 1, 1, 6)
+    const passedDMG = traits.includes('no_damage') ? -3 : dmg 
     const rangeKoeff = Math.floor(range.max / 3) - Math.floor(range.min / 3) + 1
-    const rangeDMG = rangeKoeff + ((str + dmg + 6))
+    const rangeDMG = rangeKoeff + str + 3 + 2 * (passedDMG + 3)
 
     let thisTraitPrice = ''
     let traitsPrice = 0

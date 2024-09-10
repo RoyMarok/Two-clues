@@ -1077,7 +1077,7 @@
             "perception": true,
             "intelligence": false
         },
-        "traits": ["melta"]
+        "traits": ["rending"]
     },
     {
         "range": {
@@ -1132,8 +1132,7 @@
             "perception": false,
             "intelligence": false
         },
-        "traits": ["blast_5", "granade",
-            "single"]
+        "traits": ["blast_3", "granade"]
     },
     {
         "range": {
@@ -1141,7 +1140,26 @@
             "max": 9
         },
         "str": -1,
-        "dmg": -2,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Морозная граната",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": ["blast_3", "granade","frozen",
+            "no_damage"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 9
+        },
+        "str": -1,
+        "dmg": 0,
         
         "count": 1,
         "title": "Дымовая граната",
@@ -1152,7 +1170,25 @@
             "intelligence": false
         },
         "traits": ["blast_5", "smoke", "granade",
-            "single", "no_damage"]
+            "no_damage"]
+    },
+    {
+        "range": {
+            "min": 3,
+            "max": 9
+        },
+        "str": -1,
+        "dmg": 0,
+        
+        "count": 1,
+        "title": "Зажигательная граната",
+        "dependencies": {
+            "strength": true,
+            "agility": false,
+            "perception": false,
+            "intelligence": false
+        },
+        "traits": ["blast_3", "blaze", "granade", "no_damage"]
     },
     {
         "range": {
@@ -1171,7 +1207,7 @@
             "intelligence": false
         },
         "traits": ["blast_5", "poison", "granade",
-            "single", "no_damage"]
+            "no_damage"]
     },
     {
         "range": {
@@ -1189,7 +1225,7 @@
             "perception": false,
             "intelligence": false
         },
-        "traits": ["blast_3", "granade", "single", "knockback"]
+        "traits": ["blast_3", "granade", "knockback"]
     },
     {
         "range": {
@@ -1200,7 +1236,7 @@
         "dmg": 0,
         
         "count": 1,
-        "title": "Гранатомёт с крак",
+        "title": "Гранатомёт",
         "dependencies": {
             "strength": false,
             "agility": false,
@@ -1208,83 +1244,6 @@
             "intelligence": false
         },
         "traits": ["blast_3",
-            "granade"]
-    },
-    {
-        "range": {
-            "min": 3,
-            "max": 24
-        },
-        "str": 0,
-        "dmg": -1,
-        
-        "count": 1,
-        "title": "Гранатомёт с фраг",
-        "dependencies": {
-            "strength": false,
-            "agility": false,
-            "perception": true,
-            "intelligence": false
-        },
-        "traits": ["blast_5",
-            "granade"]
-    },
-    {
-        "range": {
-            "min": 3,
-            "max": 24
-        },
-        "str": 0,
-        "dmg": -2,
-        
-        "count": 1,
-        "title": "Гранатомёт с морозом",
-        "dependencies": {
-            "strength": false,
-            "agility": false,
-            "perception": true,
-            "intelligence": false
-        },
-        "traits": ["blast_3", "frozen",
-            "granade", "no_damage"]
-    },
-    {
-        "range": {
-            "min": 3,
-            "max": 24
-        },
-        "str": 0,
-        "dmg": -2,
-        
-        "count": 1,
-        "title": "Гранатомёт с дымовой",
-        "dependencies": {
-            "strength": false,
-            "agility": false,
-            "perception": true,
-            "intelligence": false
-        },
-        "traits": ["smoke", "blast_5",
-            "granade", "no_damage"]
-    },
-    {
-        "range": {
-            "min": 3,
-            "max": 24
-        },
-        "str": 0,
-        "dmg": -2,
-        
-        "count": 1,
-        "title": "Гранатомёт со слезами",
-        "dependencies": {
-            "strength": false,
-            "agility": false,
-            "perception": true,
-            "intelligence": false
-        },
-        "traits": ["poison",
-            "blast_5",
             "granade", "no_damage"]
     },
     {
