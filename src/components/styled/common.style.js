@@ -79,6 +79,7 @@ export const GridCell = styled.div(({
         color: ${theme.primary};
         margin: ${baseFontSize * 2}px 0 0;
         font-weight: 800;
+        letter-spacing: 0.07em;
     }
     h2 {
         font-size: ${baseFontSize * 2}px;
@@ -87,9 +88,10 @@ export const GridCell = styled.div(({
         margin: ${baseFontSize}px 0;
     }
     h3 {
+        font-size: ${baseFontSize * 1.5}px;
+        line-height: ${baseFontSize * 1.5}px;
         color: ${theme.primary};
-        margin: 0;
-        margin-top: ${baseFontSize/2}px;
+        margin: ${baseFontSize/2}px 0;
     }
     ul {
         margin: 0;

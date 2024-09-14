@@ -29,7 +29,7 @@ import { ReactComponent as DiceIcon } from '../icons/dice.svg'
 import { ReactComponent as PencilIcon } from '../icons/pencil.svg'
 import { ReactComponent as AtomIcon } from '../icons/atom.svg'
 import { ReactComponent as GearIcon } from '../icons/gear.svg'
-import { ReactComponent as AuraIcon } from '../icons/bahai.svg'
+
 import { ReactComponent as SkillIcon } from '../icons/phyllotaxis.svg'
 import { ReactComponent as WeaponIcon } from '../icons/weapon.svg'
 import { ReactComponent as ScrollIcon } from '../icons/parchment.svg'
@@ -50,6 +50,9 @@ import { ReactComponent as ToughtIcon } from '../icons/toughness.svg'
 import { ReactComponent as FistIcon } from '../icons/fist.svg'
 import { ReactComponent as CrosshairIcon } from '../icons/cross2.svg'
 import { ReactComponent as BowIcon } from '../icons/bow2.svg'
+
+import { ReactComponent as DeadIcon } from '../icons/jolly-roger.svg'
+import { ReactComponent as WoundedIcon } from '../icons/crutchs2.svg'
 
 export const GetIcon = ({ icon, ...props }) => {
     switch (icon) {
@@ -153,6 +156,10 @@ export const GetIcon = ({ icon, ...props }) => {
             return <Icon {...props}><BowIcon /></Icon>
         case 'hit':
             return <Icon {...props}><CrosshairIcon /></Icon>
+        case 'dead':
+            return <Icon {...props}><DeadIcon /></Icon>
+        case 'wounded':
+            return <Icon {...props}><WoundedIcon /></Icon>
 
         default:
             return null
@@ -209,5 +216,7 @@ GetIcon.list = [
     'fist',
     'bow',
     'hit',
+    'dead',
+    'wounded',
 
 ]

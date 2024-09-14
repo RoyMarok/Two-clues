@@ -23,82 +23,57 @@ export const defaultD6MeleeWeapon = {
         "min": 1,
         "max": 1
     },
-    "str": 0,
-    "dmg": 3,
-    "exp": 0,
-    "count": 2,
-    price: 14,
-    "title": "Когти",
+    "str": -1,
+    "dmg": -2,
+    price: 0,
+    "count": 1,
+    "title": "Кулаки",
     "dependencies": {
-        "strength": {
-            "min": 1,
-            "use": true
-        },
-        "agility": {
-            "min": 1,
-            "use": false
-        },
-        "perception": {
-            "min": 1,
-            "use": false
-        },
-        "intelligence": {
-            "min": 1,
-            "use": false
-        }
+        "strength": true,
+        "agility": false,
+        "perception": false,
+        "intelligence": false
     },
     "traits": [
         "melee"
     ]
 }
+
 export const defaultD6RangeWeapon = {
     "range": {
-        "min": 3,
-        "max": 12
+        "min": 1,
+        "max": 9
     },
-    "str": 3,
-    "dmg": 2,
-    "exp": 1,
-    "count": 2,
-    price: 16,
-    "title": "Арбалет",
+    "str": 0,
+    "dmg": 0,
+    price: 17,
+    "count": 1,
+    "title": "Autopistol",
     "dependencies": {
-        "strength": {
-            "min": 2,
-            "use": false
-        },
-        "agility": {
-            "min": 1,
-            "use": false
-        },
-        "perception": {
-            "min": 1,
-            "use": true
-        },
-        "intelligence": {
-            "min": 1,
-            "use": false
-        }
+        "strength": false,
+        "agility": false,
+        "perception": true,
+        "intelligence": false
     },
-    "traits": ["reload_1"]
+    "traits": ["rapid"]
 }
 
 export const demoCharacter = {
     characteristics: {
-        strength: 3,
-        agility: 3,
-        perception: 3,
-        intelligence: 3,
+        strength: -1,
+        agility: -1,
+        perception: -1,
+        intelligence: -1,
         health: 1,
-        move: 2,
+        move: 4,
         panic: 0,
-        defence: 1,
+        defence: 0,
         fly: false
     },
 
     fearless: false,
     actions: 2,
-    price: 28,
+    price: 24,
     count: 0,
     height: 0,
     weapons: [],
