@@ -57,21 +57,22 @@ export const Weapon = (props) => {
                 <GridCell width={1} inverse center>{price}</GridCell>
             </FlexWrapper>
             <FlexWrapper>
-                <IconedElement icon="range" value={rangeText} filled  />
+                <IconedElement icon="range" value={rangeText}   />
+                
+                <GridCell height={2} center>
+                    <GridCell width={1} center filled><GetIcon color="primary" icon="hit" /></GridCell>
+                    <GridCell width={1} center filled><GetIcon color="primary" icon="dmg" /></GridCell>
+                </GridCell>
                 <GridCell height={2} center>
                     <GridCell width={1} center ><GetIcon color="secondary" icon={isMelee ? 'agility' : depIcon} /></GridCell>
                     <GridCell width={1} center ><GetIcon color="secondary" icon={isMelee ? 'strength' : ''} /></GridCell>
                 </GridCell>
                 <GridCell height={2} center>
-                    <GridCell width={1} center ><GetIcon color="primary" icon="hit" /></GridCell>
-                    <GridCell width={1} center filled><GetIcon color="primary" icon="dmg" /></GridCell>
-                </GridCell>
-                <GridCell height={2} center>
                     <GridCell width={1} center >{nonZeroValue(str)}</GridCell>
-                    <GridCell width={1} center filled>{nonZeroValue(dmg)}</GridCell>
+                    <GridCell width={1} center >{nonZeroValue(dmg)}</GridCell>
                 </GridCell>
                 <GridCell height={2} center>
-                    <GridCell width={1} center  black>{nonZeroValue(passedStr)}</GridCell>
+                    <GridCell width={1} center filled black>{nonZeroValue(passedStr)}</GridCell>
                     <GridCell width={1} center filled black>{nonZeroValue(passedDmg)}</GridCell>
                 </GridCell>
                 {/* <IconedElement

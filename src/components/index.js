@@ -9,7 +9,7 @@ export { Fractions } from './fractions'
 export { Weapons } from './weapons'
 export { Armours } from './armours'
 export { Loader } from './loader'
-export { Rules } from './rules'
+export { Rules, QuickRef } from './rules'
 
 export {
     GridCell,

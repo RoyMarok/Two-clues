@@ -53,6 +53,7 @@ import { ReactComponent as BowIcon } from '../icons/bow2.svg'
 
 import { ReactComponent as DeadIcon } from '../icons/jolly-roger.svg'
 import { ReactComponent as WoundedIcon } from '../icons/crutchs2.svg'
+import { ReactComponent as FenceIcon } from '../icons/fence.svg'
 
 export const GetIcon = ({ icon, ...props }) => {
     switch (icon) {
@@ -160,6 +161,8 @@ export const GetIcon = ({ icon, ...props }) => {
             return <Icon {...props}><DeadIcon /></Icon>
         case 'wounded':
             return <Icon {...props}><WoundedIcon /></Icon>
+        case 'fence':
+            return <Icon {...props}><FenceIcon /></Icon>
 
         default:
             return null
@@ -218,5 +221,6 @@ GetIcon.list = [
     'hit',
     'dead',
     'wounded',
+    'fence',
 
 ]

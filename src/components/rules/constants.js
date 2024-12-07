@@ -25,7 +25,7 @@ export const defaultD6MeleeWeapon = {
     },
     "str": -1,
     "dmg": -2,
-    price: 0,
+    // price: 0,
     "count": 1,
     "title": "Кулаки",
     "dependencies": {
@@ -41,21 +41,21 @@ export const defaultD6MeleeWeapon = {
 
 export const defaultD6RangeWeapon = {
     "range": {
-        "min": 1,
-        "max": 9
+        "min": 3,
+        "max": 36
     },
     "str": 0,
-    "dmg": 0,
-    price: 17,
+    "dmg": 1,
+    
     "count": 1,
-    "title": "Autopistol",
+    "title": "Болтер",
     "dependencies": {
         "strength": false,
         "agility": false,
         "perception": true,
         "intelligence": false
     },
-    "traits": ["rapid"]
+    "traits": ["rapid", "rending"]
 }
 
 export const demoCharacter = {
@@ -83,4 +83,5 @@ export const demoCharacter = {
     names: 'Common_0',
     warriorType: 'leader',
     title: 'Character',
+    "traits": ["strong"]
 }

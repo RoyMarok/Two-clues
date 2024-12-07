@@ -94,8 +94,8 @@
     "rules.dices.questions": "*Противоречия игроков* решаются бросками *Д6* каждым игроком. Чей результат больше, тот и выиграл спор",
     "rules.dices.route": "## Произвольное направление\n\r  - Кинуть *Д6* на игровой стол\n\r  - Не меняя *ориентации* куба *перенести* его к модели, для которой применяется *произвольное направление* \n\r  - *Перпендикуляр* к боковой грани с *1* покажет *направление*\n\r  - Если *1* не видно на боковых гранях, то *использовать* грань *5*.",
     "rules.dices.result": "## Проверка \n\r [*2Д6*±*Модификаторы*]\n\r \n\r### Таблица успеха 2Д6",
-    "rules.dices.result.fail": "Успех",
-    "rules.dices.result.success": "Провал",
+    "rules.dices.result.success": "Успех",
+    "rules.dices.result.fail": "Провал",
     "rules.dices.result.critical.fail": "*2* - *Критический провал*",
     "rules.dices.result.critical.success": "*12* - *Критический успех*",
 
@@ -132,6 +132,60 @@
     "rules.game.battle.actions.interact": "## Взаимодействие",
     "rules.game.battle.actions.additional.title": "## Расширенный список действий",
     "rules.game.battle.actions.title.wyrd": "## Магия",
+
+
+    "qr.dices": "2+ кубов. 6+ кубов для игры",
+    "qr.dices.mod": "### Модификаторы ± (Моды)",
+    "qr.dices.result": "### Результат броска",
+    "qr.mesures.title": "Дюймы",
+    "qr.mesures": "мерять можно (линейка/рулетка)",
+    "qr.cards.title": "Колода",
+    "qr.cards": "карты для активации в раунде",
+
+    "qr.minis.title": "28/32мм",
+    "qr.minis": "WYSWYG",
+    "qr.minis.mod.plus.title": "28/32мм",
+    "qr.minis.mod.plus": "*2* куба с *большими* значениями",
+    "qr.minis.mod.minus.title": "28/32мм",
+    "qr.minis.mod.minus": "*2* куба с *меньшими* значениями",
+
+    "qr.actions.move.title": "## Движение",
+    "qr.actions.move.test": "### Спрыгнуть/перепрыгнуть/залезть",
+    "qr.actions.move.mods": "Модификаторы",
+    "qr.actions.move.bullcharge": "### Толкнуть/уронить",
+    "qr.actions.move.bullcharge.atacker": "Атакующий",
+    "qr.actions.move.bullcharge.target": "Защищающийся",
+    "qr.actions.move.bullcharge.result": "### Результат атакующего > цели",
+
+    "qr.character.title": "## Персонаж",
+    "qr.character.main": "Мощь, Ловкость, Сознание, Ум",
+    "qr.character.move": "Скорость в дюймах",
+    "qr.character.defence": "Защита",
+    "qr.character.actions": "Количество действий за ход",
+    "qr.character.trait.example": "Крепкий",
+    "qr.character.trait": "Способность",
+
+    "qr.weapon.title": "## Оружие",
+    "qr.weapon.range": "Дальность действия оружия",
+    "qr.weapon.melee.hit": "Модификатор Попадания (тут -2)",
+    "qr.weapon.melee.dmg": "Модификатор урона (тут -3)",
+    "qr.weapon.trait.melee.example": "Рукопашное",
+    "qr.weapon.trait": "Особенность оружия",
+
+    "qr.actions.attack.title": "## Атака",
+    "qr.actions.attack.success": "### При успехе попадания",
+    "qr.actions.attack.hit": "Суммарный Мод Попадания оружия",
+    "qr.actions.attack.hit.range": "Модификатор Попадания от Расстояния",
+    "qr.actions.attack.hit.range.title": "### Попадание от Расстояния",
+    "qr.actions.attack.cover": "Если цель видно не полностью, то -1",
+    "qr.actions.attack.dmg": "Суммарный Мод Урона оружия",
+    "qr.actions.attack.dmg.wounded": "Количество ран цели",
+    "qr.actions.attack.dmg.down": "Если цель Лежит, то +1",
+
+    "qr.actions.attack.dmg.result.wounded": "Добавить цели 1 Рану",
+    "qr.actions.attack.dmg.result.down": "Цель Лежит, если уже Лежит, +1 Рана",
+    "qr.actions.attack.dmg.result.dead": "Цель Вене Игры (Убрать с поля)",
+
 
 
 

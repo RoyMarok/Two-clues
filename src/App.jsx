@@ -20,7 +20,8 @@ import {
     // Weapons,
     White,
     NamesGenerator,
-    Rules
+    Rules,
+    QuickRef,
 } from './components'
 import { Weapons } from './components/d6/display/weapons'
 import { BandD6, Character } from './components/d6'
@@ -58,6 +59,9 @@ export const App = ({ t }) => (
                     <GridCell width={3} inverse center>
                         <Link to="/rules">{t('rules.title')}</Link>
                     </GridCell>
+                    <GridCell width={3} inverse center>
+                        <Link to="/ref">{t('ref.title')}</Link>
+                    </GridCell>
                     <GridCell width={1} center>
                         <Button onClick={window.print}>
                             <GetIcon icon="print" color="secondary" />
@@ -77,6 +81,7 @@ export const App = ({ t }) => (
             <Route path="/weapons" element={<Weapons />} />
             {/* <Route path="/armours" element={<Armours />} /> */}
             <Route path="/rules" element={<Rules />} />
+            <Route path="/ref" element={<QuickRef />} />
         </Routes>
         </ContentWrapper>
     </AppWrapper>

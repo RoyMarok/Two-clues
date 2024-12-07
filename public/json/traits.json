@@ -32,7 +32,7 @@
     {
         "id": "knockback",
         "title": "Отбрасывает",
-        "description": "on Hit Target check Strength, else move 1` and Down",
+        "description": "onHit Target check Strength, else move 1` and Down",
         "price": 2
     },
     {
@@ -40,7 +40,7 @@
         "title": "Очередь",
         "description": "+d6-3 toHit",
         "multi": false,
-        "price": 4
+        "price": 2
     },
     {
         "id": "rapid_2",
@@ -95,7 +95,7 @@
     {
         "id": "pulverise",
         "title": "Размазывает",
-        "description": "on Hit Target check Strendth-2, else Down",
+        "description": "onHit Target check Strength-2, else Down",
         "price": 2
     },
     {

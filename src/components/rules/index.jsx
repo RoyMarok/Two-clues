@@ -29,3 +29,5 @@ export const RulesComponent = ({ t }) => {
 }
 
 export const Rules = withTranslation()(RulesComponent)
+
+export { QuickRef } from './quick-ref'
